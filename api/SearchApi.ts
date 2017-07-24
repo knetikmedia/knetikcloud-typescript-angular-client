@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,12 +27,12 @@ export class SearchApi {
     }
 
     /**
-        * Add a new object to an index
-        * Mainly intended for internal use.
-        * @param type The index type
-        * @param id The ID of the object
-        * @param object The object to add
-        */
+     * Mainly intended for internal use.
+     * @summary Add a new object to an index
+     * @param type The index type
+     * @param id The ID of the object
+     * @param object The object to add
+     */
     public addSearchIndex (type: string, id: string, object?: any, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/search/index/{type}/{id}'
             .replace('{' + 'type' + '}', String(type))
@@ -63,10 +63,10 @@ export class SearchApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Register reference mappings
-        * Add a new type mapping to connect data from one index to another, or discover an exsting one. Mainly intended for internal use.
-        * @param mappings The mappings to add
-        */
+     * Add a new type mapping to connect data from one index to another, or discover an exsting one. Mainly intended for internal use.
+     * @summary Register reference mappings
+     * @param mappings The mappings to add
+     */
     public addSearchMappings (mappings?: Array<models.SearchReferenceMapping>, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/search/mappings';
 
@@ -87,11 +87,11 @@ export class SearchApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an object
-        * Mainly intended for internal use. Requires SEARCH_ADMIN.
-        * @param type The index type
-        * @param id The ID of the object to delete
-        */
+     * Mainly intended for internal use. Requires SEARCH_ADMIN.
+     * @summary Delete an object
+     * @param type The index type
+     * @param id The ID of the object to delete
+     */
     public deleteSearchIndex (type: string, id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/search/index/{type}/{id}'
             .replace('{' + 'type' + '}', String(type))
@@ -121,10 +121,10 @@ export class SearchApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete all objects in an index
-        * Mainly intended for internal use
-        * @param type The index type
-        */
+     * Mainly intended for internal use
+     * @summary Delete all objects in an index
+     * @param type The index type
+     */
     public deleteSearchIndexes (type: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/search/index/{type}'
             .replace('{' + 'type' + '}', String(type));
@@ -149,13 +149,13 @@ export class SearchApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Search an index
-        * The body is an ElasticSearch query in JSON format. Please see their &lt;a href&#x3D;&#39;https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html&#39;&gt;documentation&lt;/a&gt; for details on the format and search options. The searchable object&#39;s format depends on on the type. See individual search endpoints on other resources for details on their format.
-        * @param type The index type
-        * @param query The query to be used for the search
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * The body is an ElasticSearch query in JSON format. Please see their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html'>documentation</a> for details on the format and search options. The searchable object's format depends on on the type. See individual search endpoints on other resources for details on their format.
+     * @summary Search an index
+     * @param type The index type
+     * @param query The query to be used for the search
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public searchIndex (type: string, query?: any, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceMapstringobject> {
         const localVarPath = this.basePath + '/search/index/{type}'
             .replace('{' + 'type' + '}', String(type));

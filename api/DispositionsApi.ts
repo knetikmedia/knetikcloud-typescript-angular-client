@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class DispositionsApi {
     }
 
     /**
-        * Add a new disposition
-        * 
-        * @param disposition The new disposition record
-        */
+     * 
+     * @summary Add a new disposition
+     * @param disposition The new disposition record
+     */
     public addDisposition (disposition?: models.DispositionResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.DispositionResource> {
         const localVarPath = this.basePath + '/dispositions';
 
@@ -51,10 +51,10 @@ export class DispositionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a disposition
-        * 
-        * @param id The id of the disposition record
-        */
+     * 
+     * @summary Delete a disposition
+     * @param id The id of the disposition record
+     */
     public deleteDisposition (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/dispositions/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -79,10 +79,10 @@ export class DispositionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns a disposition
-        * 
-        * @param id The id of the disposition record
-        */
+     * 
+     * @summary Returns a disposition
+     * @param id The id of the disposition record
+     */
     public getDisposition (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.DispositionResource> {
         const localVarPath = this.basePath + '/dispositions/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -107,11 +107,11 @@ export class DispositionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns a list of disposition counts
-        * 
-        * @param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context&#x3D;video:47
-        * @param filterOwner Filter for dispositions from a specific user by id or &#39;me&#39;
-        */
+     * 
+     * @summary Returns a list of disposition counts
+     * @param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context&#x3D;video:47
+     * @param filterOwner Filter for dispositions from a specific user by id or &#39;me&#39;
+     */
     public getDispositionCounts (filterContext?: string, filterOwner?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.DispositionCount>> {
         const localVarPath = this.basePath + '/dispositions/count';
 
@@ -139,14 +139,14 @@ export class DispositionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns a page of dispositions
-        * 
-        * @param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context&#x3D;video:47
-        * @param filterOwner Filter for dispositions from a specific user by id or &#39;me&#39;
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary Returns a page of dispositions
+     * @param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context&#x3D;video:47
+     * @param filterOwner Filter for dispositions from a specific user by id or &#39;me&#39;
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getDispositions (filterContext?: string, filterOwner?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceDispositionResource> {
         const localVarPath = this.basePath + '/dispositions';
 

@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class UsersSubscriptionsApi {
     }
 
     /**
-        * Get details about a user&#39;s subscription
-        * 
-        * @param userId The id of the user
-        * @param inventoryId The id of the user&#39;s inventory
-        */
+     * 
+     * @summary Get details about a user's subscription
+     * @param userId The id of the user
+     * @param inventoryId The id of the user&#39;s inventory
+     */
     public getUserSubscriptionDetails (userId: number, inventoryId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.InventorySubscriptionResource> {
         const localVarPath = this.basePath + '/users/{user_id}/subscriptions/{inventory_id}'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -61,10 +61,10 @@ export class UsersSubscriptionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get details about a user&#39;s subscriptions
-        * 
-        * @param userId The id of the user
-        */
+     * 
+     * @summary Get details about a user's subscriptions
+     * @param userId The id of the user
+     */
     public getUsersSubscriptionDetails (userId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.InventorySubscriptionResource>> {
         const localVarPath = this.basePath + '/users/{user_id}/subscriptions'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -89,12 +89,12 @@ export class UsersSubscriptionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Reactivate a subscription and charge fee
-        * 
-        * @param userId The id of the user
-        * @param inventoryId The id of the user&#39;s inventory
-        * @param reactivateSubscriptionRequest The reactivate subscription request object inventory
-        */
+     * 
+     * @summary Reactivate a subscription and charge fee
+     * @param userId The id of the user
+     * @param inventoryId The id of the user&#39;s inventory
+     * @param reactivateSubscriptionRequest The reactivate subscription request object inventory
+     */
     public reactivateUserSubscription (userId: number, inventoryId: number, reactivateSubscriptionRequest?: models.ReactivateSubscriptionRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.InvoiceResource> {
         const localVarPath = this.basePath + '/users/{user_id}/subscriptions/{inventory_id}/reactivate'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -125,12 +125,12 @@ export class UsersSubscriptionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set a new date to bill a subscription on
-        * 
-        * @param userId The id of the user
-        * @param inventoryId The id of the user&#39;s inventory
-        * @param billDate The new bill date. Unix timestamp in seconds
-        */
+     * 
+     * @summary Set a new date to bill a subscription on
+     * @param userId The id of the user
+     * @param inventoryId The id of the user&#39;s inventory
+     * @param billDate The new bill date. Unix timestamp in seconds
+     */
     public setSubscriptionBillDate (userId: number, inventoryId: number, billDate: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/subscriptions/{inventory_id}/bill-date'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -165,12 +165,12 @@ export class UsersSubscriptionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set the payment method to use for a subscription
-        * May send null to use floating default
-        * @param userId The id of the user
-        * @param inventoryId The id of the user&#39;s inventory
-        * @param paymentMethodId The id of the payment method
-        */
+     * May send null to use floating default
+     * @summary Set the payment method to use for a subscription
+     * @param userId The id of the user
+     * @param inventoryId The id of the user&#39;s inventory
+     * @param paymentMethodId The id of the payment method
+     */
     public setSubscriptionPaymentMethod (userId: number, inventoryId: number, paymentMethodId?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/subscriptions/{inventory_id}/payment-method'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -201,12 +201,12 @@ export class UsersSubscriptionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set the status of a subscription
-        * The body is a json string (put in quotes) that should match a desired invoice status type. Note that the new status may be blocked if the system is not configured to allow the current status to be changed to the new, to enforce proper flow. The default options for statuses are shown below but may be altered for special use cases
-        * @param userId The id of the user
-        * @param inventoryId The id of the user&#39;s inventory
-        * @param status The new status for the subscription. Actual options may differ from the indicated set if the invoice status type data has been altered.  Allowable values: (&#39;current&#39;, &#39;canceled&#39;, &#39;stopped&#39;, &#39;payment_failed&#39;, &#39;suspended&#39;)
-        */
+     * The body is a json string (put in quotes) that should match a desired invoice status type. Note that the new status may be blocked if the system is not configured to allow the current status to be changed to the new, to enforce proper flow. The default options for statuses are shown below but may be altered for special use cases
+     * @summary Set the status of a subscription
+     * @param userId The id of the user
+     * @param inventoryId The id of the user&#39;s inventory
+     * @param status The new status for the subscription. Actual options may differ from the indicated set if the invoice status type data has been altered.  Allowable values: (&#39;current&#39;, &#39;canceled&#39;, &#39;stopped&#39;, &#39;payment_failed&#39;, &#39;suspended&#39;)
+     */
     public setSubscriptionStatus (userId: number, inventoryId: number, status: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/subscriptions/{inventory_id}/status'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -241,12 +241,12 @@ export class UsersSubscriptionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set a new subscription plan for a user
-        * 
-        * @param userId The id of the user
-        * @param inventoryId The id of the user&#39;s inventory
-        * @param planId The id of the new plan. Must be from the same subscription
-        */
+     * 
+     * @summary Set a new subscription plan for a user
+     * @param userId The id of the user
+     * @param inventoryId The id of the user&#39;s inventory
+     * @param planId The id of the new plan. Must be from the same subscription
+     */
     public setUserSubscriptionPlan (userId: number, inventoryId: number, planId?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/subscriptions/{inventory_id}/plan'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -266,6 +266,42 @@ export class UsersSubscriptionsApi {
             method: 'PUT',
             url: localVarPath,
             data: planId,
+                        params: queryParameters,
+            headers: headerParams
+        };
+
+        if (extraHttpRequestParams) {
+            httpRequestParams = (<any>Object).assign(httpRequestParams, extraHttpRequestParams);
+        }
+
+        return this.$http(httpRequestParams);
+    }
+    /**
+     * This new price will be what the user is charged at the begining of each new period. This override is specific to the current subscription and will not carry over if they end and later re-subscribe. It will persist if the plan is changed using the setUserSubscriptionPlan endpoint.
+     * @summary Set a new subscription price for a user
+     * @param userId The id of the user
+     * @param inventoryId The id of the user&#39;s inventory
+     * @param the override details override
+     */
+    public setUserSubscriptionPrice (userId: number, inventoryId: number, the override details?: models.SubscriptionPriceOverrideRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+        const localVarPath = this.basePath + '/users/{user_id}/subscriptions/{inventory_id}/price-override'
+            .replace('{' + 'user_id' + '}', String(userId))
+            .replace('{' + 'inventory_id' + '}', String(inventoryId));
+
+        let queryParameters: any = {};
+        let headerParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling setUserSubscriptionPrice.');
+        }
+        // verify required parameter 'inventoryId' is not null or undefined
+        if (inventoryId === null || inventoryId === undefined) {
+            throw new Error('Required parameter inventoryId was null or undefined when calling setUserSubscriptionPrice.');
+        }
+        let httpRequestParams: ng.IRequestConfig = {
+            method: 'PUT',
+            url: localVarPath,
+            data: the override details,
                         params: queryParameters,
             headers: headerParams
         };

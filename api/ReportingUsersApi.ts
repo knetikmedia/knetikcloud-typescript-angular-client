@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,14 +27,14 @@ export class ReportingUsersApi {
     }
 
     /**
-        * Get user registration info
-        * Get user registration counts grouped by time range
-        * @param granularity The time duration to aggregate by
-        * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
-        * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * Get user registration counts grouped by time range
+     * @summary Get user registration info
+     * @param granularity The time duration to aggregate by
+     * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
+     * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getUserRegistrations (granularity?: string, startDate?: number, endDate?: number, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceAggregateCountResource> {
         const localVarPath = this.basePath + '/reporting/users/registrations';
 

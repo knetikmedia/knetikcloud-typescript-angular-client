@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class AuthClientsApi {
     }
 
     /**
-        * Create a new client
-        * 
-        * @param clientResource The client resource object
-        */
+     * 
+     * @summary Create a new client
+     * @param clientResource The client resource object
+     */
     public createClient (clientResource?: models.ClientResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ClientResource> {
         const localVarPath = this.basePath + '/auth/clients';
 
@@ -51,10 +51,10 @@ export class AuthClientsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a client
-        * 
-        * @param clientKey The key of the client
-        */
+     * 
+     * @summary Delete a client
+     * @param clientKey The key of the client
+     */
     public deleteClient (clientKey: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/auth/clients/{client_key}'
             .replace('{' + 'client_key' + '}', String(clientKey));
@@ -79,10 +79,10 @@ export class AuthClientsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single client
-        * 
-        * @param clientKey The key of the client
-        */
+     * 
+     * @summary Get a single client
+     * @param clientKey The key of the client
+     */
     public getClient (clientKey: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ClientResource> {
         const localVarPath = this.basePath + '/auth/clients/{client_key}'
             .replace('{' + 'client_key' + '}', String(clientKey));
@@ -107,9 +107,9 @@ export class AuthClientsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List available client grant types
-        * 
-        */
+     * 
+     * @summary List available client grant types
+     */
     public getClientGrantTypes (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.GrantTypeResource>> {
         const localVarPath = this.basePath + '/auth/clients/grant-types';
 
@@ -129,12 +129,12 @@ export class AuthClientsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search clients
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search clients
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getClients (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceClientResource> {
         const localVarPath = this.basePath + '/auth/clients';
 
@@ -166,11 +166,11 @@ export class AuthClientsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set grant types for a client
-        * 
-        * @param clientKey The key of the client
-        * @param grantList A list of unique grant types
-        */
+     * 
+     * @summary Set grant types for a client
+     * @param clientKey The key of the client
+     * @param grantList A list of unique grant types
+     */
     public setClientGrantTypes (clientKey: string, grantList?: Array<string>, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/auth/clients/{client_key}/grant-types'
             .replace('{' + 'client_key' + '}', String(clientKey));
@@ -196,11 +196,11 @@ export class AuthClientsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set redirect uris for a client
-        * 
-        * @param clientKey The key of the client
-        * @param redirectList A list of unique redirect uris
-        */
+     * 
+     * @summary Set redirect uris for a client
+     * @param clientKey The key of the client
+     * @param redirectList A list of unique redirect uris
+     */
     public setClientRedirectUris (clientKey: string, redirectList?: Array<string>, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/auth/clients/{client_key}/redirect-uris'
             .replace('{' + 'client_key' + '}', String(clientKey));
@@ -226,11 +226,11 @@ export class AuthClientsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a client
-        * 
-        * @param clientKey The key of the client
-        * @param clientResource The client resource object
-        */
+     * 
+     * @summary Update a client
+     * @param clientKey The key of the client
+     * @param clientResource The client resource object
+     */
     public updateClient (clientKey: string, clientResource?: models.ClientResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ClientResource> {
         const localVarPath = this.basePath + '/auth/clients/{client_key}'
             .replace('{' + 'client_key' + '}', String(clientKey));

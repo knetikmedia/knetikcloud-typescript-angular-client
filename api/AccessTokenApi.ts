@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,14 +27,14 @@ export class AccessTokenApi {
     }
 
     /**
-        * Get access token
-        * 
-        * @param grantType Grant type
-        * @param clientId The id of the client
-        * @param clientSecret The secret key of the client.  Used only with a grant_type of client_credentials
-        * @param username The username of the client.  Used only with a grant_type of password
-        * @param password The password of the client.  Used only with a grant_type of password
-        */
+     * 
+     * @summary Get access token
+     * @param grantType Grant type
+     * @param clientId The id of the client
+     * @param clientSecret The secret key of the client.  Used only with a grant_type of client_credentials
+     * @param username The username of the client.  Used only with a grant_type of password
+     * @param password The password of the client.  Used only with a grant_type of password
+     */
     public getOAuthToken (grantType: string, clientId: string, clientSecret?: string, username?: string, password?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.OAuth2Resource> {
         const localVarPath = this.basePath + '/oauth/token';
 

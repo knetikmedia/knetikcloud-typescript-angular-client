@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class StoreApi {
     }
 
     /**
-        * Create an item template
-        * Item Templates define a type of item and the properties they have.
-        * @param itemTemplateResource The new item template
-        */
+     * Item Templates define a type of item and the properties they have.
+     * @summary Create an item template
+     * @param itemTemplateResource The new item template
+     */
     public createItemTemplate (itemTemplateResource?: models.StoreItemTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.StoreItemTemplateResource> {
         const localVarPath = this.basePath + '/store/items/templates';
 
@@ -51,11 +51,11 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a store item
-        * SKUs have to be unique in the entire store. If a duplicate SKU is found, a 400 error is generated and the response will have a \&quot;parameters\&quot; field that is a list of duplicates. A duplicate is an object like {item_id, offending_sku_list}. Ex:&lt;br /&gt; {..., parameters: [[{item: 1, skus: [\&quot;SKU-1\&quot;]}]]}&lt;br /&gt; If an item is brand new and has duplicate SKUs within itself, the item ID will be 0.  Item subclasses are not allowed here, you will have to use their respective endpoints.
-        * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
-        * @param storeItem The store item object
-        */
+     * SKUs have to be unique in the entire store. If a duplicate SKU is found, a 400 error is generated and the response will have a \"parameters\" field that is a list of duplicates. A duplicate is an object like {item_id, offending_sku_list}. Ex:<br /> {..., parameters: [[{item: 1, skus: [\"SKU-1\"]}]]}<br /> If an item is brand new and has duplicate SKUs within itself, the item ID will be 0.  Item subclasses are not allowed here, you will have to use their respective endpoints.
+     * @summary Create a store item
+     * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
+     * @param storeItem The store item object
+     */
     public createStoreItem (cascade?: boolean, storeItem?: models.StoreItem, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.StoreItem> {
         const localVarPath = this.basePath + '/store/items';
 
@@ -80,11 +80,11 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an item template
-        * 
-        * @param id The id of the template
-        * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
-        */
+     * 
+     * @summary Delete an item template
+     * @param id The id of the template
+     * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
+     */
     public deleteItemTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/store/items/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -113,10 +113,10 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a store item
-        * 
-        * @param id The id of the item
-        */
+     * 
+     * @summary Delete a store item
+     * @param id The id of the item
+     */
     public deleteStoreItem (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/store/items/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -141,9 +141,9 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List available item behaviors
-        * 
-        */
+     * 
+     * @summary List available item behaviors
+     */
     public getBehaviors (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.BehaviorDefinitionResource>> {
         const localVarPath = this.basePath + '/store/items/behaviors';
 
@@ -163,10 +163,10 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single item template
-        * Item Templates define a type of item and the properties they have.
-        * @param id The id of the template
-        */
+     * Item Templates define a type of item and the properties they have.
+     * @summary Get a single item template
+     * @param id The id of the template
+     */
     public getItemTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.StoreItemTemplateResource> {
         const localVarPath = this.basePath + '/store/items/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -191,12 +191,12 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search item templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search item templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getItemTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceStoreItemTemplateResource> {
         const localVarPath = this.basePath + '/store/items/templates';
 
@@ -228,14 +228,14 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a listing of store items
-        * The exact structure of each items may differ to include fields specific to the type. The same is true for behaviors.
-        * @param limit The amount of items returned
-        * @param page The page of the request
-        * @param useCatalog Whether to remove items that are not intended for display or not in date
-        * @param ignoreLocation Whether to ignore country restrictions based on the caller&#39;s location
-        * @param inStockOnly Whether only in-stock items should be returned.  Default value is false
-        */
+     * The exact structure of each items may differ to include fields specific to the type. The same is true for behaviors.
+     * @summary Get a listing of store items
+     * @param limit The amount of items returned
+     * @param page The page of the request
+     * @param useCatalog Whether to remove items that are not intended for display or not in date
+     * @param ignoreLocation Whether to ignore country restrictions based on the caller&#39;s location
+     * @param inStockOnly Whether only in-stock items should be returned.  Default value is false
+     */
     public getStore (limit?: number, page?: number, useCatalog?: boolean, ignoreLocation?: boolean, inStockOnly?: boolean, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceStoreItem> {
         const localVarPath = this.basePath + '/store';
 
@@ -275,10 +275,10 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single store item
-        * 
-        * @param id The id of the item
-        */
+     * 
+     * @summary Get a single store item
+     * @param id The id of the item
+     */
     public getStoreItem (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.StoreItem> {
         const localVarPath = this.basePath + '/store/items/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -303,26 +303,26 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search store items
-        * 
-        * @param filterNameSearch Filter for items whose name starts with a given string.
-        * @param filterUniqueKey Filter for items whose unique_key is a given string.
-        * @param filterPublished Filter for skus that have been published.
-        * @param filterDisplayable Filter for items that are displayable.
-        * @param filterStart A comma separated string without spaces.  First value is the operator to search on, second value is the store start date, a unix timestamp in seconds.  Allowed operators: (LT, GT, LTE, GTE, EQ).
-        * @param filterEnd A comma separated string without spaces.  First value is the operator to search on, second value is the store end date, a unix timestamp in seconds.  Allowed operators: (LT, GT, LTE, GTE, EQ).
-        * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the sku start date, a unix timestamp in seconds.  Allowed operators: (LT, GT, LTE, GTE, EQ).
-        * @param filterStopDate A comma separated string without spaces.  First value is the operator to search on, second value is the sku end date, a unix timestamp in seconds.  Allowed operators: (LT, GT, LTE, GTE, EQ).
-        * @param filterSku Filter for skus whose name starts with a given string.
-        * @param filterPrice A colon separated string without spaces.  First value is the operator to search on, second value is the price of a sku.  Allowed operators: (LT, GT, LTE, GTE, EQ).
-        * @param filterTag A comma separated list without spaces of the names of tags. Will only return items with at least one of the tags.
-        * @param filterItemsByType Filter for item type based on its type hint.
-        * @param filterBundledSkus Filter for skus inside bundles whose name starts with a given string.  Used only when type hint is &#39;bundle_item&#39;
-        * @param filterVendor Filter for items from a given vendor, by id.
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search store items
+     * @param filterNameSearch Filter for items whose name starts with a given string.
+     * @param filterUniqueKey Filter for items whose unique_key is a given string.
+     * @param filterPublished Filter for skus that have been published.
+     * @param filterDisplayable Filter for items that are displayable.
+     * @param filterStart A comma separated string without spaces.  First value is the operator to search on, second value is the store start date, a unix timestamp in seconds.  Allowed operators: (LT, GT, LTE, GTE, EQ).
+     * @param filterEnd A comma separated string without spaces.  First value is the operator to search on, second value is the store end date, a unix timestamp in seconds.  Allowed operators: (LT, GT, LTE, GTE, EQ).
+     * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the sku start date, a unix timestamp in seconds.  Allowed operators: (LT, GT, LTE, GTE, EQ).
+     * @param filterStopDate A comma separated string without spaces.  First value is the operator to search on, second value is the sku end date, a unix timestamp in seconds.  Allowed operators: (LT, GT, LTE, GTE, EQ).
+     * @param filterSku Filter for skus whose name starts with a given string.
+     * @param filterPrice A colon separated string without spaces.  First value is the operator to search on, second value is the price of a sku.  Allowed operators: (LT, GT, LTE, GTE, EQ).
+     * @param filterTag A comma separated list without spaces of the names of tags. Will only return items with at least one of the tags.
+     * @param filterItemsByType Filter for item type based on its type hint.
+     * @param filterBundledSkus Filter for skus inside bundles whose name starts with a given string.  Used only when type hint is &#39;bundle_item&#39;
+     * @param filterVendor Filter for items from a given vendor, by id.
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getStoreItems (filterNameSearch?: string, filterUniqueKey?: string, filterPublished?: boolean, filterDisplayable?: boolean, filterStart?: string, filterEnd?: string, filterStartDate?: string, filterStopDate?: string, filterSku?: string, filterPrice?: string, filterTag?: string, filterItemsByType?: string, filterBundledSkus?: string, filterVendor?: number, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceStoreItem> {
         const localVarPath = this.basePath + '/store/items';
 
@@ -410,11 +410,11 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an item template
-        * 
-        * @param id The id of the template
-        * @param itemTemplateResource The item template resource object
-        */
+     * 
+     * @summary Update an item template
+     * @param id The id of the template
+     * @param itemTemplateResource The item template resource object
+     */
     public updateItemTemplate (id: string, itemTemplateResource?: models.StoreItemTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.StoreItemTemplateResource> {
         const localVarPath = this.basePath + '/store/items/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -440,12 +440,12 @@ export class StoreApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a store item
-        * 
-        * @param id The id of the item
-        * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
-        * @param storeItem The store item object
-        */
+     * 
+     * @summary Update a store item
+     * @param id The id of the item
+     * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
+     * @param storeItem The store item object
+     */
     public updateStoreItem (id: number, cascade?: boolean, storeItem?: models.StoreItem, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.StoreItem> {
         const localVarPath = this.basePath + '/store/items/{id}'
             .replace('{' + 'id' + '}', String(id));

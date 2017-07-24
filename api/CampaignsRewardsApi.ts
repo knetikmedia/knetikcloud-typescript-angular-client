@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class CampaignsRewardsApi {
     }
 
     /**
-        * Create a reward set
-        * 
-        * @param rewardSetResource The reward set resource object
-        */
+     * 
+     * @summary Create a reward set
+     * @param rewardSetResource The reward set resource object
+     */
     public createRewardSet (rewardSetResource?: models.RewardSetResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RewardSetResource> {
         const localVarPath = this.basePath + '/rewards';
 
@@ -51,10 +51,10 @@ export class CampaignsRewardsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a reward set
-        * 
-        * @param id The reward id
-        */
+     * 
+     * @summary Delete a reward set
+     * @param id The reward id
+     */
     public deleteRewardSet (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/rewards/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -79,10 +79,10 @@ export class CampaignsRewardsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single reward set
-        * 
-        * @param id The reward id
-        */
+     * 
+     * @summary Get a single reward set
+     * @param id The reward id
+     */
     public getRewardSet (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RewardSetResource> {
         const localVarPath = this.basePath + '/rewards/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -107,12 +107,12 @@ export class CampaignsRewardsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search reward sets
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search reward sets
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getRewardSets (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceRewardSetResource> {
         const localVarPath = this.basePath + '/rewards';
 
@@ -144,11 +144,11 @@ export class CampaignsRewardsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a reward set
-        * 
-        * @param id The reward id
-        * @param rewardSetResource The reward set resource object
-        */
+     * 
+     * @summary Update a reward set
+     * @param id The reward id
+     * @param rewardSetResource The reward set resource object
+     */
     public updateRewardSet (id: number, rewardSetResource?: models.RewardSetResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RewardSetResource> {
         const localVarPath = this.basePath + '/rewards/{id}'
             .replace('{' + 'id' + '}', String(id));

@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class GamificationAchievementsApi {
     }
 
     /**
-        * Create a new achievement definition
-        * If the definition contains a trigger event name, a BRE rule is created, so that tracking logic is executed when the triggering event occurs. If no trigger event name is specified, the user&#39;s achievement status must manually be updated via the API.
-        * @param achievement The achievement definition
-        */
+     * If the definition contains a trigger event name, a BRE rule is created, so that tracking logic is executed when the triggering event occurs. If no trigger event name is specified, the user's achievement status must manually be updated via the API.
+     * @summary Create a new achievement definition
+     * @param achievement The achievement definition
+     */
     public createAchievement (achievement?: models.AchievementDefinitionResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.AchievementDefinitionResource> {
         const localVarPath = this.basePath + '/achievements';
 
@@ -51,10 +51,10 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create an achievement template
-        * Achievement templates define a type of achievement and the properties they have
-        * @param template The achievement template to be created
-        */
+     * Achievement templates define a type of achievement and the properties they have
+     * @summary Create an achievement template
+     * @param template The achievement template to be created
+     */
     public createAchievementTemplate (template?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/achievements/templates';
 
@@ -75,10 +75,10 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an achievement definition
-        * Will also disable the associated generated rule, if any.
-        * @param name The name of the achievement
-        */
+     * Will also disable the associated generated rule, if any.
+     * @summary Delete an achievement definition
+     * @param name The name of the achievement
+     */
     public deleteAchievement (name: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/achievements/{name}'
             .replace('{' + 'name' + '}', String(name));
@@ -103,11 +103,11 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an achievement template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete an achievement template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteAchievementTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/achievements/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -136,10 +136,10 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single achievement definition
-        * 
-        * @param name The name of the achievement
-        */
+     * 
+     * @summary Get a single achievement definition
+     * @param name The name of the achievement
+     */
     public getAchievement (name: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.AchievementDefinitionResource> {
         const localVarPath = this.basePath + '/achievements/{name}'
             .replace('{' + 'name' + '}', String(name));
@@ -164,10 +164,10 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single achievement template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single achievement template
+     * @param id The id of the template
+     */
     public getAchievementTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/achievements/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -192,12 +192,12 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search achievement templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search achievement templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getAchievementTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTemplateResource> {
         const localVarPath = this.basePath + '/achievements/templates';
 
@@ -229,9 +229,9 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get the list of triggers that can be used to trigger an achievement progress update
-        * 
-        */
+     * 
+     * @summary Get the list of triggers that can be used to trigger an achievement progress update
+     */
     public getAchievementTriggers (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.BreTriggerResource>> {
         const localVarPath = this.basePath + '/achievements/triggers';
 
@@ -251,16 +251,16 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get all achievement definitions in the system
-        * 
-        * @param filterTagset Filter for achievements with specified tags (separated by comma)
-        * @param filterName Filter for achievements whose name contains a string
-        * @param filterHidden Filter for achievements that are hidden or not
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        * @param filterDerived Filter for achievements that are derived from other services
-        */
+     * 
+     * @summary Get all achievement definitions in the system
+     * @param filterTagset Filter for achievements with specified tags (separated by comma)
+     * @param filterName Filter for achievements whose name contains a string
+     * @param filterHidden Filter for achievements that are hidden or not
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     * @param filterDerived Filter for achievements that are derived from other services
+     */
     public getAchievements (filterTagset?: string, filterName?: string, filterHidden?: boolean, size?: number, page?: number, order?: string, filterDerived?: boolean, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceAchievementDefinitionResource> {
         const localVarPath = this.basePath + '/achievements';
 
@@ -308,10 +308,10 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a list of derived achievements
-        * Used by other services that depend on achievements
-        * @param name The name of the derived achievement
-        */
+     * Used by other services that depend on achievements
+     * @summary Get a list of derived achievements
+     * @param name The name of the derived achievement
+     */
     public getDerivedAchievements (name: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.AchievementDefinitionResource>> {
         const localVarPath = this.basePath + '/achievements/derived/{name}'
             .replace('{' + 'name' + '}', String(name));
@@ -336,11 +336,11 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Retrieve progress on a given achievement for a given user
-        * Assets will not be filled in on the resources returned. Use &#39;Get a single poll&#39; to retrieve the full resource with assets for a given item as needed.
-        * @param userId The user&#39;s id
-        * @param achievementName The achievement&#39;s name
-        */
+     * Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed.
+     * @summary Retrieve progress on a given achievement for a given user
+     * @param userId The user&#39;s id
+     * @param achievementName The achievement&#39;s name
+     */
     public getUserAchievementProgress (userId: number, achievementName: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserAchievementGroupResource> {
         const localVarPath = this.basePath + '/users/{user_id}/achievements/{achievement_name}'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -370,15 +370,15 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Retrieve progress on achievements for a given user
-        * Assets will not be filled in on the resources returned. Use &#39;Get a single poll&#39; to retrieve the full resource with assets for a given item as needed.
-        * @param userId The user&#39;s id
-        * @param filterAchievementDerived Filter for achievements that are derived from other services
-        * @param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
-        * @param filterAchievementName Filter for achievements whose name contains a string
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed.
+     * @summary Retrieve progress on achievements for a given user
+     * @param userId The user&#39;s id
+     * @param filterAchievementDerived Filter for achievements that are derived from other services
+     * @param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
+     * @param filterAchievementName Filter for achievements whose name contains a string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getUserAchievementsProgress (userId: number, filterAchievementDerived?: boolean, filterAchievementTagset?: string, filterAchievementName?: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUserAchievementGroupResource> {
         const localVarPath = this.basePath + '/users/{user_id}/achievements'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -423,15 +423,15 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Retrieve progress on a given achievement for all users
-        * Assets will not be filled in on the resources returned. Use &#39;Get single achievement progress for user&#39; to retrieve the full resource with assets for a given user as needed.
-        * @param achievementName The achievement&#39;s name
-        * @param filterAchievementDerived Filter for achievements that are derived from other services
-        * @param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
-        * @param filterAchievementName Filter for achievements whose name contains a string
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * Assets will not be filled in on the resources returned. Use 'Get single achievement progress for user' to retrieve the full resource with assets for a given user as needed.
+     * @summary Retrieve progress on a given achievement for all users
+     * @param achievementName The achievement&#39;s name
+     * @param filterAchievementDerived Filter for achievements that are derived from other services
+     * @param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
+     * @param filterAchievementName Filter for achievements whose name contains a string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getUsersAchievementProgress (achievementName: string, filterAchievementDerived?: boolean, filterAchievementTagset?: string, filterAchievementName?: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUserAchievementGroupResource> {
         const localVarPath = this.basePath + '/users/achievements/{achievement_name}'
             .replace('{' + 'achievement_name' + '}', String(achievementName));
@@ -476,14 +476,14 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Retrieve progress on achievements for all users
-        * Assets will not be filled in on the resources returned. Use &#39;Get single achievement progress for user&#39; to retrieve the full resource with assets for a given user as needed.
-        * @param filterAchievementDerived Filter for achievements that are derived from other services
-        * @param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
-        * @param filterAchievementName Filter for achievements whose name contains a string
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * Assets will not be filled in on the resources returned. Use 'Get single achievement progress for user' to retrieve the full resource with assets for a given user as needed.
+     * @summary Retrieve progress on achievements for all users
+     * @param filterAchievementDerived Filter for achievements that are derived from other services
+     * @param filterAchievementTagset Filter for achievements with specified tags (separated by comma)
+     * @param filterAchievementName Filter for achievements whose name contains a string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getUsersAchievementsProgress (filterAchievementDerived?: boolean, filterAchievementTagset?: string, filterAchievementName?: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUserAchievementGroupResource> {
         const localVarPath = this.basePath + '/users/achievements';
 
@@ -523,12 +523,12 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Increment an achievement progress record for a user
-        * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and the provided value added to the existing progress. May be negative. If progress meets or exceeds the achievement&#39;s max_value it will be marked as earned and a BRE event will be triggered for the &lt;code&gt;BreAchievementEarnedTrigger&lt;/code&gt;.
-        * @param userId The user&#39;s id
-        * @param achievementName The achievement&#39;s name
-        * @param progress The amount to add to the progress value
-        */
+     * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and the provided value added to the existing progress. May be negative. If progress meets or exceeds the achievement's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>.
+     * @summary Increment an achievement progress record for a user
+     * @param userId The user&#39;s id
+     * @param achievementName The achievement&#39;s name
+     * @param progress The amount to add to the progress value
+     */
     public incrementAchievementProgress (userId: number, achievementName: string, progress?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserAchievementGroupResource> {
         const localVarPath = this.basePath + '/users/{user_id}/achievements/{achievement_name}/progress'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -559,12 +559,12 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set an achievement progress record for a user
-        * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and progress set to the provided value. If progress meets or exceeds the achievement&#39;s max_value it will be marked as earned and a BRE event will be triggered for the &lt;code&gt;BreAchievementEarnedTrigger&lt;/code&gt;.
-        * @param userId The user&#39;s id
-        * @param achievementName The achievement&#39;s name
-        * @param progress The new progress value
-        */
+     * If no progress record yet exists for the user, it will be created. Otherwise it will be updated and progress set to the provided value. If progress meets or exceeds the achievement's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>.
+     * @summary Set an achievement progress record for a user
+     * @param userId The user&#39;s id
+     * @param achievementName The achievement&#39;s name
+     * @param progress The new progress value
+     */
     public setAchievementProgress (userId: number, achievementName: string, progress?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserAchievementGroupResource> {
         const localVarPath = this.basePath + '/users/{user_id}/achievements/{achievement_name}/progress'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -595,11 +595,11 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an achievement definition
-        * The existing generated rule, if any, will be deleted. A new rule will be created if a trigger event name is specified in the new version.
-        * @param name The name of the achievement
-        * @param achievement The achievement definition
-        */
+     * The existing generated rule, if any, will be deleted. A new rule will be created if a trigger event name is specified in the new version.
+     * @summary Update an achievement definition
+     * @param name The name of the achievement
+     * @param achievement The achievement definition
+     */
     public updateAchievement (name: string, achievement?: models.AchievementDefinitionResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.AchievementDefinitionResource> {
         const localVarPath = this.basePath + '/achievements/{name}'
             .replace('{' + 'name' + '}', String(name));
@@ -625,11 +625,11 @@ export class GamificationAchievementsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an achievement template
-        * 
-        * @param id The id of the template
-        * @param template The updated template
-        */
+     * 
+     * @summary Update an achievement template
+     * @param id The id of the template
+     * @param template The updated template
+     */
     public updateAchievementTemplate (id: string, template?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/achievements/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

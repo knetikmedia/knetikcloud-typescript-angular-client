@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,12 +27,12 @@ export class ReportingRevenueApi {
     }
 
     /**
-        * Get item revenue info
-        * Get basic info about revenue from sales of items and bundles (not subscriptions, shipping, etc), summed up within a time range
-        * @param currencyCode The code for a currency to get sales data for
-        * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
-        * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
-        */
+     * Get basic info about revenue from sales of items and bundles (not subscriptions, shipping, etc), summed up within a time range
+     * @summary Get item revenue info
+     * @param currencyCode The code for a currency to get sales data for
+     * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
+     * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
+     */
     public getItemRevenue (currencyCode: string, startDate?: number, endDate?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RevenueReportResource> {
         const localVarPath = this.basePath + '/reporting/revenue/item-sales/{currency_code}'
             .replace('{' + 'currency_code' + '}', String(currencyCode));
@@ -65,12 +65,12 @@ export class ReportingRevenueApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get refund revenue info
-        * Get basic info about revenue loss from refunds (for all item types), summed up within a time range.
-        * @param currencyCode The code for a currency to get refund data for
-        * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
-        * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
-        */
+     * Get basic info about revenue loss from refunds (for all item types), summed up within a time range.
+     * @summary Get refund revenue info
+     * @param currencyCode The code for a currency to get refund data for
+     * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
+     * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
+     */
     public getRefundRevenue (currencyCode: string, startDate?: number, endDate?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RevenueReportResource> {
         const localVarPath = this.basePath + '/reporting/revenue/refunds/{currency_code}'
             .replace('{' + 'currency_code' + '}', String(currencyCode));
@@ -103,14 +103,14 @@ export class ReportingRevenueApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get revenue info by country
-        * Get basic info about revenue from sales of all types, summed up within a time range and split out by country. Sorted for largest revenue at the top
-        * @param currencyCode The code for a currency to get sales data for
-        * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
-        * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * Get basic info about revenue from sales of all types, summed up within a time range and split out by country. Sorted for largest revenue at the top
+     * @summary Get revenue info by country
+     * @param currencyCode The code for a currency to get sales data for
+     * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
+     * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getRevenueByCountry (currencyCode: string, startDate?: number, endDate?: number, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceRevenueCountryReportResource> {
         const localVarPath = this.basePath + '/reporting/revenue/countries/{currency_code}'
             .replace('{' + 'currency_code' + '}', String(currencyCode));
@@ -151,14 +151,14 @@ export class ReportingRevenueApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get revenue info by item
-        * Get basic info about revenue from sales of all types, summed up within a time range and split out by specific item. Sorted for largest revenue at the top
-        * @param currencyCode The code for a currency to get sales data for
-        * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
-        * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * Get basic info about revenue from sales of all types, summed up within a time range and split out by specific item. Sorted for largest revenue at the top
+     * @summary Get revenue info by item
+     * @param currencyCode The code for a currency to get sales data for
+     * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
+     * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getRevenueByItem (currencyCode: string, startDate?: number, endDate?: number, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceRevenueProductReportResource> {
         const localVarPath = this.basePath + '/reporting/revenue/products/{currency_code}'
             .replace('{' + 'currency_code' + '}', String(currencyCode));
@@ -199,12 +199,12 @@ export class ReportingRevenueApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get subscription revenue info
-        * Get basic info about revenue from sales of new subscriptions as well as recurring payemnts, summed up within a time range
-        * @param currencyCode The code for a currency to get sales data for
-        * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
-        * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
-        */
+     * Get basic info about revenue from sales of new subscriptions as well as recurring payemnts, summed up within a time range
+     * @summary Get subscription revenue info
+     * @param currencyCode The code for a currency to get sales data for
+     * @param startDate The start of the time range to aggregate, unix timestamp in seconds. Default is beginning of time
+     * @param endDate The end of the time range to aggregate, unix timestamp in seconds. Default is end of time
+     */
     public getSubscriptionRevenue (currencyCode: string, startDate?: number, endDate?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RevenueReportResource> {
         const localVarPath = this.basePath + '/reporting/revenue/subscription-sales/{currency_code}'
             .replace('{' + 'currency_code' + '}', String(currencyCode));

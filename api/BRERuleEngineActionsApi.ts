@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,13 +27,13 @@ export class BRERuleEngineActionsApi {
     }
 
     /**
-        * Get a list of available actions
-        * 
-        * @param filterCategory Filter for actions that are within a specific category
-        * @param filterName Filter for actions that have names containing the given string
-        * @param filterTags Filter for actions that have all of the given tags (comma separated list)
-        * @param filterSearch Filter for actions containing the given words somewhere within name, description and tags
-        */
+     * 
+     * @summary Get a list of available actions
+     * @param filterCategory Filter for actions that are within a specific category
+     * @param filterName Filter for actions that have names containing the given string
+     * @param filterTags Filter for actions that have all of the given tags (comma separated list)
+     * @param filterSearch Filter for actions containing the given words somewhere within name, description and tags
+     */
     public getBREActions (filterCategory?: string, filterName?: string, filterTags?: string, filterSearch?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.ActionResource>> {
         const localVarPath = this.basePath + '/bre/actions';
 

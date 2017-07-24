@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class UsersInventoryApi {
     }
 
     /**
-        * Adds an item to the user inventory
-        * The inventory is fulfilled asynchronously UNLESS the invoice is explicitely skipped. Depending on the use case, it might require the client to verify that the entitlement was added after the fact or configure a BRE rule to get a notification in real time
-        * @param id The id of the user
-        * @param userInventoryAddRequest The user inventory add request object
-        */
+     * The inventory is fulfilled asynchronously UNLESS the invoice is explicitely skipped. Depending on the use case, it might require the client to verify that the entitlement was added after the fact or configure a BRE rule to get a notification in real time
+     * @summary Adds an item to the user inventory
+     * @param id The id of the user
+     * @param userInventoryAddRequest The user inventory add request object
+     */
     public addItemToUserInventory (id: number, userInventoryAddRequest?: models.UserInventoryAddRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.InvoiceResource> {
         const localVarPath = this.basePath + '/users/{id}/inventory'
             .replace('{' + 'id' + '}', String(id));
@@ -57,12 +57,12 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Check for access to an item without consuming
-        * Useful for pre-check and accounts for all various buisness rules
-        * @param userId The id of the user to check for or &#39;me&#39; for logged in user
-        * @param itemId The id of the item
-        * @param sku The specific sku of an entitlement list addition to check entitlement for. This is of very limited and specific use and should generally be left out
-        */
+     * Useful for pre-check and accounts for all various buisness rules
+     * @summary Check for access to an item without consuming
+     * @param userId The id of the user to check for or &#39;me&#39; for logged in user
+     * @param itemId The id of the item
+     * @param sku The specific sku of an entitlement list addition to check entitlement for. This is of very limited and specific use and should generally be left out
+     */
     public checkUserEntitlementItem (userId: string, itemId: number, sku?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/entitlements/{item_id}/check'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -96,11 +96,11 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create an entitlement item
-        * 
-        * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
-        * @param entitlementItem The entitlement item object
-        */
+     * 
+     * @summary Create an entitlement item
+     * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
+     * @param entitlementItem The entitlement item object
+     */
     public createEntitlementItem (cascade?: boolean, entitlementItem?: models.EntitlementItem, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.EntitlementItem> {
         const localVarPath = this.basePath + '/entitlements';
 
@@ -125,10 +125,10 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create an entitlement template
-        * Entitlement templates define a type of entitlement and the properties they have
-        * @param template The entitlement template to be created
-        */
+     * Entitlement templates define a type of entitlement and the properties they have
+     * @summary Create an entitlement template
+     * @param template The entitlement template to be created
+     */
     public createEntitlementTemplate (template?: models.ItemTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/entitlements/templates';
 
@@ -149,10 +149,10 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an entitlement item
-        * 
-        * @param entitlementId The id of the entitlement
-        */
+     * 
+     * @summary Delete an entitlement item
+     * @param entitlementId The id of the entitlement
+     */
     public deleteEntitlementItem (entitlementId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/entitlements/{entitlement_id}'
             .replace('{' + 'entitlement_id' + '}', String(entitlementId));
@@ -177,11 +177,11 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an entitlement template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete an entitlement template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteEntitlementTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/entitlements/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -210,10 +210,10 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single entitlement item
-        * 
-        * @param entitlementId The id of the entitlement
-        */
+     * 
+     * @summary Get a single entitlement item
+     * @param entitlementId The id of the entitlement
+     */
     public getEntitlementItem (entitlementId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.EntitlementItem> {
         const localVarPath = this.basePath + '/entitlements/{entitlement_id}'
             .replace('{' + 'entitlement_id' + '}', String(entitlementId));
@@ -238,12 +238,12 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search entitlement items
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search entitlement items
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getEntitlementItems (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceEntitlementItem> {
         const localVarPath = this.basePath + '/entitlements';
 
@@ -275,10 +275,10 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single entitlement template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single entitlement template
+     * @param id The id of the template
+     */
     public getEntitlementTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/entitlements/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -303,12 +303,12 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search entitlement templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search entitlement templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getEntitlementTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceItemTemplateResource> {
         const localVarPath = this.basePath + '/entitlements/templates';
 
@@ -340,18 +340,18 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List the user inventory entries for a given user
-        * 
-        * @param id The id of the user
-        * @param inactive If true, accepts inactive user inventories
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param filterItemName Filter by items whose name starts with a string
-        * @param filterItemId Filter by item id
-        * @param filterUsername Filter by entries owned by the user with the specified username
-        * @param filterGroup Filter by entries owned by the users in a given group, by unique name
-        * @param filterDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds. Can be repeated for a range, eg: GT,123,LT,456  Allowed operators: (GT, LT, EQ, GOE, LOE).
-        */
+     * 
+     * @summary List the user inventory entries for a given user
+     * @param id The id of the user
+     * @param inactive If true, accepts inactive user inventories
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param filterItemName Filter by items whose name starts with a string
+     * @param filterItemId Filter by item id
+     * @param filterUsername Filter by entries owned by the user with the specified username
+     * @param filterGroup Filter by entries owned by the users in a given group, by unique name
+     * @param filterDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds. Can be repeated for a range, eg: GT,123,LT,456  Allowed operators: (GT, LT, EQ, GOE, LOE).
+     */
     public getUserInventories (id: number, inactive?: boolean, size?: number, page?: number, filterItemName?: string, filterItemId?: number, filterUsername?: string, filterGroup?: string, filterDate?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUserInventoryResource> {
         const localVarPath = this.basePath + '/users/{id}/inventory'
             .replace('{' + 'id' + '}', String(id));
@@ -408,11 +408,11 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get an inventory entry
-        * 
-        * @param userId The id of the inventory owner or &#39;me&#39; for the logged in user
-        * @param id The id of the user inventory
-        */
+     * 
+     * @summary Get an inventory entry
+     * @param userId The id of the inventory owner or &#39;me&#39; for the logged in user
+     * @param id The id of the user inventory
+     */
     public getUserInventory (userId: number, id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserInventoryResource> {
         const localVarPath = this.basePath + '/users/{user_id}/inventory/{id}'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -442,13 +442,13 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List the log entries for this inventory entry
-        * 
-        * @param userId The id of the inventory owner or &#39;me&#39; for the logged in user
-        * @param id The id of the user inventory
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary List the log entries for this inventory entry
+     * @param userId The id of the inventory owner or &#39;me&#39; for the logged in user
+     * @param id The id of the user inventory
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getUserInventoryLog (userId: string, id: number, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUserItemLogResource> {
         const localVarPath = this.basePath + '/users/{user_id}/inventory/{id}/log'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -486,17 +486,17 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List the user inventory entries for all users
-        * 
-        * @param inactive If true, accepts inactive user inventories
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param filterItemName Filter by items whose name starts with a string
-        * @param filterItemId Filter by item id
-        * @param filterUsername Filter by entries owned by the user with the specified username
-        * @param filterGroup Filter by entries owned by the users in a given group, by unique name
-        * @param filterDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds. Can be repeated for a range, eg: GT,123,LT,456  Allowed operators: (GT, LT, EQ, GOE, LOE).
-        */
+     * 
+     * @summary List the user inventory entries for all users
+     * @param inactive If true, accepts inactive user inventories
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param filterItemName Filter by items whose name starts with a string
+     * @param filterItemId Filter by item id
+     * @param filterUsername Filter by entries owned by the user with the specified username
+     * @param filterGroup Filter by entries owned by the users in a given group, by unique name
+     * @param filterDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds. Can be repeated for a range, eg: GT,123,LT,456  Allowed operators: (GT, LT, EQ, GOE, LOE).
+     */
     public getUsersInventory (inactive?: boolean, size?: number, page?: number, filterItemName?: string, filterItemId?: number, filterUsername?: string, filterGroup?: string, filterDate?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUserInventoryResource> {
         const localVarPath = this.basePath + '/inventories';
 
@@ -548,11 +548,11 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Grant an entitlement
-        * 
-        * @param userId The id of the user to grant the entitlement to
-        * @param grantRequest grantRequest
-        */
+     * 
+     * @summary Grant an entitlement
+     * @param userId The id of the user to grant the entitlement to
+     * @param grantRequest grantRequest
+     */
     public grantUserEntitlement (userId: number, grantRequest: models.EntitlementGrantRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/entitlements'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -582,12 +582,12 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an entitlement item
-        * 
-        * @param entitlementId The id of the entitlement
-        * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
-        * @param entitlementItem The entitlement item object
-        */
+     * 
+     * @summary Update an entitlement item
+     * @param entitlementId The id of the entitlement
+     * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
+     * @param entitlementItem The entitlement item object
+     */
     public updateEntitlementItem (entitlementId: number, cascade?: boolean, entitlementItem?: models.EntitlementItem, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/entitlements/{entitlement_id}'
             .replace('{' + 'entitlement_id' + '}', String(entitlementId));
@@ -617,11 +617,11 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an entitlement template
-        * 
-        * @param id The id of the template
-        * @param template The updated template
-        */
+     * 
+     * @summary Update an entitlement template
+     * @param id The id of the template
+     * @param template The updated template
+     */
     public updateEntitlementTemplate (id: string, template?: models.ItemTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/entitlements/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -647,12 +647,12 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set the behavior data for an inventory entry
-        * 
-        * @param userId The id of the user
-        * @param id The id of the user inventory
-        * @param data The data map
-        */
+     * 
+     * @summary Set the behavior data for an inventory entry
+     * @param userId The id of the user
+     * @param id The id of the user inventory
+     * @param data The data map
+     */
     public updateUserInventoryBehaviorData (userId: number, id: number, data?: any, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/inventory/{id}/behavior-data'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -683,12 +683,12 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set the expiration date
-        * Will change the current grace period for a subscription but not the bill date (possibly even ending before having the chance to re-bill)
-        * @param userId user_id
-        * @param id The id of the user inventory
-        * @param timestamp The new expiration date as a unix timestamp in seconds. May be null (no body).
-        */
+     * Will change the current grace period for a subscription but not the bill date (possibly even ending before having the chance to re-bill)
+     * @summary Set the expiration date
+     * @param userId user_id
+     * @param id The id of the user inventory
+     * @param timestamp The new expiration date as a unix timestamp in seconds. May be null (no body).
+     */
     public updateUserInventoryExpires (userId: number, id: number, timestamp?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/inventory/{id}/expires'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -719,12 +719,12 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set the status for an inventory entry
-        * 
-        * @param userId The id of the user
-        * @param id The id of the user inventory
-        * @param inventoryStatus The inventory status object
-        */
+     * 
+     * @summary Set the status for an inventory entry
+     * @param userId The id of the user
+     * @param id The id of the user inventory
+     * @param inventoryStatus The inventory status object
+     */
     public updateUserInventoryStatus (userId: number, id: number, inventoryStatus?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/inventory/{id}/status'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -755,13 +755,13 @@ export class UsersInventoryApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Use an item
-        * 
-        * @param userId The id of the user to check for or &#39;me&#39; for logged in user
-        * @param itemId The id of the item
-        * @param sku The specific sku of an entitlement_list addition to check entitlement for. This is of very limited and specific use and should generally be left out
-        * @param info Any additional info to add to the log about this use
-        */
+     * 
+     * @summary Use an item
+     * @param userId The id of the user to check for or &#39;me&#39; for logged in user
+     * @param itemId The id of the item
+     * @param sku The specific sku of an entitlement_list addition to check entitlement for. This is of very limited and specific use and should generally be left out
+     * @param info Any additional info to add to the log about this use
+     */
     public useUserEntitlementItem (userId: string, itemId: number, sku?: string, info?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/entitlements/{item_id}/use'
             .replace('{' + 'user_id' + '}', String(userId))

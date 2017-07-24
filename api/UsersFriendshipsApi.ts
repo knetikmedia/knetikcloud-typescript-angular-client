@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class UsersFriendshipsApi {
     }
 
     /**
-        * Add a friend
-        * As a user, either creates or confirm a pending request. As an admin, call this endpoint twice while inverting the IDs to create a confirmed friendship.
-        * @param userId The id of the user or &#39;me&#39; if logged in
-        * @param id The id of the user to befriend
-        */
+     * As a user, either creates or confirm a pending request. As an admin, call this endpoint twice while inverting the IDs to create a confirmed friendship.
+     * @summary Add a friend
+     * @param userId The id of the user or &#39;me&#39; if logged in
+     * @param id The id of the user to befriend
+     */
     public addFriend (userId: string, id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/friends/{id}'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -61,12 +61,12 @@ export class UsersFriendshipsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get friends list
-        * 
-        * @param userId The id of the user or &#39;me&#39;
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary Get friends list
+     * @param userId The id of the user or &#39;me&#39;
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getFriends (userId: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceSimpleUserResource> {
         const localVarPath = this.basePath + '/users/{user_id}/friends'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -99,10 +99,10 @@ export class UsersFriendshipsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns the invite token
-        * This is a unique invite token that allows direct connection to the request user.  Exposing that token presents privacy issues if the token is leaked. Use friend request flow instead if confirmation is required
-        * @param userId The id of the user or &#39;me&#39; if logged in
-        */
+     * This is a unique invite token that allows direct connection to the request user.  Exposing that token presents privacy issues if the token is leaked. Use friend request flow instead if confirmation is required
+     * @summary Returns the invite token
+     * @param userId The id of the user or &#39;me&#39; if logged in
+     */
     public getInviteToken (userId: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/users/{user_id}/invite-token'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -127,12 +127,12 @@ export class UsersFriendshipsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get pending invites
-        * Invites that the specified user received
-        * @param userId The id of the user or &#39;me&#39;
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * Invites that the specified user received
+     * @summary Get pending invites
+     * @param userId The id of the user or &#39;me&#39;
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getInvites (userId: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceSimpleUserResource> {
         const localVarPath = this.basePath + '/users/{user_id}/invites'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -165,11 +165,11 @@ export class UsersFriendshipsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Redeem friendship token
-        * Immediately connects the requested user with the user mapped by the provided invite token
-        * @param userId The id of the user or &#39;me&#39; if logged in
-        * @param token The invite token
-        */
+     * Immediately connects the requested user with the user mapped by the provided invite token
+     * @summary Redeem friendship token
+     * @param userId The id of the user or &#39;me&#39; if logged in
+     * @param token The invite token
+     */
     public redeemFriendshipToken (userId: string, token?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/friends/tokens'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -195,11 +195,11 @@ export class UsersFriendshipsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Remove or decline a friend
-        * 
-        * @param userId The id of the user or &#39;me&#39; if logged in
-        * @param id The id of the user to befriend
-        */
+     * 
+     * @summary Remove or decline a friend
+     * @param userId The id of the user or &#39;me&#39; if logged in
+     * @param id The id of the user to befriend
+     */
     public removeOrDeclineFriend (userId: string, id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/friends/{id}'
             .replace('{' + 'user_id' + '}', String(userId))

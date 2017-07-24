@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class UtilBatchApi {
     }
 
     /**
-        * Get batch result with token
-        * Tokens expire in 24 hours
-        * @param token token
-        */
+     * Tokens expire in 24 hours
+     * @summary Get batch result with token
+     * @param token token
+     */
     public getBatch (token: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.BatchReturn>> {
         const localVarPath = this.basePath + '/batch/{token}'
             .replace('{' + 'token' + '}', String(token));
@@ -55,10 +55,10 @@ export class UtilBatchApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Request to run API call given the method, content type, path url, and body of request
-        * Should the request take longer than one of the alloted timeout parameters, a token will be returned instead, which can be used on the token endpoint in this service
-        * @param batch The batch object
-        */
+     * Should the request take longer than one of the alloted timeout parameters, a token will be returned instead, which can be used on the token endpoint in this service
+     * @summary Request to run API call given the method, content type, path url, and body of request
+     * @param batch The batch object
+     */
     public sendBatch (batch?: models.Batch, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.BatchReturn>> {
         const localVarPath = this.basePath + '/batch';
 

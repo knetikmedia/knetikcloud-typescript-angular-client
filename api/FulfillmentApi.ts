@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class FulfillmentApi {
     }
 
     /**
-        * Create a fulfillment type
-        * 
-        * @param type The fulfillment type
-        */
+     * 
+     * @summary Create a fulfillment type
+     * @param type The fulfillment type
+     */
     public createFulfillmentType (type?: models.FulfillmentType, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.FulfillmentType> {
         const localVarPath = this.basePath + '/store/fulfillment/types';
 
@@ -51,10 +51,10 @@ export class FulfillmentApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a fulfillment type
-        * 
-        * @param id The id
-        */
+     * 
+     * @summary Delete a fulfillment type
+     * @param id The id
+     */
     public deleteFulfillmentType (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/store/fulfillment/types/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -79,10 +79,10 @@ export class FulfillmentApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single fulfillment type
-        * 
-        * @param id The id
-        */
+     * 
+     * @summary Get a single fulfillment type
+     * @param id The id
+     */
     public getFulfillmentType (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.FulfillmentType> {
         const localVarPath = this.basePath + '/store/fulfillment/types/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -107,12 +107,12 @@ export class FulfillmentApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search fulfillment types
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search fulfillment types
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getFulfillmentTypes (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceFulfillmentType> {
         const localVarPath = this.basePath + '/store/fulfillment/types';
 
@@ -144,11 +144,11 @@ export class FulfillmentApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a fulfillment type
-        * 
-        * @param id The id
-        * @param fulfillmentType The fulfillment type
-        */
+     * 
+     * @summary Update a fulfillment type
+     * @param id The id
+     * @param fulfillmentType The fulfillment type
+     */
     public updateFulfillmentType (id: number, fulfillmentType?: models.FulfillmentType, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/store/fulfillment/types/{id}'
             .replace('{' + 'id' + '}', String(id));

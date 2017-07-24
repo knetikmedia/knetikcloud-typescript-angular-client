@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class AuthRolesApi {
     }
 
     /**
-        * Create a new role
-        * 
-        * @param roleResource The role resource object
-        */
+     * 
+     * @summary Create a new role
+     * @param roleResource The role resource object
+     */
     public createRole (roleResource?: models.RoleResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RoleResource> {
         const localVarPath = this.basePath + '/auth/roles';
 
@@ -51,11 +51,11 @@ export class AuthRolesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a role
-        * 
-        * @param role The role value
-        * @param force If true, removes role from users/clients
-        */
+     * 
+     * @summary Delete a role
+     * @param role The role value
+     * @param force If true, removes role from users/clients
+     */
     public deleteRole (role: string, force?: boolean, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/auth/roles/{role}'
             .replace('{' + 'role' + '}', String(role));
@@ -84,10 +84,10 @@ export class AuthRolesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get roles for a client
-        * 
-        * @param clientKey The client key
-        */
+     * 
+     * @summary Get roles for a client
+     * @param clientKey The client key
+     */
     public getClientRoles (clientKey: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.RoleResource>> {
         const localVarPath = this.basePath + '/auth/clients/{client_key}/roles'
             .replace('{' + 'client_key' + '}', String(clientKey));
@@ -112,10 +112,10 @@ export class AuthRolesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single role
-        * 
-        * @param role The role value
-        */
+     * 
+     * @summary Get a single role
+     * @param role The role value
+     */
     public getRole (role: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RoleResource> {
         const localVarPath = this.basePath + '/auth/roles/{role}'
             .replace('{' + 'role' + '}', String(role));
@@ -140,12 +140,12 @@ export class AuthRolesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search roles
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search roles
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getRoles (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceRoleResource> {
         const localVarPath = this.basePath + '/auth/roles';
 
@@ -177,10 +177,10 @@ export class AuthRolesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get roles for a user
-        * 
-        * @param userId The user&#39;s id
-        */
+     * 
+     * @summary Get roles for a user
+     * @param userId The user&#39;s id
+     */
     public getUserRoles (userId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.RoleResource>> {
         const localVarPath = this.basePath + '/auth/users/{user_id}/roles'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -205,11 +205,11 @@ export class AuthRolesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set roles for a client
-        * 
-        * @param clientKey The client key
-        * @param rolesList The list of unique roles
-        */
+     * 
+     * @summary Set roles for a client
+     * @param clientKey The client key
+     * @param rolesList The list of unique roles
+     */
     public setClientRoles (clientKey: string, rolesList?: Array<string>, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ClientResource> {
         const localVarPath = this.basePath + '/auth/clients/{client_key}/roles'
             .replace('{' + 'client_key' + '}', String(clientKey));
@@ -235,11 +235,11 @@ export class AuthRolesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set permissions for a role
-        * 
-        * @param role The role value
-        * @param permissionsList The list of unique permissions
-        */
+     * 
+     * @summary Set permissions for a role
+     * @param role The role value
+     * @param permissionsList The list of unique permissions
+     */
     public setPermissionsForRole (role: string, permissionsList?: Array<string>, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RoleResource> {
         const localVarPath = this.basePath + '/auth/roles/{role}/permissions'
             .replace('{' + 'role' + '}', String(role));
@@ -265,11 +265,11 @@ export class AuthRolesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set roles for a user
-        * 
-        * @param userId The user&#39;s id
-        * @param rolesList The list of unique roles
-        */
+     * 
+     * @summary Set roles for a user
+     * @param userId The user&#39;s id
+     * @param rolesList The list of unique roles
+     */
     public setUserRoles (userId: number, rolesList?: Array<string>, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserResource> {
         const localVarPath = this.basePath + '/auth/users/{user_id}/roles'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -295,11 +295,11 @@ export class AuthRolesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a role
-        * 
-        * @param role The role value
-        * @param roleResource The role resource object
-        */
+     * 
+     * @summary Update a role
+     * @param role The role value
+     * @param roleResource The role resource object
+     */
     public updateRole (role: string, roleResource?: models.RoleResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RoleResource> {
         const localVarPath = this.basePath + '/auth/roles/{role}'
             .replace('{' + 'role' + '}', String(role));

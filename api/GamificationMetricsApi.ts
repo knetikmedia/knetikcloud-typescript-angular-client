@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class GamificationMetricsApi {
     }
 
     /**
-        * Add a metric
-        * Post a new score/stat for an activity occurrence without ending the occurrence itself
-        * @param metric The new metric
-        */
+     * Post a new score/stat for an activity occurrence without ending the occurrence itself
+     * @summary Add a metric
+     * @param metric The new metric
+     */
     public addMetric (metric?: models.MetricResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/metrics';
 

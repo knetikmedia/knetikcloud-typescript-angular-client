@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,17 +27,17 @@ export class ReportingOrdersApi {
     }
 
     /**
-        * Retrieve invoice counts aggregated by time ranges
-        * 
-        * @param currencyCode The code for a currency to get sales data for
-        * @param granularity The time duration to aggregate by
-        * @param filterPaymentStatus A payment status to filter results by, can be a comma separated list
-        * @param filterFulfillmentStatus An invoice fulfillment status to filter results by, can be a comma separated list
-        * @param startDate The start of the time range to return, unix timestamp in seconds. Default is beginning of time
-        * @param endDate The end of the time range to return, unix timestamp in seconds. Default is end of time
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned
-        */
+     * 
+     * @summary Retrieve invoice counts aggregated by time ranges
+     * @param currencyCode The code for a currency to get sales data for
+     * @param granularity The time duration to aggregate by
+     * @param filterPaymentStatus A payment status to filter results by, can be a comma separated list
+     * @param filterFulfillmentStatus An invoice fulfillment status to filter results by, can be a comma separated list
+     * @param startDate The start of the time range to return, unix timestamp in seconds. Default is beginning of time
+     * @param endDate The end of the time range to return, unix timestamp in seconds. Default is end of time
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned
+     */
     public getInvoiceReports (currencyCode: string, granularity?: string, filterPaymentStatus?: string, filterFulfillmentStatus?: string, startDate?: number, endDate?: number, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceAggregateInvoiceReportResource> {
         const localVarPath = this.basePath + '/reporting/orders/count/{currency_code}'
             .replace('{' + 'currency_code' + '}', String(currencyCode));

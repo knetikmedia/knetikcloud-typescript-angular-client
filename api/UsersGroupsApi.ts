@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class UsersGroupsApi {
     }
 
     /**
-        * Adds a new member to the group
-        * 
-        * @param uniqueName The group unique name
-        * @param user The id and status for a user to add to the group
-        */
+     * 
+     * @summary Adds a new member to the group
+     * @param uniqueName The group unique name
+     * @param user The id and status for a user to add to the group
+     */
     public addMemberToGroup (uniqueName: string, user: models.GroupMemberResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.GroupMemberResource> {
         const localVarPath = this.basePath + '/users/groups/{unique_name}/members'
             .replace('{' + 'unique_name' + '}', String(uniqueName));
@@ -61,11 +61,11 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Adds multiple members to the group
-        * 
-        * @param uniqueName The group unique name
-        * @param users The id and status for a list of users to add to the group
-        */
+     * 
+     * @summary Adds multiple members to the group
+     * @param uniqueName The group unique name
+     * @param users The id and status for a list of users to add to the group
+     */
     public addMembersToGroup (uniqueName: string, users: Array<models.GroupMemberResource>, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.GroupMemberResource>> {
         const localVarPath = this.basePath + '/users/groups/{unique_name}/members/batch-add'
             .replace('{' + 'unique_name' + '}', String(uniqueName));
@@ -95,10 +95,10 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a group
-        * 
-        * @param groupResource The new group
-        */
+     * 
+     * @summary Create a group
+     * @param groupResource The new group
+     */
     public createGroup (groupResource?: models.GroupResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.GroupResource> {
         const localVarPath = this.basePath + '/users/groups';
 
@@ -119,10 +119,10 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a group template
-        * Group Templates define a type of group and the properties they have
-        * @param groupTemplateResource The group template resource object
-        */
+     * Group Templates define a type of group and the properties they have
+     * @summary Create a group template
+     * @param groupTemplateResource The group template resource object
+     */
     public createGroupTemplate (groupTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/users/groups/templates';
 
@@ -143,10 +143,10 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Removes a group from the system IF no resources are attached to it
-        * 
-        * @param uniqueName The group unique name
-        */
+     * 
+     * @summary Removes a group from the system IF no resources are attached to it
+     * @param uniqueName The group unique name
+     */
     public deleteGroup (uniqueName: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/groups/{unique_name}'
             .replace('{' + 'unique_name' + '}', String(uniqueName));
@@ -171,11 +171,11 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a group template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete a group template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteGroupTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/groups/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -204,10 +204,10 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Loads a specific group&#39;s details
-        * 
-        * @param uniqueName The group unique name
-        */
+     * 
+     * @summary Loads a specific group's details
+     * @param uniqueName The group unique name
+     */
     public getGroup (uniqueName: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.GroupResource> {
         const localVarPath = this.basePath + '/users/groups/{unique_name}'
             .replace('{' + 'unique_name' + '}', String(uniqueName));
@@ -232,11 +232,11 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a user from a group
-        * 
-        * @param uniqueName The group unique name
-        * @param userId The id of the user
-        */
+     * 
+     * @summary Get a user from a group
+     * @param uniqueName The group unique name
+     * @param userId The id of the user
+     */
     public getGroupMember (uniqueName: string, userId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.GroupMemberResource> {
         const localVarPath = this.basePath + '/users/groups/{unique_name}/members/{user_id}'
             .replace('{' + 'unique_name' + '}', String(uniqueName))
@@ -266,13 +266,13 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Lists members of the group
-        * 
-        * @param uniqueName The group unique name
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary Lists members of the group
+     * @param uniqueName The group unique name
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getGroupMembers (uniqueName: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceGroupMemberResource> {
         const localVarPath = this.basePath + '/users/groups/{unique_name}/members'
             .replace('{' + 'unique_name' + '}', String(uniqueName));
@@ -309,10 +309,10 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single group template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single group template
+     * @param id The id of the template
+     */
     public getGroupTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/users/groups/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -337,12 +337,12 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search group templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order a comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search group templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order a comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getGroupTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTemplateResource> {
         const localVarPath = this.basePath + '/users/groups/templates';
 
@@ -374,10 +374,10 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List groups a user is in
-        * 
-        * @param userId The id of the user
-        */
+     * 
+     * @summary List groups a user is in
+     * @param userId The id of the user
+     */
     public getGroupsForUser (userId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<string>> {
         const localVarPath = this.basePath + '/users/{user_id}/groups'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -402,11 +402,11 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Removes a user from a group
-        * 
-        * @param uniqueName The group unique name
-        * @param userId The id of the user to remove
-        */
+     * 
+     * @summary Removes a user from a group
+     * @param uniqueName The group unique name
+     * @param userId The id of the user to remove
+     */
     public removeGroupMember (uniqueName: string, userId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/groups/{unique_name}/members/{user_id}'
             .replace('{' + 'unique_name' + '}', String(uniqueName))
@@ -436,11 +436,11 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a group
-        * 
-        * @param uniqueName The group unique name
-        * @param groupResource The updated group
-        */
+     * 
+     * @summary Update a group
+     * @param uniqueName The group unique name
+     * @param groupResource The updated group
+     */
     public updateGroup (uniqueName: string, groupResource?: models.GroupResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/groups/{unique_name}'
             .replace('{' + 'unique_name' + '}', String(uniqueName));
@@ -466,12 +466,12 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Change a user&#39;s status
-        * 
-        * @param uniqueName The group unique name
-        * @param userId The user id of the member to modify
-        * @param status The new status for the user
-        */
+     * 
+     * @summary Change a user's status
+     * @param uniqueName The group unique name
+     * @param userId The user id of the member to modify
+     * @param status The new status for the user
+     */
     public updateGroupMemberStatus (uniqueName: string, userId: number, status: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/groups/{unique_name}/members/{user_id}/status'
             .replace('{' + 'unique_name' + '}', String(uniqueName))
@@ -506,11 +506,11 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a group template
-        * 
-        * @param id The id of the template
-        * @param groupTemplateResource The group template resource object
-        */
+     * 
+     * @summary Update a group template
+     * @param id The id of the template
+     * @param groupTemplateResource The group template resource object
+     */
     public updateGroupTemplate (id: string, groupTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/users/groups/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -536,18 +536,18 @@ export class UsersGroupsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search groups
-        * 
-        * @param filterTemplate Filter for groups using a specific template, by id
-        * @param filterMemberCount Filters groups by member count. Multiple values possible for range search. Format: filter_member_count&#x3D;OP,ts&amp;... where OP in (GT, LT, GOE, LOE, EQ). Ex: filter_member_count&#x3D;GT,14,LT,17
-        * @param filterName Filter for groups with names starting with the given string
-        * @param filterUniqueName Filter for groups whose unique_name starts with provided string
-        * @param filterParent Filter for groups with a specific parent, by unique name
-        * @param filterStatus Filter for groups with a certain status
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search groups
+     * @param filterTemplate Filter for groups using a specific template, by id
+     * @param filterMemberCount Filters groups by member count. Multiple values possible for range search. Format: filter_member_count&#x3D;OP,ts&amp;... where OP in (GT, LT, GOE, LOE, EQ). Ex: filter_member_count&#x3D;GT,14,LT,17
+     * @param filterName Filter for groups with names starting with the given string
+     * @param filterUniqueName Filter for groups whose unique_name starts with provided string
+     * @param filterParent Filter for groups with a specific parent, by unique name
+     * @param filterStatus Filter for groups with a certain status
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public updateGroups (filterTemplate?: string, filterMemberCount?: string, filterName?: string, filterUniqueName?: string, filterParent?: string, filterStatus?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceGroupResource> {
         const localVarPath = this.basePath + '/users/groups';
 

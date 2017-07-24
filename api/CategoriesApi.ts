@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class CategoriesApi {
     }
 
     /**
-        * Create a new category
-        * 
-        * @param category The category to create
-        */
+     * 
+     * @summary Create a new category
+     * @param category The category to create
+     */
     public createCategory (category?: models.CategoryResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CategoryResource> {
         const localVarPath = this.basePath + '/categories';
 
@@ -51,10 +51,10 @@ export class CategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a category template
-        * Templates define a type of category and the properties they have
-        * @param template The template to create
-        */
+     * Templates define a type of category and the properties they have
+     * @summary Create a category template
+     * @param template The template to create
+     */
     public createCategoryTemplate (template?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/categories/templates';
 
@@ -75,10 +75,10 @@ export class CategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an existing category
-        * 
-        * @param id The id of the category to be deleted
-        */
+     * 
+     * @summary Delete an existing category
+     * @param id The id of the category to be deleted
+     */
     public deleteCategory (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/categories/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -103,11 +103,11 @@ export class CategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a category template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete a category template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteCategoryTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/categories/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -136,14 +136,14 @@ export class CategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search categories with optional filters
-        * 
-        * @param filterSearch Filter for categories whose names begin with provided string
-        * @param filterActive Filter for categories that are specifically active or inactive
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search categories with optional filters
+     * @param filterSearch Filter for categories whose names begin with provided string
+     * @param filterActive Filter for categories that are specifically active or inactive
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getCategories (filterSearch?: string, filterActive?: boolean, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceCategoryResource> {
         const localVarPath = this.basePath + '/categories';
 
@@ -183,10 +183,10 @@ export class CategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single category
-        * 
-        * @param id The id of the category to retrieve
-        */
+     * 
+     * @summary Get a single category
+     * @param id The id of the category to retrieve
+     */
     public getCategory (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CategoryResource> {
         const localVarPath = this.basePath + '/categories/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -211,10 +211,10 @@ export class CategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single category template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single category template
+     * @param id The id of the template
+     */
     public getCategoryTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/categories/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -239,12 +239,12 @@ export class CategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search category templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search category templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getCategoryTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTemplateResource> {
         const localVarPath = this.basePath + '/categories/templates';
 
@@ -276,11 +276,11 @@ export class CategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List all trivia tags in the system
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary List all trivia tags in the system
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getTags (size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourcestring> {
         const localVarPath = this.basePath + '/tags';
 
@@ -308,11 +308,11 @@ export class CategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an existing category
-        * 
-        * @param id The id of the category
-        * @param category The category to update
-        */
+     * 
+     * @summary Update an existing category
+     * @param id The id of the category
+     * @param category The category to update
+     */
     public updateCategory (id: string, category?: models.CategoryResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CategoryResource> {
         const localVarPath = this.basePath + '/categories/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -338,11 +338,11 @@ export class CategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a category template
-        * 
-        * @param id The id of the template
-        * @param template The updated template information
-        */
+     * 
+     * @summary Update a category template
+     * @param id The id of the template
+     * @param template The updated template information
+     */
     public updateCategoryTemplate (id: string, template?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/categories/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

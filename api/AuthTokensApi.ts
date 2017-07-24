@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class AuthTokensApi {
     }
 
     /**
-        * Delete tokens by username, client id, or both
-        * 
-        * @param username The username of the user
-        * @param clientId The id of the client
-        */
+     * 
+     * @summary Delete tokens by username, client id, or both
+     * @param username The username of the user
+     * @param clientId The id of the client
+     */
     public deleteTokens (username?: string, clientId?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/auth/tokens';
 
@@ -59,11 +59,11 @@ export class AuthTokensApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single token by username and client id
-        * 
-        * @param username The username of the user
-        * @param clientId The id of the client
-        */
+     * 
+     * @summary Get a single token by username and client id
+     * @param username The username of the user
+     * @param clientId The id of the client
+     */
     public getToken (username: string, clientId: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.OauthAccessTokenResource> {
         const localVarPath = this.basePath + '/auth/tokens/{username}/{client_id}'
             .replace('{' + 'username' + '}', String(username))
@@ -93,14 +93,14 @@ export class AuthTokensApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List usernames and client ids
-        * Token value not shown
-        * @param filterClientId Filters for token whose client id matches provided string
-        * @param filterUsername Filters for token whose username matches provided string
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * Token value not shown
+     * @summary List usernames and client ids
+     * @param filterClientId Filters for token whose client id matches provided string
+     * @param filterUsername Filters for token whose username matches provided string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getTokens (filterClientId?: string, filterUsername?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceOauthAccessTokenResource> {
         const localVarPath = this.basePath + '/auth/tokens';
 

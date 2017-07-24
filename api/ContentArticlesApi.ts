@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class ContentArticlesApi {
     }
 
     /**
-        * Create a new article
-        * Articles are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.
-        * @param articleResource The new article
-        */
+     * Articles are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.
+     * @summary Create a new article
+     * @param articleResource The new article
+     */
     public createArticle (articleResource?: models.ArticleResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ArticleResource> {
         const localVarPath = this.basePath + '/content/articles';
 
@@ -51,10 +51,10 @@ export class ContentArticlesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create an article template
-        * Article Templates define a type of article and the properties they have
-        * @param articleTemplateResource The article template resource object
-        */
+     * Article Templates define a type of article and the properties they have
+     * @summary Create an article template
+     * @param articleTemplateResource The article template resource object
+     */
     public createArticleTemplate (articleTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/content/articles/templates';
 
@@ -75,10 +75,10 @@ export class ContentArticlesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an existing article
-        * 
-        * @param id The article id
-        */
+     * 
+     * @summary Delete an existing article
+     * @param id The article id
+     */
     public deleteArticle (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/content/articles/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -103,11 +103,11 @@ export class ContentArticlesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an article template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete an article template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteArticleTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/content/articles/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -136,10 +136,10 @@ export class ContentArticlesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single article
-        * 
-        * @param id The article id
-        */
+     * 
+     * @summary Get a single article
+     * @param id The article id
+     */
     public getArticle (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ArticleResource> {
         const localVarPath = this.basePath + '/content/articles/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -164,10 +164,10 @@ export class ContentArticlesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single article template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single article template
+     * @param id The id of the template
+     */
     public getArticleTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/content/articles/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -192,12 +192,12 @@ export class ContentArticlesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search article templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search article templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getArticleTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTemplateResource> {
         const localVarPath = this.basePath + '/content/articles/templates';
 
@@ -229,16 +229,18 @@ export class ContentArticlesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search articles
-        * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use &#39;Get a single article&#39; to retrieve the full resource with assets for a given item as needed.
-        * @param filterCategory Filter for articles from a specific category by id
-        * @param filterTagset Filter for articles with specified tags (separated by comma)
-        * @param filterTitle Filter for articles whose title contains a string
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
-    public getArticles (filterCategory?: string, filterTagset?: string, filterTitle?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceArticleResource> {
+     * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single article' to retrieve the full resource with assets for a given item as needed.
+     * @summary List and search articles
+     * @param filterCategory Filter for articles from a specific category by id
+     * @param filterTagset Filter for articles with at least one of a specified set of tags (separated by comma)
+     * @param filterTagIntersection Filter for articles with all of a specified set of tags (separated by comma)
+     * @param filterTagExclusion Filter for articles with none of a specified set of tags (separated by comma)
+     * @param filterTitle Filter for articles whose title contains a string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
+    public getArticles (filterCategory?: string, filterTagset?: string, filterTagIntersection?: string, filterTagExclusion?: string, filterTitle?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceArticleResource> {
         const localVarPath = this.basePath + '/content/articles';
 
         let queryParameters: any = {};
@@ -249,6 +251,14 @@ export class ContentArticlesApi {
 
         if (filterTagset !== undefined) {
             queryParameters['filter_tagset'] = filterTagset;
+        }
+
+        if (filterTagIntersection !== undefined) {
+            queryParameters['filter_tag_intersection'] = filterTagIntersection;
+        }
+
+        if (filterTagExclusion !== undefined) {
+            queryParameters['filter_tag_exclusion'] = filterTagExclusion;
         }
 
         if (filterTitle !== undefined) {
@@ -281,11 +291,11 @@ export class ContentArticlesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an existing article
-        * 
-        * @param id The article id
-        * @param articleResource The article object
-        */
+     * 
+     * @summary Update an existing article
+     * @param id The article id
+     * @param articleResource The article object
+     */
     public updateArticle (id: string, articleResource?: models.ArticleResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ArticleResource> {
         const localVarPath = this.basePath + '/content/articles/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -311,11 +321,11 @@ export class ContentArticlesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an article template
-        * 
-        * @param id The id of the template
-        * @param articleTemplateResource The article template resource object
-        */
+     * 
+     * @summary Update an article template
+     * @param id The id of the template
+     * @param articleTemplateResource The article template resource object
+     */
     public updateArticleTemplate (id: string, articleTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/content/articles/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

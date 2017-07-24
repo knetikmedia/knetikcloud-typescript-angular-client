@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class CurrenciesApi {
     }
 
     /**
-        * Create a currency
-        * 
-        * @param currency The currency object
-        */
+     * 
+     * @summary Create a currency
+     * @param currency The currency object
+     */
     public createCurrency (currency?: models.CurrencyResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CurrencyResource> {
         const localVarPath = this.basePath + '/currencies';
 
@@ -51,10 +51,10 @@ export class CurrenciesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a currency
-        * 
-        * @param code The currency code
-        */
+     * 
+     * @summary Delete a currency
+     * @param code The currency code
+     */
     public deleteCurrency (code: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/currencies/{code}'
             .replace('{' + 'code' + '}', String(code));
@@ -79,14 +79,14 @@ export class CurrenciesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search currencies
-        * 
-        * @param filterEnabledCurrencies Filter for alternate currencies setup explicitely in system config
-        * @param filterType Filter currencies by type.  Allowable values: (&#39;virtual&#39;, &#39;real&#39;)
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search currencies
+     * @param filterEnabledCurrencies Filter for alternate currencies setup explicitely in system config
+     * @param filterType Filter currencies by type.  Allowable values: (&#39;virtual&#39;, &#39;real&#39;)
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getCurrencies (filterEnabledCurrencies?: boolean, filterType?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceCurrencyResource> {
         const localVarPath = this.basePath + '/currencies';
 
@@ -126,10 +126,10 @@ export class CurrenciesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single currency
-        * 
-        * @param code The currency code
-        */
+     * 
+     * @summary Get a single currency
+     * @param code The currency code
+     */
     public getCurrency (code: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CurrencyResource> {
         const localVarPath = this.basePath + '/currencies/{code}'
             .replace('{' + 'code' + '}', String(code));
@@ -154,11 +154,11 @@ export class CurrenciesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a currency
-        * 
-        * @param code The currency code
-        * @param currency The currency object
-        */
+     * 
+     * @summary Update a currency
+     * @param code The currency code
+     * @param currency The currency object
+     */
     public updateCurrency (code: string, currency?: models.CurrencyResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/currencies/{code}'
             .replace('{' + 'code' + '}', String(code));

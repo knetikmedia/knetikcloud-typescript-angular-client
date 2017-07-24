@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class PaymentsGoogleApi {
     }
 
     /**
-        * Mark an invoice paid with Google
-        * Mark an invoice paid with Google. Verifies signature from Google and treats the developerPayload field inside the json payload as the id of the invoice to pay. Returns the transaction ID if successful.
-        * @param request The request for paying an invoice through a Google in-app payment
-        */
+     * Mark an invoice paid with Google. Verifies signature from Google and treats the developerPayload field inside the json payload as the id of the invoice to pay. Returns the transaction ID if successful.
+     * @summary Mark an invoice paid with Google
+     * @param request The request for paying an invoice through a Google in-app payment
+     */
     public handleGooglePayment (request?: models.GooglePaymentRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<number> {
         const localVarPath = this.basePath + '/payment/provider/google/payments';
 

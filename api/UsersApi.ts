@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class UsersApi {
     }
 
     /**
-        * Add a tag to a user
-        * 
-        * @param userId The id of the user
-        * @param tag tag
-        */
+     * 
+     * @summary Add a tag to a user
+     * @param userId The id of the user
+     * @param tag tag
+     */
     public addUserTag (userId: number, tag: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/tags'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -61,10 +61,10 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a user template
-        * User Templates define a type of user and the properties they have
-        * @param userTemplateResource The user template resource object
-        */
+     * User Templates define a type of user and the properties they have
+     * @summary Create a user template
+     * @param userTemplateResource The user template resource object
+     */
     public createUserTemplate (userTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/users/templates';
 
@@ -85,11 +85,11 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a user template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete a user template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteUserTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -118,10 +118,10 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single user
-        * Additional private info is included as USERS_ADMIN
-        * @param id The id of the user or &#39;me&#39;
-        */
+     * Additional private info is included as USERS_ADMIN
+     * @summary Get a single user
+     * @param id The id of the user or &#39;me&#39;
+     */
     public getUser (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserResource> {
         const localVarPath = this.basePath + '/users/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -146,10 +146,10 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List tags for a user
-        * 
-        * @param userId The id of the user
-        */
+     * 
+     * @summary List tags for a user
+     * @param userId The id of the user
+     */
     public getUserTags (userId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<string>> {
         const localVarPath = this.basePath + '/users/{user_id}/tags'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -174,10 +174,10 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single user template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single user template
+     * @param id The id of the template
+     */
     public getUserTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/users/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -202,12 +202,12 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search user templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search user templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getUserTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTemplateResource> {
         const localVarPath = this.basePath + '/users/templates';
 
@@ -239,22 +239,22 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search users
-        * Additional private info is included as USERS_ADMIN
-        * @param filterDisplayname Filter for users whose display name starts with provided string.
-        * @param filterEmail Filter for users whose email starts with provided string. Requires USERS_ADMIN permission
-        * @param filterFirstname Filter for users whose first name starts with provided string. Requires USERS_ADMIN permission
-        * @param filterFullname Filter for users whose full name starts with provided string. Requires USERS_ADMIN permission
-        * @param filterLastname Filter for users whose last name starts with provided string. Requires USERS_ADMIN permission
-        * @param filterUsername Filter for users whose username starts with the provided string. Requires USERS_ADMIN permission
-        * @param filterTag Filter for users who have a given tag
-        * @param filterGroup Filter for users in a given group, by unique name
-        * @param filterRole Filter for users with a given role
-        * @param filterSearch Filter for users whose display_name starts with the provided string, or username if display_name is null
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * Additional private info is included as USERS_ADMIN
+     * @summary List and search users
+     * @param filterDisplayname Filter for users whose display name starts with provided string.
+     * @param filterEmail Filter for users whose email starts with provided string. Requires USERS_ADMIN permission
+     * @param filterFirstname Filter for users whose first name starts with provided string. Requires USERS_ADMIN permission
+     * @param filterFullname Filter for users whose full name starts with provided string. Requires USERS_ADMIN permission
+     * @param filterLastname Filter for users whose last name starts with provided string. Requires USERS_ADMIN permission
+     * @param filterUsername Filter for users whose username starts with the provided string. Requires USERS_ADMIN permission
+     * @param filterTag Filter for users who have a given tag
+     * @param filterGroup Filter for users in a given group, by unique name
+     * @param filterRole Filter for users with a given role
+     * @param filterSearch Filter for users whose display_name starts with the provided string, or username if display_name is null
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getUsers (filterDisplayname?: string, filterEmail?: string, filterFirstname?: string, filterFullname?: string, filterLastname?: string, filterUsername?: string, filterTag?: string, filterGroup?: string, filterRole?: string, filterSearch?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUserBaseResource> {
         const localVarPath = this.basePath + '/users';
 
@@ -326,11 +326,11 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Choose a new password after a reset
-        * Finish resetting a user&#39;s password using the secret provided from the password-reset endpoint.  Password should be in plain text and will be encrypted on receipt. Use SSL for security.
-        * @param id The id of the user
-        * @param newPasswordRequest The new password request object
-        */
+     * Finish resetting a user's password using the secret provided from the password-reset endpoint.  Password should be in plain text and will be encrypted on receipt. Use SSL for security.
+     * @summary Choose a new password after a reset
+     * @param id The id of the user
+     * @param newPasswordRequest The new password request object
+     */
     public passwordReset (id: number, newPasswordRequest?: models.NewPasswordRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{id}/password-reset'
             .replace('{' + 'id' + '}', String(id));
@@ -356,10 +356,10 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Register a new user
-        * Password should be in plain text and will be encrypted on receipt. Use SSL for security
-        * @param userResource The user resource object
-        */
+     * Password should be in plain text and will be encrypted on receipt. Use SSL for security
+     * @summary Register a new user
+     * @param userResource The user resource object
+     */
     public registerUser (userResource?: models.UserResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserResource> {
         const localVarPath = this.basePath + '/users';
 
@@ -380,11 +380,11 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Remove a tag from a user
-        * 
-        * @param userId The id of the user
-        * @param tag The tag to remove
-        */
+     * 
+     * @summary Remove a tag from a user
+     * @param userId The id of the user
+     * @param tag The tag to remove
+     */
     public removeUserTag (userId: number, tag: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/tags/{tag}'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -414,11 +414,11 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set a user&#39;s password
-        * Password should be in plain text and will be encrypted on receipt. Use SSL for security.
-        * @param id The id of the user
-        * @param password The new plain text password
-        */
+     * Password should be in plain text and will be encrypted on receipt. Use SSL for security.
+     * @summary Set a user's password
+     * @param id The id of the user
+     * @param password The new plain text password
+     */
     public setPassword (id: number, password?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{id}/password'
             .replace('{' + 'id' + '}', String(id));
@@ -444,10 +444,10 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Reset a user&#39;s password
-        * A reset code will be generated and a &#39;forgot_password&#39; BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit
-        * @param id The id of the user
-        */
+     * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit
+     * @summary Reset a user's password
+     * @param id The id of the user
+     */
     public startPasswordReset (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{id}/password-reset'
             .replace('{' + 'id' + '}', String(id));
@@ -472,11 +472,11 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Reset a user&#39;s password without user id
-        * A reset code will be generated and a &#39;forgot_password&#39; BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit.  Must submit their email, username, or mobile phone number
-        * @param passwordReset An object containing one of three methods to look up a user
-        */
-    public submitPasswordReset (passwordReset?: models.ARequestToResetAUsersPasswordByUsingAKnownUserProperty, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+     * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit.  Must submit their email, username, or mobile phone number
+     * @summary Reset a user's password without user id
+     * @param passwordReset An object containing one of three methods to look up a user
+     */
+    public submitPasswordReset (passwordReset?: models.PasswordResetRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/password-reset';
 
         let queryParameters: any = {};
@@ -496,11 +496,11 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a user
-        * Password will not be edited on this endpoint, use password specific endpoints.
-        * @param id The id of the user or &#39;me&#39;
-        * @param userResource The user resource object
-        */
+     * Password will not be edited on this endpoint, use password specific endpoints.
+     * @summary Update a user
+     * @param id The id of the user or &#39;me&#39;
+     * @param userResource The user resource object
+     */
     public updateUser (id: string, userResource?: models.UserResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -526,11 +526,11 @@ export class UsersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a user template
-        * 
-        * @param id The id of the template
-        * @param userTemplateResource The user template resource object
-        */
+     * 
+     * @summary Update a user template
+     * @param id The id of the template
+     * @param userTemplateResource The user template resource object
+     */
     public updateUserTemplate (id: string, userTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/users/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

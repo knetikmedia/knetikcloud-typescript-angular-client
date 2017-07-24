@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class AuthPermissionsApi {
     }
 
     /**
-        * Create a new permission
-        * 
-        * @param permissionResource The permission resource object
-        */
+     * 
+     * @summary Create a new permission
+     * @param permissionResource The permission resource object
+     */
     public createPermission (permissionResource?: models.PermissionResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PermissionResource> {
         const localVarPath = this.basePath + '/auth/permissions';
 
@@ -51,11 +51,11 @@ export class AuthPermissionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a permission
-        * 
-        * @param permission The permission value
-        * @param force If true, removes permission assigned to roles
-        */
+     * 
+     * @summary Delete a permission
+     * @param permission The permission value
+     * @param force If true, removes permission assigned to roles
+     */
     public deletePermission (permission: string, force?: boolean, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/auth/permissions/{permission}'
             .replace('{' + 'permission' + '}', String(permission));
@@ -84,10 +84,10 @@ export class AuthPermissionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single permission
-        * 
-        * @param permission The permission value
-        */
+     * 
+     * @summary Get a single permission
+     * @param permission The permission value
+     */
     public getPermission (permission: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PermissionResource> {
         const localVarPath = this.basePath + '/auth/permissions/{permission}'
             .replace('{' + 'permission' + '}', String(permission));
@@ -112,12 +112,12 @@ export class AuthPermissionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search permissions
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search permissions
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getPermissions (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourcePermissionResource> {
         const localVarPath = this.basePath + '/auth/permissions';
 
@@ -149,11 +149,11 @@ export class AuthPermissionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a permission
-        * 
-        * @param permission The permission value
-        * @param permissionResource The permission resource object
-        */
+     * 
+     * @summary Update a permission
+     * @param permission The permission value
+     * @param permissionResource The permission resource object
+     */
     public updatePermission (permission: string, permissionResource?: models.PermissionResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PermissionResource> {
         const localVarPath = this.basePath + '/auth/permissions/{permission}'
             .replace('{' + 'permission' + '}', String(permission));

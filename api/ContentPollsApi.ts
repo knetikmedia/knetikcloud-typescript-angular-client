@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class ContentPollsApi {
     }
 
     /**
-        * Add your vote to a poll
-        * 
-        * @param id The poll id
-        * @param answerKey The answer key
-        */
+     * 
+     * @summary Add your vote to a poll
+     * @param id The poll id
+     * @param answerKey The answer key
+     */
     public answerPoll (id: string, answerKey?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PollResponseResource> {
         const localVarPath = this.basePath + '/media/polls/{id}/response'
             .replace('{' + 'id' + '}', String(id));
@@ -57,10 +57,10 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a new poll
-        * Polls are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.
-        * @param pollResource The poll object
-        */
+     * Polls are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.
+     * @summary Create a new poll
+     * @param pollResource The poll object
+     */
     public createPoll (pollResource?: models.PollResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PollResource> {
         const localVarPath = this.basePath + '/media/polls';
 
@@ -81,10 +81,10 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a poll template
-        * Poll templates define a type of poll and the properties they have
-        * @param pollTemplateResource The poll template resource object
-        */
+     * Poll templates define a type of poll and the properties they have
+     * @summary Create a poll template
+     * @param pollTemplateResource The poll template resource object
+     */
     public createPollTemplate (pollTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/media/polls/templates';
 
@@ -105,10 +105,10 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an existing poll
-        * 
-        * @param id The poll id
-        */
+     * 
+     * @summary Delete an existing poll
+     * @param id The poll id
+     */
     public deletePoll (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/media/polls/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -133,11 +133,11 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a poll template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete a poll template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deletePollTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/media/polls/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -166,10 +166,10 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single poll
-        * 
-        * @param id The poll id
-        */
+     * 
+     * @summary Get a single poll
+     * @param id The poll id
+     */
     public getPoll (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PollResource> {
         const localVarPath = this.basePath + '/media/polls/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -194,10 +194,10 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get poll answer
-        * 
-        * @param id The poll id
-        */
+     * 
+     * @summary Get poll answer
+     * @param id The poll id
+     */
     public getPollAnswer (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PollResponseResource> {
         const localVarPath = this.basePath + '/media/polls/{id}/response'
             .replace('{' + 'id' + '}', String(id));
@@ -222,10 +222,10 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single poll template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single poll template
+     * @param id The id of the template
+     */
     public getPollTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/media/polls/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -250,12 +250,12 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search poll templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search poll templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getPollTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTemplateResource> {
         const localVarPath = this.basePath + '/media/polls/templates';
 
@@ -287,15 +287,15 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search polls
-        * Get a list of polls with optional filtering. Assets will not be filled in on the resources returned. Use &#39;Get a single poll&#39; to retrieve the full resource with assets for a given item as needed.
-        * @param filterCategory Filter for polls from a specific category by id
-        * @param filterTagset Filter for polls with specified tags (separated by comma)
-        * @param filterText Filter for polls whose text contains a string
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * Get a list of polls with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single poll' to retrieve the full resource with assets for a given item as needed.
+     * @summary List and search polls
+     * @param filterCategory Filter for polls from a specific category by id
+     * @param filterTagset Filter for polls with specified tags (separated by comma)
+     * @param filterText Filter for polls whose text contains a string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getPolls (filterCategory?: string, filterTagset?: string, filterText?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourcePollResource> {
         const localVarPath = this.basePath + '/media/polls';
 
@@ -339,11 +339,11 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an existing poll
-        * 
-        * @param id The poll id
-        * @param pollResource The poll object
-        */
+     * 
+     * @summary Update an existing poll
+     * @param id The poll id
+     * @param pollResource The poll object
+     */
     public updatePoll (id: string, pollResource?: models.PollResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PollResource> {
         const localVarPath = this.basePath + '/media/polls/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -369,11 +369,11 @@ export class ContentPollsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a poll template
-        * 
-        * @param id The id of the template
-        * @param pollTemplateResource The poll template resource object
-        */
+     * 
+     * @summary Update a poll template
+     * @param id The id of the template
+     * @param pollTemplateResource The poll template resource object
+     */
     public updatePollTemplate (id: string, pollTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/media/polls/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

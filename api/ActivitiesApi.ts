@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class ActivitiesApi {
     }
 
     /**
-        * Create an activity
-        * 
-        * @param activityResource The activity resource object
-        */
-    public createActivity (activityResource?: models.RepresentsAnActivityThatCanBeParameterizedAndTrackedThroughMetricsScoresEtc, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RepresentsAnActivityThatCanBeParameterizedAndTrackedThroughMetricsScoresEtc> {
+     * 
+     * @summary Create an activity
+     * @param activityResource The activity resource object
+     */
+    public createActivity (activityResource?: models.ActivityResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ActivityResource> {
         const localVarPath = this.basePath + '/activities';
 
         let queryParameters: any = {};
@@ -51,12 +51,12 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a new activity occurrence. Ex: start a game
-        * Has to enforce extra rules if not used as an admin
-        * @param test if true, indicates that the occurrence should NOT be created. This can be used to test for eligibility and valid settings
-        * @param activityOccurrenceResource The activity occurrence object
-        */
-    public createActivityOccurrence (test?: boolean, activityOccurrenceResource?: models.AOccurrenceOfAnActivityTheActualGameForExampleUsedToTrackScoresParticipantsAndProvideSettings, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.AOccurrenceOfAnActivityTheActualGameForExampleUsedToTrackScoresParticipantsAndProvideSettings> {
+     * Has to enforce extra rules if not used as an admin
+     * @summary Create a new activity occurrence. Ex: start a game
+     * @param test if true, indicates that the occurrence should NOT be created. This can be used to test for eligibility and valid settings
+     * @param activityOccurrenceResource The activity occurrence object
+     */
+    public createActivityOccurrence (test?: boolean, activityOccurrenceResource?: models.ActivityOccurrenceResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ActivityOccurrenceResource> {
         const localVarPath = this.basePath + '/activity-occurrences';
 
         let queryParameters: any = {};
@@ -80,10 +80,10 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a activity template
-        * Activity Templates define a type of activity and the properties they have
-        * @param activityTemplateResource The activity template resource object
-        */
+     * Activity Templates define a type of activity and the properties they have
+     * @summary Create a activity template
+     * @param activityTemplateResource The activity template resource object
+     */
     public createActivityTemplate (activityTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/activities/templates';
 
@@ -104,10 +104,10 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an activity
-        * 
-        * @param id The id of the activity
-        */
+     * 
+     * @summary Delete an activity
+     * @param id The id of the activity
+     */
     public deleteActivity (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/activities/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -132,11 +132,11 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a activity template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete a activity template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteActivityTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/activities/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -165,16 +165,16 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List activity definitions
-        * 
-        * @param filterTemplate Filter for activities that are templates, or specifically not if false
-        * @param filterName Filter for activities that have a name starting with specified string
-        * @param filterId Filter for activities with an id in the given comma separated list of ids
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
-    public getActivities (filterTemplate?: boolean, filterName?: string, filterId?: models.models.ModelObject, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceBareActivityResource> {
+     * 
+     * @summary List activity definitions
+     * @param filterTemplate Filter for activities that are templates, or specifically not if false
+     * @param filterName Filter for activities that have a name starting with specified string
+     * @param filterId Filter for activities with an id in the given comma separated list of ids
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
+    public getActivities (filterTemplate?: boolean, filterName?: string, filterId?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceBareActivityResource> {
         const localVarPath = this.basePath + '/activities';
 
         let queryParameters: any = {};
@@ -217,11 +217,11 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single activity
-        * 
-        * @param id The id of the activity
-        */
-    public getActivity (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RepresentsAnActivityThatCanBeParameterizedAndTrackedThroughMetricsScoresEtc> {
+     * 
+     * @summary Get a single activity
+     * @param id The id of the activity
+     */
+    public getActivity (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ActivityResource> {
         const localVarPath = this.basePath + '/activities/{id}'
             .replace('{' + 'id' + '}', String(id));
 
@@ -245,10 +245,10 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single activity template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single activity template
+     * @param id The id of the template
+     */
     public getActivityTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/activities/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -273,12 +273,12 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search activity templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search activity templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getActivityTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTemplateResource> {
         const localVarPath = this.basePath + '/activities/templates';
 
@@ -310,12 +310,12 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Sets the status of an activity occurrence to FINISHED and logs metrics
-        * 
-        * @param activityOccurrenceId The id of the activity occurrence
-        * @param activityOccurrenceResults The activity occurrence object
-        */
-    public setActivityOccurrenceResults (activityOccurrenceId: number, activityOccurrenceResults?: models.ActivityOccurrenceResults, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ActivityOccurrenceResults> {
+     * 
+     * @summary Sets the status of an activity occurrence to FINISHED and logs metrics
+     * @param activityOccurrenceId The id of the activity occurrence
+     * @param activityOccurrenceResults The activity occurrence object
+     */
+    public setActivityOccurrenceResults (activityOccurrenceId: number, activityOccurrenceResults?: models.ActivityOccurrenceResultsResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ActivityOccurrenceResults> {
         const localVarPath = this.basePath + '/activity-occurrences/{activity_occurrence_id}/results'
             .replace('{' + 'activity_occurrence_id' + '}', String(activityOccurrenceId));
 
@@ -340,12 +340,12 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an activity
-        * 
-        * @param id The id of the activity
-        * @param activityResource The activity resource object
-        */
-    public updateActivity (id: number, activityResource?: models.RepresentsAnActivityThatCanBeParameterizedAndTrackedThroughMetricsScoresEtc, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RepresentsAnActivityThatCanBeParameterizedAndTrackedThroughMetricsScoresEtc> {
+     * 
+     * @summary Update an activity
+     * @param id The id of the activity
+     * @param activityResource The activity resource object
+     */
+    public updateActivity (id: number, activityResource?: models.ActivityResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ActivityResource> {
         const localVarPath = this.basePath + '/activities/{id}'
             .replace('{' + 'id' + '}', String(id));
 
@@ -370,11 +370,11 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Updated the status of an activity occurrence
-        * If setting to &#39;FINISHED&#39; you must POST to /results instead to record the metrics and get synchronous reward results
-        * @param activityOccurrenceId The id of the activity occurrence
-        * @param activityCccurrenceStatus The activity occurrence status object
-        */
+     * If setting to 'FINISHED' you must POST to /results instead to record the metrics and get synchronous reward results
+     * @summary Updated the status of an activity occurrence
+     * @param activityOccurrenceId The id of the activity occurrence
+     * @param activityCccurrenceStatus The activity occurrence status object
+     */
     public updateActivityOccurrence (activityOccurrenceId: number, activityCccurrenceStatus?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/activity-occurrences/{activity_occurrence_id}/status'
             .replace('{' + 'activity_occurrence_id' + '}', String(activityOccurrenceId));
@@ -400,11 +400,11 @@ export class ActivitiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an activity template
-        * 
-        * @param id The id of the template
-        * @param activityTemplateResource The activity template resource object
-        */
+     * 
+     * @summary Update an activity template
+     * @param id The id of the template
+     * @param activityTemplateResource The activity template resource object
+     */
     public updateActivityTemplate (id: string, activityTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/activities/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

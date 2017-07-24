@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,13 +27,13 @@ export class UtilSecurityApi {
     }
 
     /**
-        * Returns the authentication log for a user
-        * A log entry is recorded everytime a user requests a new token. Standard pagination available
-        * @param userId The user id
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * A log entry is recorded everytime a user requests a new token. Standard pagination available
+     * @summary Returns the authentication log for a user
+     * @param userId The user id
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getUserLocationLog (userId?: number, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceLocationLogResource> {
         const localVarPath = this.basePath + '/security/country-log';
 
@@ -69,9 +69,9 @@ export class UtilSecurityApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns the authentication token details. Use /users endpoint for detailed user&#39;s info
-        * 
-        */
+     * 
+     * @summary Returns the authentication token details. Use /users endpoint for detailed user's info
+     */
     public getUserTokenDetails (extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TokenDetailsResource> {
         const localVarPath = this.basePath + '/me';
 

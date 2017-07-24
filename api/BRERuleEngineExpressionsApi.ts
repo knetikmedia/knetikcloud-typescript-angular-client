@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,9 +27,9 @@ export class BRERuleEngineExpressionsApi {
     }
 
     /**
-        * Get a list of &#39;lookup&#39; type expressions
-        * These are expression types that take a second expression as input and produce a value. These can be used in addition to the standard types, like parameter, global and constant (see BRE documentation for details).
-        */
+     * These are expression types that take a second expression as input and produce a value. These can be used in addition to the standard types, like parameter, global and constant (see BRE documentation for details).
+     * @summary Get a list of 'lookup' type expressions
+     */
     public getBREExpressions (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.LookupTypeResource>> {
         const localVarPath = this.basePath + '/bre/expressions/lookup';
 

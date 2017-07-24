@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,9 +27,9 @@ export class UtilMaintenanceApi {
     }
 
     /**
-        * Delete maintenance info
-        * 
-        */
+     * 
+     * @summary Delete maintenance info
+     */
     public deleteMaintenance (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/maintenance';
 
@@ -49,9 +49,9 @@ export class UtilMaintenanceApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get current maintenance info
-        * Get current maintenance info. 404 if no maintenance.
-        */
+     * Get current maintenance info. 404 if no maintenance.
+     * @summary Get current maintenance info
+     */
     public getMaintenance (extraHttpRequestParams?: any ) : ng.IHttpPromise<models.Maintenance> {
         const localVarPath = this.basePath + '/maintenance';
 
@@ -71,10 +71,10 @@ export class UtilMaintenanceApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set current maintenance info
-        * 
-        * @param maintenance The maintenance object
-        */
+     * 
+     * @summary Set current maintenance info
+     * @param maintenance The maintenance object
+     */
     public setMaintenance (maintenance?: models.Maintenance, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/maintenance';
 
@@ -95,10 +95,10 @@ export class UtilMaintenanceApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update current maintenance info
-        * 
-        * @param maintenance The maintenance object
-        */
+     * 
+     * @summary Update current maintenance info
+     * @param maintenance The maintenance object
+     */
     public updateMaintenance (maintenance?: models.Maintenance, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/maintenance';
 

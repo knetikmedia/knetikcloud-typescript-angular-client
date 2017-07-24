@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class PaymentsWalletsApi {
     }
 
     /**
-        * Returns the user&#39;s wallet for the given currency code
-        * 
-        * @param userId The ID of the user for whom wallet is being retrieved
-        * @param currencyCode Currency code of the user&#39;s wallet
-        */
+     * 
+     * @summary Returns the user's wallet for the given currency code
+     * @param userId The ID of the user for whom wallet is being retrieved
+     * @param currencyCode Currency code of the user&#39;s wallet
+     */
     public getUserWallet (userId: number, currencyCode: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.SimpleWallet> {
         const localVarPath = this.basePath + '/users/{user_id}/wallets/{currency_code}'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -61,18 +61,18 @@ export class PaymentsWalletsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Retrieve a user&#39;s wallet transactions
-        * 
-        * @param userId The ID of the user for whom wallet transactions are being retrieved
-        * @param currencyCode Currency code of the user&#39;s wallet
-        * @param filterType Filter for transactions with specified type
-        * @param filterMaxDate Filter for transactions from no earlier than the specified date as a unix timestamp in seconds
-        * @param filterMinDate Filter for transactions from no later than the specified date as a unix timestamp in seconds
-        * @param filterSign Filter for transactions with amount with the given sign.  Allowable values: (&#39;positive&#39;, &#39;negative&#39;)
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary Retrieve a user's wallet transactions
+     * @param userId The ID of the user for whom wallet transactions are being retrieved
+     * @param currencyCode Currency code of the user&#39;s wallet
+     * @param filterType Filter for transactions with specified type
+     * @param filterMaxDate Filter for transactions from no earlier than the specified date as a unix timestamp in seconds
+     * @param filterMinDate Filter for transactions from no later than the specified date as a unix timestamp in seconds
+     * @param filterSign Filter for transactions with amount with the given sign.  Allowable values: (&#39;positive&#39;, &#39;negative&#39;)
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getUserWalletTransactions (userId: number, currencyCode: string, filterType?: string, filterMaxDate?: number, filterMinDate?: number, filterSign?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceWalletTransactionResource> {
         const localVarPath = this.basePath + '/users/{user_id}/wallets/{currency_code}/transactions'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -130,10 +130,10 @@ export class PaymentsWalletsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List all of a user&#39;s wallets
-        * 
-        * @param userId The ID of the user for whom wallets are being retrieved
-        */
+     * 
+     * @summary List all of a user's wallets
+     * @param userId The ID of the user for whom wallets are being retrieved
+     */
     public getUserWallets (userId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.SimpleWallet>> {
         const localVarPath = this.basePath + '/users/{user_id}/wallets'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -158,9 +158,9 @@ export class PaymentsWalletsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Retrieves a summation of wallet balances by currency code
-        * 
-        */
+     * 
+     * @summary Retrieves a summation of wallet balances by currency code
+     */
     public getWalletBalances (extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceWalletTotalResponse> {
         const localVarPath = this.basePath + '/wallets/totals';
 
@@ -180,20 +180,20 @@ export class PaymentsWalletsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Retrieve wallet transactions across the system
-        * 
-        * @param filterInvoice Filter for transactions from a specific invoice
-        * @param filterType Filter for transactions with specified type
-        * @param filterDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds. Can be repeated for a range, eg: GT,123,LT,456  Allowed operators: (GT, LT, EQ, GOE, LOE).
-        * @param filterSign Filter for transactions with amount with the given sign
-        * @param filterUserId Filter for transactions for specific userId
-        * @param filterUsername Filter for transactions for specific username that start with the given string
-        * @param filterDetails Filter for transactions for specific details that start with the given string
-        * @param filterCurrencyCode Filter for transactions for specific currency code
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary Retrieve wallet transactions across the system
+     * @param filterInvoice Filter for transactions from a specific invoice
+     * @param filterType Filter for transactions with specified type
+     * @param filterDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds. Can be repeated for a range, eg: GT,123,LT,456  Allowed operators: (GT, LT, EQ, GOE, LOE).
+     * @param filterSign Filter for transactions with amount with the given sign
+     * @param filterUserId Filter for transactions for specific userId
+     * @param filterUsername Filter for transactions for specific username that start with the given string
+     * @param filterDetails Filter for transactions for specific details that start with the given string
+     * @param filterCurrencyCode Filter for transactions for specific currency code
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getWalletTransactions (filterInvoice?: number, filterType?: string, filterDate?: string, filterSign?: string, filterUserId?: number, filterUsername?: string, filterDetails?: string, filterCurrencyCode?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceWalletTransactionResource> {
         const localVarPath = this.basePath + '/wallets/transactions';
 
@@ -257,12 +257,12 @@ export class PaymentsWalletsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Retrieve a list of wallets across the system
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary Retrieve a list of wallets across the system
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getWallets (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceSimpleWallet> {
         const localVarPath = this.basePath + '/wallets';
 
@@ -294,12 +294,12 @@ export class PaymentsWalletsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Updates the balance for a user&#39;s wallet
-        * 
-        * @param userId The ID of the user for whom wallet is being modified
-        * @param currencyCode Currency code of the user&#39;s wallet
-        * @param request The requested balance modification to be made to the user&#39;s wallet
-        */
+     * 
+     * @summary Updates the balance for a user's wallet
+     * @param userId The ID of the user for whom wallet is being modified
+     * @param currencyCode Currency code of the user&#39;s wallet
+     * @param request The requested balance modification to be made to the user&#39;s wallet
+     */
     public updateWalletBalance (userId: number, currencyCode: string, request?: models.WalletAlterRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.WalletTransactionResource> {
         const localVarPath = this.basePath + '/users/{user_id}/wallets/{currency_code}/balance'
             .replace('{' + 'user_id' + '}', String(userId))

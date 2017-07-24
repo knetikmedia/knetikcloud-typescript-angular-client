@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class PaymentsAppleApi {
     }
 
     /**
-        * Pay invoice with Apple receipt
-        * Mark an invoice paid using Apple payment receipt. A receipt will only be accepted once and the details of the transaction must match the invoice, including the product_id matching the sku text of the item in the invoice. Returns the transaction ID if successful.
-        * @param request The request for paying an invoice through an Apple receipt
-        */
+     * Mark an invoice paid using Apple payment receipt. A receipt will only be accepted once and the details of the transaction must match the invoice, including the product_id matching the sku text of the item in the invoice. Returns the transaction ID if successful.
+     * @summary Pay invoice with Apple receipt
+     * @param request The request for paying an invoice through an Apple receipt
+     */
     public verifyAppleReceipt (request?: models.ApplyPaymentRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/payment/provider/apple/receipt';
 

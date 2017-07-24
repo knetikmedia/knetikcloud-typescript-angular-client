@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class MessagingApi {
     }
 
     /**
-        * Send a raw email to one or more users
-        * 
-        * @param rawEmailResource The new raw email to be sent
-        */
+     * 
+     * @summary Send a raw email to one or more users
+     * @param rawEmailResource The new raw email to be sent
+     */
     public sendRawEmail (rawEmailResource?: models.RawEmailResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/messaging/raw-email';
 
@@ -51,10 +51,10 @@ export class MessagingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Send a raw SMS
-        * Sends a raw SMS text message to one or more users. User&#39;s without registered mobile numbers will be skipped.
-        * @param rawSMSResource The new raw SMS to be sent
-        */
+     * Sends a raw SMS text message to one or more users. User's without registered mobile numbers will be skipped.
+     * @summary Send a raw SMS
+     * @param rawSMSResource The new raw SMS to be sent
+     */
     public sendRawSMS (rawSMSResource?: models.RawSMSResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/messaging/raw-sms';
 
@@ -75,10 +75,10 @@ export class MessagingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Send a templated email to one or more users
-        * 
-        * @param messageResource The new template email to be sent
-        */
+     * 
+     * @summary Send a templated email to one or more users
+     * @param messageResource The new template email to be sent
+     */
     public sendTemplatedEmail (messageResource?: models.TemplateEmailResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/messaging/templated-email';
 
@@ -99,10 +99,10 @@ export class MessagingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Send a new templated SMS
-        * Sends a templated SMS text message to one or more users. User&#39;s without registered mobile numbers will be skipped.
-        * @param templateSMSResource The new template SMS to be sent
-        */
+     * Sends a templated SMS text message to one or more users. User's without registered mobile numbers will be skipped.
+     * @summary Send a new templated SMS
+     * @param templateSMSResource The new template SMS to be sent
+     */
     public sendTemplatedSMS (templateSMSResource?: models.TemplateSMSResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/messaging/templated-sms';
 

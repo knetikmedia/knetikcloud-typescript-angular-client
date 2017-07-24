@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class GamificationLevelingApi {
     }
 
     /**
-        * Create a level schema
-        * 
-        * @param level The level schema definition
-        */
+     * 
+     * @summary Create a level schema
+     * @param level The level schema definition
+     */
     public createLevel (level?: models.LevelingResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.LevelingResource> {
         const localVarPath = this.basePath + '/leveling';
 
@@ -51,10 +51,10 @@ export class GamificationLevelingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a level
-        * 
-        * @param name The level schema name
-        */
+     * 
+     * @summary Delete a level
+     * @param name The level schema name
+     */
     public deleteLevel (name: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/leveling/{name}'
             .replace('{' + 'name' + '}', String(name));
@@ -79,10 +79,10 @@ export class GamificationLevelingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Retrieve a level
-        * 
-        * @param name The level schema name
-        */
+     * 
+     * @summary Retrieve a level
+     * @param name The level schema name
+     */
     public getLevel (name: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.LevelingResource> {
         const localVarPath = this.basePath + '/leveling/{name}'
             .replace('{' + 'name' + '}', String(name));
@@ -107,9 +107,9 @@ export class GamificationLevelingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get the list of triggers that can be used to trigger a leveling progress update
-        * 
-        */
+     * 
+     * @summary Get the list of triggers that can be used to trigger a leveling progress update
+     */
     public getLevelTriggers (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.BreTriggerResource>> {
         const localVarPath = this.basePath + '/leveling/triggers';
 
@@ -129,13 +129,13 @@ export class GamificationLevelingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search levels
-        * Get a list of levels schemas with optional filtering
-        * @param filterName Filter for level schemas whose name contains a given string
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * Get a list of levels schemas with optional filtering
+     * @summary List and search levels
+     * @param filterName Filter for level schemas whose name contains a given string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getLevels (filterName?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceLevelingResource> {
         const localVarPath = this.basePath + '/leveling';
 
@@ -171,11 +171,11 @@ export class GamificationLevelingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a user&#39;s progress for a given level schema
-        * 
-        * @param userId The id of the user
-        * @param name The level schema name
-        */
+     * 
+     * @summary Get a user's progress for a given level schema
+     * @param userId The id of the user
+     * @param name The level schema name
+     */
     public getUserLevel (userId: number, name: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserLevelingResource> {
         const localVarPath = this.basePath + '/users/{user_id}/leveling/{name}'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -205,14 +205,14 @@ export class GamificationLevelingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a user&#39;s progress for all level schemas
-        * Filtering and sorting is based on the LevelingResource object, not the UserLevelingResource that is returned here.
-        * @param userId The id of the user
-        * @param filterName Filter for level schemas whose name contains a given string
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * Filtering and sorting is based on the LevelingResource object, not the UserLevelingResource that is returned here.
+     * @summary Get a user's progress for all level schemas
+     * @param userId The id of the user
+     * @param filterName Filter for level schemas whose name contains a given string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getUserLevels (userId: number, filterName?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUserLevelingResource> {
         const localVarPath = this.basePath + '/users/{user_id}/leveling'
             .replace('{' + 'user_id' + '}', String(userId));
@@ -253,12 +253,12 @@ export class GamificationLevelingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update or create a leveling progress record for a user
-        * If no progress record yet exists for the user, it will be created. Otherwise the provided value will be added to it. May be negative. If progress meets or exceeds the level&#39;s max_value it will be marked as earned and a BRE event will be triggered for the &lt;code&gt;BreAchievementEarnedTrigger&lt;/code&gt;.
-        * @param userId The id of the user
-        * @param name The level schema name
-        * @param progress The amount of progress to add
-        */
+     * If no progress record yet exists for the user, it will be created. Otherwise the provided value will be added to it. May be negative. If progress meets or exceeds the level's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>.
+     * @summary Update or create a leveling progress record for a user
+     * @param userId The id of the user
+     * @param name The level schema name
+     * @param progress The amount of progress to add
+     */
     public incrementProgress (userId: number, name: string, progress?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/leveling/{name}/progress'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -289,12 +289,12 @@ export class GamificationLevelingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Set leveling progress for a user
-        * If no progress record yet exists for the user, it will be created. Otherwise it will be updated to the provided value. If progress meets or exceeds the level&#39;s max_value it will be marked as earned and a BRE event will be triggered for the &lt;code&gt;BreAchievementEarnedTrigger&lt;/code&gt;.
-        * @param userId The id of the user
-        * @param name The level schema name
-        * @param progress The new progress amount
-        */
+     * If no progress record yet exists for the user, it will be created. Otherwise it will be updated to the provided value. If progress meets or exceeds the level's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>.
+     * @summary Set leveling progress for a user
+     * @param userId The id of the user
+     * @param name The level schema name
+     * @param progress The new progress amount
+     */
     public setProgress (userId: number, name: string, progress?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/{user_id}/leveling/{name}/progress'
             .replace('{' + 'user_id' + '}', String(userId))
@@ -325,11 +325,11 @@ export class GamificationLevelingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a level
-        * 
-        * @param name The level schema name
-        * @param newLevel The level schema definition
-        */
+     * 
+     * @summary Update a level
+     * @param name The level schema name
+     * @param newLevel The level schema definition
+     */
     public updateLevel (name: string, newLevel?: models.LevelingResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.LevelingResource> {
         const localVarPath = this.basePath + '/leveling/{name}'
             .replace('{' + 'name' + '}', String(name));

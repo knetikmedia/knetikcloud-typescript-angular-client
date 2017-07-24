@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class ContentCommentsApi {
     }
 
     /**
-        * Add a new comment
-        * 
-        * @param commentResource The comment to be added
-        */
+     * 
+     * @summary Add a new comment
+     * @param commentResource The comment to be added
+     */
     public addComment (commentResource?: models.CommentResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CommentResource> {
         const localVarPath = this.basePath + '/comments';
 
@@ -51,10 +51,10 @@ export class ContentCommentsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a comment
-        * 
-        * @param id The comment id
-        */
+     * 
+     * @summary Delete a comment
+     * @param id The comment id
+     */
     public deleteComment (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/comments/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -79,10 +79,10 @@ export class ContentCommentsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Return a comment
-        * 
-        * @param id The comment id
-        */
+     * 
+     * @summary Return a comment
+     * @param id The comment id
+     */
     public getComment (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CommentResource> {
         const localVarPath = this.basePath + '/comments/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -107,13 +107,13 @@ export class ContentCommentsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns a page of comments
-        * 
-        * @param context Get comments by context type
-        * @param contextId Get comments by context id
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary Returns a page of comments
+     * @param context Get comments by context type
+     * @param contextId Get comments by context id
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getComments (context: string, contextId: number, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceCommentResource> {
         const localVarPath = this.basePath + '/comments';
 
@@ -157,12 +157,12 @@ export class ContentCommentsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Search the comment index
-        * The body is an ElasticSearch query json. Please see their &lt;a href&#x3D;&#39;https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html&#39;&gt;documentation&lt;/a&gt; for details on the format and search options
-        * @param query The search query
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * The body is an ElasticSearch query json. Please see their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html'>documentation</a> for details on the format and search options
+     * @summary Search the comment index
+     * @param query The search query
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public searchComments (query?: any, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CommentSearch> {
         const localVarPath = this.basePath + '/comments/search';
 
@@ -191,11 +191,11 @@ export class ContentCommentsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a comment
-        * 
-        * @param id The comment id
-        * @param content The comment content
-        */
+     * 
+     * @summary Update a comment
+     * @param id The comment id
+     * @param content The comment content
+     */
     public updateComment (id: number, content?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/comments/{id}/content'
             .replace('{' + 'id' + '}', String(id));

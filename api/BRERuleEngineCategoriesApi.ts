@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class BRERuleEngineCategoriesApi {
     }
 
     /**
-        * Create a BRE category template
-        * Templates define a type of BRE category and the properties they have
-        * @param template The category template to create
-        */
+     * Templates define a type of BRE category and the properties they have
+     * @summary Create a BRE category template
+     * @param template The category template to create
+     */
     public createBRECategoryTemplate (template?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/bre/categories/templates';
 
@@ -51,11 +51,11 @@ export class BRERuleEngineCategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a BRE category template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete a BRE category template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteBRECategoryTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/bre/categories/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -84,11 +84,11 @@ export class BRERuleEngineCategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List categories
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary List categories
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getBRECategories (size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceBreCategoryResource> {
         const localVarPath = this.basePath + '/bre/categories';
 
@@ -116,10 +116,10 @@ export class BRERuleEngineCategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single category
-        * 
-        * @param name The category name
-        */
+     * 
+     * @summary Get a single category
+     * @param name The category name
+     */
     public getBRECategory (name: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.BreCategoryResource> {
         const localVarPath = this.basePath + '/bre/categories/{name}'
             .replace('{' + 'name' + '}', String(name));
@@ -144,10 +144,10 @@ export class BRERuleEngineCategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single BRE category template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single BRE category template
+     * @param id The id of the template
+     */
     public getBRECategoryTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/bre/categories/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -172,12 +172,12 @@ export class BRERuleEngineCategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search BRE category templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search BRE category templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getBRECategoryTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTemplateResource> {
         const localVarPath = this.basePath + '/bre/categories/templates';
 
@@ -209,11 +209,11 @@ export class BRERuleEngineCategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a category
-        * 
-        * @param name The category name
-        * @param category The updated BRE category information
-        */
+     * 
+     * @summary Update a category
+     * @param name The category name
+     * @param category The updated BRE category information
+     */
     public updateBRECategory (name: string, category?: models.BreCategoryResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.BreCategoryResource> {
         const localVarPath = this.basePath + '/bre/categories/{name}'
             .replace('{' + 'name' + '}', String(name));
@@ -239,11 +239,11 @@ export class BRERuleEngineCategoriesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a BRE category template
-        * 
-        * @param id The id of the template
-        * @param template The updated category template definition
-        */
+     * 
+     * @summary Update a BRE category template
+     * @param id The id of the template
+     * @param template The updated category template definition
+     */
     public updateBRECategoryTemplate (id: string, template?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/bre/categories/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

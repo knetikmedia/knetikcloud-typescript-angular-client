@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,16 +27,16 @@ export class ReportingUsageApi {
     }
 
     /**
-        * Returns aggregated endpoint usage information by day
-        * 
-        * @param startDate The beginning of the range being requested, unix timestamp in seconds
-        * @param endDate The ending of the range being requested, unix timestamp in seconds
-        * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
-        * @param method Filter for a certain endpoint method.  Must include url as well to work
-        * @param url Filter for a certain endpoint.  Must include method as well to work
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary Returns aggregated endpoint usage information by day
+     * @param startDate The beginning of the range being requested, unix timestamp in seconds
+     * @param endDate The ending of the range being requested, unix timestamp in seconds
+     * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
+     * @param method Filter for a certain endpoint method.  Must include url as well to work
+     * @param url Filter for a certain endpoint.  Must include method as well to work
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getUsageByDay (startDate: number, endDate: number, combineEndpoints?: boolean, method?: string, url?: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUsageInfo> {
         const localVarPath = this.basePath + '/reporting/usage/day';
 
@@ -92,16 +92,16 @@ export class ReportingUsageApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns aggregated endpoint usage information by hour
-        * 
-        * @param startDate The beginning of the range being requested, unix timestamp in seconds
-        * @param endDate The ending of the range being requested, unix timestamp in seconds
-        * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
-        * @param method Filter for a certain endpoint method.  Must include url as well to work
-        * @param url Filter for a certain endpoint.  Must include method as well to work
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary Returns aggregated endpoint usage information by hour
+     * @param startDate The beginning of the range being requested, unix timestamp in seconds
+     * @param endDate The ending of the range being requested, unix timestamp in seconds
+     * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
+     * @param method Filter for a certain endpoint method.  Must include url as well to work
+     * @param url Filter for a certain endpoint.  Must include method as well to work
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getUsageByHour (startDate: number, endDate: number, combineEndpoints?: boolean, method?: string, url?: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUsageInfo> {
         const localVarPath = this.basePath + '/reporting/usage/hour';
 
@@ -157,16 +157,16 @@ export class ReportingUsageApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns aggregated endpoint usage information by minute
-        * 
-        * @param startDate The beginning of the range being requested, unix timestamp in seconds
-        * @param endDate The ending of the range being requested, unix timestamp in seconds
-        * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
-        * @param method Filter for a certain endpoint method.  Must include url as well to work
-        * @param url Filter for a certain endpoint.  Must include method as well to work
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary Returns aggregated endpoint usage information by minute
+     * @param startDate The beginning of the range being requested, unix timestamp in seconds
+     * @param endDate The ending of the range being requested, unix timestamp in seconds
+     * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
+     * @param method Filter for a certain endpoint method.  Must include url as well to work
+     * @param url Filter for a certain endpoint.  Must include method as well to work
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getUsageByMinute (startDate: number, endDate: number, combineEndpoints?: boolean, method?: string, url?: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUsageInfo> {
         const localVarPath = this.basePath + '/reporting/usage/minute';
 
@@ -222,16 +222,16 @@ export class ReportingUsageApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns aggregated endpoint usage information by month
-        * 
-        * @param startDate The beginning of the range being requested, unix timestamp in seconds
-        * @param endDate The ending of the range being requested, unix timestamp in seconds
-        * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
-        * @param method Filter for a certain endpoint method.  Must include url as well to work
-        * @param url Filter for a certain endpoint.  Must include method as well to work
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary Returns aggregated endpoint usage information by month
+     * @param startDate The beginning of the range being requested, unix timestamp in seconds
+     * @param endDate The ending of the range being requested, unix timestamp in seconds
+     * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
+     * @param method Filter for a certain endpoint method.  Must include url as well to work
+     * @param url Filter for a certain endpoint.  Must include method as well to work
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getUsageByMonth (startDate: number, endDate: number, combineEndpoints?: boolean, method?: string, url?: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUsageInfo> {
         const localVarPath = this.basePath + '/reporting/usage/month';
 
@@ -287,16 +287,16 @@ export class ReportingUsageApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns aggregated endpoint usage information by year
-        * 
-        * @param startDate The beginning of the range being requested, unix timestamp in seconds
-        * @param endDate The ending of the range being requested, unix timestamp in seconds
-        * @param combineEndpoints Whether to combine counts from different endpoints. Removes the url and method from the result object
-        * @param method Filter for a certain endpoint method.  Must include url as well to work
-        * @param url Filter for a certain endpoint.  Must include method as well to work
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary Returns aggregated endpoint usage information by year
+     * @param startDate The beginning of the range being requested, unix timestamp in seconds
+     * @param endDate The ending of the range being requested, unix timestamp in seconds
+     * @param combineEndpoints Whether to combine counts from different endpoints. Removes the url and method from the result object
+     * @param method Filter for a certain endpoint method.  Must include url as well to work
+     * @param url Filter for a certain endpoint.  Must include method as well to work
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getUsageByYear (startDate: number, endDate: number, combineEndpoints?: boolean, method?: string, url?: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUsageInfo> {
         const localVarPath = this.basePath + '/reporting/usage/year';
 
@@ -352,11 +352,11 @@ export class ReportingUsageApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns list of endpoints called (method and url)
-        * 
-        * @param startDate The beginning of the range being requested, unix timestamp in seconds
-        * @param endDate The ending of the range being requested, unix timestamp in seconds
-        */
+     * 
+     * @summary Returns list of endpoints called (method and url)
+     * @param startDate The beginning of the range being requested, unix timestamp in seconds
+     * @param endDate The ending of the range being requested, unix timestamp in seconds
+     */
     public getUsageEndpoints (startDate: number, endDate: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<string>> {
         const localVarPath = this.basePath + '/reporting/usage/endpoints';
 

@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class BRERuleEngineEventsApi {
     }
 
     /**
-        * Fire a new event, based on an existing trigger
-        * Parameters within the event must match names and types from the trigger. Actual rule execution is asynchornous.  Returns request id, which will be used as the event id
-        * @param breEvent The BRE event object
-        */
+     * Parameters within the event must match names and types from the trigger. Actual rule execution is asynchornous.  Returns request id, which will be used as the event id
+     * @summary Fire a new event, based on an existing trigger
+     * @param breEvent The BRE event object
+     */
     public sendBREEvent (breEvent?: models.BreEvent, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/bre/events';
 

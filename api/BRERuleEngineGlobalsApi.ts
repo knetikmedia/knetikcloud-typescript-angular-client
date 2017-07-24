@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class BRERuleEngineGlobalsApi {
     }
 
     /**
-        * Create a global definition
-        * Once created you can then use in a custom rule. Note that global definitions cannot be modified or deleted if in use.
-        * @param breGlobalResource The BRE global resource object
-        */
+     * Once created you can then use in a custom rule. Note that global definitions cannot be modified or deleted if in use.
+     * @summary Create a global definition
+     * @param breGlobalResource The BRE global resource object
+     */
     public createBREGlobal (breGlobalResource?: models.BreGlobalResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.BreGlobalResource> {
         const localVarPath = this.basePath + '/bre/globals/definitions';
 
@@ -51,10 +51,10 @@ export class BRERuleEngineGlobalsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a global
-        * May fail if there are existing rules against it. Cannot delete core globals
-        * @param id The id of the global definition
-        */
+     * May fail if there are existing rules against it. Cannot delete core globals
+     * @summary Delete a global
+     * @param id The id of the global definition
+     */
     public deleteBREGlobal (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/bre/globals/definitions/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -79,10 +79,10 @@ export class BRERuleEngineGlobalsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single global definition
-        * 
-        * @param id The id of the global definition
-        */
+     * 
+     * @summary Get a single global definition
+     * @param id The id of the global definition
+     */
     public getBREGlobal (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.BreGlobalResource> {
         const localVarPath = this.basePath + '/bre/globals/definitions/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -107,12 +107,12 @@ export class BRERuleEngineGlobalsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List global definitions
-        * 
-        * @param filterSystem Filter for globals that are system globals when true, or not when false. Leave off for both mixed
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary List global definitions
+     * @param filterSystem Filter for globals that are system globals when true, or not when false. Leave off for both mixed
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getBREGlobals (filterSystem?: boolean, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceBreGlobalResource> {
         const localVarPath = this.basePath + '/bre/globals/definitions';
 
@@ -144,11 +144,11 @@ export class BRERuleEngineGlobalsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a global definition
-        * May fail if new parameters mismatch requirements of existing rules. Cannot update core globals
-        * @param id The id of the global definition
-        * @param breGlobalResource The BRE global resource object
-        */
+     * May fail if new parameters mismatch requirements of existing rules. Cannot update core globals
+     * @summary Update a global definition
+     * @param id The id of the global definition
+     * @param breGlobalResource The BRE global resource object
+     */
     public updateBREGlobal (id: string, breGlobalResource?: models.BreGlobalResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.BreGlobalResource> {
         const localVarPath = this.basePath + '/bre/globals/definitions/{id}'
             .replace('{' + 'id' + '}', String(id));

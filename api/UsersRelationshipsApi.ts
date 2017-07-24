@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class UsersRelationshipsApi {
     }
 
     /**
-        * Create a user relationship
-        * 
-        * @param relationship The new relationship
-        */
+     * 
+     * @summary Create a user relationship
+     * @param relationship The new relationship
+     */
     public createUserRelationship (relationship?: models.UserRelationshipResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserRelationshipResource> {
         const localVarPath = this.basePath + '/users/relationships';
 
@@ -51,10 +51,10 @@ export class UsersRelationshipsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a user relationship
-        * 
-        * @param id The id of the relationship
-        */
+     * 
+     * @summary Delete a user relationship
+     * @param id The id of the relationship
+     */
     public deleteUserRelationship (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/users/relationships/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -79,10 +79,10 @@ export class UsersRelationshipsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a user relationship
-        * 
-        * @param id The id of the relationship
-        */
+     * 
+     * @summary Get a user relationship
+     * @param id The id of the relationship
+     */
     public getUserRelationship (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserRelationshipResource> {
         const localVarPath = this.basePath + '/users/relationships/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -107,12 +107,12 @@ export class UsersRelationshipsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a list of user relationships
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary Get a list of user relationships
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getUserRelationships (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceUserRelationshipResource> {
         const localVarPath = this.basePath + '/users/relationships';
 
@@ -144,11 +144,11 @@ export class UsersRelationshipsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a user relationship
-        * 
-        * @param id The id of the relationship
-        * @param relationship The new relationship
-        */
+     * 
+     * @summary Update a user relationship
+     * @param id The id of the relationship
+     * @param relationship The new relationship
+     */
     public updateUserRelationship (id: number, relationship?: models.UserRelationshipResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.UserRelationshipResource> {
         const localVarPath = this.basePath + '/users/relationships/{id}'
             .replace('{' + 'id' + '}', String(id));

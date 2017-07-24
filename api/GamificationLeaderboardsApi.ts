@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,14 +27,14 @@ export class GamificationLeaderboardsApi {
     }
 
     /**
-        * Retrieves leaderboard details and paginated entries
-        * The context type identifies the type of entity (i.e., &#39;activity&#39;) being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. Sorting is based on the fields of LeaderboardEntryResource rather than the returned LeaderboardResource.
-        * @param contextType The context type for the leaderboard
-        * @param contextId The context id for the leaderboard
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. Sorting is based on the fields of LeaderboardEntryResource rather than the returned LeaderboardResource.
+     * @summary Retrieves leaderboard details and paginated entries
+     * @param contextType The context type for the leaderboard
+     * @param contextId The context id for the leaderboard
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getLeaderboard (contextType: string, contextId: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.LeaderboardResource> {
         const localVarPath = this.basePath + '/leaderboards/{context_type}/{context_id}'
             .replace('{' + 'context_type' + '}', String(contextType))
@@ -76,12 +76,12 @@ export class GamificationLeaderboardsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Retrieves a specific user entry with rank
-        * The context type identifies the type of entity (i.e., &#39;activity&#39;) being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard
-        * @param contextType The context type for the leaderboard
-        * @param contextId The context id for the leaderboard
-        * @param id The id of a user
-        */
+     * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard
+     * @summary Retrieves a specific user entry with rank
+     * @param contextType The context type for the leaderboard
+     * @param contextId The context id for the leaderboard
+     * @param id The id of a user
+     */
     public getLeaderboardRank (contextType: string, contextId: string, id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.LeaderboardEntryResource> {
         const localVarPath = this.basePath + '/leaderboards/{context_type}/{context_id}/users/{id}/rank'
             .replace('{' + 'context_type' + '}', String(contextType))
@@ -116,9 +116,9 @@ export class GamificationLeaderboardsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a list of available leaderboard strategy names
-        * 
-        */
+     * 
+     * @summary Get a list of available leaderboard strategy names
+     */
     public getLeaderboardStrategies (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<string>> {
         const localVarPath = this.basePath + '/leaderboards/strategies';
 

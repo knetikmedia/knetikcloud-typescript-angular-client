@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class PaymentsTransactionsApi {
     }
 
     /**
-        * Get the details for a single transaction
-        * 
-        * @param id id
-        */
+     * 
+     * @summary Get the details for a single transaction
+     * @param id id
+     */
     public getTransaction (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TransactionResource> {
         const localVarPath = this.basePath + '/transactions/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -55,13 +55,13 @@ export class PaymentsTransactionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search transactions
-        * 
-        * @param filterInvoice Filter for transactions from a specific invoice
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search transactions
+     * @param filterInvoice Filter for transactions from a specific invoice
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getTransactions (filterInvoice?: number, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTransactionResource> {
         const localVarPath = this.basePath + '/transactions';
 
@@ -97,11 +97,11 @@ export class PaymentsTransactionsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Refund a payment transaction, in full or in part
-        * Will not allow for refunding more than the full amount even with multiple partial refunds. Money is refunded to the payment method used to make the original payment. Payment method must support refunds.
-        * @param id The id of the transaction to refund
-        * @param request Request containing refund details
-        */
+     * Will not allow for refunding more than the full amount even with multiple partial refunds. Money is refunded to the payment method used to make the original payment. Payment method must support refunds.
+     * @summary Refund a payment transaction, in full or in part
+     * @param id The id of the transaction to refund
+     * @param request Request containing refund details
+     */
     public refundTransaction (id: number, request?: models.RefundRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.RefundResource> {
         const localVarPath = this.basePath + '/transactions/{id}/refunds'
             .replace('{' + 'id' + '}', String(id));

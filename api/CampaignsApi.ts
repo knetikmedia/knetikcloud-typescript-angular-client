@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class CampaignsApi {
     }
 
     /**
-        * Add a challenge to a campaign
-        * 
-        * @param id The id of the campaign
-        * @param challengeId The id of the challenge
-        */
+     * 
+     * @summary Add a challenge to a campaign
+     * @param id The id of the campaign
+     * @param challengeId The id of the challenge
+     */
     public addChallengeToCampaign (id: number, challengeId?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/campaigns/{id}/challenges'
             .replace('{' + 'id' + '}', String(id));
@@ -57,10 +57,10 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a campaign
-        * 
-        * @param campaignResource The campaign resource object
-        */
+     * 
+     * @summary Create a campaign
+     * @param campaignResource The campaign resource object
+     */
     public createCampaign (campaignResource?: models.CampaignResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CampaignResource> {
         const localVarPath = this.basePath + '/campaigns';
 
@@ -81,10 +81,10 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a campaign template
-        * Campaign Templates define a type of campaign and the properties they have
-        * @param campaignTemplateResource The campaign template resource object
-        */
+     * Campaign Templates define a type of campaign and the properties they have
+     * @summary Create a campaign template
+     * @param campaignTemplateResource The campaign template resource object
+     */
     public createCampaignTemplate (campaignTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/campaigns/templates';
 
@@ -105,10 +105,10 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a campaign
-        * 
-        * @param id The campaign id
-        */
+     * 
+     * @summary Delete a campaign
+     * @param id The campaign id
+     */
     public deleteCampaign (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/campaigns/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -133,11 +133,11 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a campaign template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete a campaign template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteCampaignTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/campaigns/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -166,10 +166,10 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns a single campaign
-        * 
-        * @param id The campaign id
-        */
+     * 
+     * @summary Returns a single campaign
+     * @param id The campaign id
+     */
     public getCampaign (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CampaignResource> {
         const localVarPath = this.basePath + '/campaigns/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -194,15 +194,15 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List the challenges associated with a campaign
-        * 
-        * @param id The campaign id
-        * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
-        * @param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List the challenges associated with a campaign
+     * @param id The campaign id
+     * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
+     * @param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getCampaignChallenges (id: number, filterStartDate?: string, filterEndDate?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceChallengeResource> {
         const localVarPath = this.basePath + '/campaigns/{id}/challenges'
             .replace('{' + 'id' + '}', String(id));
@@ -247,10 +247,10 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single campaign template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single campaign template
+     * @param id The id of the template
+     */
     public getCampaignTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/campaigns/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -275,12 +275,12 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search campaign templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search campaign templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getCampaignTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTemplateResource> {
         const localVarPath = this.basePath + '/campaigns/templates';
 
@@ -312,13 +312,13 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search campaigns
-        * 
-        * @param filterActive Filter for campaigns that are active
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search campaigns
+     * @param filterActive Filter for campaigns that are active
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getCampaigns (filterActive?: boolean, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceCampaignResource> {
         const localVarPath = this.basePath + '/campaigns';
 
@@ -354,11 +354,11 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Remove a challenge from a campaign
-        * 
-        * @param campaignId The campaign id
-        * @param id The challenge id
-        */
+     * 
+     * @summary Remove a challenge from a campaign
+     * @param campaignId The campaign id
+     * @param id The challenge id
+     */
     public removeChallengeFromCampaign (campaignId: number, id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/campaigns/{campaign_id}/challenges/{id}'
             .replace('{' + 'campaign_id' + '}', String(campaignId))
@@ -388,11 +388,11 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a campaign
-        * 
-        * @param id The campaign id
-        * @param campaignResource The campaign resource object
-        */
+     * 
+     * @summary Update a campaign
+     * @param id The campaign id
+     * @param campaignResource The campaign resource object
+     */
     public updateCampaign (id: number, campaignResource?: models.CampaignResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CampaignResource> {
         const localVarPath = this.basePath + '/campaigns/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -418,11 +418,11 @@ export class CampaignsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an campaign template
-        * 
-        * @param id The id of the template
-        * @param campaignTemplateResource The campaign template resource object
-        */
+     * 
+     * @summary Update an campaign template
+     * @param id The id of the template
+     * @param campaignTemplateResource The campaign template resource object
+     */
     public updateCampaignTemplate (id: string, campaignTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/campaigns/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

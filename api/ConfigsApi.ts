@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class ConfigsApi {
     }
 
     /**
-        * Create a new config
-        * 
-        * @param config The config object
-        */
+     * 
+     * @summary Create a new config
+     * @param config The config object
+     */
     public createConfig (config?: models.Config, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.Config> {
         const localVarPath = this.basePath + '/configs';
 
@@ -51,10 +51,10 @@ export class ConfigsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an existing config
-        * 
-        * @param name The config name
-        */
+     * 
+     * @summary Delete an existing config
+     * @param name The config name
+     */
     public deleteConfig (name: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/configs/{name}'
             .replace('{' + 'name' + '}', String(name));
@@ -79,10 +79,10 @@ export class ConfigsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single config
-        * Only configs that are public readable will be shown without admin access
-        * @param name The config name
-        */
+     * Only configs that are public readable will be shown without admin access
+     * @summary Get a single config
+     * @param name The config name
+     */
     public getConfig (name: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.Config> {
         const localVarPath = this.basePath + '/configs/{name}'
             .replace('{' + 'name' + '}', String(name));
@@ -107,13 +107,13 @@ export class ConfigsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search configs
-        * 
-        * @param filterSearch Filter for configs whose name contains the given string
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search configs
+     * @param filterSearch Filter for configs whose name contains the given string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getConfigs (filterSearch?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceConfig> {
         const localVarPath = this.basePath + '/configs';
 
@@ -149,11 +149,11 @@ export class ConfigsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an existing config
-        * 
-        * @param name The config name
-        * @param config The config object
-        */
+     * 
+     * @summary Update an existing config
+     * @param name The config name
+     * @param config The config object
+     */
     public updateConfig (name: string, config?: models.Config, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/configs/{name}'
             .replace('{' + 'name' + '}', String(name));

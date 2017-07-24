@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class MediaArtistsApi {
     }
 
     /**
-        * Adds a new artist in the system
-        * Adds a new artist in the system. Use specific media contributions endpoint to add contributions
-        * @param artistResource The new artist
-        */
+     * Adds a new artist in the system. Use specific media contributions endpoint to add contributions
+     * @summary Adds a new artist in the system
+     * @param artistResource The new artist
+     */
     public addArtist (artistResource?: models.ArtistResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ArtistResource> {
         const localVarPath = this.basePath + '/media/artists';
 
@@ -51,10 +51,10 @@ export class MediaArtistsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create an artist template
-        * Artist Templates define a type of artist and the properties they have
-        * @param artistTemplateResource The artist template resource object
-        */
+     * Artist Templates define a type of artist and the properties they have
+     * @summary Create an artist template
+     * @param artistTemplateResource The artist template resource object
+     */
     public createArtistTemplate (artistTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/media/artists/templates';
 
@@ -75,10 +75,10 @@ export class MediaArtistsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Removes an artist from the system IF no resources are attached to it
-        * 
-        * @param id The artist id
-        */
+     * 
+     * @summary Removes an artist from the system IF no resources are attached to it
+     * @param id The artist id
+     */
     public deleteArtist (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/media/artists/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -103,11 +103,11 @@ export class MediaArtistsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an artist template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete an artist template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteArtistTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/media/artists/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -136,11 +136,11 @@ export class MediaArtistsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Loads a specific artist details
-        * 
-        * @param id The artist id
-        * @param showContributions The number of contributions to show fetch
-        */
+     * 
+     * @summary Loads a specific artist details
+     * @param id The artist id
+     * @param showContributions The number of contributions to show fetch
+     */
     public getArtist (id: number, showContributions?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ArtistResource> {
         const localVarPath = this.basePath + '/media/artists/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -169,10 +169,10 @@ export class MediaArtistsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single artist template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single artist template
+     * @param id The id of the template
+     */
     public getArtistTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/media/artists/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -197,12 +197,12 @@ export class MediaArtistsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search artist templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search artist templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getArtistTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceTemplateResource> {
         const localVarPath = this.basePath + '/media/artists/templates';
 
@@ -234,13 +234,13 @@ export class MediaArtistsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Search for artists
-        * 
-        * @param filterArtistsByName Filter for artists which name *STARTS* with the given string
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary Search for artists
+     * @param filterArtistsByName Filter for artists which name *STARTS* with the given string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getArtists (filterArtistsByName?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceArtistResource> {
         const localVarPath = this.basePath + '/media/artists';
 
@@ -276,11 +276,11 @@ export class MediaArtistsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Modifies an artist details
-        * 
-        * @param id The artist id
-        * @param artistResource The new artist
-        */
+     * 
+     * @summary Modifies an artist details
+     * @param id The artist id
+     * @param artistResource The new artist
+     */
     public updateArtist (id: number, artistResource?: models.ArtistResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/media/artists/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -306,11 +306,11 @@ export class MediaArtistsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an artist template
-        * 
-        * @param id The id of the template
-        * @param artistTemplateResource The artist template resource object
-        */
+     * 
+     * @summary Update an artist template
+     * @param id The id of the template
+     * @param artistTemplateResource The artist template resource object
+     */
     public updateArtistTemplate (id: string, artistTemplateResource?: models.TemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.TemplateResource> {
         const localVarPath = this.basePath + '/media/artists/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

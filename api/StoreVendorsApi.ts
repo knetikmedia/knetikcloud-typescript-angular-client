@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class StoreVendorsApi {
     }
 
     /**
-        * Create a vendor
-        * 
-        * @param vendor The vendor
-        */
+     * 
+     * @summary Create a vendor
+     * @param vendor The vendor
+     */
     public createVendor (vendor?: models.VendorResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.VendorResource> {
         const localVarPath = this.basePath + '/vendors';
 
@@ -51,10 +51,10 @@ export class StoreVendorsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a vendor template
-        * Vendor Templates define a type of vendor and the properties they have.
-        * @param vendorTemplateResource The new vendor template
-        */
+     * Vendor Templates define a type of vendor and the properties they have.
+     * @summary Create a vendor template
+     * @param vendorTemplateResource The new vendor template
+     */
     public createVendorTemplate (vendorTemplateResource?: models.ItemTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/vendors/templates';
 
@@ -75,10 +75,10 @@ export class StoreVendorsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a vendor
-        * 
-        * @param id The id of the vendor
-        */
+     * 
+     * @summary Delete a vendor
+     * @param id The id of the vendor
+     */
     public deleteVendor (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/vendors/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -103,11 +103,11 @@ export class StoreVendorsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a vendor template
-        * 
-        * @param id The id of the template
-        * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
-        */
+     * 
+     * @summary Delete a vendor template
+     * @param id The id of the template
+     * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
+     */
     public deleteVendorTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/vendors/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -136,10 +136,10 @@ export class StoreVendorsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single vendor
-        * 
-        * @param id The id of the vendor
-        */
+     * 
+     * @summary Get a single vendor
+     * @param id The id of the vendor
+     */
     public getVendor (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.VendorResource> {
         const localVarPath = this.basePath + '/vendors/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -164,10 +164,10 @@ export class StoreVendorsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single vendor template
-        * Vendor Templates define a type of vendor and the properties they have.
-        * @param id The id of the template
-        */
+     * Vendor Templates define a type of vendor and the properties they have.
+     * @summary Get a single vendor template
+     * @param id The id of the template
+     */
     public getVendorTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/vendors/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -192,12 +192,12 @@ export class StoreVendorsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search vendor templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search vendor templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getVendorTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceItemTemplateResource> {
         const localVarPath = this.basePath + '/vendors/templates';
 
@@ -229,13 +229,13 @@ export class StoreVendorsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search vendors
-        * 
-        * @param filterName Filters vendors by name starting with the text provided in the filter
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search vendors
+     * @param filterName Filters vendors by name starting with the text provided in the filter
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getVendors (filterName?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceVendorResource> {
         const localVarPath = this.basePath + '/vendors';
 
@@ -271,11 +271,11 @@ export class StoreVendorsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a vendor
-        * 
-        * @param id The id of the vendor
-        * @param vendor The vendor
-        */
+     * 
+     * @summary Update a vendor
+     * @param id The id of the vendor
+     * @param vendor The vendor
+     */
     public updateVendor (id: number, vendor?: models.VendorResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.VendorResource> {
         const localVarPath = this.basePath + '/vendors/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -301,11 +301,11 @@ export class StoreVendorsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a vendor template
-        * 
-        * @param id The id of the template
-        * @param vendorTemplateResource The vendor template resource object
-        */
+     * 
+     * @summary Update a vendor template
+     * @param id The id of the template
+     * @param vendorTemplateResource The vendor template resource object
+     */
     public updateVendorTemplate (id: string, vendorTemplateResource?: models.ItemTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/vendors/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

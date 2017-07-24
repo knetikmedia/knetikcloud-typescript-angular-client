@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class AmazonWebServicesS3Api {
     }
 
     /**
-        * Get a signed S3 URL
-        * Requires the file name and file content type (i.e., &#39;video/mpeg&#39;)
-        * @param filename The file name
-        * @param contentType The content type
-        */
+     * Requires the file name and file content type (i.e., 'video/mpeg')
+     * @summary Get a signed S3 URL
+     * @param filename The file name
+     * @param contentType The content type
+     */
     public getSignedS3URL (filename?: string, contentType?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.AmazonS3Activity> {
         const localVarPath = this.basePath + '/amazon/s3/signedposturl';
 

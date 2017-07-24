@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class PaymentsStripeApi {
     }
 
     /**
-        * Create a Stripe payment method for a user
-        * Stores customer information and creates a payment method that can be used to pay invoices through the payments endpoints.
-        * @param request The request to create a Stripe customer with payment info
-        */
+     * Stores customer information and creates a payment method that can be used to pay invoices through the payments endpoints.
+     * @summary Create a Stripe payment method for a user
+     * @param request The request to create a Stripe customer with payment info
+     */
     public createStripePaymentMethod (request?: models.StripeCreatePaymentMethod, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PaymentMethodResource> {
         const localVarPath = this.basePath + '/payment/provider/stripe/payment-methods';
 
@@ -51,10 +51,10 @@ export class PaymentsStripeApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Pay with a single use token
-        * 
-        * @param request The request to pay an invoice
-        */
+     * 
+     * @summary Pay with a single use token
+     * @param request The request to pay an invoice
+     */
     public payStripeInvoice (request?: models.StripePaymentRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/payment/provider/stripe/payments';
 

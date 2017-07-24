@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class SocialFacebookApi {
     }
 
     /**
-        * Link facebook account
-        * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired.
-        * @param facebookToken The token from facebook
-        */
+     * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired.
+     * @summary Link facebook account
+     * @param facebookToken The token from facebook
+     */
     public linkAccounts (facebookToken?: models.FacebookToken, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/social/facebook/users';
 

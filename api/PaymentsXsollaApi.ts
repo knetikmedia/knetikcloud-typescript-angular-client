@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class PaymentsXsollaApi {
     }
 
     /**
-        * Create a payment token that should be used to forward the user to Xsolla so they can complete payment
-        * 
-        * @param request The payment request to be sent to XSolla
-        */
+     * 
+     * @summary Create a payment token that should be used to forward the user to Xsolla so they can complete payment
+     * @param request The payment request to be sent to XSolla
+     */
     public createXsollaTokenUrl (request?: models.XsollaPaymentRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/payment/provider/xsolla/payment';
 
@@ -51,9 +51,9 @@ export class PaymentsXsollaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Receives payment response from Xsolla
-        * Only used by Xsolla to call back to JSAPI after processing user payment action
-        */
+     * Only used by Xsolla to call back to JSAPI after processing user payment action
+     * @summary Receives payment response from Xsolla
+     */
     public receiveXsollaNotification (extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/payment/provider/xsolla/notifications';
 

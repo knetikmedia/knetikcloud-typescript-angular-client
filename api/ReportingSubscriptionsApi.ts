@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class ReportingSubscriptionsApi {
     }
 
     /**
-        * Get a list of available subscription reports in most recent first order
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary Get a list of available subscription reports in most recent first order
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getSubscriptionReports (size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceBillingReport> {
         const localVarPath = this.basePath + '/reporting/subscription';
 

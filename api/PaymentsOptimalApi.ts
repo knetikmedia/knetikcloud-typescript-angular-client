@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class PaymentsOptimalApi {
     }
 
     /**
-        * Initiate silent post with Optimal
-        * Will return the url for a hosted payment endpoint to post to. See Optimal documentation for details.
-        * @param request The payment request to initiate
-        */
+     * Will return the url for a hosted payment endpoint to post to. See Optimal documentation for details.
+     * @summary Initiate silent post with Optimal
+     * @param request The payment request to initiate
+     */
     public silentPostOptimal (request?: models.OptimalPaymentRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/payment/provider/optimal/silent';
 

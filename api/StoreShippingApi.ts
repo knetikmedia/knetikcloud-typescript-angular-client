@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class StoreShippingApi {
     }
 
     /**
-        * Create a shipping item
-        * A shipping item represents a shipping option and cost. SKUs have to be unique in the entire store.
-        * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
-        * @param shippingItem The shipping item object
-        */
+     * A shipping item represents a shipping option and cost. SKUs have to be unique in the entire store.
+     * @summary Create a shipping item
+     * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
+     * @param shippingItem The shipping item object
+     */
     public createShippingItem (cascade?: boolean, shippingItem?: models.ShippingItem, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ShippingItem> {
         const localVarPath = this.basePath + '/store/shipping';
 
@@ -56,10 +56,10 @@ export class StoreShippingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a shipping template
-        * Shipping Templates define a type of shipping and the properties they have.
-        * @param shippingTemplateResource The new shipping template
-        */
+     * Shipping Templates define a type of shipping and the properties they have.
+     * @summary Create a shipping template
+     * @param shippingTemplateResource The new shipping template
+     */
     public createShippingTemplate (shippingTemplateResource?: models.ItemTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/store/shipping/templates';
 
@@ -80,10 +80,10 @@ export class StoreShippingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a shipping item
-        * 
-        * @param id The id of the shipping item
-        */
+     * 
+     * @summary Delete a shipping item
+     * @param id The id of the shipping item
+     */
     public deleteShippingItem (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/store/shipping/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -108,11 +108,11 @@ export class StoreShippingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a shipping template
-        * 
-        * @param id The id of the template
-        * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
-        */
+     * 
+     * @summary Delete a shipping template
+     * @param id The id of the template
+     * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
+     */
     public deleteShippingTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/store/shipping/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -141,10 +141,10 @@ export class StoreShippingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single shipping item
-        * 
-        * @param id The id of the shipping item
-        */
+     * 
+     * @summary Get a single shipping item
+     * @param id The id of the shipping item
+     */
     public getShippingItem (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ShippingItem> {
         const localVarPath = this.basePath + '/store/shipping/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -169,10 +169,10 @@ export class StoreShippingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single shipping template
-        * Shipping Templates define a type of shipping and the properties they have.
-        * @param id The id of the template
-        */
+     * Shipping Templates define a type of shipping and the properties they have.
+     * @summary Get a single shipping template
+     * @param id The id of the template
+     */
     public getShippingTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/store/shipping/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -197,12 +197,12 @@ export class StoreShippingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search shipping templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search shipping templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getShippingTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceItemTemplateResource> {
         const localVarPath = this.basePath + '/store/shipping/templates';
 
@@ -234,12 +234,12 @@ export class StoreShippingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a shipping item
-        * 
-        * @param id The id of the shipping item
-        * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
-        * @param shippingItem The shipping item object
-        */
+     * 
+     * @summary Update a shipping item
+     * @param id The id of the shipping item
+     * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
+     * @param shippingItem The shipping item object
+     */
     public updateShippingItem (id: number, cascade?: boolean, shippingItem?: models.ShippingItem, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ShippingItem> {
         const localVarPath = this.basePath + '/store/shipping/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -269,11 +269,11 @@ export class StoreShippingApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a shipping template
-        * 
-        * @param id The id of the template
-        * @param shippingTemplateResource The shipping template resource object
-        */
+     * 
+     * @summary Update a shipping template
+     * @param id The id of the template
+     * @param shippingTemplateResource The shipping template resource object
+     */
     public updateShippingTemplate (id: string, shippingTemplateResource?: models.ItemTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/store/shipping/templates/{id}'
             .replace('{' + 'id' + '}', String(id));

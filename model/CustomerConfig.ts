@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -15,6 +15,7 @@ import * as models from './models';
 export interface CustomerConfig {
     "aliases"?: string;
     "database"?: models.DatabaseConfig;
+    "io"?: models.IOConfig;
     "name"?: string;
     "s3Config"?: models.S3Config;
 }

@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class BRERuleEngineTriggersApi {
     }
 
     /**
-        * Create a trigger
-        * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services
-        * @param breTriggerResource The BRE trigger resource object
-        */
+     * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services
+     * @summary Create a trigger
+     * @param breTriggerResource The BRE trigger resource object
+     */
     public createBRETrigger (breTriggerResource?: models.BreTriggerResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.BreTriggerResource> {
         const localVarPath = this.basePath + '/bre/triggers';
 
@@ -51,10 +51,10 @@ export class BRERuleEngineTriggersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a trigger
-        * May fail if there are existing rules against it. Cannot delete core triggers
-        * @param eventName The trigger event name
-        */
+     * May fail if there are existing rules against it. Cannot delete core triggers
+     * @summary Delete a trigger
+     * @param eventName The trigger event name
+     */
     public deleteBRETrigger (eventName: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/bre/triggers/{event_name}'
             .replace('{' + 'event_name' + '}', String(eventName));
@@ -79,10 +79,10 @@ export class BRERuleEngineTriggersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single trigger
-        * 
-        * @param eventName The trigger event name
-        */
+     * 
+     * @summary Get a single trigger
+     * @param eventName The trigger event name
+     */
     public getBRETrigger (eventName: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.BreTriggerResource> {
         const localVarPath = this.basePath + '/bre/triggers/{event_name}'
             .replace('{' + 'event_name' + '}', String(eventName));
@@ -107,16 +107,16 @@ export class BRERuleEngineTriggersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List triggers
-        * 
-        * @param filterSystem Filter for triggers that are system triggers when true, or not when false. Leave off for both mixed
-        * @param filterCategory Filter for triggers that are within a specific category
-        * @param filterTags Filter for triggers that have all of the given tags (comma separated list)
-        * @param filterName Filter for triggers that have names containing the given string
-        * @param filterSearch Filter for triggers containing the given words somewhere within name, description and tags
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * 
+     * @summary List triggers
+     * @param filterSystem Filter for triggers that are system triggers when true, or not when false. Leave off for both mixed
+     * @param filterCategory Filter for triggers that are within a specific category
+     * @param filterTags Filter for triggers that have all of the given tags (comma separated list)
+     * @param filterName Filter for triggers that have names containing the given string
+     * @param filterSearch Filter for triggers containing the given words somewhere within name, description and tags
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getBRETriggers (filterSystem?: boolean, filterCategory?: string, filterTags?: string, filterName?: string, filterSearch?: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceBreTriggerResource> {
         const localVarPath = this.basePath + '/bre/triggers';
 
@@ -164,11 +164,11 @@ export class BRERuleEngineTriggersApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a trigger
-        * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers
-        * @param eventName The trigger event name
-        * @param breTriggerResource The BRE trigger resource object
-        */
+     * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers
+     * @summary Update a trigger
+     * @param eventName The trigger event name
+     * @param breTriggerResource The BRE trigger resource object
+     */
     public updateBRETrigger (eventName: string, breTriggerResource?: models.BreTriggerResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.BreTriggerResource> {
         const localVarPath = this.basePath + '/bre/triggers/{event_name}'
             .replace('{' + 'event_name' + '}', String(eventName));

@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class StoreShoppingCartsApi {
     }
 
     /**
-        * Adds a custom discount to the cart
-        * 
-        * @param id The id of the cart
-        * @param customDiscount The details of the discount to add
-        */
+     * 
+     * @summary Adds a custom discount to the cart
+     * @param id The id of the cart
+     * @param customDiscount The details of the discount to add
+     */
     public addCustomDiscount (id: string, customDiscount?: models.CouponDefinition, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/carts/{id}/custom-discounts'
             .replace('{' + 'id' + '}', String(id));
@@ -57,11 +57,11 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Adds a discount coupon to the cart
-        * 
-        * @param id The id of the cart
-        * @param skuRequest The request of the sku
-        */
+     * 
+     * @summary Adds a discount coupon to the cart
+     * @param id The id of the cart
+     * @param skuRequest The request of the sku
+     */
     public addDiscountToCart (id: string, skuRequest?: models.SkuRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/carts/{id}/discounts'
             .replace('{' + 'id' + '}', String(id));
@@ -87,11 +87,11 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Add an item to the cart
-        * Currently, carts cannot contain virtual and real currency items at the same time. Furthermore, the API only support a single virtual item at the moment
-        * @param id The id of the cart
-        * @param cartItemRequest The cart item request object
-        */
+     * Currently, carts cannot contain virtual and real currency items at the same time. Furthermore, the API only support a single virtual item at the moment
+     * @summary Add an item to the cart
+     * @param id The id of the cart
+     * @param cartItemRequest The cart item request object
+     */
     public addItemToCart (id: string, cartItemRequest?: models.CartItemRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/carts/{id}/items'
             .replace('{' + 'id' + '}', String(id));
@@ -117,11 +117,11 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a cart
-        * You don&#39;t have to have a user to create a cart but the API requires authentication to checkout
-        * @param owner Set the owner of a cart. If not specified, defaults to the calling user&#39;s id. If specified and is not the calling user&#39;s id, SHOPPING_CARTS_ADMIN permission is required
-        * @param currencyCode Set the currency for the cart, by currency code. May be disallowed by site settings.
-        */
+     * You don't have to have a user to create a cart but the API requires authentication to checkout
+     * @summary Create a cart
+     * @param owner Set the owner of a cart. If not specified, defaults to the calling user&#39;s id. If specified and is not the calling user&#39;s id, SHOPPING_CARTS_ADMIN permission is required
+     * @param currencyCode Set the currency for the cart, by currency code. May be disallowed by site settings.
+     */
     public createCart (owner?: number, currencyCode?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/carts';
 
@@ -149,10 +149,10 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns the cart with the given GUID
-        * 
-        * @param id The id of the cart
-        */
+     * 
+     * @summary Returns the cart with the given GUID
+     * @param id The id of the cart
+     */
     public getCart (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.Cart> {
         const localVarPath = this.basePath + '/carts/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -177,13 +177,13 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a list of carts
-        * 
-        * @param filterOwnerId Filter by the id of the owner
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary Get a list of carts
+     * @param filterOwnerId Filter by the id of the owner
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getCarts (filterOwnerId?: number, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceCartSummary> {
         const localVarPath = this.basePath + '/carts';
 
@@ -219,10 +219,10 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns whether a cart requires shipping
-        * 
-        * @param id The id of the cart
-        */
+     * 
+     * @summary Returns whether a cart requires shipping
+     * @param id The id of the cart
+     */
     public getShippable (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CartShippableResponse> {
         const localVarPath = this.basePath + '/carts/{id}/shippable'
             .replace('{' + 'id' + '}', String(id));
@@ -247,10 +247,10 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get the list of available shipping countries per vendor
-        * Since a cart can have multiple vendors with different shipping options, the countries are broken down by vendors. Please see notes about the response object as the fields are variable.
-        * @param id The id of the cart
-        */
+     * Since a cart can have multiple vendors with different shipping options, the countries are broken down by vendors. Please see notes about the response object as the fields are variable.
+     * @summary Get the list of available shipping countries per vendor
+     * @param id The id of the cart
+     */
     public getShippingCountries (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.SampleCountriesResponse> {
         const localVarPath = this.basePath + '/carts/{id}/countries'
             .replace('{' + 'id' + '}', String(id));
@@ -275,11 +275,11 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Removes a discount coupon from the cart
-        * 
-        * @param id The id of the cart
-        * @param code The SKU code of the coupon to remove
-        */
+     * 
+     * @summary Removes a discount coupon from the cart
+     * @param id The id of the cart
+     * @param code The SKU code of the coupon to remove
+     */
     public removeDiscountFromCart (id: string, code: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/carts/{id}/discounts/{code}'
             .replace('{' + 'id' + '}', String(id))
@@ -309,11 +309,11 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Sets the currency to use for the cart
-        * May be disallowed by site settings.
-        * @param id The id of the cart
-        * @param currencyCode The code of the currency
-        */
+     * May be disallowed by site settings.
+     * @summary Sets the currency to use for the cart
+     * @param id The id of the cart
+     * @param currencyCode The code of the currency
+     */
     public setCartCurrency (id: string, currencyCode?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/carts/{id}/currency'
             .replace('{' + 'id' + '}', String(id));
@@ -339,11 +339,11 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Sets the owner of a cart if none is set already
-        * 
-        * @param id The id of the cart
-        * @param userId The id of the user
-        */
+     * 
+     * @summary Sets the owner of a cart if none is set already
+     * @param id The id of the cart
+     * @param userId The id of the user
+     */
     public setCartOwner (id: string, userId?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/carts/{id}/owner'
             .replace('{' + 'id' + '}', String(id));
@@ -369,11 +369,11 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Changes the quantity of an item already in the cart
-        * A quantity of zero will remove the item from the cart altogether.
-        * @param id The id of the cart
-        * @param cartItemRequest The cart item request object
-        */
+     * A quantity of zero will remove the item from the cart altogether.
+     * @summary Changes the quantity of an item already in the cart
+     * @param id The id of the cart
+     * @param cartItemRequest The cart item request object
+     */
     public updateItemInCart (id: string, cartItemRequest?: models.CartItemRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/carts/{id}/items'
             .replace('{' + 'id' + '}', String(id));
@@ -399,11 +399,11 @@ export class StoreShoppingCartsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Modifies or sets the order shipping address
-        * 
-        * @param id The id of the cart
-        * @param cartShippingAddressRequest The cart shipping address request object
-        */
+     * 
+     * @summary Modifies or sets the order shipping address
+     * @param id The id of the cart
+     * @param cartShippingAddressRequest The cart shipping address request object
+     */
     public updateShippingAddress (id: string, cartShippingAddressRequest?: models.CartShippingAddressRequest, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/carts/{id}/shipping-address'
             .replace('{' + 'id' + '}', String(id));

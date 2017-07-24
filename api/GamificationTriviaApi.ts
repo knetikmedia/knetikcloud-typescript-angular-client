@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class GamificationTriviaApi {
     }
 
     /**
-        * Add an answer to a question
-        * 
-        * @param questionId The id of the question
-        * @param answer The new answer
-        */
+     * 
+     * @summary Add an answer to a question
+     * @param questionId The id of the question
+     * @param answer The new answer
+     */
     public addQuestionAnswers (questionId: string, answer?: models.AnswerResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.AnswerResource> {
         const localVarPath = this.basePath + '/trivia/questions/{question_id}/answers'
             .replace('{' + 'question_id' + '}', String(questionId));
@@ -57,11 +57,11 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Add a tag to a question
-        * 
-        * @param id The id of the question
-        * @param tag The new tag
-        */
+     * 
+     * @summary Add a tag to a question
+     * @param id The id of the question
+     * @param tag The new tag
+     */
     public addQuestionTag (id: string, tag?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/trivia/questions/{id}/tags'
             .replace('{' + 'id' + '}', String(id));
@@ -87,18 +87,18 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Add a tag to a batch of questions
-        * All questions that dont&#39;t have the tag and match filters will have it added. The returned number is the number of questions updated.
-        * @param tag The tag to add
-        * @param filterSearch Filter for documents whose question, answers or tags contains provided string
-        * @param filterIdset Filter for documents whose id is in the comma separated list provided
-        * @param filterCategory Filter for questions with specified category, by id
-        * @param filterTag Filter for questions with specified tag
-        * @param filterTagset Filter for questions with specified tags (separated by comma)
-        * @param filterType Filter for questions with specified type
-        * @param filterPublished Filter for questions currenctly published or not
-        * @param filterImportId Filter for questions from a specific import job
-        */
+     * All questions that dont't have the tag and match filters will have it added. The returned number is the number of questions updated.
+     * @summary Add a tag to a batch of questions
+     * @param tag The tag to add
+     * @param filterSearch Filter for documents whose question, answers or tags contains provided string
+     * @param filterIdset Filter for documents whose id is in the comma separated list provided
+     * @param filterCategory Filter for questions with specified category, by id
+     * @param filterTag Filter for questions with specified tag
+     * @param filterTagset Filter for questions with specified tags (separated by comma)
+     * @param filterType Filter for questions with specified type
+     * @param filterPublished Filter for questions currenctly published or not
+     * @param filterImportId Filter for questions from a specific import job
+     */
     public addTagToQuestionsBatch (tag?: string, filterSearch?: string, filterIdset?: string, filterCategory?: string, filterTag?: string, filterTagset?: string, filterType?: string, filterPublished?: boolean, filterImportId?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<number> {
         const localVarPath = this.basePath + '/trivia/questions/tags';
 
@@ -151,10 +151,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create an import job
-        * Set up a job to import a set of trivia questions from a cvs file at a remote url. the file will be validated asynchronously but will not be processed until started manually with the process endpoint.
-        * @param request The new import job
-        */
+     * Set up a job to import a set of trivia questions from a cvs file at a remote url. the file will be validated asynchronously but will not be processed until started manually with the process endpoint.
+     * @summary Create an import job
+     * @param request The new import job
+     */
     public createImportJob (request?: models.ImportJobResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ImportJobResource> {
         const localVarPath = this.basePath + '/trivia/import';
 
@@ -175,10 +175,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a question
-        * 
-        * @param question The new question
-        */
+     * 
+     * @summary Create a question
+     * @param question The new question
+     */
     public createQuestion (question?: models.QuestionResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.QuestionResource> {
         const localVarPath = this.basePath + '/trivia/questions';
 
@@ -199,10 +199,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a question template
-        * Question templates define a type of question and the properties they have
-        * @param questionTemplateResource The question template resource object
-        */
+     * Question templates define a type of question and the properties they have
+     * @summary Create a question template
+     * @param questionTemplateResource The question template resource object
+     */
     public createQuestionTemplate (questionTemplateResource?: models.QuestionTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.QuestionTemplateResource> {
         const localVarPath = this.basePath + '/trivia/questions/templates';
 
@@ -223,10 +223,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete an import job
-        * Also deletes all questions that were imported by it
-        * @param id The id of the job
-        */
+     * Also deletes all questions that were imported by it
+     * @summary Delete an import job
+     * @param id The id of the job
+     */
     public deleteImportJob (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/trivia/import/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -251,10 +251,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a question
-        * 
-        * @param id The id of the question
-        */
+     * 
+     * @summary Delete a question
+     * @param id The id of the question
+     */
     public deleteQuestion (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/trivia/questions/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -279,11 +279,11 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Remove an answer from a question
-        * 
-        * @param questionId The id of the question
-        * @param id The id of the answer
-        */
+     * 
+     * @summary Remove an answer from a question
+     * @param questionId The id of the question
+     * @param id The id of the answer
+     */
     public deleteQuestionAnswers (questionId: string, id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/trivia/questions/{question_id}/answers/{id}'
             .replace('{' + 'question_id' + '}', String(questionId))
@@ -313,11 +313,11 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a question template
-        * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
-        * @param id The id of the template
-        * @param cascade The value needed to delete used templates
-        */
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * @summary Delete a question template
+     * @param id The id of the template
+     * @param cascade The value needed to delete used templates
+     */
     public deleteQuestionTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/trivia/questions/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -346,10 +346,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get an import job
-        * 
-        * @param id The id of the job
-        */
+     * 
+     * @summary Get an import job
+     * @param id The id of the job
+     */
     public getImportJob (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ImportJobResource> {
         const localVarPath = this.basePath + '/trivia/import/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -374,16 +374,16 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a list of import job
-        * 
-        * @param filterVendor Filter for jobs by vendor id
-        * @param filterCategory Filter for jobs by category id
-        * @param filterName Filter for jobs which name *STARTS* with the given string
-        * @param filterStatus Filter for jobs that are in a specific set of statuses (comma separated)
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary Get a list of import job
+     * @param filterVendor Filter for jobs by vendor id
+     * @param filterCategory Filter for jobs by category id
+     * @param filterName Filter for jobs which name *STARTS* with the given string
+     * @param filterStatus Filter for jobs that are in a specific set of statuses (comma separated)
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getImportJobs (filterVendor?: string, filterCategory?: string, filterName?: string, filterStatus?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceImportJobResource> {
         const localVarPath = this.basePath + '/trivia/import';
 
@@ -431,10 +431,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single question
-        * 
-        * @param id The id of the question
-        */
+     * 
+     * @summary Get a single question
+     * @param id The id of the question
+     */
     public getQuestion (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.QuestionResource> {
         const localVarPath = this.basePath + '/trivia/questions/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -459,11 +459,11 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get an answer for a question
-        * 
-        * @param questionId The id of the question
-        * @param id The id of the answer
-        */
+     * 
+     * @summary Get an answer for a question
+     * @param questionId The id of the question
+     * @param id The id of the answer
+     */
     public getQuestionAnswer (questionId: string, id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.AnswerResource> {
         const localVarPath = this.basePath + '/trivia/questions/{question_id}/answers/{id}'
             .replace('{' + 'question_id' + '}', String(questionId))
@@ -493,10 +493,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List the answers available for a question
-        * 
-        * @param questionId The id of the question
-        */
+     * 
+     * @summary List the answers available for a question
+     * @param questionId The id of the question
+     */
     public getQuestionAnswers (questionId: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.AnswerResource>> {
         const localVarPath = this.basePath + '/trivia/questions/{question_id}/answers'
             .replace('{' + 'question_id' + '}', String(questionId));
@@ -521,10 +521,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List question deltas in ascending order of updated date
-        * The &#39;since&#39; parameter is important to avoid getting a full list of all questions. Implementors should make sure they pass the updated date of the last resource loaded, not the date of the last request, in order to avoid gaps
-        * @param since Timestamp in seconds
-        */
+     * The 'since' parameter is important to avoid getting a full list of all questions. Implementors should make sure they pass the updated date of the last resource loaded, not the date of the last request, in order to avoid gaps
+     * @summary List question deltas in ascending order of updated date
+     * @param since Timestamp in seconds
+     */
     public getQuestionDeltas (since?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.DeltaResource>> {
         const localVarPath = this.basePath + '/trivia/questions/delta';
 
@@ -548,10 +548,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List the tags for a question
-        * 
-        * @param id The id of the question
-        */
+     * 
+     * @summary List the tags for a question
+     * @param id The id of the question
+     */
     public getQuestionTags (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<string>> {
         const localVarPath = this.basePath + '/trivia/questions/{id}/tags'
             .replace('{' + 'id' + '}', String(id));
@@ -576,10 +576,10 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single question template
-        * 
-        * @param id The id of the template
-        */
+     * 
+     * @summary Get a single question template
+     * @param id The id of the template
+     */
     public getQuestionTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.QuestionTemplateResource> {
         const localVarPath = this.basePath + '/trivia/questions/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -604,12 +604,12 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search question templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search question templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getQuestionTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceQuestionTemplateResource> {
         const localVarPath = this.basePath + '/trivia/questions/templates';
 
@@ -641,20 +641,20 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search questions
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        * @param filterSearch Filter for documents whose question, answers or tags contains provided string
-        * @param filterIdset Filter for documents whose id is in the comma separated list provided
-        * @param filterCategory Filter for questions with specified category, by id
-        * @param filterTagset Filter for questions with specified tags (separated by comma)
-        * @param filterTag Filter for questions with specified tag
-        * @param filterType Filter for questions with specified type.  Allowable values: (&#39;TEXT&#39;, &#39;IMAGE&#39;, &#39;VIDEO&#39;, &#39;AUDIO&#39;)
-        * @param filterPublished Filter for questions currenctly published or not
-        * @param filterImportId Filter for questions from a specific import job
-        */
+     * 
+     * @summary List and search questions
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     * @param filterSearch Filter for documents whose question, answers or tags contains provided string
+     * @param filterIdset Filter for documents whose id is in the comma separated list provided
+     * @param filterCategory Filter for questions with specified category, by id
+     * @param filterTagset Filter for questions with specified tags (separated by comma)
+     * @param filterTag Filter for questions with specified tag
+     * @param filterType Filter for questions with specified type.  Allowable values: (&#39;TEXT&#39;, &#39;IMAGE&#39;, &#39;VIDEO&#39;, &#39;AUDIO&#39;)
+     * @param filterPublished Filter for questions currenctly published or not
+     * @param filterImportId Filter for questions from a specific import job
+     */
     public getQuestions (size?: number, page?: number, order?: string, filterSearch?: string, filterIdset?: string, filterCategory?: string, filterTagset?: string, filterTag?: string, filterType?: string, filterPublished?: boolean, filterImportId?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceQuestionResource> {
         const localVarPath = this.basePath + '/trivia/questions';
 
@@ -718,16 +718,16 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Count questions based on filters
-        * This is also provided by the list endpoint so you don&#39;t need to call this for pagination purposes
-        * @param filterSearch Filter for documents whose question, answers or tags contains provided string
-        * @param filterIdset Filter for documents whose id is in the comma separated list provided
-        * @param filterCategory Filter for questions with specified category, by id
-        * @param filterTag Filter for questions with specified tag
-        * @param filterTagset Filter for questions with specified tags (separated by comma)
-        * @param filterType Filter for questions with specified type.  Allowable values: (&#39;TEXT&#39;, &#39;IMAGE&#39;, &#39;VIDEO&#39;, &#39;AUDIO&#39;)
-        * @param filterPublished Filter for questions currenctly published or not
-        */
+     * This is also provided by the list endpoint so you don't need to call this for pagination purposes
+     * @summary Count questions based on filters
+     * @param filterSearch Filter for documents whose question, answers or tags contains provided string
+     * @param filterIdset Filter for documents whose id is in the comma separated list provided
+     * @param filterCategory Filter for questions with specified category, by id
+     * @param filterTag Filter for questions with specified tag
+     * @param filterTagset Filter for questions with specified tags (separated by comma)
+     * @param filterType Filter for questions with specified type.  Allowable values: (&#39;TEXT&#39;, &#39;IMAGE&#39;, &#39;VIDEO&#39;, &#39;AUDIO&#39;)
+     * @param filterPublished Filter for questions currenctly published or not
+     */
     public getQuestionsCount (filterSearch?: string, filterIdset?: string, filterCategory?: string, filterTag?: string, filterTagset?: string, filterType?: string, filterPublished?: boolean, extraHttpRequestParams?: any ) : ng.IHttpPromise<number> {
         const localVarPath = this.basePath + '/trivia/questions/count';
 
@@ -775,11 +775,11 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Start processing an import job
-        * Will process the CSV file and add new questions asynchronously. The status of the job must be &#39;VALID&#39;.
-        * @param id The id of the job
-        * @param publishNow Whether the new questions should be published live immediately
-        */
+     * Will process the CSV file and add new questions asynchronously. The status of the job must be 'VALID'.
+     * @summary Start processing an import job
+     * @param id The id of the job
+     * @param publishNow Whether the new questions should be published live immediately
+     */
     public processImportJob (id: number, publishNow: boolean, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ImportJobResource> {
         const localVarPath = this.basePath + '/trivia/import/{id}/process'
             .replace('{' + 'id' + '}', String(id));
@@ -812,11 +812,11 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Remove a tag from a question
-        * 
-        * @param id The id of the question
-        * @param tag The tag to remove
-        */
+     * 
+     * @summary Remove a tag from a question
+     * @param id The id of the question
+     * @param tag The tag to remove
+     */
     public removeQuestionTag (id: string, tag: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/trivia/questions/{id}/tags/{tag}'
             .replace('{' + 'id' + '}', String(id))
@@ -846,18 +846,18 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Remove a tag from a batch of questions
-        * ll questions that have the tag and match filters will have it removed. The returned number is the number of questions updated.
-        * @param tag The tag to remove
-        * @param filterSearch Filter for documents whose question, answers or tags contains provided string
-        * @param filterIdset Filter for documents whose id is in the comma separated list provided
-        * @param filterCategory Filter for questions with specified category, by id
-        * @param filterTag Filter for questions with specified tag
-        * @param filterTagset Filter for questions with specified tags (separated by comma)
-        * @param filterType Filter for questions with specified type.  Allowable values: (&#39;TEXT&#39;, &#39;IMAGE&#39;, &#39;VIDEO&#39;, &#39;AUDIO&#39;)
-        * @param filterPublished Filter for questions currenctly published or not
-        * @param filterImportId Filter for questions from a specific import job
-        */
+     * ll questions that have the tag and match filters will have it removed. The returned number is the number of questions updated.
+     * @summary Remove a tag from a batch of questions
+     * @param tag The tag to remove
+     * @param filterSearch Filter for documents whose question, answers or tags contains provided string
+     * @param filterIdset Filter for documents whose id is in the comma separated list provided
+     * @param filterCategory Filter for questions with specified category, by id
+     * @param filterTag Filter for questions with specified tag
+     * @param filterTagset Filter for questions with specified tags (separated by comma)
+     * @param filterType Filter for questions with specified type.  Allowable values: (&#39;TEXT&#39;, &#39;IMAGE&#39;, &#39;VIDEO&#39;, &#39;AUDIO&#39;)
+     * @param filterPublished Filter for questions currenctly published or not
+     * @param filterImportId Filter for questions from a specific import job
+     */
     public removeTagToQuestionsBatch (tag: string, filterSearch?: string, filterIdset?: string, filterCategory?: string, filterTag?: string, filterTagset?: string, filterType?: string, filterPublished?: boolean, filterImportId?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<number> {
         const localVarPath = this.basePath + '/trivia/questions/tags/{tag}'
             .replace('{' + 'tag' + '}', String(tag));
@@ -914,12 +914,12 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search tags by the beginning of the string
-        * For performance reasons, search &amp; category filters are mutually exclusive. If category is specified, search filter will be ignored in order to do fast matches for typeahead.
-        * @param filterSearch Filter for tags starting with the given text
-        * @param filterCategory Filter for tags on questions from a specific category
-        * @param filterImportId Filter for tags on questions from a specific import job
-        */
+     * For performance reasons, search & category filters are mutually exclusive. If category is specified, search filter will be ignored in order to do fast matches for typeahead.
+     * @summary List and search tags by the beginning of the string
+     * @param filterSearch Filter for tags starting with the given text
+     * @param filterCategory Filter for tags on questions from a specific category
+     * @param filterImportId Filter for tags on questions from a specific import job
+     */
     public searchQuestionTags (filterSearch?: string, filterCategory?: string, filterImportId?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.Collectionstring> {
         const localVarPath = this.basePath + '/trivia/tags';
 
@@ -951,11 +951,11 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an import job
-        * Changes should be made before process is started for there to be any effect.
-        * @param id The id of the job
-        * @param request The updated job
-        */
+     * Changes should be made before process is started for there to be any effect.
+     * @summary Update an import job
+     * @param id The id of the job
+     * @param request The updated job
+     */
     public updateImportJob (id: number, request?: models.ImportJobResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ImportJobResource> {
         const localVarPath = this.basePath + '/trivia/import/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -981,11 +981,11 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a question
-        * 
-        * @param id The id of the question
-        * @param question The updated question
-        */
+     * 
+     * @summary Update a question
+     * @param id The id of the question
+     * @param question The updated question
+     */
     public updateQuestion (id: string, question?: models.QuestionResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.QuestionResource> {
         const localVarPath = this.basePath + '/trivia/questions/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -1011,12 +1011,12 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update an answer for a question
-        * 
-        * @param questionId The id of the question
-        * @param id The id of the answer
-        * @param answer The updated answer
-        */
+     * 
+     * @summary Update an answer for a question
+     * @param questionId The id of the question
+     * @param id The id of the answer
+     * @param answer The updated answer
+     */
     public updateQuestionAnswer (questionId: string, id: string, answer?: models.AnswerResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/trivia/questions/{question_id}/answers/{id}'
             .replace('{' + 'question_id' + '}', String(questionId))
@@ -1047,11 +1047,11 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a question template
-        * 
-        * @param id The id of the template
-        * @param questionTemplateResource The question template resource object
-        */
+     * 
+     * @summary Update a question template
+     * @param id The id of the template
+     * @param questionTemplateResource The question template resource object
+     */
     public updateQuestionTemplate (id: string, questionTemplateResource?: models.QuestionTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.QuestionTemplateResource> {
         const localVarPath = this.basePath + '/trivia/questions/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -1077,17 +1077,17 @@ export class GamificationTriviaApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Bulk update questions
-        * Will update all questions that match filters used (or all questions in system if no filters used). Body should match a question resource with only those properties you wish to set. Null values will be ignored. Returned number is how many were updated.
-        * @param question New values for a set of question fields
-        * @param filterSearch Filter for documents whose question, answers or tags contains provided string
-        * @param filterIdset Filter for documents whose id is in the comma separated list provided
-        * @param filterCategory Filter for questions with specified category, by id
-        * @param filterTagset Filter for questions with specified tags (separated by comma)
-        * @param filterType Filter for questions with specified type.  Allowable values: (&#39;TEXT&#39;, &#39;IMAGE&#39;, &#39;VIDEO&#39;, &#39;AUDIO&#39;)
-        * @param filterPublished Filter for questions currenctly published or not
-        * @param filterImportId Filter for questions from a specific import job
-        */
+     * Will update all questions that match filters used (or all questions in system if no filters used). Body should match a question resource with only those properties you wish to set. Null values will be ignored. Returned number is how many were updated.
+     * @summary Bulk update questions
+     * @param question New values for a set of question fields
+     * @param filterSearch Filter for documents whose question, answers or tags contains provided string
+     * @param filterIdset Filter for documents whose id is in the comma separated list provided
+     * @param filterCategory Filter for questions with specified category, by id
+     * @param filterTagset Filter for questions with specified tags (separated by comma)
+     * @param filterType Filter for questions with specified type.  Allowable values: (&#39;TEXT&#39;, &#39;IMAGE&#39;, &#39;VIDEO&#39;, &#39;AUDIO&#39;)
+     * @param filterPublished Filter for questions currenctly published or not
+     * @param filterImportId Filter for questions from a specific import job
+     */
     public updateQuestionsInBulk (question?: models.QuestionResource, filterSearch?: string, filterIdset?: string, filterCategory?: string, filterTagset?: string, filterType?: string, filterPublished?: boolean, filterImportId?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<number> {
         const localVarPath = this.basePath + '/trivia/questions';
 

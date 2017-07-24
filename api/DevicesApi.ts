@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class DevicesApi {
     }
 
     /**
-        * Add device users
-        * 
-        * @param userResources userResources
-        * @param id id
-        */
+     * 
+     * @summary Add device users
+     * @param userResources userResources
+     * @param id id
+     */
     public addDeviceUsers (userResources: Array<models.SimpleUserResource>, id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.DeviceResource> {
         const localVarPath = this.basePath + '/devices/{id}/users'
             .replace('{' + 'id' + '}', String(id));
@@ -61,10 +61,10 @@ export class DevicesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a device
-        * 
-        * @param device device
-        */
+     * 
+     * @summary Create a device
+     * @param device device
+     */
     public createDevice (device: models.DeviceResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.DeviceResource> {
         const localVarPath = this.basePath + '/devices';
 
@@ -89,10 +89,10 @@ export class DevicesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a device
-        * 
-        * @param id id
-        */
+     * 
+     * @summary Delete a device
+     * @param id id
+     */
     public deleteDevice (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/devices/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -117,11 +117,11 @@ export class DevicesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a device user
-        * 
-        * @param id The id of the device
-        * @param userId The user id of the device user
-        */
+     * 
+     * @summary Delete a device user
+     * @param id The id of the device
+     * @param userId The user id of the device user
+     */
     public deleteDeviceUser (id: number, userId: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/devices/{id}/users/{user_id}'
             .replace('{' + 'id' + '}', String(id))
@@ -151,11 +151,11 @@ export class DevicesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete all device users
-        * 
-        * @param id The id of the device
-        * @param filterId Filter for device users to delete with a user id in a given comma separated list of ids
-        */
+     * 
+     * @summary Delete all device users
+     * @param id The id of the device
+     * @param filterId Filter for device users to delete with a user id in a given comma separated list of ids
+     */
     public deleteDeviceUsers (id: number, filterId?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/devices/{id}/users'
             .replace('{' + 'id' + '}', String(id));
@@ -184,10 +184,10 @@ export class DevicesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single device
-        * 
-        * @param id id
-        */
+     * 
+     * @summary Get a single device
+     * @param id id
+     */
     public getDevice (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.DeviceResource> {
         const localVarPath = this.basePath + '/devices/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -212,14 +212,14 @@ export class DevicesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search devices
-        * Get a list of devices with optional filtering
-        * @param filterMake Filter for devices with specified make
-        * @param filterModel Filter for devices with specified model
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * Get a list of devices with optional filtering
+     * @summary List and search devices
+     * @param filterMake Filter for devices with specified make
+     * @param filterModel Filter for devices with specified model
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getDevices (filterMake?: string, filterModel?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceDeviceResource> {
         const localVarPath = this.basePath + '/devices';
 
@@ -259,11 +259,11 @@ export class DevicesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a device
-        * 
-        * @param device device
-        * @param id id
-        */
+     * 
+     * @summary Update a device
+     * @param device device
+     * @param id id
+     */
     public updateDevice (device: models.DeviceResource, id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.DeviceResource> {
         const localVarPath = this.basePath + '/devices/{id}'
             .replace('{' + 'id' + '}', String(id));

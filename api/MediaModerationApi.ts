@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class MediaModerationApi {
     }
 
     /**
-        * Get a flag report
-        * 
-        * @param id The flag report id
-        */
+     * 
+     * @summary Get a flag report
+     * @param id The flag report id
+     */
     public getModerationReport (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.FlagReportResource> {
         const localVarPath = this.basePath + '/moderation/reports/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -55,13 +55,13 @@ export class MediaModerationApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Returns a page of flag reports
-        * Context can be either a free-form string or a pre-defined context name
-        * @param excludeResolved Ignore resolved context
-        * @param filterContext Filter by moderation context
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        */
+     * Context can be either a free-form string or a pre-defined context name
+     * @summary Returns a page of flag reports
+     * @param excludeResolved Ignore resolved context
+     * @param filterContext Filter by moderation context
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
     public getModerationReports (excludeResolved?: boolean, filterContext?: string, size?: number, page?: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceFlagReportResource> {
         const localVarPath = this.basePath + '/moderation/reports';
 
@@ -97,11 +97,11 @@ export class MediaModerationApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a flag report
-        * Lets you set the resolution of a report. Resolution types is {banned,ignore} in case of &#39;banned&#39; you will need to pass the reason.
-        * @param id The flag report id
-        * @param flagReportResource The new flag report
-        */
+     * Lets you set the resolution of a report. Resolution types is {banned,ignore} in case of 'banned' you will need to pass the reason.
+     * @summary Update a flag report
+     * @param id The flag report id
+     * @param flagReportResource The new flag report
+     */
     public updateModerationReport (id: number, flagReportResource?: models.FlagReportResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/moderation/reports/{id}'
             .replace('{' + 'id' + '}', String(id));

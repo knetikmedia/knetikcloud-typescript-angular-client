@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,10 +27,10 @@ export class TemplatesPropertiesApi {
     }
 
     /**
-        * Get details for a template property type
-        * 
-        * @param type type
-        */
+     * 
+     * @summary Get details for a template property type
+     * @param type type
+     */
     public getTemplatePropertyType (type: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PropertyFieldListResource> {
         const localVarPath = this.basePath + '/templates/properties/{type}'
             .replace('{' + 'type' + '}', String(type));
@@ -55,9 +55,9 @@ export class TemplatesPropertiesApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List template property types
-        * 
-        */
+     * 
+     * @summary List template property types
+     */
     public getTemplatePropertyTypes (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.PropertyFieldListResource>> {
         const localVarPath = this.basePath + '/templates/properties';
 

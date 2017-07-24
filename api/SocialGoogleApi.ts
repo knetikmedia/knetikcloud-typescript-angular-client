@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class SocialGoogleApi {
     }
 
     /**
-        * Link facebook account
-        * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired.
-        * @param facebookToken The token from facebook
-        */
-    public linkAccounts1 (facebookToken?: models.GoogleToken, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
+     * Links the current user account to a google account, using the acccess token from google. Can also be used to update the access token after it has expired.
+     * @summary Link google account
+     * @param googleToken The token from google
+     */
+    public linkAccounts1 (googleToken?: models.GoogleToken, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/social/google/users';
 
         let queryParameters: any = {};
@@ -39,7 +39,7 @@ export class SocialGoogleApi {
         let httpRequestParams: ng.IRequestConfig = {
             method: 'POST',
             url: localVarPath,
-            data: facebookToken,
+            data: googleToken,
                         params: queryParameters,
             headers: headerParams
         };

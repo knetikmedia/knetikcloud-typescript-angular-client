@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,9 +27,9 @@ export class LocationsApi {
     }
 
     /**
-        * Get a list of countries
-        * 
-        */
+     * 
+     * @summary Get a list of countries
+     */
     public getCountries (extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.CountryResource>> {
         const localVarPath = this.basePath + '/location/countries';
 
@@ -49,9 +49,9 @@ export class LocationsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get the iso3 code of your country
-        * Determined by geo ip location
-        */
+     * Determined by geo ip location
+     * @summary Get the iso3 code of your country
+     */
     public getCountryByGeoLocation (extraHttpRequestParams?: any ) : ng.IHttpPromise<string> {
         const localVarPath = this.basePath + '/location/geolocation/country';
 
@@ -71,10 +71,10 @@ export class LocationsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a list of a country&#39;s states
-        * 
-        * @param countryCodeIso3 The iso3 code of the country
-        */
+     * 
+     * @summary Get a list of a country's states
+     * @param countryCodeIso3 The iso3 code of the country
+     */
     public getCountryStates (countryCodeIso3: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<Array<models.StateResource>> {
         const localVarPath = this.basePath + '/location/countries/{country_code_iso3}/states'
             .replace('{' + 'country_code_iso3' + '}', String(countryCodeIso3));
@@ -99,9 +99,9 @@ export class LocationsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get the currency information of your country
-        * Determined by geo ip location, currency to country mapping and a fallback setting
-        */
+     * Determined by geo ip location, currency to country mapping and a fallback setting
+     * @summary Get the currency information of your country
+     */
     public getCurrencyByGeoLocation (extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CurrencyResource> {
         const localVarPath = this.basePath + '/location/geolocation/currency';
 

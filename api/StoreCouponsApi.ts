@@ -1,6 +1,6 @@
 /**
  * Knetik Platform API Documentation latest 
- * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com
+ * This is the spec for the Knetik API.  Use this in conjunction with the documentation found at https://knetikcloud.com.
  *
  * OpenAPI spec version: latest 
  * Contact: support@knetik.com
@@ -27,11 +27,11 @@ export class StoreCouponsApi {
     }
 
     /**
-        * Create a coupon item
-        * SKUs have to be unique in the entire store.
-        * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
-        * @param couponItem The coupon item object
-        */
+     * SKUs have to be unique in the entire store.
+     * @summary Create a coupon item
+     * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
+     * @param couponItem The coupon item object
+     */
     public createCouponItem (cascade?: boolean, couponItem?: models.CouponItem, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CouponItem> {
         const localVarPath = this.basePath + '/store/coupons';
 
@@ -56,10 +56,10 @@ export class StoreCouponsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Create a coupon template
-        * Coupon Templates define a type of coupon and the properties they have.
-        * @param couponTemplateResource The new coupon template
-        */
+     * Coupon Templates define a type of coupon and the properties they have.
+     * @summary Create a coupon template
+     * @param couponTemplateResource The new coupon template
+     */
     public createCouponTemplate (couponTemplateResource?: models.ItemTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/store/coupons/templates';
 
@@ -80,10 +80,10 @@ export class StoreCouponsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a coupon item
-        * 
-        * @param id The id of the coupon
-        */
+     * 
+     * @summary Delete a coupon item
+     * @param id The id of the coupon
+     */
     public deleteCouponItem (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/store/coupons/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -108,11 +108,11 @@ export class StoreCouponsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Delete a coupon template
-        * 
-        * @param id The id of the template
-        * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
-        */
+     * 
+     * @summary Delete a coupon template
+     * @param id The id of the template
+     * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
+     */
     public deleteCouponTemplate (id: string, cascade?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<{}> {
         const localVarPath = this.basePath + '/store/coupons/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -141,10 +141,10 @@ export class StoreCouponsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single coupon item
-        * 
-        * @param id The id of the coupon
-        */
+     * 
+     * @summary Get a single coupon item
+     * @param id The id of the coupon
+     */
     public getCouponItem (id: number, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CouponItem> {
         const localVarPath = this.basePath + '/store/coupons/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -169,10 +169,10 @@ export class StoreCouponsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Get a single coupon template
-        * Coupon Templates define a type of coupon and the properties they have.
-        * @param id The id of the template
-        */
+     * Coupon Templates define a type of coupon and the properties they have.
+     * @summary Get a single coupon template
+     * @param id The id of the template
+     */
     public getCouponTemplate (id: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/store/coupons/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -197,12 +197,12 @@ export class StoreCouponsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * List and search coupon templates
-        * 
-        * @param size The number of objects returned per page
-        * @param page The number of the page returned, starting with 1
-        * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-        */
+     * 
+     * @summary List and search coupon templates
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
     public getCouponTemplates (size?: number, page?: number, order?: string, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.PageResourceItemTemplateResource> {
         const localVarPath = this.basePath + '/store/coupons/templates';
 
@@ -234,12 +234,12 @@ export class StoreCouponsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a coupon item
-        * 
-        * @param id The id of the coupon
-        * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
-        * @param couponItem The coupon item object
-        */
+     * 
+     * @summary Update a coupon item
+     * @param id The id of the coupon
+     * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
+     * @param couponItem The coupon item object
+     */
     public updateCouponItem (id: number, cascade?: boolean, couponItem?: models.CouponItem, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.CouponItem> {
         const localVarPath = this.basePath + '/store/coupons/{id}'
             .replace('{' + 'id' + '}', String(id));
@@ -269,11 +269,11 @@ export class StoreCouponsApi {
         return this.$http(httpRequestParams);
     }
     /**
-        * Update a coupon template
-        * 
-        * @param id The id of the template
-        * @param couponTemplateResource The coupon template resource object
-        */
+     * 
+     * @summary Update a coupon template
+     * @param id The id of the template
+     * @param couponTemplateResource The coupon template resource object
+     */
     public updateCouponTemplate (id: string, couponTemplateResource?: models.ItemTemplateResource, extraHttpRequestParams?: any ) : ng.IHttpPromise<models.ItemTemplateResource> {
         const localVarPath = this.basePath + '/store/coupons/templates/{id}'
             .replace('{' + 'id' + '}', String(id));
