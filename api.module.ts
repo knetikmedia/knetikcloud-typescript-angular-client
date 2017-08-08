@@ -1,85 +1,100 @@
-import * as api from './api/api';
-import * as angular from 'angular';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
+import { Configuration } from './configuration';
 
-const apiModule = angular.module('api', [])
-.service('AccessTokenApi', api.AccessTokenApi)
-.service('ActivitiesApi', api.ActivitiesApi)
-.service('AmazonWebServicesS3Api', api.AmazonWebServicesS3Api)
-.service('AuthClientsApi', api.AuthClientsApi)
-.service('AuthPermissionsApi', api.AuthPermissionsApi)
-.service('AuthRolesApi', api.AuthRolesApi)
-.service('AuthTokensApi', api.AuthTokensApi)
-.service('BRERuleEngineActionsApi', api.BRERuleEngineActionsApi)
-.service('BRERuleEngineCategoriesApi', api.BRERuleEngineCategoriesApi)
-.service('BRERuleEngineEventsApi', api.BRERuleEngineEventsApi)
-.service('BRERuleEngineExpressionsApi', api.BRERuleEngineExpressionsApi)
-.service('BRERuleEngineGlobalsApi', api.BRERuleEngineGlobalsApi)
-.service('BRERuleEngineRulesApi', api.BRERuleEngineRulesApi)
-.service('BRERuleEngineTriggersApi', api.BRERuleEngineTriggersApi)
-.service('BRERuleEngineVariablesApi', api.BRERuleEngineVariablesApi)
-.service('CampaignsApi', api.CampaignsApi)
-.service('CampaignsChallengesApi', api.CampaignsChallengesApi)
-.service('CampaignsRewardsApi', api.CampaignsRewardsApi)
-.service('CategoriesApi', api.CategoriesApi)
-.service('ConfigsApi', api.ConfigsApi)
-.service('ContentArticlesApi', api.ContentArticlesApi)
-.service('ContentCommentsApi', api.ContentCommentsApi)
-.service('ContentPollsApi', api.ContentPollsApi)
-.service('CurrenciesApi', api.CurrenciesApi)
-.service('DevicesApi', api.DevicesApi)
-.service('DispositionsApi', api.DispositionsApi)
-.service('FulfillmentApi', api.FulfillmentApi)
-.service('GamificationAchievementsApi', api.GamificationAchievementsApi)
-.service('GamificationLeaderboardsApi', api.GamificationLeaderboardsApi)
-.service('GamificationLevelingApi', api.GamificationLevelingApi)
-.service('GamificationMetricsApi', api.GamificationMetricsApi)
-.service('GamificationTriviaApi', api.GamificationTriviaApi)
-.service('InvoicesApi', api.InvoicesApi)
-.service('LocationsApi', api.LocationsApi)
-.service('LogsApi', api.LogsApi)
-.service('MediaArtistsApi', api.MediaArtistsApi)
-.service('MediaModerationApi', api.MediaModerationApi)
-.service('MediaVideosApi', api.MediaVideosApi)
-.service('MessagingApi', api.MessagingApi)
-.service('PaymentsApi', api.PaymentsApi)
-.service('PaymentsAppleApi', api.PaymentsAppleApi)
-.service('PaymentsGoogleApi', api.PaymentsGoogleApi)
-.service('PaymentsOptimalApi', api.PaymentsOptimalApi)
-.service('PaymentsPayPalClassicApi', api.PaymentsPayPalClassicApi)
-.service('PaymentsStripeApi', api.PaymentsStripeApi)
-.service('PaymentsTransactionsApi', api.PaymentsTransactionsApi)
-.service('PaymentsWalletsApi', api.PaymentsWalletsApi)
-.service('PaymentsXsollaApi', api.PaymentsXsollaApi)
-.service('ReportingChallengesApi', api.ReportingChallengesApi)
-.service('ReportingOrdersApi', api.ReportingOrdersApi)
-.service('ReportingRevenueApi', api.ReportingRevenueApi)
-.service('ReportingSubscriptionsApi', api.ReportingSubscriptionsApi)
-.service('ReportingUsageApi', api.ReportingUsageApi)
-.service('ReportingUsersApi', api.ReportingUsersApi)
-.service('SearchApi', api.SearchApi)
-.service('SocialFacebookApi', api.SocialFacebookApi)
-.service('SocialGoogleApi', api.SocialGoogleApi)
-.service('StoreApi', api.StoreApi)
-.service('StoreBundlesApi', api.StoreBundlesApi)
-.service('StoreCouponsApi', api.StoreCouponsApi)
-.service('StoreSalesApi', api.StoreSalesApi)
-.service('StoreShippingApi', api.StoreShippingApi)
-.service('StoreShoppingCartsApi', api.StoreShoppingCartsApi)
-.service('StoreSubscriptionsApi', api.StoreSubscriptionsApi)
-.service('StoreVendorsApi', api.StoreVendorsApi)
-.service('TaxesApi', api.TaxesApi)
-.service('TemplatesPropertiesApi', api.TemplatesPropertiesApi)
-.service('UsersApi', api.UsersApi)
-.service('UsersAddressesApi', api.UsersAddressesApi)
-.service('UsersFriendshipsApi', api.UsersFriendshipsApi)
-.service('UsersGroupsApi', api.UsersGroupsApi)
-.service('UsersInventoryApi', api.UsersInventoryApi)
-.service('UsersRelationshipsApi', api.UsersRelationshipsApi)
-.service('UsersSubscriptionsApi', api.UsersSubscriptionsApi)
-.service('UtilBatchApi', api.UtilBatchApi)
-.service('UtilHealthApi', api.UtilHealthApi)
-.service('UtilMaintenanceApi', api.UtilMaintenanceApi)
-.service('UtilSecurityApi', api.UtilSecurityApi)
-.service('UtilVersionApi', api.UtilVersionApi)
+import { AccessTokenService } from './api/accessToken.service';
+import { ActivitiesService } from './api/activities.service';
+import { AmazonWebServicesS3Service } from './api/amazonWebServicesS3.service';
+import { AuthClientsService } from './api/authClients.service';
+import { AuthPermissionsService } from './api/authPermissions.service';
+import { AuthRolesService } from './api/authRoles.service';
+import { AuthTokensService } from './api/authTokens.service';
+import { BRERuleEngineActionsService } from './api/bRERuleEngineActions.service';
+import { BRERuleEngineCategoriesService } from './api/bRERuleEngineCategories.service';
+import { BRERuleEngineEventsService } from './api/bRERuleEngineEvents.service';
+import { BRERuleEngineExpressionsService } from './api/bRERuleEngineExpressions.service';
+import { BRERuleEngineGlobalsService } from './api/bRERuleEngineGlobals.service';
+import { BRERuleEngineRulesService } from './api/bRERuleEngineRules.service';
+import { BRERuleEngineTriggersService } from './api/bRERuleEngineTriggers.service';
+import { BRERuleEngineVariablesService } from './api/bRERuleEngineVariables.service';
+import { CampaignsService } from './api/campaigns.service';
+import { CampaignsChallengesService } from './api/campaignsChallenges.service';
+import { CampaignsRewardsService } from './api/campaignsRewards.service';
+import { CategoriesService } from './api/categories.service';
+import { ConfigsService } from './api/configs.service';
+import { ContentArticlesService } from './api/contentArticles.service';
+import { ContentCommentsService } from './api/contentComments.service';
+import { ContentPollsService } from './api/contentPolls.service';
+import { CurrenciesService } from './api/currencies.service';
+import { DevicesService } from './api/devices.service';
+import { DispositionsService } from './api/dispositions.service';
+import { FulfillmentService } from './api/fulfillment.service';
+import { GamificationAchievementsService } from './api/gamificationAchievements.service';
+import { GamificationLeaderboardsService } from './api/gamificationLeaderboards.service';
+import { GamificationLevelingService } from './api/gamificationLeveling.service';
+import { GamificationMetricsService } from './api/gamificationMetrics.service';
+import { GamificationTriviaService } from './api/gamificationTrivia.service';
+import { InvoicesService } from './api/invoices.service';
+import { LocationsService } from './api/locations.service';
+import { LogsService } from './api/logs.service';
+import { MediaArtistsService } from './api/mediaArtists.service';
+import { MediaModerationService } from './api/mediaModeration.service';
+import { MediaVideosService } from './api/mediaVideos.service';
+import { MessagingService } from './api/messaging.service';
+import { PaymentsService } from './api/payments.service';
+import { PaymentsAppleService } from './api/paymentsApple.service';
+import { PaymentsFattMerchantService } from './api/paymentsFattMerchant.service';
+import { PaymentsGoogleService } from './api/paymentsGoogle.service';
+import { PaymentsOptimalService } from './api/paymentsOptimal.service';
+import { PaymentsPayPalClassicService } from './api/paymentsPayPalClassic.service';
+import { PaymentsStripeService } from './api/paymentsStripe.service';
+import { PaymentsTransactionsService } from './api/paymentsTransactions.service';
+import { PaymentsWalletsService } from './api/paymentsWallets.service';
+import { PaymentsXsollaService } from './api/paymentsXsolla.service';
+import { ReportingChallengesService } from './api/reportingChallenges.service';
+import { ReportingOrdersService } from './api/reportingOrders.service';
+import { ReportingRevenueService } from './api/reportingRevenue.service';
+import { ReportingSubscriptionsService } from './api/reportingSubscriptions.service';
+import { ReportingUsageService } from './api/reportingUsage.service';
+import { ReportingUsersService } from './api/reportingUsers.service';
+import { SearchService } from './api/search.service';
+import { SocialFacebookService } from './api/socialFacebook.service';
+import { SocialGoogleService } from './api/socialGoogle.service';
+import { StoreService } from './api/store.service';
+import { StoreBundlesService } from './api/storeBundles.service';
+import { StoreCouponsService } from './api/storeCoupons.service';
+import { StoreSalesService } from './api/storeSales.service';
+import { StoreShippingService } from './api/storeShipping.service';
+import { StoreShoppingCartsService } from './api/storeShoppingCarts.service';
+import { StoreSubscriptionsService } from './api/storeSubscriptions.service';
+import { StoreVendorsService } from './api/storeVendors.service';
+import { TaxesService } from './api/taxes.service';
+import { TemplatesPropertiesService } from './api/templatesProperties.service';
+import { UsersService } from './api/users.service';
+import { UsersAddressesService } from './api/usersAddresses.service';
+import { UsersFriendshipsService } from './api/usersFriendships.service';
+import { UsersGroupsService } from './api/usersGroups.service';
+import { UsersInventoryService } from './api/usersInventory.service';
+import { UsersRelationshipsService } from './api/usersRelationships.service';
+import { UsersSubscriptionsService } from './api/usersSubscriptions.service';
+import { UtilBatchService } from './api/utilBatch.service';
+import { UtilHealthService } from './api/utilHealth.service';
+import { UtilMaintenanceService } from './api/utilMaintenance.service';
+import { UtilSecurityService } from './api/utilSecurity.service';
+import { UtilVersionService } from './api/utilVersion.service';
 
-export default apiModule;
+@NgModule({
+  imports:      [ CommonModule, HttpModule ],
+  declarations: [],
+  exports:      [],
+  providers:    [ AccessTokenService, ActivitiesService, AmazonWebServicesS3Service, AuthClientsService, AuthPermissionsService, AuthRolesService, AuthTokensService, BRERuleEngineActionsService, BRERuleEngineCategoriesService, BRERuleEngineEventsService, BRERuleEngineExpressionsService, BRERuleEngineGlobalsService, BRERuleEngineRulesService, BRERuleEngineTriggersService, BRERuleEngineVariablesService, CampaignsService, CampaignsChallengesService, CampaignsRewardsService, CategoriesService, ConfigsService, ContentArticlesService, ContentCommentsService, ContentPollsService, CurrenciesService, DevicesService, DispositionsService, FulfillmentService, GamificationAchievementsService, GamificationLeaderboardsService, GamificationLevelingService, GamificationMetricsService, GamificationTriviaService, InvoicesService, LocationsService, LogsService, MediaArtistsService, MediaModerationService, MediaVideosService, MessagingService, PaymentsService, PaymentsAppleService, PaymentsFattMerchantService, PaymentsGoogleService, PaymentsOptimalService, PaymentsPayPalClassicService, PaymentsStripeService, PaymentsTransactionsService, PaymentsWalletsService, PaymentsXsollaService, ReportingChallengesService, ReportingOrdersService, ReportingRevenueService, ReportingSubscriptionsService, ReportingUsageService, ReportingUsersService, SearchService, SocialFacebookService, SocialGoogleService, StoreService, StoreBundlesService, StoreCouponsService, StoreSalesService, StoreShippingService, StoreShoppingCartsService, StoreSubscriptionsService, StoreVendorsService, TaxesService, TemplatesPropertiesService, UsersService, UsersAddressesService, UsersFriendshipsService, UsersGroupsService, UsersInventoryService, UsersRelationshipsService, UsersSubscriptionsService, UtilBatchService, UtilHealthService, UtilMaintenanceService, UtilSecurityService, UtilVersionService ]
+})
+export class ApiModule {
+    public static forConfig(configurationFactory: () => Configuration): ModuleWithProviders {
+        return {
+            ngModule: ApiModule,
+            providers: [ {provide: Configuration, useFactory: configurationFactory}]
+        }
+    }
+}
