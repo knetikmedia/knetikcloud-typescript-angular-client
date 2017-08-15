@@ -78,11 +78,13 @@ export class AccessTokenService {
      * @param grantType Grant type
      * @param clientId The id of the client
      * @param clientSecret The secret key of the client.  Used only with a grant_type of client_credentials
-     * @param username The username of the client.  Used only with a grant_type of password
-     * @param password The password of the client.  Used only with a grant_type of password
+     * @param username The username of the client. Used only with a grant_type of password
+     * @param password The password of the client. Used only with a grant_type of password
+     * @param token The 3rd party authentication token. Used only with a grant_type of facebook, google, etc (social plugins)
+     * @param refreshToken The refresh token obtained during prior authentication. Used only with a grant_type of refresh_token
      */
-    public getOAuthToken(grantType: string, clientId: string, clientSecret?: string, username?: string, password?: string, extraHttpRequestParams?: any): Observable<OAuth2Resource> {
-        return this.getOAuthTokenWithHttpInfo(grantType, clientId, clientSecret, username, password, extraHttpRequestParams)
+    public getOAuthToken(grantType: string, clientId: string, clientSecret?: string, username?: string, password?: string, token?: string, refreshToken?: string, extraHttpRequestParams?: any): Observable<OAuth2Resource> {
+        return this.getOAuthTokenWithHttpInfo(grantType, clientId, clientSecret, username, password, token, refreshToken, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -99,10 +101,12 @@ export class AccessTokenService {
      * @param grantType Grant type
      * @param clientId The id of the client
      * @param clientSecret The secret key of the client.  Used only with a grant_type of client_credentials
-     * @param username The username of the client.  Used only with a grant_type of password
-     * @param password The password of the client.  Used only with a grant_type of password
+     * @param username The username of the client. Used only with a grant_type of password
+     * @param password The password of the client. Used only with a grant_type of password
+     * @param token The 3rd party authentication token. Used only with a grant_type of facebook, google, etc (social plugins)
+     * @param refreshToken The refresh token obtained during prior authentication. Used only with a grant_type of refresh_token
      */
-    public getOAuthTokenWithHttpInfo(grantType: string, clientId: string, clientSecret?: string, username?: string, password?: string, extraHttpRequestParams?: any): Observable<Response> {
+    public getOAuthTokenWithHttpInfo(grantType: string, clientId: string, clientSecret?: string, username?: string, password?: string, token?: string, refreshToken?: string, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/oauth/token';
 
         let queryParameters = new URLSearchParams();
@@ -150,6 +154,14 @@ export class AccessTokenService {
 
         if (password !== undefined) {
             formParams.set('password', <any>password);
+        }
+
+        if (token !== undefined) {
+            formParams.set('token', <any>token);
+        }
+
+        if (refreshToken !== undefined) {
+            formParams.set('refresh_token', <any>refreshToken);
         }
 
         let requestOptions: RequestOptionsArgs = new RequestOptions({
