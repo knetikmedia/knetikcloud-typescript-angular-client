@@ -129,15 +129,6 @@ export class BRERuleEngineActionsService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,

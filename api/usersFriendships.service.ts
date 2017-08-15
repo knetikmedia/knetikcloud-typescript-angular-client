@@ -206,15 +206,6 @@ export class UsersFriendshipsService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Post,
@@ -262,15 +253,6 @@ export class UsersFriendshipsService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,
@@ -307,15 +289,6 @@ export class UsersFriendshipsService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
@@ -364,15 +337,6 @@ export class UsersFriendshipsService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,
@@ -410,15 +374,6 @@ export class UsersFriendshipsService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         headers.set('Content-Type', 'application/json');
@@ -465,15 +420,6 @@ export class UsersFriendshipsService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({

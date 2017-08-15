@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { Behavior } from './behavior';
 import { Property } from './property';
 import { SubscriptionPlanResource } from './subscriptionPlanResource';
 
@@ -24,6 +25,11 @@ export interface SubscriptionResource {
      * Who can purchase this subscription
      */
     availability?: SubscriptionResource.AvailabilityEnum;
+
+    /**
+     * The behaviors linked to the item, describing various options and interactions. May not be included in item lists
+     */
+    behaviors?: Array<Behavior>;
 
     /**
      * A category for filtering items

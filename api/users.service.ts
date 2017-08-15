@@ -384,15 +384,6 @@ export class UsersService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         headers.set('Content-Type', 'application/json');
 
@@ -427,15 +418,6 @@ export class UsersService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         headers.set('Content-Type', 'application/json');
@@ -482,15 +464,6 @@ export class UsersService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Delete,
@@ -527,15 +500,6 @@ export class UsersService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
@@ -574,15 +538,6 @@ export class UsersService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,
@@ -619,15 +574,6 @@ export class UsersService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
@@ -674,15 +620,6 @@ export class UsersService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
@@ -779,15 +716,6 @@ export class UsersService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
@@ -908,15 +836,6 @@ export class UsersService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Delete,
@@ -954,15 +873,6 @@ export class UsersService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         headers.set('Content-Type', 'application/json');
@@ -1077,15 +987,6 @@ export class UsersService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         headers.set('Content-Type', 'application/json');
 
@@ -1126,15 +1027,6 @@ export class UsersService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         headers.set('Content-Type', 'application/json');

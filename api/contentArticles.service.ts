@@ -194,6 +194,7 @@ export class ContentArticlesService {
     /**
      * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single article' to retrieve the full resource with assets for a given item as needed.
      * @summary List and search articles
+     * @param filterActiveOnly Filter for articles that are active (true) or inactive (false)
      * @param filterCategory Filter for articles from a specific category by id
      * @param filterTagset Filter for articles with at least one of a specified set of tags (separated by comma)
      * @param filterTagIntersection Filter for articles with all of a specified set of tags (separated by comma)
@@ -203,8 +204,8 @@ export class ContentArticlesService {
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
      */
-    public getArticles(filterCategory?: string, filterTagset?: string, filterTagIntersection?: string, filterTagExclusion?: string, filterTitle?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceArticleResource> {
-        return this.getArticlesWithHttpInfo(filterCategory, filterTagset, filterTagIntersection, filterTagExclusion, filterTitle, size, page, order, extraHttpRequestParams)
+    public getArticles(filterActiveOnly?: boolean, filterCategory?: string, filterTagset?: string, filterTagIntersection?: string, filterTagExclusion?: string, filterTitle?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceArticleResource> {
+        return this.getArticlesWithHttpInfo(filterActiveOnly, filterCategory, filterTagset, filterTagIntersection, filterTagExclusion, filterTitle, size, page, order, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -266,15 +267,6 @@ export class ContentArticlesService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         headers.set('Content-Type', 'application/json');
 
@@ -309,15 +301,6 @@ export class ContentArticlesService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         headers.set('Content-Type', 'application/json');
@@ -358,15 +341,6 @@ export class ContentArticlesService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
@@ -409,15 +383,6 @@ export class ContentArticlesService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
@@ -493,15 +458,6 @@ export class ContentArticlesService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,
@@ -548,15 +504,6 @@ export class ContentArticlesService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,
@@ -575,6 +522,7 @@ export class ContentArticlesService {
     /**
      * List and search articles
      * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use &#39;Get a single article&#39; to retrieve the full resource with assets for a given item as needed.
+     * @param filterActiveOnly Filter for articles that are active (true) or inactive (false)
      * @param filterCategory Filter for articles from a specific category by id
      * @param filterTagset Filter for articles with at least one of a specified set of tags (separated by comma)
      * @param filterTagIntersection Filter for articles with all of a specified set of tags (separated by comma)
@@ -584,11 +532,15 @@ export class ContentArticlesService {
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
      */
-    public getArticlesWithHttpInfo(filterCategory?: string, filterTagset?: string, filterTagIntersection?: string, filterTagExclusion?: string, filterTitle?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
+    public getArticlesWithHttpInfo(filterActiveOnly?: boolean, filterCategory?: string, filterTagset?: string, filterTagIntersection?: string, filterTagExclusion?: string, filterTitle?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/content/articles';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        if (filterActiveOnly !== undefined) {
+            queryParameters.set('filter_active_only', <any>filterActiveOnly);
+        }
 
         if (filterCategory !== undefined) {
             queryParameters.set('filter_category', <any>filterCategory);
@@ -666,15 +618,6 @@ export class ContentArticlesService {
             'application/json'
         ];
 
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
             
         headers.set('Content-Type', 'application/json');
 
@@ -715,15 +658,6 @@ export class ContentArticlesService {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         headers.set('Content-Type', 'application/json');

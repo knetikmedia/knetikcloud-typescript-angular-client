@@ -74,8 +74,26 @@ export class AmazonWebServicesS3Service {
     }
 
     /**
-     * Requires the file name and file content type (i.e., 'video/mpeg')
-     * @summary Get a signed S3 URL
+     * To give access to files in your own S3 account, you will need to grant KnetikcCloud access to the file by adjusting your bucket policy accordingly. See S3 documentation for details.
+     * @summary Get a temporary signed S3 URL for download
+     * @param bucket S3 bucket name
+     * @param path The path to the file relative the bucket (the s3 object key)
+     * @param expiration The number of seconds this URL will be valid. Default to 60
+     */
+    public getDownloadURL(bucket?: string, path?: string, expiration?: number, extraHttpRequestParams?: any): Observable<string> {
+        return this.getDownloadURLWithHttpInfo(bucket, path, expiration, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * Requires the file name and file content type (i.e., 'video/mpeg'). Make a PUT to the resulting url to upload the file and use the cdn_url to retrieve it after.
+     * @summary Get a signed S3 URL for upload
      * @param filename The file name
      * @param contentType The content type
      */
@@ -92,8 +110,54 @@ export class AmazonWebServicesS3Service {
 
 
     /**
-     * Get a signed S3 URL
-     * Requires the file name and file content type (i.e., &#39;video/mpeg&#39;)
+     * Get a temporary signed S3 URL for download
+     * To give access to files in your own S3 account, you will need to grant KnetikcCloud access to the file by adjusting your bucket policy accordingly. See S3 documentation for details.
+     * @param bucket S3 bucket name
+     * @param path The path to the file relative the bucket (the s3 object key)
+     * @param expiration The number of seconds this URL will be valid. Default to 60
+     */
+    public getDownloadURLWithHttpInfo(bucket?: string, path?: string, expiration?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/amazon/s3/downloadurl';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        if (bucket !== undefined) {
+            queryParameters.set('bucket', <any>bucket);
+        }
+
+        if (path !== undefined) {
+            queryParameters.set('path', <any>path);
+        }
+
+        if (expiration !== undefined) {
+            queryParameters.set('expiration', <any>expiration);
+        }
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Get a signed S3 URL for upload
+     * Requires the file name and file content type (i.e., &#39;video/mpeg&#39;). Make a PUT to the resulting url to upload the file and use the cdn_url to retrieve it after.
      * @param filename The file name
      * @param contentType The content type
      */
@@ -116,15 +180,6 @@ export class AmazonWebServicesS3Service {
         let produces: string[] = [
             'application/json'
         ];
-
-        // authentication (OAuth2) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
