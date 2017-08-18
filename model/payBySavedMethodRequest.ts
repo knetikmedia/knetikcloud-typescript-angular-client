@@ -18,4 +18,9 @@ export interface PayBySavedMethodRequest {
      */
     paymentMethod: number;
 
+    /**
+     * The id of a user to bill. Must have PAYMENTS_ADMIN permission
+     */
+    userId?: number;
+
 }
