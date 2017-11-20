@@ -431,9 +431,10 @@ export class CampaignsChallengesService {
      * @param id The challenge_activity id
      * @param challengeId The challenge id
      * @param challengeActivityResource The challenge activity resource object
+     * @param validateSettings Whether to validate the settings being sent against the available settings on the base activity.
      */
-    public updateChallengeActivity(id: number, challengeId: number, challengeActivityResource?: ChallengeActivityResource, extraHttpRequestParams?: any): Observable<ChallengeActivityResource> {
-        return this.updateChallengeActivityWithHttpInfo(id, challengeId, challengeActivityResource, extraHttpRequestParams)
+    public updateChallengeActivity(id: number, challengeId: number, challengeActivityResource?: ChallengeActivityResource, validateSettings?: boolean, extraHttpRequestParams?: any): Observable<ChallengeActivityResource> {
+        return this.updateChallengeActivityWithHttpInfo(id, challengeId, challengeActivityResource, validateSettings, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -550,7 +551,7 @@ export class CampaignsChallengesService {
             throw new Error('Required parameter challengeId was null or undefined when calling createChallengeActivity.');
         }
         if (validateSettings !== undefined) {
-            queryParameters.set('validateSettings', <any>validateSettings);
+            queryParameters.set('validate_settings', <any>validateSettings);
         }
 
 
@@ -1014,6 +1015,24 @@ export class CampaignsChallengesService {
             'application/json'
         ];
 
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,
@@ -1066,6 +1085,24 @@ export class CampaignsChallengesService {
             'application/json'
         ];
 
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,
@@ -1108,6 +1145,24 @@ export class CampaignsChallengesService {
         let produces: string[] = [
             'application/json'
         ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
@@ -1265,6 +1320,24 @@ export class CampaignsChallengesService {
             'application/json'
         ];
 
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,
@@ -1330,6 +1403,24 @@ export class CampaignsChallengesService {
         let produces: string[] = [
             'application/json'
         ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
@@ -1511,6 +1602,24 @@ export class CampaignsChallengesService {
             'application/json'
         ];
 
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,
@@ -1591,8 +1700,9 @@ export class CampaignsChallengesService {
      * @param id The challenge_activity id
      * @param challengeId The challenge id
      * @param challengeActivityResource The challenge activity resource object
+     * @param validateSettings Whether to validate the settings being sent against the available settings on the base activity.
      */
-    public updateChallengeActivityWithHttpInfo(id: number, challengeId: number, challengeActivityResource?: ChallengeActivityResource, extraHttpRequestParams?: any): Observable<Response> {
+    public updateChallengeActivityWithHttpInfo(id: number, challengeId: number, challengeActivityResource?: ChallengeActivityResource, validateSettings?: boolean, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/challenges/${challenge_id}/activities/${id}'
                     .replace('${' + 'id' + '}', String(id))
                     .replace('${' + 'challenge_id' + '}', String(challengeId));
@@ -1608,6 +1718,10 @@ export class CampaignsChallengesService {
         if (challengeId === null || challengeId === undefined) {
             throw new Error('Required parameter challengeId was null or undefined when calling updateChallengeActivity.');
         }
+        if (validateSettings !== undefined) {
+            queryParameters.set('validateSettings', <any>validateSettings);
+        }
+
 
         // to determine the Accept header
         let produces: string[] = [
