@@ -15,14 +15,39 @@ import { PropertyFieldListResource } from './propertyFieldListResource';
 
 export interface PropertyDefinitionResource {
     /**
+     * The description of the property
+     */
+    description?: string;
+
+    /**
      * A list of the fields on both the property definition and property of this type
      */
     fieldList?: PropertyFieldListResource;
 
     /**
+     * The friendly front-facing name of the property
+     */
+    friendlyName?: string;
+
+    /**
      * The name of the property
      */
     name: string;
+
+    /**
+     * The JSON path to the option label
+     */
+    optionLabelPath?: string;
+
+    /**
+     * The JSON path to the option value
+     */
+    optionValuePath?: string;
+
+    /**
+     * URL of service containing the property options (assumed JSON array)
+     */
+    optionsUrl?: string;
 
     /**
      * Whether the property is required

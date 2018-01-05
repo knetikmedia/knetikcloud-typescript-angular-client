@@ -46,6 +46,11 @@ export interface BreRule {
     endDate?: number;
 
     /**
+     * How many times the rule has been evaluated (it's conditions checked, whether it then runs or not)
+     */
+    evaluationCount?: number;
+
+    /**
      * The event name of the trigger this rule runs for. Affects which parameters are available
      */
     eventName: string;
@@ -59,6 +64,11 @@ export interface BreRule {
      * The human readable name of the rule
      */
     name: string;
+
+    /**
+     * How many times the rule has run
+     */
+    runCount?: number;
 
     /**
      * Used to sort rules to control the order they run in. Larger numbered sort values run first.  Default 500

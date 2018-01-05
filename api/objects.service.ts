@@ -20,7 +20,6 @@ import { Response, ResponseContentType }                     from '@angular/http
 import { Observable }                                        from 'rxjs/Observable';
 import '../rxjs-operators';
 
-import { EntitlementItem } from '../model/entitlementItem';
 import { ItemTemplateResource } from '../model/itemTemplateResource';
 import { ObjectResource } from '../model/objectResource';
 import { PageResourceItemTemplateResource } from '../model/pageResourceItemTemplateResource';
@@ -219,12 +218,12 @@ export class ObjectsService {
      * 
      * @summary Update an object
      * @param templateId The id of the template this object is part of
-     * @param entitlementId The id of the entitlement
+     * @param objectId The id of the object
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param objectItem The object item object
      */
-    public updateObjectItem(templateId: string, entitlementId: number, cascade?: boolean, objectItem?: EntitlementItem, extraHttpRequestParams?: any): Observable<{}> {
-        return this.updateObjectItemWithHttpInfo(templateId, entitlementId, cascade, objectItem, extraHttpRequestParams)
+    public updateObjectItem(templateId: string, objectId: number, cascade?: boolean, objectItem?: ObjectResource, extraHttpRequestParams?: any): Observable<{}> {
+        return this.updateObjectItemWithHttpInfo(templateId, objectId, cascade, objectItem, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -744,14 +743,14 @@ export class ObjectsService {
      * Update an object
      * 
      * @param templateId The id of the template this object is part of
-     * @param entitlementId The id of the entitlement
+     * @param objectId The id of the object
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param objectItem The object item object
      */
-    public updateObjectItemWithHttpInfo(templateId: string, entitlementId: number, cascade?: boolean, objectItem?: EntitlementItem, extraHttpRequestParams?: any): Observable<Response> {
+    public updateObjectItemWithHttpInfo(templateId: string, objectId: number, cascade?: boolean, objectItem?: ObjectResource, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/objects/${template_id}/${object_id}'
                     .replace('${' + 'template_id' + '}', String(templateId))
-                    .replace('${' + 'entitlement_id' + '}', String(entitlementId));
+                    .replace('${' + 'object_id' + '}', String(objectId));
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
@@ -760,9 +759,9 @@ export class ObjectsService {
         if (templateId === null || templateId === undefined) {
             throw new Error('Required parameter templateId was null or undefined when calling updateObjectItem.');
         }
-        // verify required parameter 'entitlementId' is not null or undefined
-        if (entitlementId === null || entitlementId === undefined) {
-            throw new Error('Required parameter entitlementId was null or undefined when calling updateObjectItem.');
+        // verify required parameter 'objectId' is not null or undefined
+        if (objectId === null || objectId === undefined) {
+            throw new Error('Required parameter objectId was null or undefined when calling updateObjectItem.');
         }
         if (cascade !== undefined) {
             queryParameters.set('cascade', <any>cascade);

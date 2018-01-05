@@ -55,14 +55,19 @@ export interface GroupResource {
     subMemberCount?: number;
 
     /**
+     * Tags for search
+     */
+    tags?: Array<string>;
+
+    /**
      * A group template this group is validated against. May be null and no validation of additional_properties will be done
      */
     template?: string;
 
     /**
-     * Unique name used in url and references. Uppercase, lowercase, numbers and hyphens only. Max 50 characters. Cannot be altered once created
+     * Unique name used in url and references. Uppercase, lowercase, numbers and hyphens only. Max 50 characters. Cannot be altered once created. Default: random UUID
      */
-    uniqueName: string;
+    uniqueName?: string;
 
 }
 export namespace GroupResource {

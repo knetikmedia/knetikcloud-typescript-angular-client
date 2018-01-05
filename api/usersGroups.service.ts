@@ -162,8 +162,8 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
-     * @summary Removes a group from the system IF no resources are attached to it
+     * All groups listing this as the parent are also removed and users are in turn removed from this and those groups. This may result in users no longer being in this group's parent if they were not added to it directly as well.
+     * @summary Removes a group from the system
      * @param uniqueName The group unique name
      */
     public deleteGroup(uniqueName: string, extraHttpRequestParams?: any): Observable<{}> {
@@ -218,6 +218,22 @@ export class UsersGroupsService {
      */
     public getGroup(uniqueName: string, extraHttpRequestParams?: any): Observable<GroupResource> {
         return this.getGroupWithHttpInfo(uniqueName, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * Returns a list of ancestor groups in reverse order (parent, then grandparent, etc
+     * @summary Get group ancestors
+     * @param uniqueName The group unique name
+     */
+    public getGroupAncestors(uniqueName: string, extraHttpRequestParams?: any): Observable<Array<GroupResource>> {
+        return this.getGroupAncestorsWithHttpInfo(uniqueName, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -390,7 +406,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * If adding/removing/changing parent, user membership in group/new parent groups may be modified. The parent being removed will remove members from this sub group unless they were added explicitly to the parent and the new parent will gain members unless they were already a part of it.
      * @summary Update a group
      * @param uniqueName The group unique name
      * @param groupResource The updated group
@@ -781,8 +797,8 @@ export class UsersGroupsService {
     }
 
     /**
-     * Removes a group from the system IF no resources are attached to it
-     * 
+     * Removes a group from the system
+     * All groups listing this as the parent are also removed and users are in turn removed from this and those groups. This may result in users no longer being in this group&#39;s parent if they were not added to it directly as well.
      * @param uniqueName The group unique name
      */
     public deleteGroupWithHttpInfo(uniqueName: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -994,6 +1010,43 @@ export class UsersGroupsService {
                 : this.configuration.accessToken;
             headers.set('Authorization', 'Bearer ' + accessToken);
         }
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Get group ancestors
+     * Returns a list of ancestor groups in reverse order (parent, then grandparent, etc
+     * @param uniqueName The group unique name
+     */
+    public getGroupAncestorsWithHttpInfo(uniqueName: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/users/groups/${unique_name}/ancestors'
+                    .replace('${' + 'unique_name' + '}', String(uniqueName));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'uniqueName' is not null or undefined
+        if (uniqueName === null || uniqueName === undefined) {
+            throw new Error('Required parameter uniqueName was null or undefined when calling getGroupAncestors.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
 
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
@@ -1596,7 +1649,7 @@ export class UsersGroupsService {
 
     /**
      * Update a group
-     * 
+     * If adding/removing/changing parent, user membership in group/new parent groups may be modified. The parent being removed will remove members from this sub group unless they were added explicitly to the parent and the new parent will gain members unless they were already a part of it.
      * @param uniqueName The group unique name
      * @param groupResource The updated group
      */

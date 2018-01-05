@@ -11,6 +11,8 @@
  */
 
 import { Property } from './property';
+import { SimpleGroupResource } from './simpleGroupResource';
+import { SimpleUserResource } from './simpleUserResource';
 
 
 export interface GroupMemberResource {
@@ -20,19 +22,19 @@ export interface GroupMemberResource {
     additionalProperties?: { [key: string]: Property; };
 
     /**
-     * The url of the user's avatar image
+     * The group. Id is the unique name
      */
-    avatarUrl?: string;
+    group?: SimpleGroupResource;
 
     /**
-     * The public username of the user
+     * Whether this membership is explicit (the user was added directly to the group) or implicit (the user was added only to one or more child groups)
      */
-    displayName?: string;
+    implicit?: boolean;
 
     /**
-     * The id of the user
+     * The id of the membership entry
      */
-    id: number;
+    membershipId?: number;
 
     /**
      * The position of the member in the group if applicable. Read notes for details
@@ -50,9 +52,9 @@ export interface GroupMemberResource {
     template?: string;
 
     /**
-     * The username of the user
+     * The user
      */
-    username?: string;
+    user: SimpleUserResource;
 
 }
 export namespace GroupMemberResource {

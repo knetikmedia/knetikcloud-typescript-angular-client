@@ -75,7 +75,7 @@ export class SearchService {
 
     /**
      * The body is an ElasticSearch query in JSON format. Please see their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html'>documentation</a> for details on the format and search options. The searchable object's format depends on on the type but mostly matches the resource from it's main endpoint. Exceptions include referenced objects (like user) being replaced with the full user resource to allow deeper searching.
-     * @summary Search an index
+     * @summary Search an index with no template
      * @param type The index type
      * @param query The query to be used for the search
      * @param size The number of documents returned per page
@@ -92,9 +92,29 @@ export class SearchService {
             });
     }
 
+    /**
+     * The body is an ElasticSearch query in JSON format. Please see their <a href='https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html'>documentation</a> for details on the format and search options. The searchable object's format depends on on the type but mostly matches the resource from it's main endpoint. Exceptions include referenced objects (like user) being replaced with the full user resource to allow deeper searching.
+     * @summary Search an index with a template
+     * @param type The index type
+     * @param template The index template
+     * @param query The query to be used for the search
+     * @param size The number of documents returned per page
+     * @param page The number of the page returned, starting with 1
+     */
+    public searchIndexWithTemplate(type: string, template: string, query?: any, size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceMapstringobject> {
+        return this.searchIndexWithTemplateWithHttpInfo(type, template, query, size, page, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
 
     /**
-     * Search an index
+     * Search an index with no template
      * The body is an ElasticSearch query in JSON format. Please see their &lt;a href&#x3D;&#39;https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html&#39;&gt;documentation&lt;/a&gt; for details on the format and search options. The searchable object&#39;s format depends on on the type but mostly matches the resource from it&#39;s main endpoint. Exceptions include referenced objects (like user) being replaced with the full user resource to allow deeper searching.
      * @param type The index type
      * @param query The query to be used for the search
@@ -143,6 +163,63 @@ export class SearchService {
                 : this.configuration.accessToken;
             headers.set('Authorization', 'Bearer ' + accessToken);
         }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: query == null ? '' : JSON.stringify(query), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Search an index with a template
+     * The body is an ElasticSearch query in JSON format. Please see their &lt;a href&#x3D;&#39;https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html&#39;&gt;documentation&lt;/a&gt; for details on the format and search options. The searchable object&#39;s format depends on on the type but mostly matches the resource from it&#39;s main endpoint. Exceptions include referenced objects (like user) being replaced with the full user resource to allow deeper searching.
+     * @param type The index type
+     * @param template The index template
+     * @param query The query to be used for the search
+     * @param size The number of documents returned per page
+     * @param page The number of the page returned, starting with 1
+     */
+    public searchIndexWithTemplateWithHttpInfo(type: string, template: string, query?: any, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/search/index/${type}/${template}'
+                    .replace('${' + 'type' + '}', String(type))
+                    .replace('${' + 'template' + '}', String(template));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'type' is not null or undefined
+        if (type === null || type === undefined) {
+            throw new Error('Required parameter type was null or undefined when calling searchIndexWithTemplate.');
+        }
+        // verify required parameter 'template' is not null or undefined
+        if (template === null || template === undefined) {
+            throw new Error('Required parameter template was null or undefined when calling searchIndexWithTemplate.');
+        }
+        if (size !== undefined) {
+            queryParameters.set('size', <any>size);
+        }
+
+        if (page !== undefined) {
+            queryParameters.set('page', <any>page);
+        }
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
 
             
         headers.set('Content-Type', 'application/json');

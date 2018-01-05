@@ -109,14 +109,15 @@ export class CurrenciesService {
     /**
      * 
      * @summary List and search currencies
+     * @param filterDefault Filter for the one currency that is set as default (true), or all that are not (false)
      * @param filterEnabledCurrencies Filter for alternate currencies setup explicitely in system config
      * @param filterType Filter currencies by type.  Allowable values: (&#39;virtual&#39;, &#39;real&#39;)
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
      */
-    public getCurrencies(filterEnabledCurrencies?: boolean, filterType?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceCurrencyResource> {
-        return this.getCurrenciesWithHttpInfo(filterEnabledCurrencies, filterType, size, page, order, extraHttpRequestParams)
+    public getCurrencies(filterDefault?: boolean, filterEnabledCurrencies?: boolean, filterType?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceCurrencyResource> {
+        return this.getCurrenciesWithHttpInfo(filterDefault, filterEnabledCurrencies, filterType, size, page, order, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -271,17 +272,22 @@ export class CurrenciesService {
     /**
      * List and search currencies
      * 
+     * @param filterDefault Filter for the one currency that is set as default (true), or all that are not (false)
      * @param filterEnabledCurrencies Filter for alternate currencies setup explicitely in system config
      * @param filterType Filter currencies by type.  Allowable values: (&#39;virtual&#39;, &#39;real&#39;)
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
      */
-    public getCurrenciesWithHttpInfo(filterEnabledCurrencies?: boolean, filterType?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
+    public getCurrenciesWithHttpInfo(filterDefault?: boolean, filterEnabledCurrencies?: boolean, filterType?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/currencies';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        if (filterDefault !== undefined) {
+            queryParameters.set('filter_default', <any>filterDefault);
+        }
 
         if (filterEnabledCurrencies !== undefined) {
             queryParameters.set('filter_enabled_currencies', <any>filterEnabledCurrencies);

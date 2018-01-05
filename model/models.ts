@@ -257,6 +257,7 @@ export * from './schedule';
 export * from './selectedSettingRequest';
 export * from './selectedSettingResource';
 export * from './settingOption';
+export * from './simpleGroupResource';
 export * from './simpleReferenceResourceint';
 export * from './simpleReferenceResourcelong';
 export * from './simpleReferenceResourceobject';
