@@ -12,6 +12,7 @@
 
 import { CommentResource } from './commentResource';
 import { ContributionResource } from './contributionResource';
+import { Property } from './property';
 import { SimpleReferenceResourcelong } from './simpleReferenceResourcelong';
 import { SimpleReferenceResourcestring } from './simpleReferenceResourcestring';
 import { SimpleUserResource } from './simpleUserResource';
@@ -22,6 +23,11 @@ export interface VideoResource {
      * Whether the video is available, based on various factors
      */
     active?: boolean;
+
+    /**
+     * A map of additional properties, keyed on the property name.  Must match the names and types defined in the template for this item type
+     */
+    additionalProperties?: { [key: string]: Property; };
 
     /**
      * The original artist of the media
@@ -132,6 +138,11 @@ export interface VideoResource {
      * The tags for the video
      */
     tags?: Array<string>;
+
+    /**
+     * A video template this video is validated against (private). May be null and no validation of additional_properties will be done
+     */
+    template?: string;
 
     /**
      * The country of a thumbnail version. Typically a url
