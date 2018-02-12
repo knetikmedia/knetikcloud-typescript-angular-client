@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UtilMaintenanceService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class UtilMaintenanceService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> MAINTENANCE_ADMIN
      * @summary Delete maintenance info
      */
     public deleteMaintenance(extraHttpRequestParams?: any): Observable<{}> {
@@ -89,7 +89,7 @@ export class UtilMaintenanceService {
     }
 
     /**
-     * Get current maintenance info. 404 if no maintenance.
+     * Get current maintenance info. 404 if no maintenance. <br><br><b>Permissions Needed:</b> ANY
      * @summary Get current maintenance info
      */
     public getMaintenance(extraHttpRequestParams?: any): Observable<Maintenance> {
@@ -104,7 +104,7 @@ export class UtilMaintenanceService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> MAINTENANCE_ADMIN
      * @summary Set current maintenance info
      * @param maintenance The maintenance object
      */
@@ -120,7 +120,7 @@ export class UtilMaintenanceService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> MAINTENANCE_ADMIN
      * @summary Update current maintenance info
      * @param maintenance The maintenance object
      */
@@ -138,7 +138,7 @@ export class UtilMaintenanceService {
 
     /**
      * Delete maintenance info
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MAINTENANCE_ADMIN
      */
     public deleteMaintenanceWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/maintenance';
@@ -187,7 +187,7 @@ export class UtilMaintenanceService {
 
     /**
      * Get current maintenance info
-     * Get current maintenance info. 404 if no maintenance.
+     * Get current maintenance info. 404 if no maintenance. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      */
     public getMaintenanceWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/maintenance';
@@ -236,7 +236,7 @@ export class UtilMaintenanceService {
 
     /**
      * Set current maintenance info
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MAINTENANCE_ADMIN
      * @param maintenance The maintenance object
      */
     public setMaintenanceWithHttpInfo(maintenance?: Maintenance, extraHttpRequestParams?: any): Observable<Response> {
@@ -289,7 +289,7 @@ export class UtilMaintenanceService {
 
     /**
      * Update current maintenance info
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MAINTENANCE_ADMIN
      * @param maintenance The maintenance object
      */
     public updateMaintenanceWithHttpInfo(maintenance?: Maintenance, extraHttpRequestParams?: any): Observable<Response> {

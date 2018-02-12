@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UsersFriendshipsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class UsersFriendshipsService {
     }
 
     /**
-     * As a user, either creates or confirm a pending request. As an admin, call this endpoint twice while inverting the IDs to create a confirmed friendship.
+     * As a user, either creates or confirm a pending request. As an admin, call this endpoint twice while inverting the IDs to create a confirmed friendship. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
      * @summary Add a friend
      * @param userId The id of the user or &#39;me&#39; if logged in
      * @param id The id of the user to befriend
@@ -92,7 +92,7 @@ export class UsersFriendshipsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
      * @summary Get friends list
      * @param userId The id of the user or &#39;me&#39;
      * @param filterUsername Filter for friends with the given username
@@ -112,7 +112,7 @@ export class UsersFriendshipsService {
     }
 
     /**
-     * This is a unique invite token that allows direct connection to the request user.  Exposing that token presents privacy issues if the token is leaked. Use friend request flow instead if confirmation is required
+     * This is a unique invite token that allows direct connection to the request user.  Exposing that token presents privacy issues if the token is leaked. Use friend request. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)flow instead if confirmation is required
      * @summary Returns the invite token
      * @param userId The id of the user or &#39;me&#39; if logged in
      */
@@ -128,7 +128,7 @@ export class UsersFriendshipsService {
     }
 
     /**
-     * Invites that the specified user received
+     * Invites that the specified user received. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
      * @summary Get pending invites
      * @param userId The id of the user or &#39;me&#39;
      * @param size The number of objects returned per page
@@ -146,7 +146,7 @@ export class UsersFriendshipsService {
     }
 
     /**
-     * Immediately connects the requested user with the user mapped by the provided invite token
+     * Immediately connects the requested user with the user mapped by the provided invite token. <br><br><b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
      * @summary Redeem friendship token
      * @param userId The id of the user or &#39;me&#39; if logged in
      * @param token The invite token
@@ -163,7 +163,7 @@ export class UsersFriendshipsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
      * @summary Remove or decline a friend
      * @param userId The id of the user or &#39;me&#39; if logged in
      * @param id The id of the user to befriend
@@ -182,7 +182,7 @@ export class UsersFriendshipsService {
 
     /**
      * Add a friend
-     * As a user, either creates or confirm a pending request. As an admin, call this endpoint twice while inverting the IDs to create a confirmed friendship.
+     * As a user, either creates or confirm a pending request. As an admin, call this endpoint twice while inverting the IDs to create a confirmed friendship. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
      * @param userId The id of the user or &#39;me&#39; if logged in
      * @param id The id of the user to befriend
      */
@@ -243,7 +243,7 @@ export class UsersFriendshipsService {
 
     /**
      * Get friends list
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
      * @param userId The id of the user or &#39;me&#39;
      * @param filterUsername Filter for friends with the given username
      * @param filterUserId Filter for friends by user id
@@ -318,7 +318,7 @@ export class UsersFriendshipsService {
 
     /**
      * Returns the invite token
-     * This is a unique invite token that allows direct connection to the request user.  Exposing that token presents privacy issues if the token is leaked. Use friend request flow instead if confirmation is required
+     * This is a unique invite token that allows direct connection to the request user.  Exposing that token presents privacy issues if the token is leaked. Use friend request. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)flow instead if confirmation is required
      * @param userId The id of the user or &#39;me&#39; if logged in
      */
     public getInviteTokenWithHttpInfo(userId: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -373,7 +373,7 @@ export class UsersFriendshipsService {
 
     /**
      * Get pending invites
-     * Invites that the specified user received
+     * Invites that the specified user received. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
      * @param userId The id of the user or &#39;me&#39;
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -438,7 +438,7 @@ export class UsersFriendshipsService {
 
     /**
      * Redeem friendship token
-     * Immediately connects the requested user with the user mapped by the provided invite token
+     * Immediately connects the requested user with the user mapped by the provided invite token. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
      * @param userId The id of the user or &#39;me&#39; if logged in
      * @param token The invite token
      */
@@ -497,7 +497,7 @@ export class UsersFriendshipsService {
 
     /**
      * Remove or decline a friend
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; FRIENDSHIPS_ADMIN or (FRIENDSHIPS_USER and owner)
      * @param userId The id of the user or &#39;me&#39; if logged in
      * @param id The id of the user to befriend
      */

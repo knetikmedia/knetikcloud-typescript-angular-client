@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UtilVersionService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class UtilVersionService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get current version info
      */
     public getVersion(extraHttpRequestParams?: any): Observable<Version> {
@@ -91,7 +91,7 @@ export class UtilVersionService {
 
     /**
      * Get current version info
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      */
     public getVersionWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/version';

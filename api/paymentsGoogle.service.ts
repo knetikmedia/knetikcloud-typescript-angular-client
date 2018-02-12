@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PaymentsGoogleService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class PaymentsGoogleService {
     }
 
     /**
-     * Mark an invoice paid with Google. Verifies signature from Google and treats the developerPayload field inside the json payload as the id of the invoice to pay. Returns the transaction ID if successful.
+     * Mark an invoice paid with Google. Verifies signature from Google and treats the developerPayload field inside the json payload as the id of the invoice to pay. Returns the transaction ID if successful. <br><br><b>Permissions Needed:</b> ANY
      * @summary Mark an invoice paid with Google
      * @param request The request for paying an invoice through a Google in-app payment
      */
@@ -92,7 +92,7 @@ export class PaymentsGoogleService {
 
     /**
      * Mark an invoice paid with Google
-     * Mark an invoice paid with Google. Verifies signature from Google and treats the developerPayload field inside the json payload as the id of the invoice to pay. Returns the transaction ID if successful.
+     * Mark an invoice paid with Google. Verifies signature from Google and treats the developerPayload field inside the json payload as the id of the invoice to pay. Returns the transaction ID if successful. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param request The request for paying an invoice through a Google in-app payment
      */
     public handleGooglePaymentWithHttpInfo(request?: GooglePaymentRequest, extraHttpRequestParams?: any): Observable<Response> {

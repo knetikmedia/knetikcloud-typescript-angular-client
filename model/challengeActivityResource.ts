@@ -11,6 +11,7 @@
  */
 
 import { ActivityEntitlementResource } from './activityEntitlementResource';
+import { CoreChallengeActivitySettings } from './coreChallengeActivitySettings';
 import { Property } from './property';
 import { RewardSetResource } from './rewardSetResource';
 import { SelectedSettingResource } from './selectedSettingResource';
@@ -31,6 +32,11 @@ export interface ChallengeActivityResource {
      * The id of the challenge
      */
     challengeId?: number;
+
+    /**
+     * Defines core settings about the activity that affect how it can be created/played by users. Values may be left null to inherit from parent activity.
+     */
+    coreSettings?: CoreChallengeActivitySettings;
 
     /**
      * The entitlement item needed to participate in the activity as part of this event. Null indicates free entry. When creating/updating only id is used. Item must be pre-existing

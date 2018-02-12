@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PaymentsFattMerchantService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class PaymentsFattMerchantService {
     }
 
     /**
-     * Stores customer information and creates a payment method that can be used to pay invoices through the payments endpoints.
+     * Stores customer information and creates a payment method that can be used to pay invoices through the payments endpoints. <br><br><b>Permissions Needed:</b> FATTMERCHANT_ADMIN or owner
      * @summary Create or update a FattMerchant payment method for a user
      * @param request Request containing payment method information for user
      */
@@ -93,7 +93,7 @@ export class PaymentsFattMerchantService {
 
     /**
      * Create or update a FattMerchant payment method for a user
-     * Stores customer information and creates a payment method that can be used to pay invoices through the payments endpoints.
+     * Stores customer information and creates a payment method that can be used to pay invoices through the payments endpoints. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; FATTMERCHANT_ADMIN or owner
      * @param request Request containing payment method information for user
      */
     public createOrUpdateFattMerchantPaymentMethodWithHttpInfo(request?: FattMerchantPaymentMethodRequest, extraHttpRequestParams?: any): Observable<Response> {

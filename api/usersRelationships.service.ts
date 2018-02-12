@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UsersRelationshipsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class UsersRelationshipsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> RELATIONSHIPS_ADMIN
      * @summary Create a user relationship
      * @param relationship The new relationship
      */
@@ -91,7 +91,7 @@ export class UsersRelationshipsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> RELATIONSHIPS_ADMIN
      * @summary Delete a user relationship
      * @param id The id of the relationship
      */
@@ -107,7 +107,7 @@ export class UsersRelationshipsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> RELATIONSHIPS_USER or RELATIONSHIPS_ADMIN
      * @summary Get a user relationship
      * @param id The id of the relationship
      */
@@ -123,7 +123,7 @@ export class UsersRelationshipsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> RELATIONSHIPS_USER or RELATIONSHIPS_ADMIN
      * @summary Get a list of user relationships
      * @param size The number of objects returned per page
      * @param page The number of the page returned
@@ -141,7 +141,7 @@ export class UsersRelationshipsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> RELATIONSHIPS_ADMIN
      * @summary Update a user relationship
      * @param id The id of the relationship
      * @param relationship The new relationship
@@ -160,7 +160,7 @@ export class UsersRelationshipsService {
 
     /**
      * Create a user relationship
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; RELATIONSHIPS_ADMIN
      * @param relationship The new relationship
      */
     public createUserRelationshipWithHttpInfo(relationship?: UserRelationshipResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -213,7 +213,7 @@ export class UsersRelationshipsService {
 
     /**
      * Delete a user relationship
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; RELATIONSHIPS_ADMIN
      * @param id The id of the relationship
      */
     public deleteUserRelationshipWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -268,7 +268,7 @@ export class UsersRelationshipsService {
 
     /**
      * Get a user relationship
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; RELATIONSHIPS_USER or RELATIONSHIPS_ADMIN
      * @param id The id of the relationship
      */
     public getUserRelationshipWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -323,7 +323,7 @@ export class UsersRelationshipsService {
 
     /**
      * Get a list of user relationships
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; RELATIONSHIPS_USER or RELATIONSHIPS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -387,7 +387,7 @@ export class UsersRelationshipsService {
 
     /**
      * Update a user relationship
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; RELATIONSHIPS_ADMIN
      * @param id The id of the relationship
      * @param relationship The new relationship
      */

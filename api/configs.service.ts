@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ConfigsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class ConfigsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TOPICS_ADMIN
      * @summary Create a new config
      * @param config The config object
      */
@@ -91,7 +91,7 @@ export class ConfigsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CONFIGS_ADMIN
      * @summary Delete an existing config
      * @param name The config name
      */
@@ -107,7 +107,7 @@ export class ConfigsService {
     }
 
     /**
-     * Only configs that are public readable will be shown without admin access
+     * Only configs that are public readable will be shown without admin access. <br><br><b>Permissions Needed:</b> ANY
      * @summary Get a single config
      * @param name The config name
      */
@@ -123,7 +123,7 @@ export class ConfigsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search configs
      * @param filterSearch Filter for configs whose name contains the given string
      * @param size The number of objects returned per page
@@ -142,7 +142,7 @@ export class ConfigsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CONFIGS_ADMIN
      * @summary Update an existing config
      * @param name The config name
      * @param config The config object
@@ -161,7 +161,7 @@ export class ConfigsService {
 
     /**
      * Create a new config
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TOPICS_ADMIN
      * @param config The config object
      */
     public createConfigWithHttpInfo(config?: Config, extraHttpRequestParams?: any): Observable<Response> {
@@ -214,7 +214,7 @@ export class ConfigsService {
 
     /**
      * Delete an existing config
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CONFIGS_ADMIN
      * @param name The config name
      */
     public deleteConfigWithHttpInfo(name: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -269,7 +269,7 @@ export class ConfigsService {
 
     /**
      * Get a single config
-     * Only configs that are public readable will be shown without admin access
+     * Only configs that are public readable will be shown without admin access. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param name The config name
      */
     public getConfigWithHttpInfo(name: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -324,7 +324,7 @@ export class ConfigsService {
 
     /**
      * List and search configs
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterSearch Filter for configs whose name contains the given string
      * @param size The number of objects returned per page
      * @param page The number of the page returned
@@ -393,7 +393,7 @@ export class ConfigsService {
 
     /**
      * Update an existing config
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CONFIGS_ADMIN
      * @param name The config name
      * @param config The config object
      */

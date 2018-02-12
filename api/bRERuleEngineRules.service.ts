@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class BRERuleEngineRulesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/
+     * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
      * @summary Create a rule
      * @param breRule The BRE rule object
      */
@@ -93,7 +93,7 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * May fail if there are existing rules against it. Cannot delete core rules
+     * May fail if there are existing rules against it. Cannot delete core rules. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
      * @summary Delete a rule
      * @param id The id of the rule
      */
@@ -109,7 +109,7 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
      * @summary Returns a string representation of the provided expression
      * @param expression The expression
      */
@@ -125,7 +125,7 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
      * @summary Get a single rule
      * @param id The id of the rule
      */
@@ -141,7 +141,7 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
      * @summary List rules
      * @param filterName Filter for rules containing the given name
      * @param filterEnabled Filter for rules by active status, null for both
@@ -164,7 +164,7 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * This is helpful for turning off systems rules which cannot be deleted or modified otherwise
+     * This is helpful for turning off systems rules which cannot be deleted or modified otherwise. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
      * @summary Enable or disable a rule
      * @param id The id of the rule
      * @param enabled The boolean value
@@ -181,7 +181,7 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * Cannot update system rules
+     * Cannot update system rules. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
      * @summary Update a rule
      * @param id The id of the rule
      * @param breRule The BRE rule object
@@ -200,7 +200,7 @@ export class BRERuleEngineRulesService {
 
     /**
      * Create a rule
-     * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/
+     * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
      * @param breRule The BRE rule object
      */
     public createBRERuleWithHttpInfo(breRule?: BreRule, extraHttpRequestParams?: any): Observable<Response> {
@@ -253,7 +253,7 @@ export class BRERuleEngineRulesService {
 
     /**
      * Delete a rule
-     * May fail if there are existing rules against it. Cannot delete core rules
+     * May fail if there are existing rules against it. Cannot delete core rules. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
      * @param id The id of the rule
      */
     public deleteBRERuleWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -308,7 +308,7 @@ export class BRERuleEngineRulesService {
 
     /**
      * Returns a string representation of the provided expression
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
      * @param expression The expression
      */
     public getBREExpressionAsStringWithHttpInfo(expression?: Expressionobject, extraHttpRequestParams?: any): Observable<Response> {
@@ -361,7 +361,7 @@ export class BRERuleEngineRulesService {
 
     /**
      * Get a single rule
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
      * @param id The id of the rule
      */
     public getBRERuleWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -416,7 +416,7 @@ export class BRERuleEngineRulesService {
 
     /**
      * List rules
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
      * @param filterName Filter for rules containing the given name
      * @param filterEnabled Filter for rules by active status, null for both
      * @param filterSystem Filter for rules that are system rules when true, or not when false. Leave off for both mixed
@@ -505,7 +505,7 @@ export class BRERuleEngineRulesService {
 
     /**
      * Enable or disable a rule
-     * This is helpful for turning off systems rules which cannot be deleted or modified otherwise
+     * This is helpful for turning off systems rules which cannot be deleted or modified otherwise. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
      * @param id The id of the rule
      * @param enabled The boolean value
      */
@@ -564,7 +564,7 @@ export class BRERuleEngineRulesService {
 
     /**
      * Update a rule
-     * Cannot update system rules
+     * Cannot update system rules. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
      * @param id The id of the rule
      * @param breRule The BRE rule object
      */

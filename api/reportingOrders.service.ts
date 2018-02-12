@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ReportingOrdersService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class ReportingOrdersService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> REPORTING_ORDERS_ADMIN
      * @summary Retrieve invoice counts aggregated by time ranges
      * @param currencyCode The code for a currency to get sales data for
      * @param granularity The time duration to aggregate by
@@ -99,7 +99,7 @@ export class ReportingOrdersService {
 
     /**
      * Retrieve invoice counts aggregated by time ranges
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; REPORTING_ORDERS_ADMIN
      * @param currencyCode The code for a currency to get sales data for
      * @param granularity The time duration to aggregate by
      * @param filterPaymentStatus A payment status to filter results by, can be a comma separated list

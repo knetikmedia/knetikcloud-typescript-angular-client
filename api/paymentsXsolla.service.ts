@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PaymentsXsollaService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class PaymentsXsollaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> XSOLLA_ADMIN or owner
      * @summary Create a payment token that should be used to forward the user to Xsolla so they can complete payment
      * @param request The payment request to be sent to XSolla
      */
@@ -92,7 +92,7 @@ export class PaymentsXsollaService {
 
     /**
      * Create a payment token that should be used to forward the user to Xsolla so they can complete payment
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; XSOLLA_ADMIN or owner
      * @param request The payment request to be sent to XSolla
      */
     public createXsollaTokenUrlWithHttpInfo(request?: XsollaPaymentRequest, extraHttpRequestParams?: any): Observable<Response> {

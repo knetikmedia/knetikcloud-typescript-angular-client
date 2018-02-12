@@ -12,7 +12,9 @@
 
 import { ActivityEntitlementResource } from './activityEntitlementResource';
 import { ActivityUserResource } from './activityUserResource';
+import { CoreActivityOccurrenceSettings } from './coreActivityOccurrenceSettings';
 import { SelectedSettingResource } from './selectedSettingResource';
+import { SimpleUserResource } from './simpleUserResource';
 
 
 /**
@@ -25,9 +27,19 @@ export interface ActivityOccurrenceResource {
     activityId: number;
 
     /**
+     * The ids of banned users that cannot join the occurrence. See occurrence-user delete endpoint
+     */
+    bans?: Array<number>;
+
+    /**
      * The id of the challenge activity (as part of the event, required if eventId set)
      */
     challengeActivityId?: number;
+
+    /**
+     * Defines core settings about the activity occurrence that affect how it behaves in the system. Validated against core settings in activity/challenge-activity.
+     */
+    coreSettings?: CoreActivityOccurrenceSettings;
 
     /**
      * The date this occurrence was created, unix timestamp in seconds
@@ -43,6 +55,11 @@ export interface ActivityOccurrenceResource {
      * The id of the event
      */
     eventId?: number;
+
+    /**
+     * The host of the occurrence, if not a participant (will be left out of users array). Must be the caller that creates the occurrence unless admin. Requires activity/challenge to allow host_option of 'non_player' if not admin as well
+     */
+    host?: SimpleUserResource;
 
     /**
      * The id of the activity occurrence
@@ -95,6 +112,7 @@ export namespace ActivityOccurrenceResource {
     export enum StatusEnum {
         SETUP = <any> 'SETUP',
         OPEN = <any> 'OPEN',
+        LAUNCHING = <any> 'LAUNCHING',
         PLAYING = <any> 'PLAYING',
         FINISHED = <any> 'FINISHED',
         ABANDONED = <any> 'ABANDONED'

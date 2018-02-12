@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class AmazonWebServicesS3Service {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class AmazonWebServicesS3Service {
     }
 
     /**
-     * To give access to files in your own S3 account, you will need to grant KnetikcCloud access to the file by adjusting your bucket policy accordingly. See S3 documentation for details.
+     * To give access to files in your own S3 account, you will need to grant KnetikcCloud access to the file by adjusting your bucket policy accordingly. See S3 documentation for details. <br><br><b>Permissions Needed:</b> S3_ADMIN
      * @summary Get a temporary signed S3 URL for download
      * @param bucket S3 bucket name
      * @param path The path to the file relative the bucket (the s3 object key)
@@ -92,7 +92,7 @@ export class AmazonWebServicesS3Service {
     }
 
     /**
-     * Requires the file name and file content type (i.e., 'video/mpeg'). Make a PUT to the resulting url to upload the file and use the cdn_url to retrieve it after.
+     * Requires the file name and file content type (i.e., 'video/mpeg'). Make a PUT to the resulting url to upload the file and use the cdn_url to retrieve it after. <br><br><b>Permissions Needed:</b> S3_USER or S3_ADMIN
      * @summary Get a signed S3 URL for upload
      * @param filename The file name
      * @param contentType The content type
@@ -111,7 +111,7 @@ export class AmazonWebServicesS3Service {
 
     /**
      * Get a temporary signed S3 URL for download
-     * To give access to files in your own S3 account, you will need to grant KnetikcCloud access to the file by adjusting your bucket policy accordingly. See S3 documentation for details.
+     * To give access to files in your own S3 account, you will need to grant KnetikcCloud access to the file by adjusting your bucket policy accordingly. See S3 documentation for details. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; S3_ADMIN
      * @param bucket S3 bucket name
      * @param path The path to the file relative the bucket (the s3 object key)
      * @param expiration The number of seconds this URL will be valid. Default to 60
@@ -175,7 +175,7 @@ export class AmazonWebServicesS3Service {
 
     /**
      * Get a signed S3 URL for upload
-     * Requires the file name and file content type (i.e., &#39;video/mpeg&#39;). Make a PUT to the resulting url to upload the file and use the cdn_url to retrieve it after.
+     * Requires the file name and file content type (i.e., &#39;video/mpeg&#39;). Make a PUT to the resulting url to upload the file and use the cdn_url to retrieve it after. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; S3_USER or S3_ADMIN
      * @param filename The file name
      * @param contentType The content type
      */

@@ -35,7 +35,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PaymentsWalletsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -79,7 +79,7 @@ export class PaymentsWalletsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> WALLETS_ADMIN or owner
      * @summary Returns the user's wallet for the given currency code
      * @param userId The ID of the user for whom wallet is being retrieved
      * @param currencyCode Currency code of the user&#39;s wallet
@@ -96,7 +96,7 @@ export class PaymentsWalletsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> WALLETS_ADMIN or owner
      * @summary Retrieve a user's wallet transactions
      * @param userId The ID of the user for whom wallet transactions are being retrieved
      * @param currencyCode Currency code of the user&#39;s wallet
@@ -120,7 +120,7 @@ export class PaymentsWalletsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> WALLETS_ADMIN or owner
      * @summary List all of a user's wallets
      * @param userId The ID of the user for whom wallets are being retrieved
      */
@@ -136,7 +136,7 @@ export class PaymentsWalletsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> WALLETS_ADMIN
      * @summary Retrieves a summation of wallet balances by currency code
      */
     public getWalletBalances(extraHttpRequestParams?: any): Observable<PageResourceWalletTotalResponse> {
@@ -151,7 +151,7 @@ export class PaymentsWalletsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> WALLETS_ADMIN
      * @summary Retrieve wallet transactions across the system
      * @param filterInvoice Filter for transactions from a specific invoice
      * @param filterType Filter for transactions with specified type
@@ -177,7 +177,7 @@ export class PaymentsWalletsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> WALLETS_ADMIN
      * @summary Retrieve a list of wallets across the system
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -195,7 +195,7 @@ export class PaymentsWalletsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> WALLETS_ADMIN
      * @summary Updates the balance for a user's wallet
      * @param userId The ID of the user for whom wallet is being modified
      * @param currencyCode Currency code of the user&#39;s wallet
@@ -215,7 +215,7 @@ export class PaymentsWalletsService {
 
     /**
      * Returns the user&#39;s wallet for the given currency code
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; WALLETS_ADMIN or owner
      * @param userId The ID of the user for whom wallet is being retrieved
      * @param currencyCode Currency code of the user&#39;s wallet
      */
@@ -276,7 +276,7 @@ export class PaymentsWalletsService {
 
     /**
      * Retrieve a user&#39;s wallet transactions
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; WALLETS_ADMIN or owner
      * @param userId The ID of the user for whom wallet transactions are being retrieved
      * @param currencyCode Currency code of the user&#39;s wallet
      * @param filterType Filter for transactions with specified type
@@ -372,7 +372,7 @@ export class PaymentsWalletsService {
 
     /**
      * List all of a user&#39;s wallets
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; WALLETS_ADMIN or owner
      * @param userId The ID of the user for whom wallets are being retrieved
      */
     public getUserWalletsWithHttpInfo(userId: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -427,7 +427,7 @@ export class PaymentsWalletsService {
 
     /**
      * Retrieves a summation of wallet balances by currency code
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; WALLETS_ADMIN
      */
     public getWalletBalancesWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/wallets/totals';
@@ -476,7 +476,7 @@ export class PaymentsWalletsService {
 
     /**
      * Retrieve wallet transactions across the system
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; WALLETS_ADMIN
      * @param filterInvoice Filter for transactions from a specific invoice
      * @param filterType Filter for transactions with specified type
      * @param filterDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds. Can be repeated for a range, eg: GT,123,LT,456  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -580,7 +580,7 @@ export class PaymentsWalletsService {
 
     /**
      * Retrieve a list of wallets across the system
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; WALLETS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -644,7 +644,7 @@ export class PaymentsWalletsService {
 
     /**
      * Updates the balance for a user&#39;s wallet
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; WALLETS_ADMIN
      * @param userId The ID of the user for whom wallet is being modified
      * @param currencyCode Currency code of the user&#39;s wallet
      * @param request The requested balance modification to be made to the user&#39;s wallet

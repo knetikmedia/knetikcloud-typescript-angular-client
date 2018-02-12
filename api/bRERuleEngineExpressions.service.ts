@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class BRERuleEngineExpressionsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class BRERuleEngineExpressionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
      * @summary Lookup a specific expression
      * @param type Specifiy the type of expression as returned by the listing endpoint
      */
@@ -91,8 +91,8 @@ export class BRERuleEngineExpressionsService {
     }
 
     /**
-     * Each resource contains a type and a definition that are read-only, all the other fields must be provided when using the expression in a rule.
-     * @summary Get a list of supported expressions to use in conditions or actions.
+     * Each resource contains a type and a definition that are read-only, all the other fields must be provided when using the expression in a rule. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
+     * @summary Get a list of supported expressions to use in conditions or actions
      * @param filterTypeGroup Filter for expressions by type group
      */
     public getBREExpressions(filterTypeGroup?: string, extraHttpRequestParams?: any): Observable<Array<ExpressionResource>> {
@@ -107,7 +107,7 @@ export class BRERuleEngineExpressionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
      * @summary Returns the textual representation of an expression
      * @param expression The expression resource to be converted
      */
@@ -125,7 +125,7 @@ export class BRERuleEngineExpressionsService {
 
     /**
      * Lookup a specific expression
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EXPRESSIONS_USER
      * @param type Specifiy the type of expression as returned by the listing endpoint
      */
     public getBREExpressionWithHttpInfo(type: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -179,8 +179,8 @@ export class BRERuleEngineExpressionsService {
     }
 
     /**
-     * Get a list of supported expressions to use in conditions or actions.
-     * Each resource contains a type and a definition that are read-only, all the other fields must be provided when using the expression in a rule.
+     * Get a list of supported expressions to use in conditions or actions
+     * Each resource contains a type and a definition that are read-only, all the other fields must be provided when using the expression in a rule. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EXPRESSIONS_USER
      * @param filterTypeGroup Filter for expressions by type group
      */
     public getBREExpressionsWithHttpInfo(filterTypeGroup?: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -234,7 +234,7 @@ export class BRERuleEngineExpressionsService {
 
     /**
      * Returns the textual representation of an expression
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EXPRESSIONS_USER
      * @param expression The expression resource to be converted
      */
     public getExpressionAsTextWithHttpInfo(expression?: ExpressionResource, extraHttpRequestParams?: any): Observable<Response> {

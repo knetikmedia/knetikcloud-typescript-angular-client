@@ -39,7 +39,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UsersInventoryService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -83,7 +83,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * The inventory is fulfilled asynchronously UNLESS the invoice is explicitely skipped. Depending on the use case, it might require the client to verify that the entitlement was added after the fact or configure a BRE rule to get a notification in real time
+     * The inventory is fulfilled asynchronously UNLESS the invoice is explicitely skipped. Depending on the use case, it might require the client to verify that the entitlement was added after the fact or configure a BRE rule to get a notification in real time. <br><br><b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Adds an item to the user inventory
      * @param id The id of the user
      * @param userInventoryAddRequest The user inventory add request object
@@ -100,7 +100,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * Useful for pre-check and accounts for all various buisness rules
+     * Useful for pre-check and accounts for all various buisness rules. <br><br><b>Permissions Needed:</b> INVENTORY_ADMIN or owner
      * @summary Check for access to an item without consuming
      * @param userId The id of the user to check for or &#39;me&#39; for logged in user
      * @param itemId The id of the item
@@ -118,7 +118,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Create an entitlement item
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param entitlementItem The entitlement item object
@@ -135,7 +135,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * Entitlement templates define a type of entitlement and the properties they have
+     * Entitlement templates define a type of entitlement and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create an entitlement template
      * @param template The entitlement template to be created
      */
@@ -151,7 +151,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Delete an entitlement item
      * @param entitlementId The id of the entitlement
      */
@@ -167,7 +167,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete an entitlement template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -184,7 +184,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single entitlement item
      * @param entitlementId The id of the entitlement
      */
@@ -200,7 +200,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search entitlement items
      * @param filterTemplate Filter for entitlements using a specified template
      * @param size The number of objects returned per page
@@ -219,7 +219,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
      * @summary Get a single entitlement template
      * @param id The id of the template
      */
@@ -235,7 +235,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
      * @summary List and search entitlement templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -253,7 +253,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN or owner
      * @summary List the user inventory entries for a given user
      * @param id The id of the user
      * @param inactive If true, accepts inactive user inventories
@@ -277,12 +277,12 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Get an inventory entry
      * @param userId The id of the inventory owner or &#39;me&#39; for the logged in user
      * @param id The id of the user inventory
      */
-    public getUserInventory(userId: number, id: number, extraHttpRequestParams?: any): Observable<UserInventoryResource> {
+    public getUserInventory(userId: string, id: number, extraHttpRequestParams?: any): Observable<UserInventoryResource> {
         return this.getUserInventoryWithHttpInfo(userId, id, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
@@ -294,7 +294,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN or owner
      * @summary List the log entries for this inventory entry
      * @param userId The id of the inventory owner or &#39;me&#39; for the logged in user
      * @param id The id of the user inventory
@@ -313,7 +313,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary List the user inventory entries for all users
      * @param inactive If true, accepts inactive user inventories
      * @param size The number of objects returned per page
@@ -336,7 +336,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Grant an entitlement
      * @param userId The id of the user to grant the entitlement to
      * @param grantRequest grantRequest
@@ -353,7 +353,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Update an entitlement item
      * @param entitlementId The id of the entitlement
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
@@ -371,7 +371,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update an entitlement template
      * @param id The id of the template
      * @param template The updated template
@@ -388,7 +388,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Set the behavior data for an inventory entry
      * @param userId The id of the user
      * @param id The id of the user inventory
@@ -406,7 +406,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * Will change the current grace period for a subscription but not the bill date (possibly even ending before having the chance to re-bill)
+     * Will change the current grace period for a subscription but not the bill date (possibly even ending before having the chance to re-bill). <br><br><b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Set the expiration date
      * @param userId user_id
      * @param id The id of the user inventory
@@ -424,7 +424,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Set the status for an inventory entry
      * @param userId The id of the user
      * @param id The id of the user inventory
@@ -442,7 +442,7 @@ export class UsersInventoryService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN or owner
      * @summary Use an item
      * @param userId The id of the user to check for or &#39;me&#39; for logged in user
      * @param itemId The id of the item
@@ -463,7 +463,7 @@ export class UsersInventoryService {
 
     /**
      * Adds an item to the user inventory
-     * The inventory is fulfilled asynchronously UNLESS the invoice is explicitely skipped. Depending on the use case, it might require the client to verify that the entitlement was added after the fact or configure a BRE rule to get a notification in real time
+     * The inventory is fulfilled asynchronously UNLESS the invoice is explicitely skipped. Depending on the use case, it might require the client to verify that the entitlement was added after the fact or configure a BRE rule to get a notification in real time. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param id The id of the user
      * @param userInventoryAddRequest The user inventory add request object
      */
@@ -522,7 +522,7 @@ export class UsersInventoryService {
 
     /**
      * Check for access to an item without consuming
-     * Useful for pre-check and accounts for all various buisness rules
+     * Useful for pre-check and accounts for all various buisness rules. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN or owner
      * @param userId The id of the user to check for or &#39;me&#39; for logged in user
      * @param itemId The id of the item
      * @param sku The specific sku of an entitlement list addition to check entitlement for. This is of very limited and specific use and should generally be left out
@@ -588,7 +588,7 @@ export class UsersInventoryService {
 
     /**
      * Create an entitlement item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param entitlementItem The entitlement item object
      */
@@ -646,7 +646,7 @@ export class UsersInventoryService {
 
     /**
      * Create an entitlement template
-     * Entitlement templates define a type of entitlement and the properties they have
+     * Entitlement templates define a type of entitlement and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param template The entitlement template to be created
      */
     public createEntitlementTemplateWithHttpInfo(template?: ItemTemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -699,7 +699,7 @@ export class UsersInventoryService {
 
     /**
      * Delete an entitlement item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param entitlementId The id of the entitlement
      */
     public deleteEntitlementItemWithHttpInfo(entitlementId: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -754,7 +754,7 @@ export class UsersInventoryService {
 
     /**
      * Delete an entitlement template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -814,7 +814,7 @@ export class UsersInventoryService {
 
     /**
      * Get a single entitlement item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param entitlementId The id of the entitlement
      */
     public getEntitlementItemWithHttpInfo(entitlementId: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -869,7 +869,7 @@ export class UsersInventoryService {
 
     /**
      * List and search entitlement items
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterTemplate Filter for entitlements using a specified template
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -938,7 +938,7 @@ export class UsersInventoryService {
 
     /**
      * Get a single entitlement template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
      * @param id The id of the template
      */
     public getEntitlementTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -993,7 +993,7 @@ export class UsersInventoryService {
 
     /**
      * List and search entitlement templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -1057,7 +1057,7 @@ export class UsersInventoryService {
 
     /**
      * List the user inventory entries for a given user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN or owner
      * @param id The id of the user
      * @param inactive If true, accepts inactive user inventories
      * @param size The number of objects returned per page
@@ -1152,11 +1152,11 @@ export class UsersInventoryService {
 
     /**
      * Get an inventory entry
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param userId The id of the inventory owner or &#39;me&#39; for the logged in user
      * @param id The id of the user inventory
      */
-    public getUserInventoryWithHttpInfo(userId: number, id: number, extraHttpRequestParams?: any): Observable<Response> {
+    public getUserInventoryWithHttpInfo(userId: string, id: number, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/users/${user_id}/inventory/${id}'
                     .replace('${' + 'user_id' + '}', String(userId))
                     .replace('${' + 'id' + '}', String(id));
@@ -1213,7 +1213,7 @@ export class UsersInventoryService {
 
     /**
      * List the log entries for this inventory entry
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN or owner
      * @param userId The id of the inventory owner or &#39;me&#39; for the logged in user
      * @param id The id of the user inventory
      * @param size The number of objects returned per page
@@ -1284,7 +1284,7 @@ export class UsersInventoryService {
 
     /**
      * List the user inventory entries for all users
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param inactive If true, accepts inactive user inventories
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -1373,7 +1373,7 @@ export class UsersInventoryService {
 
     /**
      * Grant an entitlement
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param userId The id of the user to grant the entitlement to
      * @param grantRequest grantRequest
      */
@@ -1436,7 +1436,7 @@ export class UsersInventoryService {
 
     /**
      * Update an entitlement item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param entitlementId The id of the entitlement
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param entitlementItem The entitlement item object
@@ -1500,7 +1500,7 @@ export class UsersInventoryService {
 
     /**
      * Update an entitlement template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param template The updated template
      */
@@ -1559,7 +1559,7 @@ export class UsersInventoryService {
 
     /**
      * Set the behavior data for an inventory entry
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param userId The id of the user
      * @param id The id of the user inventory
      * @param data The data map
@@ -1624,7 +1624,7 @@ export class UsersInventoryService {
 
     /**
      * Set the expiration date
-     * Will change the current grace period for a subscription but not the bill date (possibly even ending before having the chance to re-bill)
+     * Will change the current grace period for a subscription but not the bill date (possibly even ending before having the chance to re-bill). &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param userId user_id
      * @param id The id of the user inventory
      * @param timestamp The new expiration date as a unix timestamp in seconds. May be null (no body).
@@ -1689,7 +1689,7 @@ export class UsersInventoryService {
 
     /**
      * Set the status for an inventory entry
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param userId The id of the user
      * @param id The id of the user inventory
      * @param inventoryStatus The inventory status object
@@ -1754,7 +1754,7 @@ export class UsersInventoryService {
 
     /**
      * Use an item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN or owner
      * @param userId The id of the user to check for or &#39;me&#39; for logged in user
      * @param itemId The id of the item
      * @param sku The specific sku of an entitlement_list addition to check entitlement for. This is of very limited and specific use and should generally be left out

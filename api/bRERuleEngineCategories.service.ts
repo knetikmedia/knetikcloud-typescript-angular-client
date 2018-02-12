@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class BRERuleEngineCategoriesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * Templates define a type of BRE category and the properties they have
+     * Templates define a type of BRE category and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a BRE category template
      * @param template The category template to create
      */
@@ -93,7 +93,7 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a BRE category template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -110,7 +110,7 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_USER
      * @summary List categories
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -127,7 +127,7 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_USER
      * @summary Get a single category
      * @param name The category name
      */
@@ -143,7 +143,7 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
      * @summary Get a single BRE category template
      * @param id The id of the template
      */
@@ -159,7 +159,7 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
      * @summary List and search BRE category templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -177,7 +177,7 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_ADMIN
      * @summary Update a category
      * @param name The category name
      * @param category The updated BRE category information
@@ -194,7 +194,7 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a BRE category template
      * @param id The id of the template
      * @param template The updated category template definition
@@ -213,7 +213,7 @@ export class BRERuleEngineCategoriesService {
 
     /**
      * Create a BRE category template
-     * Templates define a type of BRE category and the properties they have
+     * Templates define a type of BRE category and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param template The category template to create
      */
     public createBRECategoryTemplateWithHttpInfo(template?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -266,7 +266,7 @@ export class BRERuleEngineCategoriesService {
 
     /**
      * Delete a BRE category template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -326,7 +326,7 @@ export class BRERuleEngineCategoriesService {
 
     /**
      * List categories
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_CATEGORIES_USER
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      */
@@ -385,7 +385,7 @@ export class BRERuleEngineCategoriesService {
 
     /**
      * Get a single category
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_CATEGORIES_USER
      * @param name The category name
      */
     public getBRECategoryWithHttpInfo(name: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -440,7 +440,7 @@ export class BRERuleEngineCategoriesService {
 
     /**
      * Get a single BRE category template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
      * @param id The id of the template
      */
     public getBRECategoryTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -495,7 +495,7 @@ export class BRERuleEngineCategoriesService {
 
     /**
      * List and search BRE category templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -559,7 +559,7 @@ export class BRERuleEngineCategoriesService {
 
     /**
      * Update a category
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_CATEGORIES_ADMIN
      * @param name The category name
      * @param category The updated BRE category information
      */
@@ -618,7 +618,7 @@ export class BRERuleEngineCategoriesService {
 
     /**
      * Update a BRE category template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param template The updated category template definition
      */

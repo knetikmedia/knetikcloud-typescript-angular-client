@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class BRERuleEngineGlobalsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * Once created you can then use in a custom rule. Note that global definitions cannot be modified or deleted if in use.
+     * Once created you can then use in a custom rule. Note that global definitions cannot be modified or deleted if in use. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_ADMIN
      * @summary Create a global definition
      * @param breGlobalResource The BRE global resource object
      */
@@ -91,7 +91,7 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * May fail if there are existing rules against it. Cannot delete core globals
+     * May fail if there are existing rules against it. Cannot delete core globals. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_ADMIN
      * @summary Delete a global
      * @param id The id of the global definition
      */
@@ -107,7 +107,7 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_USER
      * @summary Get a single global definition
      * @param id The id of the global definition
      */
@@ -123,7 +123,7 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_USER
      * @summary List global definitions
      * @param filterSystem Filter for globals that are system globals when true, or not when false. Leave off for both mixed
      * @param size The number of objects returned per page
@@ -141,7 +141,7 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * May fail if new parameters mismatch requirements of existing rules. Cannot update core globals
+     * May fail if new parameters mismatch requirements of existing rules. Cannot update core globals. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_ADMIN
      * @summary Update a global definition
      * @param id The id of the global definition
      * @param breGlobalResource The BRE global resource object
@@ -160,7 +160,7 @@ export class BRERuleEngineGlobalsService {
 
     /**
      * Create a global definition
-     * Once created you can then use in a custom rule. Note that global definitions cannot be modified or deleted if in use.
+     * Once created you can then use in a custom rule. Note that global definitions cannot be modified or deleted if in use. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_ADMIN
      * @param breGlobalResource The BRE global resource object
      */
     public createBREGlobalWithHttpInfo(breGlobalResource?: BreGlobalResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -213,7 +213,7 @@ export class BRERuleEngineGlobalsService {
 
     /**
      * Delete a global
-     * May fail if there are existing rules against it. Cannot delete core globals
+     * May fail if there are existing rules against it. Cannot delete core globals. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_ADMIN
      * @param id The id of the global definition
      */
     public deleteBREGlobalWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -268,7 +268,7 @@ export class BRERuleEngineGlobalsService {
 
     /**
      * Get a single global definition
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_USER
      * @param id The id of the global definition
      */
     public getBREGlobalWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -323,7 +323,7 @@ export class BRERuleEngineGlobalsService {
 
     /**
      * List global definitions
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_USER
      * @param filterSystem Filter for globals that are system globals when true, or not when false. Leave off for both mixed
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -387,7 +387,7 @@ export class BRERuleEngineGlobalsService {
 
     /**
      * Update a global definition
-     * May fail if new parameters mismatch requirements of existing rules. Cannot update core globals
+     * May fail if new parameters mismatch requirements of existing rules. Cannot update core globals. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_ADMIN
      * @param id The id of the global definition
      * @param breGlobalResource The BRE global resource object
      */

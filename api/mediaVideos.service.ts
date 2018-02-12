@@ -43,7 +43,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class MediaVideosService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -87,7 +87,7 @@ export class MediaVideosService {
     }
 
     /**
-     * Whitelisted users can view video regardless of privacy setting.
+     * Whitelisted users can view video regardless of privacy setting. <br><br><b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Adds a user to a video's whitelist
      * @param id The video id
      * @param userId The user id
@@ -104,7 +104,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Adds a new video in the system
      * @param videoResource The video object
      */
@@ -120,7 +120,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Add a new video comment
      * @param videoId The video id 
      * @param commentResource The comment object
@@ -137,7 +137,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Adds a contributor to a video
      * @param videoId The video id
      * @param contributionResource The contribution object
@@ -154,7 +154,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Add a new flag
      * @param videoId The video id
      * @param reason The flag reason
@@ -171,7 +171,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Adds one or more existing videos as related to this one
      * @param videoId The video id
      * @param videoRelationshipResource The video relationship object 
@@ -188,7 +188,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Create a video disposition
      * @param videoId The video id
      * @param dispositionResource The disposition object
@@ -205,7 +205,7 @@ export class MediaVideosService {
     }
 
     /**
-     * Video Templates define a type of video and the properties they have
+     * Video Templates define a type of video and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a video template
      * @param videoTemplateResource The video template resource object
      */
@@ -221,7 +221,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Deletes a video from the system if no resources are attached to it
      * @param id The video id
      */
@@ -237,7 +237,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Delete a video comment
      * @param videoId The video id
      * @param id The comment id
@@ -254,7 +254,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Delete a video disposition
      * @param dispositionId The disposition id
      */
@@ -270,7 +270,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Delete a flag
      * @param videoId The video id
      */
@@ -286,7 +286,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Delete a video's relationship
      * @param videoId The video id
      * @param id The relationship id
@@ -303,7 +303,7 @@ export class MediaVideosService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a video template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -320,7 +320,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Get user videos
      * @param userId The user id
      * @param excludeFlagged Skip videos that have been flagged by the current user
@@ -339,7 +339,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Loads a specific video details
      * @param id The video id
      */
@@ -355,7 +355,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Returns a page of comments for a video
      * @param videoId The video id
      * @param size The number of objects returned per page
@@ -373,7 +373,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Returns a page of dispositions for a video
      * @param videoId The video id
      * @param size The number of objects returned per page
@@ -391,7 +391,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Returns a page of video relationships
      * @param videoId The video id
      * @param size The number of objects returned per page
@@ -409,7 +409,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or VIDEOS_ADMIN
      * @summary Get a single video template
      * @param id The id of the template
      */
@@ -425,7 +425,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or VIDEOS_ADMIN
      * @summary List and search video templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -443,7 +443,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Search videos using the documented filters
      * @param excludeFlagged Skip videos that have been flagged by the current user
      * @param filterVideosByUploader Filter for videos by uploader id
@@ -473,7 +473,7 @@ export class MediaVideosService {
     }
 
     /**
-     * Remove the user with the id given in the path from the whitelist of users that can view this video regardless of privacy setting.
+     * Remove the user with the id given in the path from the whitelist of users that can view this video regardless of privacy setting. <br><br><b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Removes a user from a video's whitelist
      * @param videoId The video id
      * @param id The user id
@@ -490,7 +490,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Removes a contributor from a video
      * @param videoId The video id
      * @param id The contributor id
@@ -507,7 +507,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Modifies a video's details
      * @param id The video id
      * @param videoResource The video object
@@ -524,7 +524,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Update a video comment
      * @param videoId The video id
      * @param id The comment id
@@ -542,7 +542,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VIDEOS_USER or VIDEOS_ADMIN
      * @summary Update a video's relationship details
      * @param videoId The video id
      * @param relationshipId The relationship id
@@ -560,7 +560,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a video template
      * @param id The id of the template
      * @param videoTemplateResource The video template resource object
@@ -577,7 +577,7 @@ export class MediaVideosService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Increment a video's view count
      * @param id The video id
      */
@@ -595,7 +595,7 @@ export class MediaVideosService {
 
     /**
      * Adds a user to a video&#39;s whitelist
-     * Whitelisted users can view video regardless of privacy setting.
+     * Whitelisted users can view video regardless of privacy setting. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param id The video id
      * @param userId The user id
      */
@@ -654,7 +654,7 @@ export class MediaVideosService {
 
     /**
      * Adds a new video in the system
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoResource The video object
      */
     public addVideoWithHttpInfo(videoResource?: VideoResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -707,7 +707,7 @@ export class MediaVideosService {
 
     /**
      * Add a new video comment
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id 
      * @param commentResource The comment object
      */
@@ -766,7 +766,7 @@ export class MediaVideosService {
 
     /**
      * Adds a contributor to a video
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      * @param contributionResource The contribution object
      */
@@ -825,7 +825,7 @@ export class MediaVideosService {
 
     /**
      * Add a new flag
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      * @param reason The flag reason
      */
@@ -884,7 +884,7 @@ export class MediaVideosService {
 
     /**
      * Adds one or more existing videos as related to this one
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      * @param videoRelationshipResource The video relationship object 
      */
@@ -943,7 +943,7 @@ export class MediaVideosService {
 
     /**
      * Create a video disposition
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      * @param dispositionResource The disposition object
      */
@@ -1002,7 +1002,7 @@ export class MediaVideosService {
 
     /**
      * Create a video template
-     * Video Templates define a type of video and the properties they have
+     * Video Templates define a type of video and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param videoTemplateResource The video template resource object
      */
     public createVideoTemplateWithHttpInfo(videoTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -1055,7 +1055,7 @@ export class MediaVideosService {
 
     /**
      * Deletes a video from the system if no resources are attached to it
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param id The video id
      */
     public deleteVideoWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1110,7 +1110,7 @@ export class MediaVideosService {
 
     /**
      * Delete a video comment
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      * @param id The comment id
      */
@@ -1171,7 +1171,7 @@ export class MediaVideosService {
 
     /**
      * Delete a video disposition
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param dispositionId The disposition id
      */
     public deleteVideoDispositionWithHttpInfo(dispositionId: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1226,7 +1226,7 @@ export class MediaVideosService {
 
     /**
      * Delete a flag
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      */
     public deleteVideoFlagWithHttpInfo(videoId: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1281,7 +1281,7 @@ export class MediaVideosService {
 
     /**
      * Delete a video&#39;s relationship
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      * @param id The relationship id
      */
@@ -1342,7 +1342,7 @@ export class MediaVideosService {
 
     /**
      * Delete a video template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -1402,7 +1402,7 @@ export class MediaVideosService {
 
     /**
      * Get user videos
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param userId The user id
      * @param excludeFlagged Skip videos that have been flagged by the current user
      * @param size The number of objects returned per page
@@ -1472,7 +1472,7 @@ export class MediaVideosService {
 
     /**
      * Loads a specific video details
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param id The video id
      */
     public getVideoWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1527,7 +1527,7 @@ export class MediaVideosService {
 
     /**
      * Returns a page of comments for a video
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param videoId The video id
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -1592,7 +1592,7 @@ export class MediaVideosService {
 
     /**
      * Returns a page of dispositions for a video
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param videoId The video id
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -1657,7 +1657,7 @@ export class MediaVideosService {
 
     /**
      * Returns a page of video relationships
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param videoId The video id
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -1722,7 +1722,7 @@ export class MediaVideosService {
 
     /**
      * Get a single video template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or VIDEOS_ADMIN
      * @param id The id of the template
      */
     public getVideoTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1777,7 +1777,7 @@ export class MediaVideosService {
 
     /**
      * List and search video templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or VIDEOS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -1841,7 +1841,7 @@ export class MediaVideosService {
 
     /**
      * Search videos using the documented filters
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param excludeFlagged Skip videos that have been flagged by the current user
      * @param filterVideosByUploader Filter for videos by uploader id
      * @param filterCategory Filter for videos from a specific category by id
@@ -1965,7 +1965,7 @@ export class MediaVideosService {
 
     /**
      * Removes a user from a video&#39;s whitelist
-     * Remove the user with the id given in the path from the whitelist of users that can view this video regardless of privacy setting.
+     * Remove the user with the id given in the path from the whitelist of users that can view this video regardless of privacy setting. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      * @param id The user id
      */
@@ -2026,7 +2026,7 @@ export class MediaVideosService {
 
     /**
      * Removes a contributor from a video
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      * @param id The contributor id
      */
@@ -2087,7 +2087,7 @@ export class MediaVideosService {
 
     /**
      * Modifies a video&#39;s details
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param id The video id
      * @param videoResource The video object
      */
@@ -2146,7 +2146,7 @@ export class MediaVideosService {
 
     /**
      * Update a video comment
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      * @param id The comment id
      * @param content The comment content
@@ -2211,7 +2211,7 @@ export class MediaVideosService {
 
     /**
      * Update a video&#39;s relationship details
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VIDEOS_USER or VIDEOS_ADMIN
      * @param videoId The video id
      * @param relationshipId The relationship id
      * @param details The video relationship details
@@ -2276,7 +2276,7 @@ export class MediaVideosService {
 
     /**
      * Update a video template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param videoTemplateResource The video template resource object
      */
@@ -2335,7 +2335,7 @@ export class MediaVideosService {
 
     /**
      * Increment a video&#39;s view count
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The video id
      */
     public viewVideoWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {

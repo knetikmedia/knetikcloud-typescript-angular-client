@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class MediaArtistsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class MediaArtistsService {
     }
 
     /**
-     * Adds a new artist in the system. Use specific media contributions endpoint to add contributions
+     * Adds a new artist in the system. Use specific media contributions endpoint to add contributions. <br><br><b>Permissions Needed:</b> ANY
      * @summary Adds a new artist in the system
      * @param artistResource The new artist
      */
@@ -93,7 +93,7 @@ export class MediaArtistsService {
     }
 
     /**
-     * Artist Templates define a type of artist and the properties they have
+     * Artist Templates define a type of artist and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create an artist template
      * @param artistTemplateResource The artist template resource object
      */
@@ -109,7 +109,7 @@ export class MediaArtistsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ARTISTS_ADMIN
      * @summary Removes an artist from the system IF no resources are attached to it
      * @param id The artist id
      */
@@ -125,7 +125,7 @@ export class MediaArtistsService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete an artist template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -142,7 +142,7 @@ export class MediaArtistsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Loads a specific artist details
      * @param id The artist id
      * @param showContributions The number of contributions to show fetch
@@ -159,7 +159,7 @@ export class MediaArtistsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTISTS_ADMIN
      * @summary Get a single artist template
      * @param id The id of the template
      */
@@ -175,7 +175,7 @@ export class MediaArtistsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTISTS_ADMIN
      * @summary List and search artist templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -193,7 +193,7 @@ export class MediaArtistsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Search for artists
      * @param filterArtistsByName Filter for artists which name *STARTS* with the given string
      * @param size The number of objects returned per page
@@ -212,7 +212,7 @@ export class MediaArtistsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ARTISTS_ADMIN
      * @summary Modifies an artist details
      * @param id The artist id
      * @param artistResource The new artist
@@ -229,7 +229,7 @@ export class MediaArtistsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update an artist template
      * @param id The id of the template
      * @param artistTemplateResource The artist template resource object
@@ -248,7 +248,7 @@ export class MediaArtistsService {
 
     /**
      * Adds a new artist in the system
-     * Adds a new artist in the system. Use specific media contributions endpoint to add contributions
+     * Adds a new artist in the system. Use specific media contributions endpoint to add contributions. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param artistResource The new artist
      */
     public addArtistWithHttpInfo(artistResource?: ArtistResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -301,7 +301,7 @@ export class MediaArtistsService {
 
     /**
      * Create an artist template
-     * Artist Templates define a type of artist and the properties they have
+     * Artist Templates define a type of artist and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param artistTemplateResource The artist template resource object
      */
     public createArtistTemplateWithHttpInfo(artistTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -354,7 +354,7 @@ export class MediaArtistsService {
 
     /**
      * Removes an artist from the system IF no resources are attached to it
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTISTS_ADMIN
      * @param id The artist id
      */
     public deleteArtistWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -409,7 +409,7 @@ export class MediaArtistsService {
 
     /**
      * Delete an artist template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -469,7 +469,7 @@ export class MediaArtistsService {
 
     /**
      * Loads a specific artist details
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The artist id
      * @param showContributions The number of contributions to show fetch
      */
@@ -529,7 +529,7 @@ export class MediaArtistsService {
 
     /**
      * Get a single artist template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or ARTISTS_ADMIN
      * @param id The id of the template
      */
     public getArtistTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -584,7 +584,7 @@ export class MediaArtistsService {
 
     /**
      * List and search artist templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or ARTISTS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -648,7 +648,7 @@ export class MediaArtistsService {
 
     /**
      * Search for artists
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterArtistsByName Filter for artists which name *STARTS* with the given string
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -717,7 +717,7 @@ export class MediaArtistsService {
 
     /**
      * Modifies an artist details
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTISTS_ADMIN
      * @param id The artist id
      * @param artistResource The new artist
      */
@@ -776,7 +776,7 @@ export class MediaArtistsService {
 
     /**
      * Update an artist template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param artistTemplateResource The artist template resource object
      */

@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PaymentsOptimalService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class PaymentsOptimalService {
     }
 
     /**
-     * Will return the url for a hosted payment endpoint to post to. See Optimal documentation for details.
+     * Will return the url for a hosted payment endpoint to post to. See Optimal documentation for details. <br><br><b>Permissions Needed:</b> OPTIMAL_ADMIN or owner
      * @summary Initiate silent post with Optimal
      * @param request The payment request to initiate
      */
@@ -92,7 +92,7 @@ export class PaymentsOptimalService {
 
     /**
      * Initiate silent post with Optimal
-     * Will return the url for a hosted payment endpoint to post to. See Optimal documentation for details.
+     * Will return the url for a hosted payment endpoint to post to. See Optimal documentation for details. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; OPTIMAL_ADMIN or owner
      * @param request The payment request to initiate
      */
     public silentPostOptimalWithHttpInfo(request?: OptimalPaymentRequest, extraHttpRequestParams?: any): Observable<Response> {

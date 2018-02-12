@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class StoreSalesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class StoreSalesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SALES_ADMIN
      * @summary Create a sale
      * @param catalogSale The catalog sale object
      */
@@ -91,7 +91,7 @@ export class StoreSalesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SALES_ADMIN
      * @summary Delete a sale
      * @param id The id of the sale
      */
@@ -107,7 +107,7 @@ export class StoreSalesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SALES_USER or SALES_ADMIN
      * @summary Get a single sale
      * @param id The id of the sale
      */
@@ -123,7 +123,7 @@ export class StoreSalesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SALES_USER or SALES_ADMIN
      * @summary List and search sales
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -141,7 +141,7 @@ export class StoreSalesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SALES_ADMIN
      * @summary Update a sale
      * @param id The id of the sale
      * @param catalogSale The catalog sale object
@@ -160,7 +160,7 @@ export class StoreSalesService {
 
     /**
      * Create a sale
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SALES_ADMIN
      * @param catalogSale The catalog sale object
      */
     public createCatalogSaleWithHttpInfo(catalogSale?: CatalogSale, extraHttpRequestParams?: any): Observable<Response> {
@@ -213,7 +213,7 @@ export class StoreSalesService {
 
     /**
      * Delete a sale
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SALES_ADMIN
      * @param id The id of the sale
      */
     public deleteCatalogSaleWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -268,7 +268,7 @@ export class StoreSalesService {
 
     /**
      * Get a single sale
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SALES_USER or SALES_ADMIN
      * @param id The id of the sale
      */
     public getCatalogSaleWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -323,7 +323,7 @@ export class StoreSalesService {
 
     /**
      * List and search sales
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SALES_USER or SALES_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -387,7 +387,7 @@ export class StoreSalesService {
 
     /**
      * Update a sale
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SALES_ADMIN
      * @param id The id of the sale
      * @param catalogSale The catalog sale object
      */

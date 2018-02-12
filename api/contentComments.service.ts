@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ContentCommentsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -76,7 +76,7 @@ export class ContentCommentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> COMMENTS_USER or COMMENTS_ADMIN
      * @summary Add a new comment
      * @param commentResource The comment to be added
      */
@@ -92,7 +92,7 @@ export class ContentCommentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> COMMENTS_USER or COMMENTS_ADMIN
      * @summary Delete a comment
      * @param id The comment id
      */
@@ -108,7 +108,7 @@ export class ContentCommentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Return a comment
      * @param id The comment id
      */
@@ -124,7 +124,7 @@ export class ContentCommentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Returns a page of comments
      * @param context Get comments by context type
      * @param contextId Get comments by context id
@@ -143,7 +143,7 @@ export class ContentCommentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> COMMENTS_USER or COMMENTS_ADMIN
      * @summary Update a comment
      * @param id The comment id
      * @param content The comment content
@@ -162,7 +162,7 @@ export class ContentCommentsService {
 
     /**
      * Add a new comment
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; COMMENTS_USER or COMMENTS_ADMIN
      * @param commentResource The comment to be added
      */
     public addCommentWithHttpInfo(commentResource?: CommentResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -215,7 +215,7 @@ export class ContentCommentsService {
 
     /**
      * Delete a comment
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; COMMENTS_USER or COMMENTS_ADMIN
      * @param id The comment id
      */
     public deleteCommentWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -270,7 +270,7 @@ export class ContentCommentsService {
 
     /**
      * Return a comment
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The comment id
      */
     public getCommentWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -325,7 +325,7 @@ export class ContentCommentsService {
 
     /**
      * Returns a page of comments
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param context Get comments by context type
      * @param contextId Get comments by context id
      * @param size The number of objects returned per page
@@ -402,7 +402,7 @@ export class ContentCommentsService {
 
     /**
      * Update a comment
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; COMMENTS_USER or COMMENTS_ADMIN
      * @param id The comment id
      * @param content The comment content
      */

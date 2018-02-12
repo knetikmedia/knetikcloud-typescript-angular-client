@@ -34,7 +34,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class CampaignsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -78,7 +78,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
      * @summary Add a challenge to a campaign
      * @param id The id of the campaign
      * @param challengeId The id of the challenge
@@ -95,7 +95,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
      * @summary Create a campaign
      * @param campaignResource The campaign resource object
      */
@@ -111,7 +111,7 @@ export class CampaignsService {
     }
 
     /**
-     * Campaign Templates define a type of campaign and the properties they have
+     * Campaign Templates define a type of campaign and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a campaign template
      * @param campaignTemplateResource The campaign template resource object
      */
@@ -127,7 +127,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
      * @summary Delete a campaign
      * @param id The campaign id
      */
@@ -143,7 +143,7 @@ export class CampaignsService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a campaign template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -160,7 +160,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Returns a single campaign
      * @param id The campaign id
      */
@@ -176,7 +176,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List the challenges associated with a campaign
      * @param id The campaign id
      * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -197,7 +197,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CAMPAIGNS_ADMIN
      * @summary Get a single campaign template
      * @param id The id of the template
      */
@@ -213,7 +213,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CAMPAIGNS_ADMIN
      * @summary List and search campaign templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -231,7 +231,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search campaigns
      * @param filterActive Filter for campaigns that are active
      * @param size The number of objects returned per page
@@ -250,7 +250,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
      * @summary Remove a challenge from a campaign
      * @param campaignId The campaign id
      * @param id The challenge id
@@ -267,7 +267,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CAMPAIGNS_ADMIN
      * @summary Update a campaign
      * @param id The campaign id
      * @param campaignResource The campaign resource object
@@ -284,7 +284,7 @@ export class CampaignsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update an campaign template
      * @param id The id of the template
      * @param campaignTemplateResource The campaign template resource object
@@ -303,7 +303,7 @@ export class CampaignsService {
 
     /**
      * Add a challenge to a campaign
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CAMPAIGNS_ADMIN
      * @param id The id of the campaign
      * @param challengeId The id of the challenge
      */
@@ -362,7 +362,7 @@ export class CampaignsService {
 
     /**
      * Create a campaign
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CAMPAIGNS_ADMIN
      * @param campaignResource The campaign resource object
      */
     public createCampaignWithHttpInfo(campaignResource?: CampaignResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -415,7 +415,7 @@ export class CampaignsService {
 
     /**
      * Create a campaign template
-     * Campaign Templates define a type of campaign and the properties they have
+     * Campaign Templates define a type of campaign and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param campaignTemplateResource The campaign template resource object
      */
     public createCampaignTemplateWithHttpInfo(campaignTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -468,7 +468,7 @@ export class CampaignsService {
 
     /**
      * Delete a campaign
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CAMPAIGNS_ADMIN
      * @param id The campaign id
      */
     public deleteCampaignWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -523,7 +523,7 @@ export class CampaignsService {
 
     /**
      * Delete a campaign template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -583,7 +583,7 @@ export class CampaignsService {
 
     /**
      * Returns a single campaign
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The campaign id
      */
     public getCampaignWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -638,7 +638,7 @@ export class CampaignsService {
 
     /**
      * List the challenges associated with a campaign
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The campaign id
      * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -718,7 +718,7 @@ export class CampaignsService {
 
     /**
      * Get a single campaign template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or CAMPAIGNS_ADMIN
      * @param id The id of the template
      */
     public getCampaignTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -773,7 +773,7 @@ export class CampaignsService {
 
     /**
      * List and search campaign templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or CAMPAIGNS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -837,7 +837,7 @@ export class CampaignsService {
 
     /**
      * List and search campaigns
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterActive Filter for campaigns that are active
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -906,7 +906,7 @@ export class CampaignsService {
 
     /**
      * Remove a challenge from a campaign
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CAMPAIGNS_ADMIN
      * @param campaignId The campaign id
      * @param id The challenge id
      */
@@ -967,7 +967,7 @@ export class CampaignsService {
 
     /**
      * Update a campaign
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CAMPAIGNS_ADMIN
      * @param id The campaign id
      * @param campaignResource The campaign resource object
      */
@@ -1026,7 +1026,7 @@ export class CampaignsService {
 
     /**
      * Update an campaign template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param campaignTemplateResource The campaign template resource object
      */

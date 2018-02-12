@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PaymentsPayPalClassicService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class PaymentsPayPalClassicService {
     }
 
     /**
-     * Returns the token that should be used to forward the user to PayPal so they can accept the agreement.
+     * Returns the token that should be used to forward the user to PayPal so they can accept the agreement. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
      * @summary Create a PayPal Classic billing agreement for the user
      * @param request The request to create a PayPal billing agreement
      */
@@ -93,7 +93,7 @@ export class PaymentsPayPalClassicService {
     }
 
     /**
-     * Returns the token that should be used to forward the user to PayPal so they can complete the checkout.
+     * Returns the token that should be used to forward the user to PayPal so they can complete the checkout. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
      * @summary Create a payment token for PayPal express checkout
      * @param request The request to create a PayPal payment token
      */
@@ -109,7 +109,7 @@ export class PaymentsPayPalClassicService {
     }
 
     /**
-     * Returns the ID of the new payment method created for the user for the billing agreement.
+     * Returns the ID of the new payment method created for the user for the billing agreement. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
      * @summary Finalizes a billing agreement after the user has accepted through PayPal
      * @param request The request to finalize a PayPal billing agreement
      */
@@ -125,7 +125,7 @@ export class PaymentsPayPalClassicService {
     }
 
     /**
-     * The invoice will be marked paid/failed by asynchronous IPN callback.
+     * The invoice will be marked paid/failed by asynchronous IPN callback. <br><br><b>Permissions Needed:</b> PAYPAL_CLASSIC_ADMIN or owner
      * @summary Finalizes a payment after the user has completed checkout with PayPal
      * @param request The request to finalize the payment
      */
@@ -143,7 +143,7 @@ export class PaymentsPayPalClassicService {
 
     /**
      * Create a PayPal Classic billing agreement for the user
-     * Returns the token that should be used to forward the user to PayPal so they can accept the agreement.
+     * Returns the token that should be used to forward the user to PayPal so they can accept the agreement. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; PAYPAL_CLASSIC_ADMIN or owner
      * @param request The request to create a PayPal billing agreement
      */
     public createPayPalBillingAgreementUrlWithHttpInfo(request?: CreateBillingAgreementRequest, extraHttpRequestParams?: any): Observable<Response> {
@@ -196,7 +196,7 @@ export class PaymentsPayPalClassicService {
 
     /**
      * Create a payment token for PayPal express checkout
-     * Returns the token that should be used to forward the user to PayPal so they can complete the checkout.
+     * Returns the token that should be used to forward the user to PayPal so they can complete the checkout. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; PAYPAL_CLASSIC_ADMIN or owner
      * @param request The request to create a PayPal payment token
      */
     public createPayPalExpressCheckoutWithHttpInfo(request?: CreatePayPalPaymentRequest, extraHttpRequestParams?: any): Observable<Response> {
@@ -249,7 +249,7 @@ export class PaymentsPayPalClassicService {
 
     /**
      * Finalizes a billing agreement after the user has accepted through PayPal
-     * Returns the ID of the new payment method created for the user for the billing agreement.
+     * Returns the ID of the new payment method created for the user for the billing agreement. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; PAYPAL_CLASSIC_ADMIN or owner
      * @param request The request to finalize a PayPal billing agreement
      */
     public finalizePayPalBillingAgreementWithHttpInfo(request?: FinalizeBillingAgreementRequest, extraHttpRequestParams?: any): Observable<Response> {
@@ -302,7 +302,7 @@ export class PaymentsPayPalClassicService {
 
     /**
      * Finalizes a payment after the user has completed checkout with PayPal
-     * The invoice will be marked paid/failed by asynchronous IPN callback.
+     * The invoice will be marked paid/failed by asynchronous IPN callback. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; PAYPAL_CLASSIC_ADMIN or owner
      * @param request The request to finalize the payment
      */
     public finalizePayPalCheckoutWithHttpInfo(request?: FinalizePayPalPaymentRequest, extraHttpRequestParams?: any): Observable<Response> {

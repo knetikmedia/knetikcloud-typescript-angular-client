@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ContentArticlesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class ContentArticlesService {
     }
 
     /**
-     * Articles are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.
+     * Articles are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.<br><br><b>Permissions:</b> ARTICLES_ADMIN
      * @summary Create a new article
      * @param articleResource The new article
      */
@@ -93,7 +93,7 @@ export class ContentArticlesService {
     }
 
     /**
-     * Article Templates define a type of article and the properties they have
+     * Article Templates define a type of article and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create an article template
      * @param articleTemplateResource The article template resource object
      */
@@ -109,7 +109,7 @@ export class ContentArticlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ARTICLES_ADMIN
      * @summary Delete an existing article
      * @param id The article id
      */
@@ -125,7 +125,7 @@ export class ContentArticlesService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete an article template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -142,7 +142,7 @@ export class ContentArticlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single article
      * @param id The article id
      */
@@ -158,7 +158,7 @@ export class ContentArticlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTICLES_ADMIN
      * @summary Get a single article template
      * @param id The id of the template
      */
@@ -174,7 +174,7 @@ export class ContentArticlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ARTICLES_ADMIN
      * @summary List and search article templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -192,7 +192,7 @@ export class ContentArticlesService {
     }
 
     /**
-     * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single article' to retrieve the full resource with assets for a given item as needed.
+     * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use 'Get a single article' to retrieve the full resource with assets for a given item as needed. <br><br><b>Permissions Needed:</b> ANY
      * @summary List and search articles
      * @param filterActiveOnly Filter for articles that are active (true) or inactive (false)
      * @param filterCategory Filter for articles from a specific category by id
@@ -216,7 +216,7 @@ export class ContentArticlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ARTICLES_ADMIN
      * @summary Update an existing article
      * @param id The article id
      * @param articleResource The article object
@@ -233,7 +233,7 @@ export class ContentArticlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update an article template
      * @param id The id of the template
      * @param articleTemplateResource The article template resource object
@@ -252,7 +252,7 @@ export class ContentArticlesService {
 
     /**
      * Create a new article
-     * Articles are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.
+     * Articles are blobs of text with titles, a category and assets. Formatting and display of the text is in the hands of the front end.&lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions:&lt;/b&gt; ARTICLES_ADMIN
      * @param articleResource The new article
      */
     public createArticleWithHttpInfo(articleResource?: ArticleResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -305,7 +305,7 @@ export class ContentArticlesService {
 
     /**
      * Create an article template
-     * Article Templates define a type of article and the properties they have
+     * Article Templates define a type of article and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param articleTemplateResource The article template resource object
      */
     public createArticleTemplateWithHttpInfo(articleTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -358,7 +358,7 @@ export class ContentArticlesService {
 
     /**
      * Delete an existing article
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
      * @param id The article id
      */
     public deleteArticleWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -413,7 +413,7 @@ export class ContentArticlesService {
 
     /**
      * Delete an article template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -473,7 +473,7 @@ export class ContentArticlesService {
 
     /**
      * Get a single article
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The article id
      */
     public getArticleWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -528,7 +528,7 @@ export class ContentArticlesService {
 
     /**
      * Get a single article template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or ARTICLES_ADMIN
      * @param id The id of the template
      */
     public getArticleTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -583,7 +583,7 @@ export class ContentArticlesService {
 
     /**
      * List and search article templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or ARTICLES_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -647,7 +647,7 @@ export class ContentArticlesService {
 
     /**
      * List and search articles
-     * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use &#39;Get a single article&#39; to retrieve the full resource with assets for a given item as needed.
+     * Get a list of articles with optional filtering. Assets will not be filled in on the resources returned. Use &#39;Get a single article&#39; to retrieve the full resource with assets for a given item as needed. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterActiveOnly Filter for articles that are active (true) or inactive (false)
      * @param filterCategory Filter for articles from a specific category by id
      * @param filterTagset Filter for articles with at least one of a specified set of tags (separated by comma)
@@ -741,7 +741,7 @@ export class ContentArticlesService {
 
     /**
      * Update an existing article
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
      * @param id The article id
      * @param articleResource The article object
      */
@@ -800,7 +800,7 @@ export class ContentArticlesService {
 
     /**
      * Update an article template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param articleTemplateResource The article template resource object
      */

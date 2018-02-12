@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ReportingChallengesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class ReportingChallengesService {
     }
 
     /**
-     * Lists all leaderboard entries with additional user details
+     * Lists all leaderboard entries with additional user details. <br><br><b>Permissions Needed:</b> REPORTING_CHALLENGES_ADMIN
      * @summary Retrieve a challenge event leaderboard details
      * @param filterEvent A sepecific challenge event id
      * @param size The number of objects returned per page
@@ -93,7 +93,7 @@ export class ReportingChallengesService {
     }
 
     /**
-     * Lists all user submitted scores sorted by value, including those that do not apear in the leaderboard due to value or aggregation
+     * Lists all user submitted scores sorted by value, including those that do not apear in the leaderboard due to value or aggregation. <br><br><b>Permissions Needed:</b> REPORTING_CHALLENGES_ADMIN
      * @summary Retrieve a challenge event participant details
      * @param filterEvent A sepecific challenge event id
      * @param size The number of objects returned per page
@@ -114,7 +114,7 @@ export class ReportingChallengesService {
 
     /**
      * Retrieve a challenge event leaderboard details
-     * Lists all leaderboard entries with additional user details
+     * Lists all leaderboard entries with additional user details. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; REPORTING_CHALLENGES_ADMIN
      * @param filterEvent A sepecific challenge event id
      * @param size The number of objects returned per page
      * @param page The number of the page returned
@@ -183,7 +183,7 @@ export class ReportingChallengesService {
 
     /**
      * Retrieve a challenge event participant details
-     * Lists all user submitted scores sorted by value, including those that do not apear in the leaderboard due to value or aggregation
+     * Lists all user submitted scores sorted by value, including those that do not apear in the leaderboard due to value or aggregation. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; REPORTING_CHALLENGES_ADMIN
      * @param filterEvent A sepecific challenge event id
      * @param size The number of objects returned per page
      * @param page The number of the page returned

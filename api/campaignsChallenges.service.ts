@@ -37,7 +37,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class CampaignsChallengesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -81,7 +81,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * Challenges do not run on their own.  They must be added to a campaign before events will spawn.
+     * Challenges do not run on their own.  They must be added to a campaign before events will spawn. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
      * @summary Create a challenge
      * @param challengeResource The challenge resource object
      */
@@ -97,7 +97,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CHALLENGES_ADMIN
      * @summary Create a challenge activity
      * @param challengeId The challenge id
      * @param challengeActivityResource The challenge activity resource object
@@ -115,7 +115,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * Challenge Activity Templates define a type of challenge activity and the properties they have
+     * Challenge Activity Templates define a type of challenge activity and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a challenge activity template
      * @param challengeActivityTemplateResource The challengeActivity template resource object
      */
@@ -131,7 +131,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * Challenge Templates define a type of challenge and the properties they have
+     * Challenge Templates define a type of challenge and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a challenge template
      * @param challengeTemplateResource The challenge template resource object
      */
@@ -147,7 +147,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CHALLENGES_ADMIN
      * @summary Delete a challenge
      * @param id The challenge id
      */
@@ -163,7 +163,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
      * @summary Delete a challenge activity
      * @param id The challenge_activity id
      * @param challengeId The challenge id
@@ -180,7 +180,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a challenge activity template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -197,7 +197,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CHALLENGES_ADMIN
      * @summary Delete a challenge event
      * @param id The challenge event id
      */
@@ -213,7 +213,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a challenge template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -230,7 +230,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Retrieve a challenge
      * @param id The challenge id
      */
@@ -246,7 +246,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search challenge activities
      * @param challengeId The challenge id
      * @param size The number of objects returned per page
@@ -265,7 +265,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. <br><br><b>Permissions Needed:</b> ANY
      * @summary Get a single challenge activity
      * @param id The challenge_activity id
      * @param challengeId The challenge id
@@ -282,7 +282,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
      * @summary Get a single challenge activity template
      * @param id The id of the template
      */
@@ -298,7 +298,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
      * @summary List and search challenge activity templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -316,7 +316,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Retrieve a single challenge event details
      * @param id The challenge event id
      */
@@ -332,7 +332,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Retrieve a list of challenge events
      * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the event start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the event end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -354,7 +354,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
      * @summary Get a single challenge template
      * @param id The id of the template
      */
@@ -370,7 +370,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CHALLENGES_ADMIN
      * @summary List and search challenge templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -388,7 +388,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Retrieve a list of challenges
      * @param filterActiveCampaign Filter for challenges that are tied to active campaigns
      * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -409,7 +409,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * If the challenge is a copy, changes will propagate to all the related challenges
+     * If the challenge is a copy, changes will propagate to all the related challenges. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
      * @summary Update a challenge
      * @param id The challenge id
      * @param challengeResource The challenge resource object
@@ -426,7 +426,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. <br><br><b>Permissions Needed:</b> CHALLENGES_ADMIN
      * @summary Update a challenge activity
      * @param id The challenge_activity id
      * @param challengeId The challenge id
@@ -445,7 +445,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update an challenge activity template
      * @param id The id of the template
      * @param challengeActivityTemplateResource The challengeActivity template resource object
@@ -462,7 +462,7 @@ export class CampaignsChallengesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a challenge template
      * @param id The id of the template
      * @param challengeTemplateResource The challenge template resource object
@@ -481,7 +481,7 @@ export class CampaignsChallengesService {
 
     /**
      * Create a challenge
-     * Challenges do not run on their own.  They must be added to a campaign before events will spawn.
+     * Challenges do not run on their own.  They must be added to a campaign before events will spawn. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; CHALLENGES_ADMIN
      * @param challengeResource The challenge resource object
      */
     public createChallengeWithHttpInfo(challengeResource?: ChallengeResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -534,7 +534,7 @@ export class CampaignsChallengesService {
 
     /**
      * Create a challenge activity
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CHALLENGES_ADMIN
      * @param challengeId The challenge id
      * @param challengeActivityResource The challenge activity resource object
      * @param validateSettings Whether to validate the settings being sent against the available settings on the base activity.
@@ -598,7 +598,7 @@ export class CampaignsChallengesService {
 
     /**
      * Create a challenge activity template
-     * Challenge Activity Templates define a type of challenge activity and the properties they have
+     * Challenge Activity Templates define a type of challenge activity and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param challengeActivityTemplateResource The challengeActivity template resource object
      */
     public createChallengeActivityTemplateWithHttpInfo(challengeActivityTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -651,7 +651,7 @@ export class CampaignsChallengesService {
 
     /**
      * Create a challenge template
-     * Challenge Templates define a type of challenge and the properties they have
+     * Challenge Templates define a type of challenge and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param challengeTemplateResource The challenge template resource object
      */
     public createChallengeTemplateWithHttpInfo(challengeTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -704,7 +704,7 @@ export class CampaignsChallengesService {
 
     /**
      * Delete a challenge
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CHALLENGES_ADMIN
      * @param id The challenge id
      */
     public deleteChallengeWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -759,7 +759,7 @@ export class CampaignsChallengesService {
 
     /**
      * Delete a challenge activity
-     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; CHALLENGES_ADMIN
      * @param id The challenge_activity id
      * @param challengeId The challenge id
      */
@@ -820,7 +820,7 @@ export class CampaignsChallengesService {
 
     /**
      * Delete a challenge activity template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -880,7 +880,7 @@ export class CampaignsChallengesService {
 
     /**
      * Delete a challenge event
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CHALLENGES_ADMIN
      * @param id The challenge event id
      */
     public deleteChallengeEventWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -935,7 +935,7 @@ export class CampaignsChallengesService {
 
     /**
      * Delete a challenge template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -995,7 +995,7 @@ export class CampaignsChallengesService {
 
     /**
      * Retrieve a challenge
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The challenge id
      */
     public getChallengeWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1050,7 +1050,7 @@ export class CampaignsChallengesService {
 
     /**
      * List and search challenge activities
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param challengeId The challenge id
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -1120,7 +1120,7 @@ export class CampaignsChallengesService {
 
     /**
      * Get a single challenge activity
-     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The challenge_activity id
      * @param challengeId The challenge id
      */
@@ -1181,7 +1181,7 @@ export class CampaignsChallengesService {
 
     /**
      * Get a single challenge activity template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or CHALLENGES_ADMIN
      * @param id The id of the template
      */
     public getChallengeActivityTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1236,7 +1236,7 @@ export class CampaignsChallengesService {
 
     /**
      * List and search challenge activity templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or CHALLENGES_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -1300,7 +1300,7 @@ export class CampaignsChallengesService {
 
     /**
      * Retrieve a single challenge event details
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The challenge event id
      */
     public getChallengeEventWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1355,7 +1355,7 @@ export class CampaignsChallengesService {
 
     /**
      * Retrieve a list of challenge events
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the event start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the event end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterCampaigns check only for events from currently running campaigns
@@ -1439,7 +1439,7 @@ export class CampaignsChallengesService {
 
     /**
      * Get a single challenge template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or CHALLENGES_ADMIN
      * @param id The id of the template
      */
     public getChallengeTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1494,7 +1494,7 @@ export class CampaignsChallengesService {
 
     /**
      * List and search challenge templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or CHALLENGES_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -1558,7 +1558,7 @@ export class CampaignsChallengesService {
 
     /**
      * Retrieve a list of challenges
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterActiveCampaign Filter for challenges that are tied to active campaigns
      * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the challenge end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
@@ -1637,7 +1637,7 @@ export class CampaignsChallengesService {
 
     /**
      * Update a challenge
-     * If the challenge is a copy, changes will propagate to all the related challenges
+     * If the challenge is a copy, changes will propagate to all the related challenges. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; CHALLENGES_ADMIN
      * @param id The challenge id
      * @param challengeResource The challenge resource object
      */
@@ -1696,7 +1696,7 @@ export class CampaignsChallengesService {
 
     /**
      * Update a challenge activity
-     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge
+     * A challenge can have multiple instances of the same activity and thus the id used is of the specific entry within the challenge. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; CHALLENGES_ADMIN
      * @param id The challenge_activity id
      * @param challengeId The challenge id
      * @param challengeActivityResource The challenge activity resource object
@@ -1766,7 +1766,7 @@ export class CampaignsChallengesService {
 
     /**
      * Update an challenge activity template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param challengeActivityTemplateResource The challengeActivity template resource object
      */
@@ -1825,7 +1825,7 @@ export class CampaignsChallengesService {
 
     /**
      * Update a challenge template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param challengeTemplateResource The challenge template resource object
      */

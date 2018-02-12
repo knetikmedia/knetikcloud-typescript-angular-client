@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class BRERuleEngineActionsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class BRERuleEngineActionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_ACTIONS_USER
      * @summary Get a list of available actions
      * @param filterCategory Filter for actions that are within a specific category
      * @param filterName Filter for actions that have names containing the given string
@@ -95,7 +95,7 @@ export class BRERuleEngineActionsService {
 
     /**
      * Get a list of available actions
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_ACTIONS_USER
      * @param filterCategory Filter for actions that are within a specific category
      * @param filterName Filter for actions that have names containing the given string
      * @param filterTags Filter for actions that have all of the given tags (comma separated list)

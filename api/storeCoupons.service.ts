@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class StoreCouponsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -76,7 +76,7 @@ export class StoreCouponsService {
     }
 
     /**
-     * SKUs have to be unique in the entire store.
+     * SKUs have to be unique in the entire store. <br><br><b>Permissions Needed:</b> COUPONS_ADMIN
      * @summary Create a coupon item
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param couponItem The coupon item object
@@ -93,7 +93,7 @@ export class StoreCouponsService {
     }
 
     /**
-     * Coupon Templates define a type of coupon and the properties they have.
+     * Coupon Templates define a type of coupon and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a coupon template
      * @param couponTemplateResource The new coupon template
      */
@@ -109,7 +109,7 @@ export class StoreCouponsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> COUPONS_ADMIN
      * @summary Delete a coupon item
      * @param id The id of the coupon
      */
@@ -125,7 +125,7 @@ export class StoreCouponsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a coupon template
      * @param id The id of the template
      * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
@@ -142,7 +142,7 @@ export class StoreCouponsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> COUPONS_ADMIN
      * @summary Get a single coupon item
      * @param id The id of the coupon
      */
@@ -158,7 +158,7 @@ export class StoreCouponsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a coupon by sku
      * @param sku A sku of the coupon
      */
@@ -174,7 +174,7 @@ export class StoreCouponsService {
     }
 
     /**
-     * Coupon Templates define a type of coupon and the properties they have.
+     * Coupon Templates define a type of coupon and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN or COUPONS_ADMIN
      * @summary Get a single coupon template
      * @param id The id of the template
      */
@@ -190,7 +190,7 @@ export class StoreCouponsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or COUPONS_ADMIN
      * @summary List and search coupon templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -208,7 +208,7 @@ export class StoreCouponsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> COUPONS_ADMIN
      * @summary Update a coupon item
      * @param id The id of the coupon
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
@@ -226,7 +226,7 @@ export class StoreCouponsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a coupon template
      * @param id The id of the template
      * @param couponTemplateResource The coupon template resource object
@@ -245,7 +245,7 @@ export class StoreCouponsService {
 
     /**
      * Create a coupon item
-     * SKUs have to be unique in the entire store.
+     * SKUs have to be unique in the entire store. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; COUPONS_ADMIN
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param couponItem The coupon item object
      */
@@ -303,7 +303,7 @@ export class StoreCouponsService {
 
     /**
      * Create a coupon template
-     * Coupon Templates define a type of coupon and the properties they have.
+     * Coupon Templates define a type of coupon and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param couponTemplateResource The new coupon template
      */
     public createCouponTemplateWithHttpInfo(couponTemplateResource?: ItemTemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -356,7 +356,7 @@ export class StoreCouponsService {
 
     /**
      * Delete a coupon item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; COUPONS_ADMIN
      * @param id The id of the coupon
      */
     public deleteCouponItemWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -411,7 +411,7 @@ export class StoreCouponsService {
 
     /**
      * Delete a coupon template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
      */
@@ -471,7 +471,7 @@ export class StoreCouponsService {
 
     /**
      * Get a single coupon item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; COUPONS_ADMIN
      * @param id The id of the coupon
      */
     public getCouponItemWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -526,7 +526,7 @@ export class StoreCouponsService {
 
     /**
      * Get a coupon by sku
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param sku A sku of the coupon
      */
     public getCouponItemBySkuWithHttpInfo(sku: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -581,7 +581,7 @@ export class StoreCouponsService {
 
     /**
      * Get a single coupon template
-     * Coupon Templates define a type of coupon and the properties they have.
+     * Coupon Templates define a type of coupon and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or COUPONS_ADMIN
      * @param id The id of the template
      */
     public getCouponTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -636,7 +636,7 @@ export class StoreCouponsService {
 
     /**
      * List and search coupon templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or COUPONS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -700,7 +700,7 @@ export class StoreCouponsService {
 
     /**
      * Update a coupon item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; COUPONS_ADMIN
      * @param id The id of the coupon
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param couponItem The coupon item object
@@ -764,7 +764,7 @@ export class StoreCouponsService {
 
     /**
      * Update a coupon template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param couponTemplateResource The coupon template resource object
      */

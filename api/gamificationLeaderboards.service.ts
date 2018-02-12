@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class GamificationLeaderboardsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class GamificationLeaderboardsService {
     }
 
     /**
-     * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. Sorting is based on the fields of LeaderboardEntryResource rather than the returned LeaderboardResource.
+     * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. Sorting is based on the fields of LeaderboardEntryResource rather than the returned LeaderboardResource. <br><br><b>Permissions Needed:</b> ANY
      * @summary Retrieves leaderboard details and paginated entries
      * @param contextType The context type for the leaderboard
      * @param contextId The context id for the leaderboard
@@ -95,7 +95,7 @@ export class GamificationLeaderboardsService {
     }
 
     /**
-     * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard
+     * The context type identifies the type of entity (i.e., 'activity') being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. <br><br><b>Permissions Needed:</b> ANY
      * @summary Retrieves a specific user entry with rank
      * @param contextType The context type for the leaderboard
      * @param contextId The context id for the leaderboard
@@ -113,7 +113,7 @@ export class GamificationLeaderboardsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a list of available leaderboard strategy names
      */
     public getLeaderboardStrategies(extraHttpRequestParams?: any): Observable<Array<string>> {
@@ -130,7 +130,7 @@ export class GamificationLeaderboardsService {
 
     /**
      * Retrieves leaderboard details and paginated entries
-     * The context type identifies the type of entity (i.e., &#39;activity&#39;) being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. Sorting is based on the fields of LeaderboardEntryResource rather than the returned LeaderboardResource.
+     * The context type identifies the type of entity (i.e., &#39;activity&#39;) being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. Sorting is based on the fields of LeaderboardEntryResource rather than the returned LeaderboardResource. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param contextType The context type for the leaderboard
      * @param contextId The context id for the leaderboard
      * @param size The number of objects returned per page
@@ -206,7 +206,7 @@ export class GamificationLeaderboardsService {
 
     /**
      * Retrieves a specific user entry with rank
-     * The context type identifies the type of entity (i.e., &#39;activity&#39;) being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard
+     * The context type identifies the type of entity (i.e., &#39;activity&#39;) being tracked on the leaderboard. The context ID is the unique ID of the actual entity tracked by the leaderboard. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param contextType The context type for the leaderboard
      * @param contextId The context id for the leaderboard
      * @param id The id of a user
@@ -273,7 +273,7 @@ export class GamificationLeaderboardsService {
 
     /**
      * Get a list of available leaderboard strategy names
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      */
     public getLeaderboardStrategiesWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/leaderboards/strategies';

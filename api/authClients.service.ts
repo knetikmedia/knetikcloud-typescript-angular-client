@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class AuthClientsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -76,7 +76,7 @@ export class AuthClientsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CLIENTS_ADMIN
      * @summary Create a new client
      * @param clientResource The client resource object
      */
@@ -92,7 +92,7 @@ export class AuthClientsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CLIENTS_ADMIN
      * @summary Delete a client
      * @param clientKey The key of the client
      */
@@ -108,7 +108,7 @@ export class AuthClientsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CLIENTS_ADMIN
      * @summary Get a single client
      * @param clientKey The key of the client
      */
@@ -124,7 +124,7 @@ export class AuthClientsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CLIENTS_ADMIN
      * @summary List available client grant types
      */
     public getClientGrantTypes(extraHttpRequestParams?: any): Observable<Array<GrantTypeResource>> {
@@ -139,7 +139,7 @@ export class AuthClientsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CLIENTS_ADMIN
      * @summary List and search clients
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -157,7 +157,7 @@ export class AuthClientsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CLIENTS_ADMIN
      * @summary Set grant types for a client
      * @param clientKey The key of the client
      * @param grantList A list of unique grant types
@@ -174,7 +174,7 @@ export class AuthClientsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CLIENTS_ADMIN
      * @summary Set redirect uris for a client
      * @param clientKey The key of the client
      * @param redirectList A list of unique redirect uris
@@ -191,7 +191,7 @@ export class AuthClientsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CLIENTS_ADMIN
      * @summary Update a client
      * @param clientKey The key of the client
      * @param clientResource The client resource object
@@ -210,7 +210,7 @@ export class AuthClientsService {
 
     /**
      * Create a new client
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CLIENTS_ADMIN
      * @param clientResource The client resource object
      */
     public createClientWithHttpInfo(clientResource?: ClientResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -263,7 +263,7 @@ export class AuthClientsService {
 
     /**
      * Delete a client
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CLIENTS_ADMIN
      * @param clientKey The key of the client
      */
     public deleteClientWithHttpInfo(clientKey: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -318,7 +318,7 @@ export class AuthClientsService {
 
     /**
      * Get a single client
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CLIENTS_ADMIN
      * @param clientKey The key of the client
      */
     public getClientWithHttpInfo(clientKey: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -373,7 +373,7 @@ export class AuthClientsService {
 
     /**
      * List available client grant types
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CLIENTS_ADMIN
      */
     public getClientGrantTypesWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/auth/clients/grant-types';
@@ -422,7 +422,7 @@ export class AuthClientsService {
 
     /**
      * List and search clients
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CLIENTS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -486,7 +486,7 @@ export class AuthClientsService {
 
     /**
      * Set grant types for a client
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CLIENTS_ADMIN
      * @param clientKey The key of the client
      * @param grantList A list of unique grant types
      */
@@ -545,7 +545,7 @@ export class AuthClientsService {
 
     /**
      * Set redirect uris for a client
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CLIENTS_ADMIN
      * @param clientKey The key of the client
      * @param redirectList A list of unique redirect uris
      */
@@ -604,7 +604,7 @@ export class AuthClientsService {
 
     /**
      * Update a client
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CLIENTS_ADMIN
      * @param clientKey The key of the client
      * @param clientResource The client resource object
      */

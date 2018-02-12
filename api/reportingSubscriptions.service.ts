@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ReportingSubscriptionsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class ReportingSubscriptionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
      * @summary Get a list of available subscription reports in most recent first order
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -93,7 +93,7 @@ export class ReportingSubscriptionsService {
 
     /**
      * Get a list of available subscription reports in most recent first order
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SUBSCRIPTIONS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      */

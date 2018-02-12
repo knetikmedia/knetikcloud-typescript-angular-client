@@ -20,7 +20,7 @@ export interface GroupResource {
     additionalProperties?: { [key: string]: Property; };
 
     /**
-     * A description of the group. Max 250 characters
+     * A description of the group
      */
     description?: string;
 

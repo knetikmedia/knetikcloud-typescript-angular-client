@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class StoreShippingService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -76,7 +76,7 @@ export class StoreShippingService {
     }
 
     /**
-     * A shipping item represents a shipping option and cost. SKUs have to be unique in the entire store.
+     * A shipping item represents a shipping option and cost. SKUs have to be unique in the entire store. <br><br><b>Permissions Needed:</b> SHIPPING_ADMIN
      * @summary Create a shipping item
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param shippingItem The shipping item object
@@ -109,7 +109,7 @@ export class StoreShippingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SHIPPING_ADMIN
      * @summary Delete a shipping item
      * @param id The id of the shipping item
      */
@@ -125,7 +125,7 @@ export class StoreShippingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a shipping template
      * @param id The id of the template
      * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
@@ -142,7 +142,7 @@ export class StoreShippingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single shipping item
      * @param id The id of the shipping item
      */
@@ -158,7 +158,7 @@ export class StoreShippingService {
     }
 
     /**
-     * Shipping Templates define a type of shipping and the properties they have.
+     * Shipping Templates define a type of shipping and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN or SHIPPING_ADMIN
      * @summary Get a single shipping template
      * @param id The id of the template
      */
@@ -174,7 +174,7 @@ export class StoreShippingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or SHIPPING_ADMIN
      * @summary List and search shipping templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -192,7 +192,7 @@ export class StoreShippingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SHIPPING_ADMIN
      * @summary Update a shipping item
      * @param id The id of the shipping item
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
@@ -210,7 +210,7 @@ export class StoreShippingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a shipping template
      * @param id The id of the template
      * @param shippingTemplateResource The shipping template resource object
@@ -229,7 +229,7 @@ export class StoreShippingService {
 
     /**
      * Create a shipping item
-     * A shipping item represents a shipping option and cost. SKUs have to be unique in the entire store.
+     * A shipping item represents a shipping option and cost. SKUs have to be unique in the entire store. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; SHIPPING_ADMIN
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param shippingItem The shipping item object
      */
@@ -340,7 +340,7 @@ export class StoreShippingService {
 
     /**
      * Delete a shipping item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SHIPPING_ADMIN
      * @param id The id of the shipping item
      */
     public deleteShippingItemWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -395,7 +395,7 @@ export class StoreShippingService {
 
     /**
      * Delete a shipping template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
      */
@@ -455,7 +455,7 @@ export class StoreShippingService {
 
     /**
      * Get a single shipping item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the shipping item
      */
     public getShippingItemWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -510,7 +510,7 @@ export class StoreShippingService {
 
     /**
      * Get a single shipping template
-     * Shipping Templates define a type of shipping and the properties they have.
+     * Shipping Templates define a type of shipping and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or SHIPPING_ADMIN
      * @param id The id of the template
      */
     public getShippingTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -565,7 +565,7 @@ export class StoreShippingService {
 
     /**
      * List and search shipping templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or SHIPPING_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -629,7 +629,7 @@ export class StoreShippingService {
 
     /**
      * Update a shipping item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SHIPPING_ADMIN
      * @param id The id of the shipping item
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param shippingItem The shipping item object
@@ -693,7 +693,7 @@ export class StoreShippingService {
 
     /**
      * Update a shipping template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param shippingTemplateResource The shipping template resource object
      */

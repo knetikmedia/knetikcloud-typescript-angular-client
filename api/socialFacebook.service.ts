@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class SocialFacebookService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class SocialFacebookService {
     }
 
     /**
-     * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired.
+     * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired. <br><br><b>Permissions Needed:</b> Non-facebook user token
      * @summary Link facebook account
      * @param facebookToken The token from facebook
      */
@@ -92,7 +92,7 @@ export class SocialFacebookService {
 
     /**
      * Link facebook account
-     * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired.
+     * Links the current user account to a facebook account, using the acccess token from facebook. Can also be used to update the access token after it has expired. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; Non-facebook user token
      * @param facebookToken The token from facebook
      */
     public linkAccountsWithHttpInfo(facebookToken?: FacebookToken, extraHttpRequestParams?: any): Observable<Response> {

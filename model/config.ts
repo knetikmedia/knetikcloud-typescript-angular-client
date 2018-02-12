@@ -14,7 +14,7 @@
 
 export interface Config {
     /**
-     * The description of the config.  Max 140 characters
+     * The description of the config.  Max 255 characters
      */
     description?: string;
 

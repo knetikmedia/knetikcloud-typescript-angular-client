@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class FulfillmentService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class FulfillmentService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
      * @summary Create a fulfillment type
      * @param type The fulfillment type
      */
@@ -91,7 +91,7 @@ export class FulfillmentService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
      * @summary Delete a fulfillment type
      * @param id The id
      */
@@ -107,7 +107,7 @@ export class FulfillmentService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single fulfillment type
      * @param id The id
      */
@@ -123,7 +123,7 @@ export class FulfillmentService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search fulfillment types
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -141,7 +141,7 @@ export class FulfillmentService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
      * @summary Update a fulfillment type
      * @param id The id
      * @param fulfillmentType The fulfillment type
@@ -160,7 +160,7 @@ export class FulfillmentService {
 
     /**
      * Create a fulfillment type
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; FULFILLMENT_ADMIN
      * @param type The fulfillment type
      */
     public createFulfillmentTypeWithHttpInfo(type?: FulfillmentType, extraHttpRequestParams?: any): Observable<Response> {
@@ -213,7 +213,7 @@ export class FulfillmentService {
 
     /**
      * Delete a fulfillment type
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; FULFILLMENT_ADMIN
      * @param id The id
      */
     public deleteFulfillmentTypeWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -268,7 +268,7 @@ export class FulfillmentService {
 
     /**
      * Get a single fulfillment type
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id
      */
     public getFulfillmentTypeWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -323,7 +323,7 @@ export class FulfillmentService {
 
     /**
      * List and search fulfillment types
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -387,7 +387,7 @@ export class FulfillmentService {
 
     /**
      * Update a fulfillment type
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; FULFILLMENT_ADMIN
      * @param id The id
      * @param fulfillmentType The fulfillment type
      */

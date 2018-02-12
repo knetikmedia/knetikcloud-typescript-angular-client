@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class StoreBundlesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -76,7 +76,7 @@ export class StoreBundlesService {
     }
 
     /**
-     * The SKU for the bundle itself must be unique and there can only be one SKU.  Extra notes for price_override:  The price of all the items (multiplied by the quantity) must equal the price of the bundle.  With individual prices set, items will be processed individually and can be refunded as such.  However, if all prices are set to null, the price of the bundle will be used and will be treated as one item.
+     * The SKU for the bundle itself must be unique and there can only be one SKU.  Extra notes for price_override:  The price of all the items (multiplied by the quantity) must equal the price of the bundle.  With individual prices set, items will be processed individually and can be refunded as such.  However, if all prices are set to null, the price of the bundle will be used and will be treated as one item. <br><br><b>Permissions Needed:</b> BUNDLES_ADMIN
      * @summary Create a bundle item
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param bundleItem The bundle item object
@@ -93,7 +93,7 @@ export class StoreBundlesService {
     }
 
     /**
-     * Bundle Templates define a type of bundle and the properties they have.
+     * Bundle Templates define a type of bundle and the properties they have. <br><br><b>Permissions Needed:</b> BUNDLES_ADMIN
      * @summary Create a bundle template
      * @param bundleTemplateResource The new bundle template
      */
@@ -109,7 +109,7 @@ export class StoreBundlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BUNDLES_ADMIN
      * @summary Delete a bundle item
      * @param id The id of the bundle
      */
@@ -125,7 +125,7 @@ export class StoreBundlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BUNDLES_ADMIN
      * @summary Delete a bundle template
      * @param id The id of the template
      * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
@@ -142,7 +142,7 @@ export class StoreBundlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single bundle item
      * @param id The id of the bundle
      */
@@ -158,7 +158,7 @@ export class StoreBundlesService {
     }
 
     /**
-     * Bundle Templates define a type of bundle and the properties they have.
+     * Bundle Templates define a type of bundle and the properties they have. <br><br><b>Permissions Needed:</b> ANY
      * @summary Get a single bundle template
      * @param id The id of the template
      */
@@ -174,7 +174,7 @@ export class StoreBundlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search bundle templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -192,7 +192,7 @@ export class StoreBundlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BUNDLES_ADMIN
      * @summary Update a bundle item
      * @param id The id of the bundle
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
@@ -210,7 +210,7 @@ export class StoreBundlesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BUNDLES_ADMIN
      * @summary Update a bundle template
      * @param id The id of the template
      * @param bundleTemplateResource The bundle template resource object
@@ -229,7 +229,7 @@ export class StoreBundlesService {
 
     /**
      * Create a bundle item
-     * The SKU for the bundle itself must be unique and there can only be one SKU.  Extra notes for price_override:  The price of all the items (multiplied by the quantity) must equal the price of the bundle.  With individual prices set, items will be processed individually and can be refunded as such.  However, if all prices are set to null, the price of the bundle will be used and will be treated as one item.
+     * The SKU for the bundle itself must be unique and there can only be one SKU.  Extra notes for price_override:  The price of all the items (multiplied by the quantity) must equal the price of the bundle.  With individual prices set, items will be processed individually and can be refunded as such.  However, if all prices are set to null, the price of the bundle will be used and will be treated as one item. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BUNDLES_ADMIN
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param bundleItem The bundle item object
      */
@@ -287,7 +287,7 @@ export class StoreBundlesService {
 
     /**
      * Create a bundle template
-     * Bundle Templates define a type of bundle and the properties they have.
+     * Bundle Templates define a type of bundle and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BUNDLES_ADMIN
      * @param bundleTemplateResource The new bundle template
      */
     public createBundleTemplateWithHttpInfo(bundleTemplateResource?: ItemTemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -340,7 +340,7 @@ export class StoreBundlesService {
 
     /**
      * Delete a bundle item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BUNDLES_ADMIN
      * @param id The id of the bundle
      */
     public deleteBundleItemWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -395,7 +395,7 @@ export class StoreBundlesService {
 
     /**
      * Delete a bundle template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BUNDLES_ADMIN
      * @param id The id of the template
      * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
      */
@@ -455,7 +455,7 @@ export class StoreBundlesService {
 
     /**
      * Get a single bundle item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the bundle
      */
     public getBundleItemWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -510,7 +510,7 @@ export class StoreBundlesService {
 
     /**
      * Get a single bundle template
-     * Bundle Templates define a type of bundle and the properties they have.
+     * Bundle Templates define a type of bundle and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the template
      */
     public getBundleTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -565,7 +565,7 @@ export class StoreBundlesService {
 
     /**
      * List and search bundle templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -629,7 +629,7 @@ export class StoreBundlesService {
 
     /**
      * Update a bundle item
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BUNDLES_ADMIN
      * @param id The id of the bundle
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param bundleItem The bundle item object
@@ -693,7 +693,7 @@ export class StoreBundlesService {
 
     /**
      * Update a bundle template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BUNDLES_ADMIN
      * @param id The id of the template
      * @param bundleTemplateResource The bundle template resource object
      */

@@ -20,7 +20,10 @@ import { Response, ResponseContentType }                     from '@angular/http
 import { Observable }                                        from 'rxjs/Observable';
 import '../rxjs-operators';
 
+import { ChatMessageRequest } from '../model/chatMessageRequest';
+import { ChatMessageResource } from '../model/chatMessageResource';
 import { NewPasswordRequest } from '../model/newPasswordRequest';
+import { PageResourceChatMessageResource } from '../model/pageResourceChatMessageResource';
 import { PageResourceTemplateResource } from '../model/pageResourceTemplateResource';
 import { PageResourceUserBaseResource } from '../model/pageResourceUserBaseResource';
 import { PasswordResetRequest } from '../model/passwordResetRequest';
@@ -36,7 +39,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UsersService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -80,7 +83,7 @@ export class UsersService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USERS_ADMIN
      * @summary Add a tag to a user
      * @param userId The id of the user
      * @param tag tag
@@ -97,7 +100,7 @@ export class UsersService {
     }
 
     /**
-     * User Templates define a type of user and the properties they have
+     * User Templates define a type of user and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a user template
      * @param userTemplateResource The user template resource object
      */
@@ -113,7 +116,7 @@ export class UsersService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a user template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -130,7 +133,25 @@ export class UsersService {
     }
 
     /**
-     * Additional private info is included as USERS_ADMIN
+     * <b>Permissions Needed:</b> ANY
+     * @summary Get a list of direct messages with this user
+     * @param recipientId The user id
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
+    public getDirectMessages1(recipientId: number, size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceChatMessageResource> {
+        return this.getDirectMessages1WithHttpInfo(recipientId, size, page, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * Additional private info is included as USERS_ADMIN. <br><br><b>Permissions Needed:</b> ANY
      * @summary Get a single user
      * @param id The id of the user or &#39;me&#39;
      */
@@ -146,7 +167,7 @@ export class UsersService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USERS_ADMIN
      * @summary List tags for a user
      * @param userId The id of the user
      */
@@ -162,7 +183,7 @@ export class UsersService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or USERS_ADMIN
      * @summary Get a single user template
      * @param id The id of the template
      */
@@ -178,7 +199,7 @@ export class UsersService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or USERS_ADMIN
      * @summary List and search user templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -196,7 +217,7 @@ export class UsersService {
     }
 
     /**
-     * Additional private info is included as USERS_ADMIN
+     * Additional private info is included as USERS_ADMIN. <br><br><b>Permissions Needed:</b> ANY
      * @summary List and search users
      * @param filterDisplayname Filter for users whose display name starts with provided string.
      * @param filterEmail Filter for users whose email starts with provided string. Requires USERS_ADMIN permission
@@ -226,7 +247,7 @@ export class UsersService {
     }
 
     /**
-     * Finish resetting a user's password using the secret provided from the password-reset endpoint.  Password should be in plain text and will be encrypted on receipt. Use SSL for security.
+     * Finish resetting a user's password using the secret provided from the password-reset endpoint.  Password should be in plain text and will be encrypted on receipt. Use SSL for security. <br><br><b>Permissions Needed:</b> ANY
      * @summary Choose a new password after a reset
      * @param id The id of the user
      * @param newPasswordRequest The new password request object
@@ -243,7 +264,24 @@ export class UsersService {
     }
 
     /**
-     * Password should be in plain text and will be encrypted on receipt. Use SSL for security
+     * 
+     * @summary Send a user message
+     * @param recipientId The user id
+     * @param chatMessageRequest The chat message request
+     */
+    public postUserMessage(recipientId: number, chatMessageRequest?: ChatMessageRequest, extraHttpRequestParams?: any): Observable<ChatMessageResource> {
+        return this.postUserMessageWithHttpInfo(recipientId, chatMessageRequest, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * Password should be in plain text and will be encrypted on receipt. Use SSL for security. <br><br><b>Permissions Needed:</b> ANY
      * @summary Register a new user
      * @param userResource The user resource object
      */
@@ -259,7 +297,7 @@ export class UsersService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USERS_ADMIN
      * @summary Remove a tag from a user
      * @param userId The id of the user
      * @param tag The tag to remove
@@ -276,7 +314,7 @@ export class UsersService {
     }
 
     /**
-     * Password should be in plain text and will be encrypted on receipt. Use SSL for security.
+     * Password should be in plain text and will be encrypted on receipt. Use SSL for security. <br><br><b>Permissions Needed:</b> USERS_ADMIN or (USERS_USER and owner)
      * @summary Set a user's password
      * @param id The id of the user
      * @param password The new plain text password
@@ -293,7 +331,7 @@ export class UsersService {
     }
 
     /**
-     * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit
+     * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit. <br><br><b>Permissions Needed:</b> ANY
      * @summary Reset a user's password
      * @param id The id of the user
      */
@@ -309,7 +347,7 @@ export class UsersService {
     }
 
     /**
-     * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit.  Must submit their email, username, or mobile phone number
+     * A reset code will be generated and a 'forgot_password' BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit.  Must submit their email, username, or mobile phone number. <br><br><b>Permissions Needed:</b> ANY
      * @summary Reset a user's password without user id
      * @param passwordReset An object containing one of three methods to look up a user
      */
@@ -325,7 +363,7 @@ export class UsersService {
     }
 
     /**
-     * Password will not be edited on this endpoint, use password specific endpoints.
+     * Password will not be edited on this endpoint, use password specific endpoints. <br><br><b>Permissions Needed:</b> USERS_ADMIN or owner
      * @summary Update a user
      * @param id The id of the user or &#39;me&#39;
      * @param userResource The user resource object
@@ -342,7 +380,7 @@ export class UsersService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a user template
      * @param id The id of the template
      * @param userTemplateResource The user template resource object
@@ -361,7 +399,7 @@ export class UsersService {
 
     /**
      * Add a tag to a user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_ADMIN
      * @param userId The id of the user
      * @param tag tag
      */
@@ -424,7 +462,7 @@ export class UsersService {
 
     /**
      * Create a user template
-     * User Templates define a type of user and the properties they have
+     * User Templates define a type of user and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param userTemplateResource The user template resource object
      */
     public createUserTemplateWithHttpInfo(userTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -477,7 +515,7 @@ export class UsersService {
 
     /**
      * Delete a user template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -536,8 +574,73 @@ export class UsersService {
     }
 
     /**
+     * Get a list of direct messages with this user
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
+     * @param recipientId The user id
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
+    public getDirectMessages1WithHttpInfo(recipientId: number, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/users/users/${recipient_id}/messages'
+                    .replace('${' + 'recipient_id' + '}', String(recipientId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'recipientId' is not null or undefined
+        if (recipientId === null || recipientId === undefined) {
+            throw new Error('Required parameter recipientId was null or undefined when calling getDirectMessages1.');
+        }
+        if (size !== undefined) {
+            queryParameters.set('size', <any>size);
+        }
+
+        if (page !== undefined) {
+            queryParameters.set('page', <any>page);
+        }
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
      * Get a single user
-     * Additional private info is included as USERS_ADMIN
+     * Additional private info is included as USERS_ADMIN. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the user or &#39;me&#39;
      */
     public getUserWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -592,7 +695,7 @@ export class UsersService {
 
     /**
      * List tags for a user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_ADMIN
      * @param userId The id of the user
      */
     public getUserTagsWithHttpInfo(userId: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -647,7 +750,7 @@ export class UsersService {
 
     /**
      * Get a single user template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or USERS_ADMIN
      * @param id The id of the template
      */
     public getUserTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -702,7 +805,7 @@ export class UsersService {
 
     /**
      * List and search user templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or USERS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -766,7 +869,7 @@ export class UsersService {
 
     /**
      * List and search users
-     * Additional private info is included as USERS_ADMIN
+     * Additional private info is included as USERS_ADMIN. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterDisplayname Filter for users whose display name starts with provided string.
      * @param filterEmail Filter for users whose email starts with provided string. Requires USERS_ADMIN permission
      * @param filterFirstname Filter for users whose first name starts with provided string. Requires USERS_ADMIN permission
@@ -890,7 +993,7 @@ export class UsersService {
 
     /**
      * Choose a new password after a reset
-     * Finish resetting a user&#39;s password using the secret provided from the password-reset endpoint.  Password should be in plain text and will be encrypted on receipt. Use SSL for security.
+     * Finish resetting a user&#39;s password using the secret provided from the password-reset endpoint.  Password should be in plain text and will be encrypted on receipt. Use SSL for security. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the user
      * @param newPasswordRequest The new password request object
      */
@@ -948,8 +1051,49 @@ export class UsersService {
     }
 
     /**
+     * Send a user message
+     * 
+     * @param recipientId The user id
+     * @param chatMessageRequest The chat message request
+     */
+    public postUserMessageWithHttpInfo(recipientId: number, chatMessageRequest?: ChatMessageRequest, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/users/${recipient_id}/messages'
+                    .replace('${' + 'recipient_id' + '}', String(recipientId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'recipientId' is not null or undefined
+        if (recipientId === null || recipientId === undefined) {
+            throw new Error('Required parameter recipientId was null or undefined when calling postUserMessage.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: chatMessageRequest == null ? '' : JSON.stringify(chatMessageRequest), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
      * Register a new user
-     * Password should be in plain text and will be encrypted on receipt. Use SSL for security
+     * Password should be in plain text and will be encrypted on receipt. Use SSL for security. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param userResource The user resource object
      */
     public registerUserWithHttpInfo(userResource?: UserResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -1002,7 +1146,7 @@ export class UsersService {
 
     /**
      * Remove a tag from a user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_ADMIN
      * @param userId The id of the user
      * @param tag The tag to remove
      */
@@ -1063,7 +1207,7 @@ export class UsersService {
 
     /**
      * Set a user&#39;s password
-     * Password should be in plain text and will be encrypted on receipt. Use SSL for security.
+     * Password should be in plain text and will be encrypted on receipt. Use SSL for security. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_ADMIN or (USERS_USER and owner)
      * @param id The id of the user
      * @param password The new plain text password
      */
@@ -1122,7 +1266,7 @@ export class UsersService {
 
     /**
      * Reset a user&#39;s password
-     * A reset code will be generated and a &#39;forgot_password&#39; BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit
+     * A reset code will be generated and a &#39;forgot_password&#39; BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the user
      */
     public startPasswordResetWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1177,7 +1321,7 @@ export class UsersService {
 
     /**
      * Reset a user&#39;s password without user id
-     * A reset code will be generated and a &#39;forgot_password&#39; BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit.  Must submit their email, username, or mobile phone number
+     * A reset code will be generated and a &#39;forgot_password&#39; BRE event will be fired with that code.  The default system rule will send an email to the selected user if an email service has been setup. You can modify that rule in BRE to send an SMS instead or any other type of notification as you see fit.  Must submit their email, username, or mobile phone number. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param passwordReset An object containing one of three methods to look up a user
      */
     public submitPasswordResetWithHttpInfo(passwordReset?: PasswordResetRequest, extraHttpRequestParams?: any): Observable<Response> {
@@ -1230,7 +1374,7 @@ export class UsersService {
 
     /**
      * Update a user
-     * Password will not be edited on this endpoint, use password specific endpoints.
+     * Password will not be edited on this endpoint, use password specific endpoints. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_ADMIN or owner
      * @param id The id of the user or &#39;me&#39;
      * @param userResource The user resource object
      */
@@ -1289,7 +1433,7 @@ export class UsersService {
 
     /**
      * Update a user template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param userTemplateResource The user template resource object
      */

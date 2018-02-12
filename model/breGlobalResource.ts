@@ -45,7 +45,7 @@ export interface BreGlobalResource {
     systemGlobal?: boolean;
 
     /**
-     * The variable type the global stores. See the See Bre Variables enpoint for list
+     * The variable type the global stores. See the BRE variables endpoint for list
      */
     type: string;
 

@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ReportingUsageService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class ReportingUsageService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USAGE_ADMIN
      * @summary Returns aggregated endpoint usage information by day
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
@@ -96,7 +96,7 @@ export class ReportingUsageService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USAGE_ADMIN
      * @summary Returns aggregated endpoint usage information by hour
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
@@ -118,7 +118,7 @@ export class ReportingUsageService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USAGE_ADMIN
      * @summary Returns aggregated endpoint usage information by minute
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
@@ -140,7 +140,7 @@ export class ReportingUsageService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USAGE_ADMIN
      * @summary Returns aggregated endpoint usage information by month
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
@@ -162,7 +162,7 @@ export class ReportingUsageService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USAGE_ADMIN
      * @summary Returns aggregated endpoint usage information by year
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
@@ -184,7 +184,7 @@ export class ReportingUsageService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USAGE_ADMIN
      * @summary Returns list of endpoints called (method and url)
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
@@ -203,7 +203,7 @@ export class ReportingUsageService {
 
     /**
      * Returns aggregated endpoint usage information by day
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USAGE_ADMIN
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
      * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -295,7 +295,7 @@ export class ReportingUsageService {
 
     /**
      * Returns aggregated endpoint usage information by hour
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USAGE_ADMIN
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
      * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -387,7 +387,7 @@ export class ReportingUsageService {
 
     /**
      * Returns aggregated endpoint usage information by minute
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USAGE_ADMIN
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
      * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -479,7 +479,7 @@ export class ReportingUsageService {
 
     /**
      * Returns aggregated endpoint usage information by month
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USAGE_ADMIN
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
      * @param combineEndpoints Whether to combine counts from different endpoint. Removes the url and method from the result object
@@ -571,7 +571,7 @@ export class ReportingUsageService {
 
     /**
      * Returns aggregated endpoint usage information by year
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USAGE_ADMIN
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
      * @param combineEndpoints Whether to combine counts from different endpoints. Removes the url and method from the result object
@@ -663,7 +663,7 @@ export class ReportingUsageService {
 
     /**
      * Returns list of endpoints called (method and url)
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USAGE_ADMIN
      * @param startDate The beginning of the range being requested, unix timestamp in seconds
      * @param endDate The ending of the range being requested, unix timestamp in seconds
      */

@@ -10,9 +10,15 @@
  * Do not edit the class manually.
  */
 
+import { BreActionLog } from './breActionLog';
 
 
 export interface BreRuleLog {
+    /**
+     * The actions of the BRE rule
+     */
+    actions?: Array<BreActionLog>;
+
     /**
      * Whether the rule ran
      */

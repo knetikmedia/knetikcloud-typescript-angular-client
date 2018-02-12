@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UsersAddressesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class UsersAddressesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USERS_ADMIN or owner
      * @summary Create a new address
      * @param userId The id of the user
      * @param savedAddressResource The new address
@@ -92,7 +92,7 @@ export class UsersAddressesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USERS_ADMIN or owner
      * @summary Delete an address
      * @param userId The id of the user
      * @param id The id of the address
@@ -109,7 +109,7 @@ export class UsersAddressesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USERS_ADMIN or owner
      * @summary Get a single address
      * @param userId The id of the user
      * @param id The id of the address
@@ -126,7 +126,7 @@ export class UsersAddressesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USERS_ADMIN or owner
      * @summary List and search addresses
      * @param userId The id of the user
      * @param size The number of objects returned per page
@@ -145,7 +145,7 @@ export class UsersAddressesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> USERS_ADMIN or owner
      * @summary Update an address
      * @param userId The id of the user
      * @param id The id of the address
@@ -165,7 +165,7 @@ export class UsersAddressesService {
 
     /**
      * Create a new address
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_ADMIN or owner
      * @param userId The id of the user
      * @param savedAddressResource The new address
      */
@@ -224,7 +224,7 @@ export class UsersAddressesService {
 
     /**
      * Delete an address
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_ADMIN or owner
      * @param userId The id of the user
      * @param id The id of the address
      */
@@ -285,7 +285,7 @@ export class UsersAddressesService {
 
     /**
      * Get a single address
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_ADMIN or owner
      * @param userId The id of the user
      * @param id The id of the address
      */
@@ -346,7 +346,7 @@ export class UsersAddressesService {
 
     /**
      * List and search addresses
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_ADMIN or owner
      * @param userId The id of the user
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -416,7 +416,7 @@ export class UsersAddressesService {
 
     /**
      * Update an address
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_ADMIN or owner
      * @param userId The id of the user
      * @param id The id of the address
      * @param savedAddressResource The saved address resource object

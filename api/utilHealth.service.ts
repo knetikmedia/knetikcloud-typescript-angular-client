@@ -29,7 +29,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UtilHealthService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -73,7 +73,7 @@ export class UtilHealthService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get health info
      */
     public getHealth(extraHttpRequestParams?: any): Observable<any> {
@@ -90,7 +90,7 @@ export class UtilHealthService {
 
     /**
      * Get health info
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      */
     public getHealthWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/health';

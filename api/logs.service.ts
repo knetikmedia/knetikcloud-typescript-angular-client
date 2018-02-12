@@ -35,7 +35,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class LogsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -79,7 +79,7 @@ export class LogsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> owner
      * @summary Add a user log entry
      * @param logEntry The user log entry to be added
      */
@@ -95,7 +95,7 @@ export class LogsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
      * @summary Get an existing BRE event log entry by id
      * @param id The BRE event log entry id
      */
@@ -111,7 +111,7 @@ export class LogsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
      * @summary Returns a list of BRE event log entries
      * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the event log start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterEventName Filter event logs by event name
@@ -119,9 +119,10 @@ export class LogsService {
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     * @param filterRuleId Filter event logs by request id
      */
-    public getBREEventLogs(filterStartDate?: string, filterEventName?: string, filterEventId?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceBreEventLog> {
-        return this.getBREEventLogsWithHttpInfo(filterStartDate, filterEventName, filterEventId, size, page, order, extraHttpRequestParams)
+    public getBREEventLogs(filterStartDate?: string, filterEventName?: string, filterEventId?: string, size?: number, page?: number, order?: string, filterRuleId?: string, extraHttpRequestParams?: any): Observable<PageResourceBreEventLog> {
+        return this.getBREEventLogsWithHttpInfo(filterStartDate, filterEventName, filterEventId, size, page, order, filterRuleId, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -132,7 +133,7 @@ export class LogsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
      * @summary Get an existing forward log entry by id
      * @param id The forward log entry id
      */
@@ -148,17 +149,18 @@ export class LogsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_ADMIN
      * @summary Returns a list of forward log entries
      * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the log end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterStatusCode Filter forward logs by http status code
+     * @param filterUrl Filter forward logs by URL starting with...
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
      */
-    public getBREForwardLogs(filterStartDate?: string, filterEndDate?: string, filterStatusCode?: number, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceForwardLog> {
-        return this.getBREForwardLogsWithHttpInfo(filterStartDate, filterEndDate, filterStatusCode, size, page, order, extraHttpRequestParams)
+    public getBREForwardLogs(filterStartDate?: string, filterEndDate?: string, filterStatusCode?: number, filterUrl?: number, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceForwardLog> {
+        return this.getBREForwardLogsWithHttpInfo(filterStartDate, filterEndDate, filterStatusCode, filterUrl, size, page, order, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -169,7 +171,7 @@ export class LogsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> LOGS_ADMIN or owner
      * @summary Returns a user log entry by id
      * @param id The user log entry id
      */
@@ -185,7 +187,7 @@ export class LogsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> LOGS_ADMIN or owner
      * @summary Returns a page of user logs entries
      * @param filterUser Filter for actions taken by a specific user by id
      * @param filterActionName Filter for actions of a specific name
@@ -207,7 +209,7 @@ export class LogsService {
 
     /**
      * Add a user log entry
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; owner
      * @param logEntry The user log entry to be added
      */
     public addUserLogWithHttpInfo(logEntry?: UserActionLog, extraHttpRequestParams?: any): Observable<Response> {
@@ -260,7 +262,7 @@ export class LogsService {
 
     /**
      * Get an existing BRE event log entry by id
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EVENTS_ADMIN
      * @param id The BRE event log entry id
      */
     public getBREEventLogWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -315,15 +317,16 @@ export class LogsService {
 
     /**
      * Returns a list of BRE event log entries
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EVENTS_ADMIN
      * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the event log start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterEventName Filter event logs by event name
      * @param filterEventId Filter event logs by request id
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     * @param filterRuleId Filter event logs by request id
      */
-    public getBREEventLogsWithHttpInfo(filterStartDate?: string, filterEventName?: string, filterEventId?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
+    public getBREEventLogsWithHttpInfo(filterStartDate?: string, filterEventName?: string, filterEventId?: string, size?: number, page?: number, order?: string, filterRuleId?: string, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/bre/logs/event-log';
 
         let queryParameters = new URLSearchParams();
@@ -351,6 +354,10 @@ export class LogsService {
 
         if (order !== undefined) {
             queryParameters.set('order', <any>order);
+        }
+
+        if (filterRuleId !== undefined) {
+            queryParameters.set('filter_rule_id', <any>filterRuleId);
         }
 
 
@@ -394,7 +401,7 @@ export class LogsService {
 
     /**
      * Get an existing forward log entry by id
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EVENTS_ADMIN
      * @param id The forward log entry id
      */
     public getBREForwardLogWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -449,15 +456,16 @@ export class LogsService {
 
     /**
      * Returns a list of forward log entries
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EVENTS_ADMIN
      * @param filterStartDate A comma separated string without spaces.  First value is the operator to search on, second value is the log start date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterEndDate A comma separated string without spaces.  First value is the operator to search on, second value is the log end date, a unix timestamp in seconds.  Allowed operators: (GT, LT, EQ, GOE, LOE).
      * @param filterStatusCode Filter forward logs by http status code
+     * @param filterUrl Filter forward logs by URL starting with...
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
      */
-    public getBREForwardLogsWithHttpInfo(filterStartDate?: string, filterEndDate?: string, filterStatusCode?: number, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
+    public getBREForwardLogsWithHttpInfo(filterStartDate?: string, filterEndDate?: string, filterStatusCode?: number, filterUrl?: number, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/bre/logs/forward-log';
 
         let queryParameters = new URLSearchParams();
@@ -473,6 +481,10 @@ export class LogsService {
 
         if (filterStatusCode !== undefined) {
             queryParameters.set('filter_status_code', <any>filterStatusCode);
+        }
+
+        if (filterUrl !== undefined) {
+            queryParameters.set('filter_url', <any>filterUrl);
         }
 
         if (size !== undefined) {
@@ -528,7 +540,7 @@ export class LogsService {
 
     /**
      * Returns a user log entry by id
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LOGS_ADMIN or owner
      * @param id The user log entry id
      */
     public getUserLogWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -583,7 +595,7 @@ export class LogsService {
 
     /**
      * Returns a page of user logs entries
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LOGS_ADMIN or owner
      * @param filterUser Filter for actions taken by a specific user by id
      * @param filterActionName Filter for actions of a specific name
      * @param size The number of objects returned per page

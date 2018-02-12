@@ -34,7 +34,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class DevicesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -78,7 +78,7 @@ export class DevicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
      * @summary Add device users
      * @param userResources userResources
      * @param id id
@@ -95,7 +95,7 @@ export class DevicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Create a device
      * @param device device
      */
@@ -111,7 +111,7 @@ export class DevicesService {
     }
 
     /**
-     * Device Templates define a type of device and the properties they have
+     * Device Templates define a type of device and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a device template
      * @param deviceTemplateResource The device template resource object
      */
@@ -127,7 +127,7 @@ export class DevicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
      * @summary Delete a device
      * @param id id
      */
@@ -143,7 +143,7 @@ export class DevicesService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete an device template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -160,7 +160,7 @@ export class DevicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
      * @summary Delete a device user
      * @param id The id of the device
      * @param userId The user id of the device user
@@ -177,7 +177,7 @@ export class DevicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
      * @summary Delete all device users
      * @param id The id of the device
      * @param filterId Filter for device users to delete with a user id in a given comma separated list of ids
@@ -194,7 +194,7 @@ export class DevicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> DEVICES_ADMIN or owner
      * @summary Get a single device
      * @param id id
      */
@@ -210,7 +210,7 @@ export class DevicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> description
      * @summary Get a single device template
      * @param id The id of the template
      */
@@ -226,7 +226,7 @@ export class DevicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or DEVICES_ADMIN
      * @summary List and search device templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -244,7 +244,7 @@ export class DevicesService {
     }
 
     /**
-     * Get a list of devices with optional filtering
+     * Get a list of devices with optional filtering. <br><br><b>Permissions Needed:</b> DEVICES_ADMIN or user
      * @summary List and search devices
      * @param filterMake Filter for devices with specified make
      * @param filterModel Filter for devices with specified model
@@ -268,7 +268,7 @@ export class DevicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CUSTOMERS_ADMIN
      * @summary Update a device
      * @param device device
      * @param id id
@@ -285,7 +285,7 @@ export class DevicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update an device template
      * @param id The id of the template
      * @param deviceTemplateResource The device template resource object
@@ -304,7 +304,7 @@ export class DevicesService {
 
     /**
      * Add device users
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; DEVICES_ADMIN or owner
      * @param userResources userResources
      * @param id id
      */
@@ -367,7 +367,7 @@ export class DevicesService {
 
     /**
      * Create a device
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param device device
      */
     public createDeviceWithHttpInfo(device: DeviceResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -424,7 +424,7 @@ export class DevicesService {
 
     /**
      * Create a device template
-     * Device Templates define a type of device and the properties they have
+     * Device Templates define a type of device and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param deviceTemplateResource The device template resource object
      */
     public createDeviceTemplateWithHttpInfo(deviceTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -477,7 +477,7 @@ export class DevicesService {
 
     /**
      * Delete a device
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; DEVICES_ADMIN or owner
      * @param id id
      */
     public deleteDeviceWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -532,7 +532,7 @@ export class DevicesService {
 
     /**
      * Delete an device template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -592,7 +592,7 @@ export class DevicesService {
 
     /**
      * Delete a device user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; DEVICES_ADMIN or owner
      * @param id The id of the device
      * @param userId The user id of the device user
      */
@@ -653,7 +653,7 @@ export class DevicesService {
 
     /**
      * Delete all device users
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; DEVICES_ADMIN or owner
      * @param id The id of the device
      * @param filterId Filter for device users to delete with a user id in a given comma separated list of ids
      */
@@ -713,7 +713,7 @@ export class DevicesService {
 
     /**
      * Get a single device
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; DEVICES_ADMIN or owner
      * @param id id
      */
     public getDeviceWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -768,7 +768,7 @@ export class DevicesService {
 
     /**
      * Get a single device template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; description
      * @param id The id of the template
      */
     public getDeviceTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -823,7 +823,7 @@ export class DevicesService {
 
     /**
      * List and search device templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or DEVICES_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -887,7 +887,7 @@ export class DevicesService {
 
     /**
      * List and search devices
-     * Get a list of devices with optional filtering
+     * Get a list of devices with optional filtering. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; DEVICES_ADMIN or user
      * @param filterMake Filter for devices with specified make
      * @param filterModel Filter for devices with specified model
      * @param filterOs Filter for devices with specified OS
@@ -981,7 +981,7 @@ export class DevicesService {
 
     /**
      * Update a device
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CUSTOMERS_ADMIN
      * @param device device
      * @param id id
      */
@@ -1044,7 +1044,7 @@ export class DevicesService {
 
     /**
      * Update an device template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param deviceTemplateResource The device template resource object
      */

@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class LocationsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -76,7 +76,7 @@ export class LocationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a list of countries
      */
     public getCountries(extraHttpRequestParams?: any): Observable<Array<CountryResource>> {
@@ -91,7 +91,7 @@ export class LocationsService {
     }
 
     /**
-     * Determined by geo ip location
+     * Determined by geo ip location. <br><br><b>Permissions Needed:</b> ANY
      * @summary Get the iso3 code of your country
      */
     public getCountryByGeoLocation(extraHttpRequestParams?: any): Observable<string> {
@@ -106,7 +106,7 @@ export class LocationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a list of a country's states
      * @param countryCodeIso3 The iso3 code of the country
      */
@@ -122,7 +122,7 @@ export class LocationsService {
     }
 
     /**
-     * Determined by geo ip location, currency to country mapping and a fallback setting
+     * Determined by geo ip location, currency to country mapping and a fallback setting. <br><br><b>Permissions Needed:</b> ANY
      * @summary Get the currency information of your country
      */
     public getCurrencyByGeoLocation(extraHttpRequestParams?: any): Observable<CurrencyResource> {
@@ -139,7 +139,7 @@ export class LocationsService {
 
     /**
      * Get a list of countries
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      */
     public getCountriesWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/location/countries';
@@ -188,7 +188,7 @@ export class LocationsService {
 
     /**
      * Get the iso3 code of your country
-     * Determined by geo ip location
+     * Determined by geo ip location. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      */
     public getCountryByGeoLocationWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/location/geolocation/country';
@@ -237,7 +237,7 @@ export class LocationsService {
 
     /**
      * Get a list of a country&#39;s states
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param countryCodeIso3 The iso3 code of the country
      */
     public getCountryStatesWithHttpInfo(countryCodeIso3: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -292,7 +292,7 @@ export class LocationsService {
 
     /**
      * Get the currency information of your country
-     * Determined by geo ip location, currency to country mapping and a fallback setting
+     * Determined by geo ip location, currency to country mapping and a fallback setting. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      */
     public getCurrencyByGeoLocationWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/location/geolocation/currency';

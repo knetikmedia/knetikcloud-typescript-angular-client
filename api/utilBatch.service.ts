@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UtilBatchService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -76,7 +76,7 @@ export class UtilBatchService {
     }
 
     /**
-     * Tokens expire in 24 hours
+     * Tokens expire in 24 hours. <br><br><b>Permissions Needed:</b> ANY
      * @summary Get batch result with token
      * @param token token
      */
@@ -92,7 +92,7 @@ export class UtilBatchService {
     }
 
     /**
-     * Should the request take longer than one of the alloted timeout parameters, a token will be returned instead, which can be used on the token endpoint in this service
+     * Should the request take longer than one of the alloted timeout parameters, a token will be returned instead, which can be used on the token endpoint in this service. <br><br><b>Permissions Needed:</b> ANY
      * @summary Request to run API call given the method, content type, path url, and body of request
      * @param batch The batch object
      */
@@ -110,7 +110,7 @@ export class UtilBatchService {
 
     /**
      * Get batch result with token
-     * Tokens expire in 24 hours
+     * Tokens expire in 24 hours. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param token token
      */
     public getBatchWithHttpInfo(token: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -165,7 +165,7 @@ export class UtilBatchService {
 
     /**
      * Request to run API call given the method, content type, path url, and body of request
-     * Should the request take longer than one of the alloted timeout parameters, a token will be returned instead, which can be used on the token endpoint in this service
+     * Should the request take longer than one of the alloted timeout parameters, a token will be returned instead, which can be used on the token endpoint in this service. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param batch The batch object
      */
     public sendBatchWithHttpInfo(batch?: Batch, extraHttpRequestParams?: any): Observable<Response> {

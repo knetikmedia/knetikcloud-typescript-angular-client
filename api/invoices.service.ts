@@ -37,7 +37,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class InvoicesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -81,7 +81,7 @@ export class InvoicesService {
     }
 
     /**
-     * Create an invoice(s) by providing a cart GUID. Note that there may be multiple invoices created, one per vendor.
+     * Create an invoice(s) by providing a cart GUID. Note that there may be multiple invoices created, one per vendor. <br><br><b>Permissions Needed:</b> INVOICES_USER or INVOICES_ADMIN
      * @summary Create an invoice
      * @param req Invoice to be created
      */
@@ -97,7 +97,7 @@ export class InvoicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Lists available fulfillment statuses
      */
     public getFulFillmentStatuses(extraHttpRequestParams?: any): Observable<Array<string>> {
@@ -112,7 +112,7 @@ export class InvoicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
      * @summary Retrieve an invoice
      * @param id The id of the invoice
      */
@@ -128,7 +128,7 @@ export class InvoicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
      * @summary List invoice logs
      * @param id The id of the invoice
      * @param size The number of objects returned per page
@@ -146,7 +146,7 @@ export class InvoicesService {
     }
 
     /**
-     * Without INVOICES_ADMIN permission the results are automatically filtered for only the logged in user's invoices. It is recomended however that filter_user be added to avoid issues for admin users accidentally getting additional invoices.
+     * Without INVOICES_ADMIN permission the results are automatically filtered for only the logged in user's invoices. It is recomended however that filter_user be added to avoid issues for admin users accidentally getting additional invoices. <br><br><b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
      * @summary Retrieve invoices
      * @param filterUser The id of a user to get invoices for. Automtically added if not being called with admin permissions.
      * @param filterEmail Filters invoices by customer&#39;s email. Admins only.
@@ -178,7 +178,7 @@ export class InvoicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Lists available payment statuses
      */
     public getPaymentStatuses(extraHttpRequestParams?: any): Observable<Array<string>> {
@@ -193,7 +193,7 @@ export class InvoicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
      * @summary Pay an invoice using a saved payment method
      * @param id The id of the invoice
      * @param request The payment method details. Will default to the appropriate user&#39;s wallet in the invoice currency if ommited.
@@ -210,7 +210,7 @@ export class InvoicesService {
     }
 
     /**
-     * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which.
+     * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which. <br><br><b>Permissions Needed:</b> INVOICES_ADMIN
      * @summary Set the fulfillment status of a bundled invoice item
      * @param id The id of the invoice
      * @param bundleSku The sku of the bundle in the invoice that contains the given target
@@ -229,7 +229,7 @@ export class InvoicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVOICES_ADMIN
      * @summary Set the external reference of an invoice
      * @param id The id of the invoice
      * @param externalRef External reference info
@@ -246,7 +246,7 @@ export class InvoicesService {
     }
 
     /**
-     * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which.
+     * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which. <br><br><b>Permissions Needed:</b> INVOICES_ADMIN
      * @summary Set the fulfillment status of an invoice item
      * @param id The id of the invoice
      * @param sku The sku of an item in the invoice
@@ -264,7 +264,7 @@ export class InvoicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVOICES_ADMIN
      * @summary Set the order notes of an invoice
      * @param id The id of the invoice
      * @param orderNotes Payment status info
@@ -281,7 +281,7 @@ export class InvoicesService {
     }
 
     /**
-     * This may trigger fulfillment if setting the status to 'paid'. This is mainly intended to support external payment systems that cannot be incorporated into the payment method system. Payment status changes are restricted by a specific flow determining which status can lead to which.
+     * This may trigger fulfillment if setting the status to 'paid'. This is mainly intended to support external payment systems that cannot be incorporated into the payment method system. Payment status changes are restricted by a specific flow determining which status can lead to which. <br><br><b>Permissions Needed:</b> INVOICES_ADMIN
      * @summary Set the payment status of an invoice
      * @param id The id of the invoice
      * @param request Payment status info
@@ -298,7 +298,7 @@ export class InvoicesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVOICES_USER and owner, or INVOICES_ADMIN
      * @summary Set or update billing info
      * @param id The id of the invoice
      * @param billingInfoRequest Address info
@@ -317,7 +317,7 @@ export class InvoicesService {
 
     /**
      * Create an invoice
-     * Create an invoice(s) by providing a cart GUID. Note that there may be multiple invoices created, one per vendor.
+     * Create an invoice(s) by providing a cart GUID. Note that there may be multiple invoices created, one per vendor. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_USER or INVOICES_ADMIN
      * @param req Invoice to be created
      */
     public createInvoiceWithHttpInfo(req?: InvoiceCreateRequest, extraHttpRequestParams?: any): Observable<Response> {
@@ -370,7 +370,7 @@ export class InvoicesService {
 
     /**
      * Lists available fulfillment statuses
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      */
     public getFulFillmentStatusesWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/invoices/fulfillment-statuses';
@@ -419,7 +419,7 @@ export class InvoicesService {
 
     /**
      * Retrieve an invoice
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_USER and owner, or INVOICES_ADMIN
      * @param id The id of the invoice
      */
     public getInvoiceWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -474,7 +474,7 @@ export class InvoicesService {
 
     /**
      * List invoice logs
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_USER and owner, or INVOICES_ADMIN
      * @param id The id of the invoice
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -539,7 +539,7 @@ export class InvoicesService {
 
     /**
      * Retrieve invoices
-     * Without INVOICES_ADMIN permission the results are automatically filtered for only the logged in user&#39;s invoices. It is recomended however that filter_user be added to avoid issues for admin users accidentally getting additional invoices.
+     * Without INVOICES_ADMIN permission the results are automatically filtered for only the logged in user&#39;s invoices. It is recomended however that filter_user be added to avoid issues for admin users accidentally getting additional invoices. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_USER and owner, or INVOICES_ADMIN
      * @param filterUser The id of a user to get invoices for. Automtically added if not being called with admin permissions.
      * @param filterEmail Filters invoices by customer&#39;s email. Admins only.
      * @param filterFulfillmentStatus Filters invoices by fulfillment status type. Can be a comma separated list of statuses
@@ -673,7 +673,7 @@ export class InvoicesService {
 
     /**
      * Lists available payment statuses
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      */
     public getPaymentStatusesWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/invoices/payment-statuses';
@@ -722,7 +722,7 @@ export class InvoicesService {
 
     /**
      * Pay an invoice using a saved payment method
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_USER and owner, or INVOICES_ADMIN
      * @param id The id of the invoice
      * @param request The payment method details. Will default to the appropriate user&#39;s wallet in the invoice currency if ommited.
      */
@@ -781,7 +781,7 @@ export class InvoicesService {
 
     /**
      * Set the fulfillment status of a bundled invoice item
-     * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which.
+     * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_ADMIN
      * @param id The id of the invoice
      * @param bundleSku The sku of the bundle in the invoice that contains the given target
      * @param sku The sku of an item in the bundle in the invoice
@@ -856,7 +856,7 @@ export class InvoicesService {
 
     /**
      * Set the external reference of an invoice
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_ADMIN
      * @param id The id of the invoice
      * @param externalRef External reference info
      */
@@ -915,7 +915,7 @@ export class InvoicesService {
 
     /**
      * Set the fulfillment status of an invoice item
-     * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which.
+     * This allows external fulfillment systems to report success or failure. Fulfillment status changes are restricted by a specific flow determining which status can lead to which. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_ADMIN
      * @param id The id of the invoice
      * @param sku The sku of an item in the invoice
      * @param status The new fulfillment status for the item. Additional options may be available based on configuration.  Allowable values:  &#39;unfulfilled&#39;, &#39;fulfilled&#39;, &#39;not fulfillable&#39;, &#39;failed&#39;, &#39;processing&#39;, &#39;failed_permanent&#39;, &#39;delayed&#39;
@@ -984,7 +984,7 @@ export class InvoicesService {
 
     /**
      * Set the order notes of an invoice
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_ADMIN
      * @param id The id of the invoice
      * @param orderNotes Payment status info
      */
@@ -1043,7 +1043,7 @@ export class InvoicesService {
 
     /**
      * Set the payment status of an invoice
-     * This may trigger fulfillment if setting the status to &#39;paid&#39;. This is mainly intended to support external payment systems that cannot be incorporated into the payment method system. Payment status changes are restricted by a specific flow determining which status can lead to which.
+     * This may trigger fulfillment if setting the status to &#39;paid&#39;. This is mainly intended to support external payment systems that cannot be incorporated into the payment method system. Payment status changes are restricted by a specific flow determining which status can lead to which. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_ADMIN
      * @param id The id of the invoice
      * @param request Payment status info
      */
@@ -1102,7 +1102,7 @@ export class InvoicesService {
 
     /**
      * Set or update billing info
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVOICES_USER and owner, or INVOICES_ADMIN
      * @param id The id of the invoice
      * @param billingInfoRequest Address info
      */

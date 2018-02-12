@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ObjectsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class ObjectsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Create an object
      * @param templateId The id of the template this object is to be part of
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
@@ -95,7 +95,7 @@ export class ObjectsService {
     }
 
     /**
-     * Object templates define a type of entitlement and the properties they have
+     * Object templates define a type of entitlement and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create an object template
      * @param template The entitlement template to be created
      */
@@ -111,7 +111,7 @@ export class ObjectsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Delete an object
      * @param templateId The id of the template this object is part of
      * @param objectId The id of the object
@@ -128,7 +128,7 @@ export class ObjectsService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete an entitlement template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -145,7 +145,7 @@ export class ObjectsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single object
      * @param templateId The id of the template this object is part of
      * @param objectId The id of the object
@@ -162,7 +162,7 @@ export class ObjectsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search objects
      * @param templateId The id of the template to get objects for
      * @param size The number of objects returned per page
@@ -181,7 +181,7 @@ export class ObjectsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
      * @summary Get a single entitlement template
      * @param id The id of the template
      */
@@ -197,7 +197,7 @@ export class ObjectsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
      * @summary List and search entitlement templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -215,7 +215,7 @@ export class ObjectsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> INVENTORY_ADMIN
      * @summary Update an object
      * @param templateId The id of the template this object is part of
      * @param objectId The id of the object
@@ -234,7 +234,7 @@ export class ObjectsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update an entitlement template
      * @param id The id of the template
      * @param template The updated template
@@ -253,7 +253,7 @@ export class ObjectsService {
 
     /**
      * Create an object
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param templateId The id of the template this object is to be part of
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
      * @param objectItem The object item object
@@ -317,7 +317,7 @@ export class ObjectsService {
 
     /**
      * Create an object template
-     * Object templates define a type of entitlement and the properties they have
+     * Object templates define a type of entitlement and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param template The entitlement template to be created
      */
     public createObjectTemplateWithHttpInfo(template?: ItemTemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -370,7 +370,7 @@ export class ObjectsService {
 
     /**
      * Delete an object
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param templateId The id of the template this object is part of
      * @param objectId The id of the object
      */
@@ -431,7 +431,7 @@ export class ObjectsService {
 
     /**
      * Delete an entitlement template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -491,7 +491,7 @@ export class ObjectsService {
 
     /**
      * Get a single object
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param templateId The id of the template this object is part of
      * @param objectId The id of the object
      */
@@ -552,7 +552,7 @@ export class ObjectsService {
 
     /**
      * List and search objects
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param templateId The id of the template to get objects for
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -622,7 +622,7 @@ export class ObjectsService {
 
     /**
      * Get a single entitlement template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
      * @param id The id of the template
      */
     public getObjectTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -677,7 +677,7 @@ export class ObjectsService {
 
     /**
      * List and search entitlement templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or ACHIEVEMENTS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -741,7 +741,7 @@ export class ObjectsService {
 
     /**
      * Update an object
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; INVENTORY_ADMIN
      * @param templateId The id of the template this object is part of
      * @param objectId The id of the object
      * @param cascade Whether to cascade group changes, such as in the limited gettable behavior. A 400 error will return otherwise if the group is already in use with different values.
@@ -811,7 +811,7 @@ export class ObjectsService {
 
     /**
      * Update an entitlement template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param template The updated template
      */

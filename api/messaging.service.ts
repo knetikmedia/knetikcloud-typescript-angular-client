@@ -20,6 +20,10 @@ import { Response, ResponseContentType }                     from '@angular/http
 import { Observable }                                        from 'rxjs/Observable';
 import '../rxjs-operators';
 
+import { MessageResource } from '../model/messageResource';
+import { MessageTemplateBulkRequest } from '../model/messageTemplateBulkRequest';
+import { MessageTemplateResource } from '../model/messageTemplateResource';
+import { PageResourceMessageTemplateResource } from '../model/pageResourceMessageTemplateResource';
 import { RawEmailResource } from '../model/rawEmailResource';
 import { RawPushResource } from '../model/rawPushResource';
 import { RawSMSResource } from '../model/rawSMSResource';
@@ -27,6 +31,7 @@ import { Result } from '../model/result';
 import { TemplateEmailResource } from '../model/templateEmailResource';
 import { TemplatePushResource } from '../model/templatePushResource';
 import { TemplateSMSResource } from '../model/templateSMSResource';
+import { WebsocketMessageResource } from '../model/websocketMessageResource';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -35,7 +40,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class MessagingService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -79,7 +84,108 @@ export class MessagingService {
     }
 
     /**
-     * 
+     * Processes a set of input data against the template and returnes the compiled result. <br><br><b>Permissions Needed:</b> MESSAGING_ADMIN
+     * @summary Compile a message template
+     * @param request request
+     */
+    public compileMessageTemplate(request?: MessageTemplateBulkRequest, extraHttpRequestParams?: any): Observable<{ [key: string]: string; }> {
+        return this.compileMessageTemplateWithHttpInfo(request, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> MESSAGING_ADMIN
+     * @summary Create a message template
+     * @param messageTemplate The new template email to be sent
+     */
+    public createMessageTemplate(messageTemplate?: MessageTemplateResource, extraHttpRequestParams?: any): Observable<MessageTemplateResource> {
+        return this.createMessageTemplateWithHttpInfo(messageTemplate, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> ARTICLES_ADMIN
+     * @summary Delete an existing message template
+     * @param id The message_template id
+     */
+    public deleteMessageTemplate(id: string, extraHttpRequestParams?: any): Observable<{}> {
+        return this.deleteMessageTemplateWithHttpInfo(id, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> ARTICLES_ADMIN
+     * @summary Get a single message template
+     * @param id The message_template id
+     */
+    public getMessageTemplate(id: string, extraHttpRequestParams?: any): Observable<MessageTemplateResource> {
+        return this.getMessageTemplateWithHttpInfo(id, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * Get a list of message templates with optional filtering. <br><br><b>Permissions Needed:</b> ARTICLES_ADMIN
+     * @summary List and search message templates
+     * @param filterTagset Filter for message templates with at least one of a specified set of tags (separated by comma)
+     * @param filterTagIntersection Filter for message templates with all of a specified set of tags (separated by comma)
+     * @param filterTagExclusion Filter for message templates with none of a specified set of tags (separated by comma)
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
+    public getMessageTemplates(filterTagset?: string, filterTagIntersection?: string, filterTagExclusion?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceMessageTemplateResource> {
+        return this.getMessageTemplatesWithHttpInfo(filterTagset, filterTagIntersection, filterTagExclusion, size, page, order, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * Sends a message with one or more formats to one or more users. Fill in any message formats desired (email, sms, websockets) and each user will recieve all valid formats. <br><br><b>Permissions Needed:</b> MESSAGING_ADMIN
+     * @summary Send a message
+     * @param messageResource The message to be sent
+     */
+    public sendMessage1(messageResource?: MessageResource, extraHttpRequestParams?: any): Observable<{}> {
+        return this.sendMessage1WithHttpInfo(messageResource, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> MESSAGING_ADMIN
      * @summary Send a raw email to one or more users
      * @param rawEmailResource The new raw email to be sent
      */
@@ -95,7 +201,7 @@ export class MessagingService {
     }
 
     /**
-     * Sends a raw push notification message to one or more users. User's without registered mobile device for the application will be skipped.
+     * Sends a raw push notification message to one or more users. User's without registered mobile device for the application will be skipped. <br><br><b>Permissions Needed:</b> MESSAGING_ADMIN
      * @summary Send a raw push notification
      * @param rawPushResource The new raw push notification to be sent
      */
@@ -111,7 +217,7 @@ export class MessagingService {
     }
 
     /**
-     * Sends a raw SMS text message to one or more users. User's without registered mobile numbers will be skipped.
+     * Sends a raw SMS text message to one or more users. User's without registered mobile numbers will be skipped. <br><br><b>Permissions Needed:</b> MESSAGING_ADMIN
      * @summary Send a raw SMS
      * @param rawSMSResource The new raw SMS to be sent
      */
@@ -127,7 +233,7 @@ export class MessagingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> MESSAGING_ADMIN
      * @summary Send a templated email to one or more users
      * @param messageResource The new template email to be sent
      */
@@ -143,7 +249,7 @@ export class MessagingService {
     }
 
     /**
-     * Sends a templated push notification message to one or more users. User's without registered mobile device for the application will be skipped.
+     * Sends a templated push notification message to one or more users. User's without registered mobile device for the application will be skipped. <br><br><b>Permissions Needed:</b> MESSAGING_ADMIN
      * @summary Send a templated push notification
      * @param templatePushResource The new templated push notification to be sent
      */
@@ -159,7 +265,7 @@ export class MessagingService {
     }
 
     /**
-     * Sends a templated SMS text message to one or more users. User's without registered mobile numbers will be skipped.
+     * Sends a templated SMS text message to one or more users. User's without registered mobile numbers will be skipped. <br><br><b>Permissions Needed:</b> MESSAGING_ADMIN
      * @summary Send a new templated SMS
      * @param templateSMSResource The new template SMS to be sent
      */
@@ -174,10 +280,391 @@ export class MessagingService {
             });
     }
 
+    /**
+     * Sends a websocket message to one or more users. <br><br><b>Permissions Needed:</b> MESSAGING_ADMIN
+     * @summary Send a websocket message
+     * @param websocketResource The new websocket message to be sent
+     */
+    public sendWebsocket(websocketResource?: WebsocketMessageResource, extraHttpRequestParams?: any): Observable<{}> {
+        return this.sendWebsocketWithHttpInfo(websocketResource, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> ARTICLES_ADMIN
+     * @summary Update an existing message template
+     * @param id The message_template id
+     * @param messageTemplateResource The message template
+     */
+    public updateMessageTemplate(id: string, messageTemplateResource?: MessageTemplateResource, extraHttpRequestParams?: any): Observable<MessageTemplateResource> {
+        return this.updateMessageTemplateWithHttpInfo(id, messageTemplateResource, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+
+    /**
+     * Compile a message template
+     * Processes a set of input data against the template and returnes the compiled result. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
+     * @param request request
+     */
+    public compileMessageTemplateWithHttpInfo(request?: MessageTemplateBulkRequest, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/messaging/templates/compilations';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: request == null ? '' : JSON.stringify(request), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Create a message template
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
+     * @param messageTemplate The new template email to be sent
+     */
+    public createMessageTemplateWithHttpInfo(messageTemplate?: MessageTemplateResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/messaging/templates';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: messageTemplate == null ? '' : JSON.stringify(messageTemplate), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Delete an existing message template
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
+     * @param id The message_template id
+     */
+    public deleteMessageTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/messaging/templates/${id}'
+                    .replace('${' + 'id' + '}', String(id));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling deleteMessageTemplate.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Get a single message template
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
+     * @param id The message_template id
+     */
+    public getMessageTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/messaging/templates/${id}'
+                    .replace('${' + 'id' + '}', String(id));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling getMessageTemplate.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * List and search message templates
+     * Get a list of message templates with optional filtering. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
+     * @param filterTagset Filter for message templates with at least one of a specified set of tags (separated by comma)
+     * @param filterTagIntersection Filter for message templates with all of a specified set of tags (separated by comma)
+     * @param filterTagExclusion Filter for message templates with none of a specified set of tags (separated by comma)
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
+    public getMessageTemplatesWithHttpInfo(filterTagset?: string, filterTagIntersection?: string, filterTagExclusion?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/messaging/templates';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        if (filterTagset !== undefined) {
+            queryParameters.set('filter_tagset', <any>filterTagset);
+        }
+
+        if (filterTagIntersection !== undefined) {
+            queryParameters.set('filter_tag_intersection', <any>filterTagIntersection);
+        }
+
+        if (filterTagExclusion !== undefined) {
+            queryParameters.set('filter_tag_exclusion', <any>filterTagExclusion);
+        }
+
+        if (size !== undefined) {
+            queryParameters.set('size', <any>size);
+        }
+
+        if (page !== undefined) {
+            queryParameters.set('page', <any>page);
+        }
+
+        if (order !== undefined) {
+            queryParameters.set('order', <any>order);
+        }
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Send a message
+     * Sends a message with one or more formats to one or more users. Fill in any message formats desired (email, sms, websockets) and each user will recieve all valid formats. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
+     * @param messageResource The message to be sent
+     */
+    public sendMessage1WithHttpInfo(messageResource?: MessageResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/messaging/message';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: messageResource == null ? '' : JSON.stringify(messageResource), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
 
     /**
      * Send a raw email to one or more users
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param rawEmailResource The new raw email to be sent
      */
     public sendRawEmailWithHttpInfo(rawEmailResource?: RawEmailResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -230,7 +717,7 @@ export class MessagingService {
 
     /**
      * Send a raw push notification
-     * Sends a raw push notification message to one or more users. User&#39;s without registered mobile device for the application will be skipped.
+     * Sends a raw push notification message to one or more users. User&#39;s without registered mobile device for the application will be skipped. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param rawPushResource The new raw push notification to be sent
      */
     public sendRawPushWithHttpInfo(rawPushResource?: RawPushResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -283,7 +770,7 @@ export class MessagingService {
 
     /**
      * Send a raw SMS
-     * Sends a raw SMS text message to one or more users. User&#39;s without registered mobile numbers will be skipped.
+     * Sends a raw SMS text message to one or more users. User&#39;s without registered mobile numbers will be skipped. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param rawSMSResource The new raw SMS to be sent
      */
     public sendRawSMSWithHttpInfo(rawSMSResource?: RawSMSResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -336,7 +823,7 @@ export class MessagingService {
 
     /**
      * Send a templated email to one or more users
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param messageResource The new template email to be sent
      */
     public sendTemplatedEmailWithHttpInfo(messageResource?: TemplateEmailResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -389,7 +876,7 @@ export class MessagingService {
 
     /**
      * Send a templated push notification
-     * Sends a templated push notification message to one or more users. User&#39;s without registered mobile device for the application will be skipped.
+     * Sends a templated push notification message to one or more users. User&#39;s without registered mobile device for the application will be skipped. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param templatePushResource The new templated push notification to be sent
      */
     public sendTemplatedPushWithHttpInfo(templatePushResource?: TemplatePushResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -442,7 +929,7 @@ export class MessagingService {
 
     /**
      * Send a new templated SMS
-     * Sends a templated SMS text message to one or more users. User&#39;s without registered mobile numbers will be skipped.
+     * Sends a templated SMS text message to one or more users. User&#39;s without registered mobile numbers will be skipped. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param templateSMSResource The new template SMS to be sent
      */
     public sendTemplatedSMSWithHttpInfo(templateSMSResource?: TemplateSMSResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -482,6 +969,118 @@ export class MessagingService {
             method: RequestMethod.Post,
             headers: headers,
             body: templateSMSResource == null ? '' : JSON.stringify(templateSMSResource), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Send a websocket message
+     * Sends a websocket message to one or more users. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
+     * @param websocketResource The new websocket message to be sent
+     */
+    public sendWebsocketWithHttpInfo(websocketResource?: WebsocketMessageResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/messaging/websocket-message';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: websocketResource == null ? '' : JSON.stringify(websocketResource), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Update an existing message template
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
+     * @param id The message_template id
+     * @param messageTemplateResource The message template
+     */
+    public updateMessageTemplateWithHttpInfo(id: string, messageTemplateResource?: MessageTemplateResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/messaging/templates/${id}'
+                    .replace('${' + 'id' + '}', String(id));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling updateMessageTemplate.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Put,
+            headers: headers,
+            body: messageTemplateResource == null ? '' : JSON.stringify(messageTemplateResource), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });

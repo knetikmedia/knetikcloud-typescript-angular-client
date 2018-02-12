@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class BRERuleEngineTriggersService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class BRERuleEngineTriggersService {
     }
 
     /**
-     * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services
+     * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
      * @summary Create a trigger
      * @param breTriggerResource The BRE trigger resource object
      */
@@ -91,7 +91,7 @@ export class BRERuleEngineTriggersService {
     }
 
     /**
-     * May fail if there are existing rules against it. Cannot delete core triggers
+     * May fail if there are existing rules against it. Cannot delete core triggers. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
      * @summary Delete a trigger
      * @param eventName The trigger event name
      */
@@ -107,7 +107,7 @@ export class BRERuleEngineTriggersService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_USER
      * @summary Get a single trigger
      * @param eventName The trigger event name
      */
@@ -123,7 +123,7 @@ export class BRERuleEngineTriggersService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_USER
      * @summary List triggers
      * @param filterSystem Filter for triggers that are system triggers when true, or not when false. Leave off for both mixed
      * @param filterCategory Filter for triggers that are within a specific category
@@ -145,7 +145,7 @@ export class BRERuleEngineTriggersService {
     }
 
     /**
-     * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers
+     * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
      * @summary Update a trigger
      * @param eventName The trigger event name
      * @param breTriggerResource The BRE trigger resource object
@@ -164,7 +164,7 @@ export class BRERuleEngineTriggersService {
 
     /**
      * Create a trigger
-     * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services
+     * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_TRIGGERS_ADMIN
      * @param breTriggerResource The BRE trigger resource object
      */
     public createBRETriggerWithHttpInfo(breTriggerResource?: BreTriggerResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -217,7 +217,7 @@ export class BRERuleEngineTriggersService {
 
     /**
      * Delete a trigger
-     * May fail if there are existing rules against it. Cannot delete core triggers
+     * May fail if there are existing rules against it. Cannot delete core triggers. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_TRIGGERS_ADMIN
      * @param eventName The trigger event name
      */
     public deleteBRETriggerWithHttpInfo(eventName: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -272,7 +272,7 @@ export class BRERuleEngineTriggersService {
 
     /**
      * Get a single trigger
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_TRIGGERS_USER
      * @param eventName The trigger event name
      */
     public getBRETriggerWithHttpInfo(eventName: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -327,7 +327,7 @@ export class BRERuleEngineTriggersService {
 
     /**
      * List triggers
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_TRIGGERS_USER
      * @param filterSystem Filter for triggers that are system triggers when true, or not when false. Leave off for both mixed
      * @param filterCategory Filter for triggers that are within a specific category
      * @param filterTags Filter for triggers that have all of the given tags (comma separated list)
@@ -411,7 +411,7 @@ export class BRERuleEngineTriggersService {
 
     /**
      * Update a trigger
-     * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers
+     * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_TRIGGERS_ADMIN
      * @param eventName The trigger event name
      * @param breTriggerResource The BRE trigger resource object
      */

@@ -11,7 +11,6 @@
  */
 
 import { DatabaseConfig } from './databaseConfig';
-import { IOConfig } from './iOConfig';
 import { S3Config } from './s3Config';
 
 
@@ -19,8 +18,6 @@ export interface CustomerConfig {
     aliases?: string;
 
     database?: DatabaseConfig;
-
-    io?: IOConfig;
 
     name?: string;
 

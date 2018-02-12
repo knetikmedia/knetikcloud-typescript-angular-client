@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class AuthTokensService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class AuthTokensService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TOKENS_ADMIN
      * @summary Delete tokens by username, client id, or both
      * @param username The username of the user
      * @param clientId The id of the client
@@ -92,7 +92,7 @@ export class AuthTokensService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TOKENS_ADMIN
      * @summary Get a single token by username and client id
      * @param username The username of the user
      * @param clientId The id of the client
@@ -109,7 +109,7 @@ export class AuthTokensService {
     }
 
     /**
-     * Token value not shown
+     * Token value not shown. <br><br><b>Permissions Needed:</b> TOKENS_ADMIN
      * @summary List usernames and client ids
      * @param filterClientId Filters for token whose client id matches provided string
      * @param filterUsername Filters for token whose username matches provided string
@@ -131,7 +131,7 @@ export class AuthTokensService {
 
     /**
      * Delete tokens by username, client id, or both
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TOKENS_ADMIN
      * @param username The username of the user
      * @param clientId The id of the client
      */
@@ -190,7 +190,7 @@ export class AuthTokensService {
 
     /**
      * Get a single token by username and client id
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TOKENS_ADMIN
      * @param username The username of the user
      * @param clientId The id of the client
      */
@@ -251,7 +251,7 @@ export class AuthTokensService {
 
     /**
      * List usernames and client ids
-     * Token value not shown
+     * Token value not shown. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TOKENS_ADMIN
      * @param filterClientId Filters for token whose client id matches provided string
      * @param filterUsername Filters for token whose username matches provided string
      * @param size The number of objects returned per page

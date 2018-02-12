@@ -20,14 +20,18 @@ import { Response, ResponseContentType }                     from '@angular/http
 import { Observable }                                        from 'rxjs/Observable';
 import '../rxjs-operators';
 
+import { ChatMessageRequest } from '../model/chatMessageRequest';
+import { ChatMessageResource } from '../model/chatMessageResource';
 import { GroupMemberResource } from '../model/groupMemberResource';
 import { GroupResource } from '../model/groupResource';
+import { PageResourceChatMessageResource } from '../model/pageResourceChatMessageResource';
 import { PageResourceGroupMemberResource } from '../model/pageResourceGroupMemberResource';
 import { PageResourceGroupResource } from '../model/pageResourceGroupResource';
 import { PageResourceTemplateResource } from '../model/pageResourceTemplateResource';
 import { Result } from '../model/result';
 import { StringWrapper } from '../model/stringWrapper';
 import { TemplateResource } from '../model/templateResource';
+import { ValueWrapperboolean } from '../model/valueWrapperboolean';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -36,7 +40,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UsersGroupsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -80,7 +84,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> GROUP_ADMIN or self if open
      * @summary Adds a new member to the group
      * @param uniqueName The group unique name
      * @param user The id and status for a user to add to the group
@@ -97,7 +101,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> GROUP_ADMIN
      * @summary Adds multiple members to the group
      * @param uniqueName The group unique name
      * @param users The id and status for a list of users to add to the group
@@ -114,7 +118,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> GROUP_ADMIN
      * @summary Create a group
      * @param groupResource The new group
      */
@@ -130,7 +134,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * GroupMember Templates define a type of group member and the properties they have
+     * GroupMember Templates define a type of group member and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create an group member template
      * @param groupMemberTemplateResource The group member template resource object
      */
@@ -146,7 +150,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * Group Templates define a type of group and the properties they have
+     * Group Templates define a type of group and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a group template
      * @param groupTemplateResource The group template resource object
      */
@@ -162,7 +166,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * All groups listing this as the parent are also removed and users are in turn removed from this and those groups. This may result in users no longer being in this group's parent if they were not added to it directly as well.
+     * All groups listing this as the parent are also removed and users are in turn removed from this and those groups. This may result in users no longer being in this group's parent if they were not added to it directly as well. <br><br><b>Permissions Needed:</b> GROUP_ADMIN
      * @summary Removes a group from the system
      * @param uniqueName The group unique name
      */
@@ -178,7 +182,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete an group member template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -195,7 +199,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a group template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -213,6 +217,24 @@ export class UsersGroupsService {
 
     /**
      * 
+     * @summary Enable or disable notification of group messages
+     * @param uniqueName The group unique name
+     * @param userId The user id of the member or &#39;me&#39;
+     * @param disabled disabled
+     */
+    public disableGroupNotification(uniqueName: string, userId: string, disabled: ValueWrapperboolean, extraHttpRequestParams?: any): Observable<{}> {
+        return this.disableGroupNotificationWithHttpInfo(uniqueName, userId, disabled, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> ANY
      * @summary Loads a specific group's details
      * @param uniqueName The group unique name
      */
@@ -228,7 +250,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * Returns a list of ancestor groups in reverse order (parent, then grandparent, etc
+     * Returns a list of ancestor groups in reverse order (parent, then grandparent, etc). <br><br><b>Permissions Needed:</b> ANY
      * @summary Get group ancestors
      * @param uniqueName The group unique name
      */
@@ -244,7 +266,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a user from a group
      * @param uniqueName The group unique name
      * @param userId The id of the user
@@ -261,7 +283,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or GROUP_ADMIN
      * @summary Get a single group member template
      * @param id The id of the template
      */
@@ -277,7 +299,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or GROUP_ADMIN
      * @summary List and search group member templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -295,7 +317,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Lists members of the group
      * @param uniqueName The group unique name
      * @param size The number of objects returned per page
@@ -314,7 +336,25 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
+     * @summary Get a list of group messages
+     * @param uniqueName The group unique name
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
+    public getGroupMessages(uniqueName: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceChatMessageResource> {
+        return this.getGroupMessagesWithHttpInfo(uniqueName, size, page, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or GROUP_ADMIN
      * @summary Get a single group template
      * @param id The id of the template
      */
@@ -330,7 +370,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or GROUP_ADMIN
      * @summary List and search group templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -348,7 +388,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List groups a user is in
      * @param userId The id of the user
      * @param filterChildren Whether to limit group list to children of groups only. If true, shows only groups with parents. If false, shows only groups with no parent.
@@ -365,7 +405,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search groups
      * @param filterTemplate Filter for groups using a specific template, by id
      * @param filterMemberCount Filters groups by member count. Multiple values possible for range search. Format: filter_member_count&#x3D;OP,ts&amp;... where OP in (GT, LT, GOE, LOE, EQ). Ex: filter_member_count&#x3D;GT,14,LT,17
@@ -390,6 +430,23 @@ export class UsersGroupsService {
 
     /**
      * 
+     * @summary Send a group message
+     * @param uniqueName The group unique name
+     * @param chatMessageRequest The chat message request
+     */
+    public postGroupMessage(uniqueName: string, chatMessageRequest?: ChatMessageRequest, extraHttpRequestParams?: any): Observable<ChatMessageResource> {
+        return this.postGroupMessageWithHttpInfo(uniqueName, chatMessageRequest, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> GROUP_ADMIN or self if open
      * @summary Removes a user from a group
      * @param uniqueName The group unique name
      * @param userId The id of the user to remove
@@ -406,7 +463,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * If adding/removing/changing parent, user membership in group/new parent groups may be modified. The parent being removed will remove members from this sub group unless they were added explicitly to the parent and the new parent will gain members unless they were already a part of it.
+     * If adding/removing/changing parent, user membership in group/new parent groups may be modified. The parent being removed will remove members from this sub group unless they were added explicitly to the parent and the new parent will gain members unless they were already a part of it. <br><br><b>Permissions Needed:</b> GROUP_ADMIN or admin of the group
      * @summary Update a group
      * @param uniqueName The group unique name
      * @param groupResource The updated group
@@ -423,7 +480,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> GROUP_ADMIN
      * @summary Change a user's order
      * @param uniqueName The group unique name
      * @param userId The user id of the member to modify
@@ -441,7 +498,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> GROUP_ADMIN
      * @summary Change a user's membership properties
      * @param uniqueName The group unique name
      * @param userId The user id of the member to modify
@@ -459,7 +516,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> GROUP_ADMIN
      * @summary Change a user's status
      * @param uniqueName The group unique name
      * @param userId The user id of the member to modify
@@ -477,7 +534,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update an group member template
      * @param id The id of the template
      * @param groupMemberTemplateResource The group member template resource object
@@ -494,7 +551,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a group template
      * @param id The id of the template
      * @param groupTemplateResource The group template resource object
@@ -513,7 +570,7 @@ export class UsersGroupsService {
 
     /**
      * Adds a new member to the group
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; GROUP_ADMIN or self if open
      * @param uniqueName The group unique name
      * @param user The id and status for a user to add to the group
      */
@@ -576,7 +633,7 @@ export class UsersGroupsService {
 
     /**
      * Adds multiple members to the group
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; GROUP_ADMIN
      * @param uniqueName The group unique name
      * @param users The id and status for a list of users to add to the group
      */
@@ -639,7 +696,7 @@ export class UsersGroupsService {
 
     /**
      * Create a group
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; GROUP_ADMIN
      * @param groupResource The new group
      */
     public createGroupWithHttpInfo(groupResource?: GroupResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -692,7 +749,7 @@ export class UsersGroupsService {
 
     /**
      * Create an group member template
-     * GroupMember Templates define a type of group member and the properties they have
+     * GroupMember Templates define a type of group member and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param groupMemberTemplateResource The group member template resource object
      */
     public createGroupMemberTemplateWithHttpInfo(groupMemberTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -745,7 +802,7 @@ export class UsersGroupsService {
 
     /**
      * Create a group template
-     * Group Templates define a type of group and the properties they have
+     * Group Templates define a type of group and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param groupTemplateResource The group template resource object
      */
     public createGroupTemplateWithHttpInfo(groupTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -798,7 +855,7 @@ export class UsersGroupsService {
 
     /**
      * Removes a group from the system
-     * All groups listing this as the parent are also removed and users are in turn removed from this and those groups. This may result in users no longer being in this group&#39;s parent if they were not added to it directly as well.
+     * All groups listing this as the parent are also removed and users are in turn removed from this and those groups. This may result in users no longer being in this group&#39;s parent if they were not added to it directly as well. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; GROUP_ADMIN
      * @param uniqueName The group unique name
      */
     public deleteGroupWithHttpInfo(uniqueName: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -853,7 +910,7 @@ export class UsersGroupsService {
 
     /**
      * Delete an group member template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -913,7 +970,7 @@ export class UsersGroupsService {
 
     /**
      * Delete a group template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -972,8 +1029,77 @@ export class UsersGroupsService {
     }
 
     /**
-     * Loads a specific group&#39;s details
+     * Enable or disable notification of group messages
      * 
+     * @param uniqueName The group unique name
+     * @param userId The user id of the member or &#39;me&#39;
+     * @param disabled disabled
+     */
+    public disableGroupNotificationWithHttpInfo(uniqueName: string, userId: string, disabled: ValueWrapperboolean, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/users/groups/${unique_name}/members/${user_id}/messages/disabled'
+                    .replace('${' + 'unique_name' + '}', String(uniqueName))
+                    .replace('${' + 'user_id' + '}', String(userId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'uniqueName' is not null or undefined
+        if (uniqueName === null || uniqueName === undefined) {
+            throw new Error('Required parameter uniqueName was null or undefined when calling disableGroupNotification.');
+        }
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling disableGroupNotification.');
+        }
+        // verify required parameter 'disabled' is not null or undefined
+        if (disabled === null || disabled === undefined) {
+            throw new Error('Required parameter disabled was null or undefined when calling disableGroupNotification.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Put,
+            headers: headers,
+            body: disabled == null ? '' : JSON.stringify(disabled), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Loads a specific group&#39;s details
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param uniqueName The group unique name
      */
     public getGroupWithHttpInfo(uniqueName: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1028,7 +1154,7 @@ export class UsersGroupsService {
 
     /**
      * Get group ancestors
-     * Returns a list of ancestor groups in reverse order (parent, then grandparent, etc
+     * Returns a list of ancestor groups in reverse order (parent, then grandparent, etc). &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param uniqueName The group unique name
      */
     public getGroupAncestorsWithHttpInfo(uniqueName: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1048,6 +1174,24 @@ export class UsersGroupsService {
             'application/json'
         ];
 
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
             
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Get,
@@ -1065,7 +1209,7 @@ export class UsersGroupsService {
 
     /**
      * Get a user from a group
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param uniqueName The group unique name
      * @param userId The id of the user
      */
@@ -1126,7 +1270,7 @@ export class UsersGroupsService {
 
     /**
      * Get a single group member template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or GROUP_ADMIN
      * @param id The id of the template
      */
     public getGroupMemberTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1181,7 +1325,7 @@ export class UsersGroupsService {
 
     /**
      * List and search group member templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or GROUP_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -1245,7 +1389,7 @@ export class UsersGroupsService {
 
     /**
      * Lists members of the group
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param uniqueName The group unique name
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -1314,8 +1458,73 @@ export class UsersGroupsService {
     }
 
     /**
+     * Get a list of group messages
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
+     * @param uniqueName The group unique name
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
+    public getGroupMessagesWithHttpInfo(uniqueName: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/users/groups/${unique_name}/messages'
+                    .replace('${' + 'unique_name' + '}', String(uniqueName));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'uniqueName' is not null or undefined
+        if (uniqueName === null || uniqueName === undefined) {
+            throw new Error('Required parameter uniqueName was null or undefined when calling getGroupMessages.');
+        }
+        if (size !== undefined) {
+            queryParameters.set('size', <any>size);
+        }
+
+        if (page !== undefined) {
+            queryParameters.set('page', <any>page);
+        }
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
      * Get a single group template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or GROUP_ADMIN
      * @param id The id of the template
      */
     public getGroupTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1370,7 +1579,7 @@ export class UsersGroupsService {
 
     /**
      * List and search group templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or GROUP_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order a comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -1434,7 +1643,7 @@ export class UsersGroupsService {
 
     /**
      * List groups a user is in
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param userId The id of the user
      * @param filterChildren Whether to limit group list to children of groups only. If true, shows only groups with parents. If false, shows only groups with no parent.
      */
@@ -1494,7 +1703,7 @@ export class UsersGroupsService {
 
     /**
      * List and search groups
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterTemplate Filter for groups using a specific template, by id
      * @param filterMemberCount Filters groups by member count. Multiple values possible for range search. Format: filter_member_count&#x3D;OP,ts&amp;... where OP in (GT, LT, GOE, LOE, EQ). Ex: filter_member_count&#x3D;GT,14,LT,17
      * @param filterName Filter for groups with names starting with the given string
@@ -1587,8 +1796,49 @@ export class UsersGroupsService {
     }
 
     /**
-     * Removes a user from a group
+     * Send a group message
      * 
+     * @param uniqueName The group unique name
+     * @param chatMessageRequest The chat message request
+     */
+    public postGroupMessageWithHttpInfo(uniqueName: string, chatMessageRequest?: ChatMessageRequest, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/users/groups/${unique_name}/messages'
+                    .replace('${' + 'unique_name' + '}', String(uniqueName));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'uniqueName' is not null or undefined
+        if (uniqueName === null || uniqueName === undefined) {
+            throw new Error('Required parameter uniqueName was null or undefined when calling postGroupMessage.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: chatMessageRequest == null ? '' : JSON.stringify(chatMessageRequest), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Removes a user from a group
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; GROUP_ADMIN or self if open
      * @param uniqueName The group unique name
      * @param userId The id of the user to remove
      */
@@ -1649,7 +1899,7 @@ export class UsersGroupsService {
 
     /**
      * Update a group
-     * If adding/removing/changing parent, user membership in group/new parent groups may be modified. The parent being removed will remove members from this sub group unless they were added explicitly to the parent and the new parent will gain members unless they were already a part of it.
+     * If adding/removing/changing parent, user membership in group/new parent groups may be modified. The parent being removed will remove members from this sub group unless they were added explicitly to the parent and the new parent will gain members unless they were already a part of it. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; GROUP_ADMIN or admin of the group
      * @param uniqueName The group unique name
      * @param groupResource The updated group
      */
@@ -1708,7 +1958,7 @@ export class UsersGroupsService {
 
     /**
      * Change a user&#39;s order
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; GROUP_ADMIN
      * @param uniqueName The group unique name
      * @param userId The user id of the member to modify
      * @param order The new order for the membership
@@ -1777,7 +2027,7 @@ export class UsersGroupsService {
 
     /**
      * Change a user&#39;s membership properties
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; GROUP_ADMIN
      * @param uniqueName The group unique name
      * @param userId The user id of the member to modify
      * @param properties The new properties for the membership
@@ -1846,7 +2096,7 @@ export class UsersGroupsService {
 
     /**
      * Change a user&#39;s status
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; GROUP_ADMIN
      * @param uniqueName The group unique name
      * @param userId The user id of the member to modify
      * @param status The new status for the user
@@ -1915,7 +2165,7 @@ export class UsersGroupsService {
 
     /**
      * Update an group member template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param groupMemberTemplateResource The group member template resource object
      */
@@ -1974,7 +2224,7 @@ export class UsersGroupsService {
 
     /**
      * Update a group template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param groupTemplateResource The group template resource object
      */

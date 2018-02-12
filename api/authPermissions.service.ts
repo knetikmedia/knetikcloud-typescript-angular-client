@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class AuthPermissionsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class AuthPermissionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
      * @summary Create a new permission
      * @param permissionResource The permission resource object
      */
@@ -91,7 +91,7 @@ export class AuthPermissionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
      * @summary Delete a permission
      * @param permission The permission value
      * @param force If true, removes permission assigned to roles
@@ -108,7 +108,7 @@ export class AuthPermissionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
      * @summary Get a single permission
      * @param permission The permission value
      */
@@ -124,7 +124,7 @@ export class AuthPermissionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
      * @summary List and search permissions
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -142,7 +142,7 @@ export class AuthPermissionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PERMISSIONS_ADMIN
      * @summary Update a permission
      * @param permission The permission value
      * @param permissionResource The permission resource object
@@ -161,7 +161,7 @@ export class AuthPermissionsService {
 
     /**
      * Create a new permission
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PERMISSIONS_ADMIN
      * @param permissionResource The permission resource object
      */
     public createPermissionWithHttpInfo(permissionResource?: PermissionResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -214,7 +214,7 @@ export class AuthPermissionsService {
 
     /**
      * Delete a permission
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PERMISSIONS_ADMIN
      * @param permission The permission value
      * @param force If true, removes permission assigned to roles
      */
@@ -274,7 +274,7 @@ export class AuthPermissionsService {
 
     /**
      * Get a single permission
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PERMISSIONS_ADMIN
      * @param permission The permission value
      */
     public getPermissionWithHttpInfo(permission: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -329,7 +329,7 @@ export class AuthPermissionsService {
 
     /**
      * List and search permissions
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PERMISSIONS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -393,7 +393,7 @@ export class AuthPermissionsService {
 
     /**
      * Update a permission
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PERMISSIONS_ADMIN
      * @param permission The permission value
      * @param permissionResource The permission resource object
      */

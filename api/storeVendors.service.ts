@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class StoreVendorsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class StoreVendorsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VENDORS_ADMIN
      * @summary Create a vendor
      * @param vendor The vendor
      */
@@ -93,7 +93,7 @@ export class StoreVendorsService {
     }
 
     /**
-     * Vendor Templates define a type of vendor and the properties they have.
+     * Vendor Templates define a type of vendor and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a vendor template
      * @param vendorTemplateResource The new vendor template
      */
@@ -109,7 +109,7 @@ export class StoreVendorsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VENDORS_ADMIN
      * @summary Delete a vendor
      * @param id The id of the vendor
      */
@@ -125,7 +125,7 @@ export class StoreVendorsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a vendor template
      * @param id The id of the template
      * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
@@ -142,7 +142,7 @@ export class StoreVendorsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single vendor
      * @param id The id of the vendor
      */
@@ -158,7 +158,7 @@ export class StoreVendorsService {
     }
 
     /**
-     * Vendor Templates define a type of vendor and the properties they have.
+     * Vendor Templates define a type of vendor and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Get a single vendor template
      * @param id The id of the template
      */
@@ -174,7 +174,7 @@ export class StoreVendorsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary List and search vendor templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -192,7 +192,7 @@ export class StoreVendorsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search vendors
      * @param filterName Filters vendors by name starting with the text provided in the filter
      * @param size The number of objects returned per page
@@ -211,7 +211,7 @@ export class StoreVendorsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> VENDORS_ADMIN
      * @summary Update a vendor
      * @param id The id of the vendor
      * @param vendor The vendor
@@ -228,7 +228,7 @@ export class StoreVendorsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a vendor template
      * @param id The id of the template
      * @param vendorTemplateResource The vendor template resource object
@@ -247,7 +247,7 @@ export class StoreVendorsService {
 
     /**
      * Create a vendor
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VENDORS_ADMIN
      * @param vendor The vendor
      */
     public createVendorWithHttpInfo(vendor?: VendorResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -300,7 +300,7 @@ export class StoreVendorsService {
 
     /**
      * Create a vendor template
-     * Vendor Templates define a type of vendor and the properties they have.
+     * Vendor Templates define a type of vendor and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param vendorTemplateResource The new vendor template
      */
     public createVendorTemplateWithHttpInfo(vendorTemplateResource?: ItemTemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -353,7 +353,7 @@ export class StoreVendorsService {
 
     /**
      * Delete a vendor
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VENDORS_ADMIN
      * @param id The id of the vendor
      */
     public deleteVendorWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -408,7 +408,7 @@ export class StoreVendorsService {
 
     /**
      * Delete a vendor template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
      */
@@ -468,7 +468,7 @@ export class StoreVendorsService {
 
     /**
      * Get a single vendor
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the vendor
      */
     public getVendorWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -523,7 +523,7 @@ export class StoreVendorsService {
 
     /**
      * Get a single vendor template
-     * Vendor Templates define a type of vendor and the properties they have.
+     * Vendor Templates define a type of vendor and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      */
     public getVendorTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -578,7 +578,7 @@ export class StoreVendorsService {
 
     /**
      * List and search vendor templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -642,7 +642,7 @@ export class StoreVendorsService {
 
     /**
      * List and search vendors
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterName Filters vendors by name starting with the text provided in the filter
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -711,7 +711,7 @@ export class StoreVendorsService {
 
     /**
      * Update a vendor
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; VENDORS_ADMIN
      * @param id The id of the vendor
      * @param vendor The vendor
      */
@@ -770,7 +770,7 @@ export class StoreVendorsService {
 
     /**
      * Update a vendor template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param vendorTemplateResource The vendor template resource object
      */

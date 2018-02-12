@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class CampaignsRewardsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class CampaignsRewardsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> REWARDS_ADMIN
      * @summary Create a reward set
      * @param rewardSetResource The reward set resource object
      */
@@ -91,7 +91,7 @@ export class CampaignsRewardsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> REWARDS_ADMIN
      * @summary Delete a reward set
      * @param id The reward id
      */
@@ -107,7 +107,7 @@ export class CampaignsRewardsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single reward set
      * @param id The reward id
      */
@@ -123,7 +123,7 @@ export class CampaignsRewardsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search reward sets
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -141,7 +141,7 @@ export class CampaignsRewardsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> REWARDS_ADMIN
      * @summary Update a reward set
      * @param id The reward id
      * @param rewardSetResource The reward set resource object
@@ -160,7 +160,7 @@ export class CampaignsRewardsService {
 
     /**
      * Create a reward set
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; REWARDS_ADMIN
      * @param rewardSetResource The reward set resource object
      */
     public createRewardSetWithHttpInfo(rewardSetResource?: RewardSetResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -213,7 +213,7 @@ export class CampaignsRewardsService {
 
     /**
      * Delete a reward set
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; REWARDS_ADMIN
      * @param id The reward id
      */
     public deleteRewardSetWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -268,7 +268,7 @@ export class CampaignsRewardsService {
 
     /**
      * Get a single reward set
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The reward id
      */
     public getRewardSetWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -323,7 +323,7 @@ export class CampaignsRewardsService {
 
     /**
      * List and search reward sets
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -387,7 +387,7 @@ export class CampaignsRewardsService {
 
     /**
      * Update a reward set
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; REWARDS_ADMIN
      * @param id The reward id
      * @param rewardSetResource The reward set resource object
      */

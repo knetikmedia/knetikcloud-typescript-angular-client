@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class StoreSubscriptionsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
      * @summary Creates a subscription item and associated plans
      * @param subscriptionResource The subscription to be created
      */
@@ -93,7 +93,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * Subscription Templates define a type of subscription and the properties they have.
+     * Subscription Templates define a type of subscription and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a subscription template
      * @param subscriptionTemplateResource The new subscription template
      */
@@ -109,7 +109,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * Must not be locked or a migration target
+     * Must not be locked or a migration target. <br><br><b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
      * @summary Delete a subscription plan
      * @param id The id of the subscription
      * @param planId The id of the plan
@@ -126,7 +126,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a subscription template
      * @param id The id of the template
      * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
@@ -143,7 +143,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Retrieve a single subscription item and associated plans
      * @param id The id of the subscription
      */
@@ -159,7 +159,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * Subscription Templates define a type of subscription and the properties they have.
+     * Subscription Templates define a type of subscription and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Get a single subscription template
      * @param id The id of the template
      */
@@ -175,7 +175,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or SUBSCRIPTIONS_ADMIN
      * @summary List and search subscription templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -193,7 +193,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List available subscription items and associated plans
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -211,7 +211,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
      * @summary Processes subscriptions and charge dues
      */
     public processSubscriptions(extraHttpRequestParams?: any): Observable<{}> {
@@ -226,7 +226,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * Will not remove plans left out
+     * Will not remove plans left out. <br><br><b>Permissions Needed:</b> SUBSCRIPTIONS_ADMIN
      * @summary Updates a subscription item and associated plans
      * @param id The id of the subscription
      * @param subscriptionResource The subscription resource object
@@ -243,7 +243,7 @@ export class StoreSubscriptionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a subscription template
      * @param id The id of the template
      * @param subscriptionTemplateResource The subscription template resource object
@@ -262,7 +262,7 @@ export class StoreSubscriptionsService {
 
     /**
      * Creates a subscription item and associated plans
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SUBSCRIPTIONS_ADMIN
      * @param subscriptionResource The subscription to be created
      */
     public createSubscriptionWithHttpInfo(subscriptionResource?: SubscriptionResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -315,7 +315,7 @@ export class StoreSubscriptionsService {
 
     /**
      * Create a subscription template
-     * Subscription Templates define a type of subscription and the properties they have.
+     * Subscription Templates define a type of subscription and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param subscriptionTemplateResource The new subscription template
      */
     public createSubscriptionTemplateWithHttpInfo(subscriptionTemplateResource?: SubscriptionTemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -368,7 +368,7 @@ export class StoreSubscriptionsService {
 
     /**
      * Delete a subscription plan
-     * Must not be locked or a migration target
+     * Must not be locked or a migration target. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; SUBSCRIPTIONS_ADMIN
      * @param id The id of the subscription
      * @param planId The id of the plan
      */
@@ -429,7 +429,7 @@ export class StoreSubscriptionsService {
 
     /**
      * Delete a subscription template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade force deleting the template if it&#39;s attached to other objects, cascade &#x3D; detach
      */
@@ -489,7 +489,7 @@ export class StoreSubscriptionsService {
 
     /**
      * Retrieve a single subscription item and associated plans
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the subscription
      */
     public getSubscriptionWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -544,7 +544,7 @@ export class StoreSubscriptionsService {
 
     /**
      * Get a single subscription template
-     * Subscription Templates define a type of subscription and the properties they have.
+     * Subscription Templates define a type of subscription and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      */
     public getSubscriptionTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -599,7 +599,7 @@ export class StoreSubscriptionsService {
 
     /**
      * List and search subscription templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or SUBSCRIPTIONS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -663,7 +663,7 @@ export class StoreSubscriptionsService {
 
     /**
      * List available subscription items and associated plans
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -727,7 +727,7 @@ export class StoreSubscriptionsService {
 
     /**
      * Processes subscriptions and charge dues
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SUBSCRIPTIONS_ADMIN
      */
     public processSubscriptionsWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/subscriptions/process';
@@ -776,7 +776,7 @@ export class StoreSubscriptionsService {
 
     /**
      * Updates a subscription item and associated plans
-     * Will not remove plans left out
+     * Will not remove plans left out. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; SUBSCRIPTIONS_ADMIN
      * @param id The id of the subscription
      * @param subscriptionResource The subscription resource object
      */
@@ -835,7 +835,7 @@ export class StoreSubscriptionsService {
 
     /**
      * Update a subscription template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param subscriptionTemplateResource The subscription template resource object
      */

@@ -51,7 +51,7 @@ export interface BareActivityResource {
     /**
      * The type of the activity
      */
-    type: string;
+    type?: string;
 
     /**
      * The unique key (for static reference in code) of the activity

@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class SocialGoogleService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class SocialGoogleService {
     }
 
     /**
-     * Links the current user account to a google account, using the acccess token from google. Can also be used to update the access token after it has expired.
+     * Links the current user account to a google account, using the acccess token from google. Can also be used to update the access token after it has expired. <br><br><b>Permissions Needed:</b> Non-google user token
      * @summary Link google account
      * @param googleToken The token from google
      */
@@ -92,7 +92,7 @@ export class SocialGoogleService {
 
     /**
      * Link google account
-     * Links the current user account to a google account, using the acccess token from google. Can also be used to update the access token after it has expired.
+     * Links the current user account to a google account, using the acccess token from google. Can also be used to update the access token after it has expired. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; Non-google user token
      * @param googleToken The token from google
      */
     public linkAccounts1WithHttpInfo(googleToken?: GoogleToken, extraHttpRequestParams?: any): Observable<Response> {

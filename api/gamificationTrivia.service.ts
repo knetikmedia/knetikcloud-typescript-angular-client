@@ -38,7 +38,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class GamificationTriviaService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -82,7 +82,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Add an answer to a question
      * @param questionId The id of the question
      * @param answer The new answer
@@ -99,7 +99,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Add a tag to a question
      * @param id The id of the question
      * @param tag The new tag
@@ -116,7 +116,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * All questions that dont't have the tag and match filters will have it added. The returned number is the number of questions updated.
+     * All questions that dont't have the tag and match filters will have it added. The returned number is the number of questions updated. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Add a tag to a batch of questions
      * @param tag The tag to add
      * @param filterSearch Filter for documents whose question, answers or tags contains provided string
@@ -140,7 +140,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * Set up a job to import a set of trivia questions from a cvs file at a remote url. the file will be validated asynchronously but will not be processed until started manually with the process endpoint.
+     * Set up a job to import a set of trivia questions from a cvs file at a remote url. the file will be validated asynchronously but will not be processed until started manually with the process endpoint. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Create an import job
      * @param request The new import job
      */
@@ -156,7 +156,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Create a question
      * @param question The new question
      */
@@ -172,7 +172,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * Question templates define a type of question and the properties they have
+     * Question templates define a type of question and the properties they have. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Create a question template
      * @param questionTemplateResource The question template resource object
      */
@@ -188,7 +188,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * Also deletes all questions that were imported by it
+     * Also deletes all questions that were imported by it. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Delete an import job
      * @param id The id of the job
      */
@@ -204,7 +204,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Delete a question
      * @param id The id of the question
      */
@@ -220,7 +220,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Remove an answer from a question
      * @param questionId The id of the question
      * @param id The id of the answer
@@ -237,7 +237,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a question template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -254,7 +254,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Get an import job
      * @param id The id of the job
      */
@@ -270,7 +270,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Get a list of import job
      * @param filterVendor Filter for jobs by vendor id
      * @param filterCategory Filter for jobs by category id
@@ -292,7 +292,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Get a single question
      * @param id The id of the question
      */
@@ -308,7 +308,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Get an answer for a question
      * @param questionId The id of the question
      * @param id The id of the answer
@@ -325,7 +325,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary List the answers available for a question
      * @param questionId The id of the question
      */
@@ -341,7 +341,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * The 'since' parameter is important to avoid getting a full list of all questions. Implementors should make sure they pass the updated date of the last resource loaded, not the date of the last request, in order to avoid gaps
+     * The 'since' parameter is important to avoid getting a full list of all questions. Implementors should make sure they pass the updated date of the last resource loaded, not the date of the last request, in order to avoid gaps. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary List question deltas in ascending order of updated date
      * @param since Timestamp in seconds
      */
@@ -357,7 +357,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary List the tags for a question
      * @param id The id of the question
      */
@@ -373,7 +373,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or TRIVIA_ADMIN
      * @summary Get a single question template
      * @param id The id of the template
      */
@@ -389,7 +389,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or TRIVIA_ADMIN
      * @summary List and search question templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -407,7 +407,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary List and search questions
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -433,7 +433,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * This is also provided by the list endpoint so you don't need to call this for pagination purposes
+     * This is also provided by the list endpoint so you don't need to call this for pagination purposes. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Count questions based on filters
      * @param filterSearch Filter for documents whose question, answers or tags contains provided string
      * @param filterIdset Filter for documents whose id is in the comma separated list provided
@@ -455,7 +455,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * Will process the CSV file and add new questions asynchronously. The status of the job must be 'VALID'.
+     * Will process the CSV file and add new questions asynchronously. The status of the job must be 'VALID'. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Start processing an import job
      * @param id The id of the job
      * @param publishNow Whether the new questions should be published live immediately
@@ -472,7 +472,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Remove a tag from a question
      * @param id The id of the question
      * @param tag The tag to remove
@@ -489,7 +489,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * ll questions that have the tag and match filters will have it removed. The returned number is the number of questions updated.
+     * ll questions that have the tag and match filters will have it removed. The returned number is the number of questions updated. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Remove a tag from a batch of questions
      * @param tag The tag to remove
      * @param filterSearch Filter for documents whose question, answers or tags contains provided string
@@ -513,7 +513,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * For performance reasons, search & category filters are mutually exclusive. If category is specified, search filter will be ignored in order to do fast matches for typeahead.
+     * For performance reasons, search & category filters are mutually exclusive. If category is specified, search filter will be ignored in order to do fast matches for typeahead. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary List and search tags by the beginning of the string
      * @param filterSearch Filter for tags starting with the given text
      * @param filterCategory Filter for tags on questions from a specific category
@@ -531,7 +531,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * Changes should be made before process is started for there to be any effect.
+     * Changes should be made before process is started for there to be any effect. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Update an import job
      * @param id The id of the job
      * @param request The updated job
@@ -548,7 +548,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Update a question
      * @param id The id of the question
      * @param question The updated question
@@ -565,7 +565,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Update an answer for a question
      * @param questionId The id of the question
      * @param id The id of the answer
@@ -583,7 +583,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a question template
      * @param id The id of the template
      * @param questionTemplateResource The question template resource object
@@ -600,7 +600,7 @@ export class GamificationTriviaService {
     }
 
     /**
-     * Will update all questions that match filters used (or all questions in system if no filters used). Body should match a question resource with only those properties you wish to set. Null values will be ignored. Returned number is how many were updated.
+     * Will update all questions that match filters used (or all questions in system if no filters used). Body should match a question resource with only those properties you wish to set. Null values will be ignored. Returned number is how many were updated. <br><br><b>Permissions Needed:</b> TRIVIA_ADMIN
      * @summary Bulk update questions
      * @param question New values for a set of question fields
      * @param filterSearch Filter for documents whose question, answers or tags contains provided string
@@ -625,7 +625,7 @@ export class GamificationTriviaService {
 
     /**
      * Add an answer to a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param questionId The id of the question
      * @param answer The new answer
      */
@@ -684,7 +684,7 @@ export class GamificationTriviaService {
 
     /**
      * Add a tag to a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param id The id of the question
      * @param tag The new tag
      */
@@ -743,7 +743,7 @@ export class GamificationTriviaService {
 
     /**
      * Add a tag to a batch of questions
-     * All questions that dont&#39;t have the tag and match filters will have it added. The returned number is the number of questions updated.
+     * All questions that dont&#39;t have the tag and match filters will have it added. The returned number is the number of questions updated. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param tag The tag to add
      * @param filterSearch Filter for documents whose question, answers or tags contains provided string
      * @param filterIdset Filter for documents whose id is in the comma separated list provided
@@ -836,7 +836,7 @@ export class GamificationTriviaService {
 
     /**
      * Create an import job
-     * Set up a job to import a set of trivia questions from a cvs file at a remote url. the file will be validated asynchronously but will not be processed until started manually with the process endpoint.
+     * Set up a job to import a set of trivia questions from a cvs file at a remote url. the file will be validated asynchronously but will not be processed until started manually with the process endpoint. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param request The new import job
      */
     public createImportJobWithHttpInfo(request?: ImportJobResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -889,7 +889,7 @@ export class GamificationTriviaService {
 
     /**
      * Create a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param question The new question
      */
     public createQuestionWithHttpInfo(question?: QuestionResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -942,7 +942,7 @@ export class GamificationTriviaService {
 
     /**
      * Create a question template
-     * Question templates define a type of question and the properties they have
+     * Question templates define a type of question and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param questionTemplateResource The question template resource object
      */
     public createQuestionTemplateWithHttpInfo(questionTemplateResource?: QuestionTemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -995,7 +995,7 @@ export class GamificationTriviaService {
 
     /**
      * Delete an import job
-     * Also deletes all questions that were imported by it
+     * Also deletes all questions that were imported by it. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param id The id of the job
      */
     public deleteImportJobWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1050,7 +1050,7 @@ export class GamificationTriviaService {
 
     /**
      * Delete a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param id The id of the question
      */
     public deleteQuestionWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1105,7 +1105,7 @@ export class GamificationTriviaService {
 
     /**
      * Remove an answer from a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param questionId The id of the question
      * @param id The id of the answer
      */
@@ -1166,7 +1166,7 @@ export class GamificationTriviaService {
 
     /**
      * Delete a question template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -1226,7 +1226,7 @@ export class GamificationTriviaService {
 
     /**
      * Get an import job
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param id The id of the job
      */
     public getImportJobWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1281,7 +1281,7 @@ export class GamificationTriviaService {
 
     /**
      * Get a list of import job
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param filterVendor Filter for jobs by vendor id
      * @param filterCategory Filter for jobs by category id
      * @param filterName Filter for jobs which name *STARTS* with the given string
@@ -1365,7 +1365,7 @@ export class GamificationTriviaService {
 
     /**
      * Get a single question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param id The id of the question
      */
     public getQuestionWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1420,7 +1420,7 @@ export class GamificationTriviaService {
 
     /**
      * Get an answer for a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param questionId The id of the question
      * @param id The id of the answer
      */
@@ -1481,7 +1481,7 @@ export class GamificationTriviaService {
 
     /**
      * List the answers available for a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param questionId The id of the question
      */
     public getQuestionAnswersWithHttpInfo(questionId: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1536,7 +1536,7 @@ export class GamificationTriviaService {
 
     /**
      * List question deltas in ascending order of updated date
-     * The &#39;since&#39; parameter is important to avoid getting a full list of all questions. Implementors should make sure they pass the updated date of the last resource loaded, not the date of the last request, in order to avoid gaps
+     * The &#39;since&#39; parameter is important to avoid getting a full list of all questions. Implementors should make sure they pass the updated date of the last resource loaded, not the date of the last request, in order to avoid gaps. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param since Timestamp in seconds
      */
     public getQuestionDeltasWithHttpInfo(since?: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1590,7 +1590,7 @@ export class GamificationTriviaService {
 
     /**
      * List the tags for a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param id The id of the question
      */
     public getQuestionTagsWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1645,7 +1645,7 @@ export class GamificationTriviaService {
 
     /**
      * Get a single question template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or TRIVIA_ADMIN
      * @param id The id of the template
      */
     public getQuestionTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -1700,7 +1700,7 @@ export class GamificationTriviaService {
 
     /**
      * List and search question templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or TRIVIA_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -1764,7 +1764,7 @@ export class GamificationTriviaService {
 
     /**
      * List and search questions
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -1868,7 +1868,7 @@ export class GamificationTriviaService {
 
     /**
      * Count questions based on filters
-     * This is also provided by the list endpoint so you don&#39;t need to call this for pagination purposes
+     * This is also provided by the list endpoint so you don&#39;t need to call this for pagination purposes. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param filterSearch Filter for documents whose question, answers or tags contains provided string
      * @param filterIdset Filter for documents whose id is in the comma separated list provided
      * @param filterCategory Filter for questions with specified category, by id
@@ -1952,7 +1952,7 @@ export class GamificationTriviaService {
 
     /**
      * Start processing an import job
-     * Will process the CSV file and add new questions asynchronously. The status of the job must be &#39;VALID&#39;.
+     * Will process the CSV file and add new questions asynchronously. The status of the job must be &#39;VALID&#39;. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param id The id of the job
      * @param publishNow Whether the new questions should be published live immediately
      */
@@ -2016,7 +2016,7 @@ export class GamificationTriviaService {
 
     /**
      * Remove a tag from a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param id The id of the question
      * @param tag The tag to remove
      */
@@ -2077,7 +2077,7 @@ export class GamificationTriviaService {
 
     /**
      * Remove a tag from a batch of questions
-     * ll questions that have the tag and match filters will have it removed. The returned number is the number of questions updated.
+     * ll questions that have the tag and match filters will have it removed. The returned number is the number of questions updated. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param tag The tag to remove
      * @param filterSearch Filter for documents whose question, answers or tags contains provided string
      * @param filterIdset Filter for documents whose id is in the comma separated list provided
@@ -2172,7 +2172,7 @@ export class GamificationTriviaService {
 
     /**
      * List and search tags by the beginning of the string
-     * For performance reasons, search &amp; category filters are mutually exclusive. If category is specified, search filter will be ignored in order to do fast matches for typeahead.
+     * For performance reasons, search &amp; category filters are mutually exclusive. If category is specified, search filter will be ignored in order to do fast matches for typeahead. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param filterSearch Filter for tags starting with the given text
      * @param filterCategory Filter for tags on questions from a specific category
      * @param filterImportId Filter for tags on questions from a specific import job
@@ -2236,7 +2236,7 @@ export class GamificationTriviaService {
 
     /**
      * Update an import job
-     * Changes should be made before process is started for there to be any effect.
+     * Changes should be made before process is started for there to be any effect. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param id The id of the job
      * @param request The updated job
      */
@@ -2295,7 +2295,7 @@ export class GamificationTriviaService {
 
     /**
      * Update a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param id The id of the question
      * @param question The updated question
      */
@@ -2354,7 +2354,7 @@ export class GamificationTriviaService {
 
     /**
      * Update an answer for a question
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param questionId The id of the question
      * @param id The id of the answer
      * @param answer The updated answer
@@ -2419,7 +2419,7 @@ export class GamificationTriviaService {
 
     /**
      * Update a question template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param questionTemplateResource The question template resource object
      */
@@ -2478,7 +2478,7 @@ export class GamificationTriviaService {
 
     /**
      * Bulk update questions
-     * Will update all questions that match filters used (or all questions in system if no filters used). Body should match a question resource with only those properties you wish to set. Null values will be ignored. Returned number is how many were updated.
+     * Will update all questions that match filters used (or all questions in system if no filters used). Body should match a question resource with only those properties you wish to set. Null values will be ignored. Returned number is how many were updated. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TRIVIA_ADMIN
      * @param question New values for a set of question fields
      * @param filterSearch Filter for documents whose question, answers or tags contains provided string
      * @param filterIdset Filter for documents whose id is in the comma separated list provided

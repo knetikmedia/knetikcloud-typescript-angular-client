@@ -10,15 +10,11 @@
  * Do not edit the class manually.
  */
 
+import { BroadcastableEvent } from './broadcastableEvent';
+import { Topic } from './topic';
 
 
-export interface IOConfig {
-    customer?: string;
-
-    enabled?: boolean;
-
-    environment?: string;
-
-    product?: string;
+export interface WebsocketRemoveTopicEvent extends BroadcastableEvent {
+    topic?: Topic;
 
 }

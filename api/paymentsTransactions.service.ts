@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PaymentsTransactionsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class PaymentsTransactionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRANSACTIONS_ADMIN or owner
      * @summary Get the details for a single transaction
      * @param id id
      */
@@ -93,7 +93,7 @@ export class PaymentsTransactionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TRANSACTIONS_ADMIN or owner
      * @summary List and search transactions
      * @param filterInvoice Filter for transactions from a specific invoice
      * @param size The number of objects returned per page
@@ -112,7 +112,7 @@ export class PaymentsTransactionsService {
     }
 
     /**
-     * Will not allow for refunding more than the full amount even with multiple partial refunds. Money is refunded to the payment method used to make the original payment. Payment method must support refunds.
+     * Will not allow for refunding more than the full amount even with multiple partial refunds. Money is refunded to the payment method used to make the original payment. Payment method must support refunds. <br><br><b>Permissions Needed:</b> PAYMENTS_ADMIN
      * @summary Refund a payment transaction, in full or in part
      * @param id The id of the transaction to refund
      * @param request Request containing refund details
@@ -131,7 +131,7 @@ export class PaymentsTransactionsService {
 
     /**
      * Get the details for a single transaction
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRANSACTIONS_ADMIN or owner
      * @param id id
      */
     public getTransactionWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -186,7 +186,7 @@ export class PaymentsTransactionsService {
 
     /**
      * List and search transactions
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TRANSACTIONS_ADMIN or owner
      * @param filterInvoice Filter for transactions from a specific invoice
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -255,7 +255,7 @@ export class PaymentsTransactionsService {
 
     /**
      * Refund a payment transaction, in full or in part
-     * Will not allow for refunding more than the full amount even with multiple partial refunds. Money is refunded to the payment method used to make the original payment. Payment method must support refunds.
+     * Will not allow for refunding more than the full amount even with multiple partial refunds. Money is refunded to the payment method used to make the original payment. Payment method must support refunds. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; PAYMENTS_ADMIN
      * @param id The id of the transaction to refund
      * @param request Request containing refund details
      */

@@ -39,7 +39,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class StoreShoppingCartsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -83,7 +83,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN
      * @summary Adds a custom discount to the cart
      * @param id The id of the cart
      * @param customDiscount The details of the discount to add
@@ -100,7 +100,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Adds a discount coupon to the cart
      * @param id The id of the cart
      * @param skuRequest The request of the sku
@@ -117,7 +117,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * Currently, carts cannot contain virtual and real currency items at the same time. Furthermore, the API only support a single virtual item at the moment
+     * Currently, carts cannot contain virtual and real currency items at the same time. Furthermore, the API only support a single virtual item at the moment. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Add an item to the cart
      * @param id The id of the cart
      * @param cartItemRequest The cart item request object
@@ -134,7 +134,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * You don't have to have a user to create a cart but the API requires authentication to checkout
+     * You don't have to have a user to create a cart but the API requires authentication to checkout. <br><br><b>Permissions Needed:</b> ANY
      * @summary Create a cart
      * @param owner Set the owner of a cart. If not specified, defaults to the calling user&#39;s id. If specified and is not the calling user&#39;s id, SHOPPING_CARTS_ADMIN permission is required
      * @param currencyCode Set the currency for the cart, by currency code. May be disallowed by site settings.
@@ -151,7 +151,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Returns the cart with the given GUID
      * @param id The id of the cart
      */
@@ -167,7 +167,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Get a list of carts
      * @param filterOwnerId Filter by the id of the owner
      * @param size The number of objects returned per page
@@ -186,7 +186,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Returns whether a cart requires shipping
      * @param id The id of the cart
      */
@@ -202,7 +202,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * Since a cart can have multiple vendors with different shipping options, the countries are broken down by vendors. Please see notes about the response object as the fields are variable.
+     * Since a cart can have multiple vendors with different shipping options, the countries are broken down by vendors. Please see notes about the response object as the fields are variable. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Get the list of available shipping countries per vendor
      * @param id The id of the cart
      */
@@ -218,7 +218,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Removes a discount coupon from the cart
      * @param id The id of the cart
      * @param code The SKU code of the coupon to remove
@@ -235,7 +235,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * May be disallowed by site settings.
+     * May be disallowed by site settings. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Sets the currency to use for the cart
      * @param id The id of the cart
      * @param currencyCode The code of the currency
@@ -252,7 +252,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Sets the owner of a cart if none is set already
      * @param id The id of the cart
      * @param userId The id of the user
@@ -269,7 +269,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * A quantity of zero will remove the item from the cart altogether.
+     * A quantity of zero will remove the item from the cart altogether. <br><br><b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Changes the quantity of an item already in the cart
      * @param id The id of the cart
      * @param cartItemRequest The cart item request object
@@ -286,7 +286,7 @@ export class StoreShoppingCartsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SHOPPING_CARTS_ADMIN or owner
      * @summary Modifies or sets the order shipping address
      * @param id The id of the cart
      * @param cartShippingAddressRequest The cart shipping address request object
@@ -305,7 +305,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Adds a custom discount to the cart
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN
      * @param id The id of the cart
      * @param customDiscount The details of the discount to add
      */
@@ -364,7 +364,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Adds a discount coupon to the cart
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param id The id of the cart
      * @param skuRequest The request of the sku
      */
@@ -423,7 +423,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Add an item to the cart
-     * Currently, carts cannot contain virtual and real currency items at the same time. Furthermore, the API only support a single virtual item at the moment
+     * Currently, carts cannot contain virtual and real currency items at the same time. Furthermore, the API only support a single virtual item at the moment. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param id The id of the cart
      * @param cartItemRequest The cart item request object
      */
@@ -482,7 +482,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Create a cart
-     * You don&#39;t have to have a user to create a cart but the API requires authentication to checkout
+     * You don&#39;t have to have a user to create a cart but the API requires authentication to checkout. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param owner Set the owner of a cart. If not specified, defaults to the calling user&#39;s id. If specified and is not the calling user&#39;s id, SHOPPING_CARTS_ADMIN permission is required
      * @param currencyCode Set the currency for the cart, by currency code. May be disallowed by site settings.
      */
@@ -541,7 +541,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Returns the cart with the given GUID
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param id The id of the cart
      */
     public getCartWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -596,7 +596,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Get a list of carts
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param filterOwnerId Filter by the id of the owner
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -665,7 +665,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Returns whether a cart requires shipping
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param id The id of the cart
      */
     public getShippableWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -720,7 +720,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Get the list of available shipping countries per vendor
-     * Since a cart can have multiple vendors with different shipping options, the countries are broken down by vendors. Please see notes about the response object as the fields are variable.
+     * Since a cart can have multiple vendors with different shipping options, the countries are broken down by vendors. Please see notes about the response object as the fields are variable. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param id The id of the cart
      */
     public getShippingCountriesWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -775,7 +775,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Removes a discount coupon from the cart
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param id The id of the cart
      * @param code The SKU code of the coupon to remove
      */
@@ -836,7 +836,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Sets the currency to use for the cart
-     * May be disallowed by site settings.
+     * May be disallowed by site settings. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param id The id of the cart
      * @param currencyCode The code of the currency
      */
@@ -895,7 +895,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Sets the owner of a cart if none is set already
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param id The id of the cart
      * @param userId The id of the user
      */
@@ -954,7 +954,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Changes the quantity of an item already in the cart
-     * A quantity of zero will remove the item from the cart altogether.
+     * A quantity of zero will remove the item from the cart altogether. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param id The id of the cart
      * @param cartItemRequest The cart item request object
      */
@@ -1013,7 +1013,7 @@ export class StoreShoppingCartsService {
 
     /**
      * Modifies or sets the order shipping address
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SHOPPING_CARTS_ADMIN or owner
      * @param id The id of the cart
      * @param cartShippingAddressRequest The cart shipping address request object
      */

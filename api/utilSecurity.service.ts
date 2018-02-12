@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UtilSecurityService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class UtilSecurityService {
     }
 
     /**
-     * A log entry is recorded everytime a user requests a new token. Standard pagination available
+     * A log entry is recorded everytime a user requests a new token. Standard pagination available. <br><br><b>Permissions Needed:</b> SECURITY_ADMIN
      * @summary Returns the authentication log for a user
      * @param userId The user id
      * @param size The number of objects returned per page
@@ -94,7 +94,7 @@ export class UtilSecurityService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> SECURITY_ADMIN
      * @summary Returns the authentication token details. Use /users endpoint for detailed user's info
      */
     public getUserTokenDetails(extraHttpRequestParams?: any): Observable<TokenDetailsResource> {
@@ -111,7 +111,7 @@ export class UtilSecurityService {
 
     /**
      * Returns the authentication log for a user
-     * A log entry is recorded everytime a user requests a new token. Standard pagination available
+     * A log entry is recorded everytime a user requests a new token. Standard pagination available. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; SECURITY_ADMIN
      * @param userId The user id
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -180,7 +180,7 @@ export class UtilSecurityService {
 
     /**
      * Returns the authentication token details. Use /users endpoint for detailed user&#39;s info
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; SECURITY_ADMIN
      */
     public getUserTokenDetailsWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/me';

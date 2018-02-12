@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class PaymentsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class PaymentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
      * @summary Create a new payment method for a user
      * @param userId ID of the user for whom the payment method is being created
      * @param paymentMethod Payment method being created
@@ -94,7 +94,7 @@ export class PaymentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
      * @summary Delete an existing payment method for a user
      * @param userId ID of the user for whom the payment method is being updated
      * @param id ID of the payment method being deleted
@@ -111,7 +111,7 @@ export class PaymentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
      * @summary Get a single payment method for a user
      * @param userId ID of the user for whom the payment method is being retrieved
      * @param id ID of the payment method being retrieved
@@ -128,7 +128,7 @@ export class PaymentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single payment method type
      * @param id ID of the payment method type being retrieved
      */
@@ -144,7 +144,7 @@ export class PaymentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get all payment method types
      * @param filterName Filter for payment method types whose name matches a given string
      * @param size The number of objects returned per page
@@ -163,7 +163,7 @@ export class PaymentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
      * @summary Get all payment methods for a user
      * @param userId ID of the user for whom the payment methods are being retrieved
      * @param filterName Filter for payment methods whose name starts with a given string
@@ -186,7 +186,7 @@ export class PaymentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PAYMENTS_ADMIN or PAYMENTS_USER
      * @summary Authorize payment of an invoice for later capture
      * @param request Payment authorization request
      */
@@ -202,7 +202,7 @@ export class PaymentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PAYMENTS_ADMIN
      * @summary Capture an existing invoice payment authorization
      * @param id ID of the payment authorization to capture
      */
@@ -218,7 +218,7 @@ export class PaymentsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> PAYMENTS_ADMIN or owner
      * @summary Update an existing payment method for a user
      * @param userId ID of the user for whom the payment method is being updated
      * @param id ID of the payment method being updated
@@ -238,7 +238,7 @@ export class PaymentsService {
 
     /**
      * Create a new payment method for a user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PAYMENTS_ADMIN or owner
      * @param userId ID of the user for whom the payment method is being created
      * @param paymentMethod Payment method being created
      */
@@ -297,7 +297,7 @@ export class PaymentsService {
 
     /**
      * Delete an existing payment method for a user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PAYMENTS_ADMIN or owner
      * @param userId ID of the user for whom the payment method is being updated
      * @param id ID of the payment method being deleted
      */
@@ -358,7 +358,7 @@ export class PaymentsService {
 
     /**
      * Get a single payment method for a user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PAYMENTS_ADMIN or owner
      * @param userId ID of the user for whom the payment method is being retrieved
      * @param id ID of the payment method being retrieved
      */
@@ -419,7 +419,7 @@ export class PaymentsService {
 
     /**
      * Get a single payment method type
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id ID of the payment method type being retrieved
      */
     public getPaymentMethodTypeWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -474,7 +474,7 @@ export class PaymentsService {
 
     /**
      * Get all payment method types
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterName Filter for payment method types whose name matches a given string
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -543,7 +543,7 @@ export class PaymentsService {
 
     /**
      * Get all payment methods for a user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PAYMENTS_ADMIN or owner
      * @param userId ID of the user for whom the payment methods are being retrieved
      * @param filterName Filter for payment methods whose name starts with a given string
      * @param filterPaymentType Filter for payment methods with a specific payment type
@@ -633,7 +633,7 @@ export class PaymentsService {
 
     /**
      * Authorize payment of an invoice for later capture
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PAYMENTS_ADMIN or PAYMENTS_USER
      * @param request Payment authorization request
      */
     public paymentAuthorizationWithHttpInfo(request?: PaymentAuthorizationResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -686,7 +686,7 @@ export class PaymentsService {
 
     /**
      * Capture an existing invoice payment authorization
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PAYMENTS_ADMIN
      * @param id ID of the payment authorization to capture
      */
     public paymentCaptureWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -741,7 +741,7 @@ export class PaymentsService {
 
     /**
      * Update an existing payment method for a user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; PAYMENTS_ADMIN or owner
      * @param userId ID of the user for whom the payment method is being updated
      * @param id ID of the payment method being updated
      * @param paymentMethod The updated payment method data

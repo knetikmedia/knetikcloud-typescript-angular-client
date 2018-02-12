@@ -21,16 +21,21 @@ import { Observable }                                        from 'rxjs/Observab
 import '../rxjs-operators';
 
 import { ActivityOccurrenceCreationFailure } from '../model/activityOccurrenceCreationFailure';
+import { ActivityOccurrenceJoinResult } from '../model/activityOccurrenceJoinResult';
 import { ActivityOccurrenceResource } from '../model/activityOccurrenceResource';
 import { ActivityOccurrenceResults } from '../model/activityOccurrenceResults';
 import { ActivityOccurrenceResultsResource } from '../model/activityOccurrenceResultsResource';
+import { ActivityOccurrenceSettingsResource } from '../model/activityOccurrenceSettingsResource';
 import { ActivityResource } from '../model/activityResource';
+import { ActivityUserResource } from '../model/activityUserResource';
 import { CreateActivityOccurrenceRequest } from '../model/createActivityOccurrenceRequest';
+import { IntWrapper } from '../model/intWrapper';
 import { PageResourceActivityOccurrenceResource } from '../model/pageResourceActivityOccurrenceResource';
 import { PageResourceBareActivityResource } from '../model/pageResourceBareActivityResource';
 import { PageResourceTemplateResource } from '../model/pageResourceTemplateResource';
 import { Result } from '../model/result';
 import { TemplateResource } from '../model/templateResource';
+import { ValueWrapperstring } from '../model/valueWrapperstring';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -39,7 +44,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ActivitiesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -83,7 +88,26 @@ export class ActivitiesService {
     }
 
     /**
-     * 
+     * If called with no body, defaults to the user making the call.
+     * @summary Add a user to an occurrence
+     * @param activityOccurrenceId The id of the activity occurrence
+     * @param test if true, indicates that the user should NOT be added. This can be used to test for eligibility
+     * @param bypassRestrictions if true, indicates that restrictions such as max player count should be ignored. Can only be used with ACTIVITIES_ADMIN
+     * @param userId The id of the user, or null for &#39;caller&#39;
+     */
+    public addUser(activityOccurrenceId: number, test?: boolean, bypassRestrictions?: boolean, userId?: IntWrapper, extraHttpRequestParams?: any): Observable<ActivityOccurrenceResource> {
+        return this.addUserWithHttpInfo(activityOccurrenceId, test, bypassRestrictions, userId, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
      * @summary Create an activity
      * @param activityResource The activity resource object
      */
@@ -99,7 +123,7 @@ export class ActivitiesService {
     }
 
     /**
-     * Has to enforce extra rules if not used as an admin
+     * Has to enforce extra rules if not used as an admin. <br><br><b>Permissions Needed:</b> ACTIVITIES_USER or ACTIVITIES_ADMIN
      * @summary Create a new activity occurrence. Ex: start a game
      * @param test if true, indicates that the occurrence should NOT be created. This can be used to test for eligibility and valid settings
      * @param activityOccurrenceResource The activity occurrence object
@@ -116,7 +140,7 @@ export class ActivitiesService {
     }
 
     /**
-     * Activity Templates define a type of activity and the properties they have
+     * Activity Templates define a type of activity and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a activity template
      * @param activityTemplateResource The activity template resource object
      */
@@ -132,7 +156,7 @@ export class ActivitiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
      * @summary Delete an activity
      * @param id The id of the activity
      */
@@ -148,7 +172,7 @@ export class ActivitiesService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a activity template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -165,7 +189,7 @@ export class ActivitiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List activity definitions
      * @param filterTemplate Filter for activities that are templates, or specifically not if false
      * @param filterName Filter for activities that have a name starting with specified string
@@ -186,7 +210,7 @@ export class ActivitiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single activity
      * @param id The id of the activity
      */
@@ -202,7 +226,7 @@ export class ActivitiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
      * @summary Load a single activity occurrence details
      * @param activityOccurrenceId The id of the activity occurrence
      */
@@ -218,7 +242,7 @@ export class ActivitiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACTIVITIES_ADMIN
      * @summary Get a single activity template
      * @param id The id of the template
      */
@@ -234,7 +258,7 @@ export class ActivitiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or ACTIVITIES_ADMIN
      * @summary List and search activity templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -252,10 +276,10 @@ export class ActivitiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
      * @summary List activity occurrences
      * @param filterActivity Filter for occurrences of the given activity ID
-     * @param filterStatus Filter for occurrences of the given activity ID
+     * @param filterStatus Filter for occurrences in the given status
      * @param filterEvent Filter for occurrences played during the given event
      * @param filterChallenge Filter for occurrences played within the given challenge
      * @param size The number of objects returned per page
@@ -275,6 +299,25 @@ export class ActivitiesService {
 
     /**
      * 
+     * @summary Remove a user from an occurrence
+     * @param activityOccurrenceId The id of the activity occurrence
+     * @param userId The id of the user, or &#39;me&#39;
+     * @param ban if true, indicates that the user should not be allowed to re-join. Can only be set by host or admin
+     * @param bypassRestrictions if true, indicates that restrictions such as current status should be ignored. Can only be used with ACTIVITIES_ADMIN
+     */
+    public removeUser(activityOccurrenceId: number, userId: string, ban?: boolean, bypassRestrictions?: boolean, extraHttpRequestParams?: any): Observable<{}> {
+        return this.removeUserWithHttpInfo(activityOccurrenceId, userId, ban, bypassRestrictions, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * In addition to user permissions requirements there is security based on the core_settings.results_trust setting.
      * @summary Sets the status of an activity occurrence to FINISHED and logs metrics
      * @param activityOccurrenceId The id of the activity occurrence
      * @param activityOccurrenceResults The activity occurrence object
@@ -292,6 +335,41 @@ export class ActivitiesService {
 
     /**
      * 
+     * @summary Sets the settings of an activity occurrence
+     * @param activityOccurrenceId The id of the activity occurrence
+     * @param settings The new settings
+     */
+    public setActivityOccurrenceSettings(activityOccurrenceId: number, settings?: ActivityOccurrenceSettingsResource, extraHttpRequestParams?: any): Observable<ActivityOccurrenceResource> {
+        return this.setActivityOccurrenceSettingsWithHttpInfo(activityOccurrenceId, settings, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * 
+     * @summary Set a user's status within an occurrence
+     * @param activityOccurrenceId The id of the activity occurrence
+     * @param userId The id of the user
+     * @param status The new status
+     */
+    public setUserStatus(activityOccurrenceId: number, userId: string, status?: string, extraHttpRequestParams?: any): Observable<ActivityUserResource> {
+        return this.setUserStatusWithHttpInfo(activityOccurrenceId, userId, status, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
      * @summary Update an activity
      * @param id The id of the activity
      * @param activityResource The activity resource object
@@ -308,13 +386,13 @@ export class ActivitiesService {
     }
 
     /**
-     * If setting to 'FINISHED' reward will be run based on current metrics that have been recorded already. Aternatively, see results endpoint to finish and record all metrics at once.
-     * @summary Updated the status of an activity occurrence
+     * If setting to 'FINISHED' reward will be run based on current metrics that have been recorded already. Alternatively, see results endpoint to finish and record all metrics at once. Can be called by non-host participants if non_host_status_control is true
+     * @summary Update the status of an activity occurrence
      * @param activityOccurrenceId The id of the activity occurrence
      * @param activityOccurrenceStatus The activity occurrence status object
      */
-    public updateActivityOccurrence(activityOccurrenceId: number, activityOccurrenceStatus?: string, extraHttpRequestParams?: any): Observable<{}> {
-        return this.updateActivityOccurrenceWithHttpInfo(activityOccurrenceId, activityOccurrenceStatus, extraHttpRequestParams)
+    public updateActivityOccurrenceStatus(activityOccurrenceId: number, activityOccurrenceStatus?: ValueWrapperstring, extraHttpRequestParams?: any): Observable<{}> {
+        return this.updateActivityOccurrenceStatusWithHttpInfo(activityOccurrenceId, activityOccurrenceStatus, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -325,7 +403,7 @@ export class ActivitiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update an activity template
      * @param id The id of the template
      * @param activityTemplateResource The activity template resource object
@@ -343,8 +421,77 @@ export class ActivitiesService {
 
 
     /**
+     * Add a user to an occurrence
+     * If called with no body, defaults to the user making the call.
+     * @param activityOccurrenceId The id of the activity occurrence
+     * @param test if true, indicates that the user should NOT be added. This can be used to test for eligibility
+     * @param bypassRestrictions if true, indicates that restrictions such as max player count should be ignored. Can only be used with ACTIVITIES_ADMIN
+     * @param userId The id of the user, or null for &#39;caller&#39;
+     */
+    public addUserWithHttpInfo(activityOccurrenceId: number, test?: boolean, bypassRestrictions?: boolean, userId?: IntWrapper, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/activity-occurrences/${activity_occurrence_id}/users'
+                    .replace('${' + 'activity_occurrence_id' + '}', String(activityOccurrenceId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'activityOccurrenceId' is not null or undefined
+        if (activityOccurrenceId === null || activityOccurrenceId === undefined) {
+            throw new Error('Required parameter activityOccurrenceId was null or undefined when calling addUser.');
+        }
+        if (test !== undefined) {
+            queryParameters.set('test', <any>test);
+        }
+
+        if (bypassRestrictions !== undefined) {
+            queryParameters.set('bypass_restrictions', <any>bypassRestrictions);
+        }
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: userId == null ? '' : JSON.stringify(userId), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
      * Create an activity
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_ADMIN
      * @param activityResource The activity resource object
      */
     public createActivityWithHttpInfo(activityResource?: ActivityResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -397,7 +544,7 @@ export class ActivitiesService {
 
     /**
      * Create a new activity occurrence. Ex: start a game
-     * Has to enforce extra rules if not used as an admin
+     * Has to enforce extra rules if not used as an admin. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_USER or ACTIVITIES_ADMIN
      * @param test if true, indicates that the occurrence should NOT be created. This can be used to test for eligibility and valid settings
      * @param activityOccurrenceResource The activity occurrence object
      */
@@ -455,7 +602,7 @@ export class ActivitiesService {
 
     /**
      * Create a activity template
-     * Activity Templates define a type of activity and the properties they have
+     * Activity Templates define a type of activity and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param activityTemplateResource The activity template resource object
      */
     public createActivityTemplateWithHttpInfo(activityTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -508,7 +655,7 @@ export class ActivitiesService {
 
     /**
      * Delete an activity
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_ADMIN
      * @param id The id of the activity
      */
     public deleteActivityWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -563,7 +710,7 @@ export class ActivitiesService {
 
     /**
      * Delete a activity template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -623,7 +770,7 @@ export class ActivitiesService {
 
     /**
      * List activity definitions
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterTemplate Filter for activities that are templates, or specifically not if false
      * @param filterName Filter for activities that have a name starting with specified string
      * @param filterId Filter for activities with an id in the given comma separated list of ids
@@ -702,7 +849,7 @@ export class ActivitiesService {
 
     /**
      * Get a single activity
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the activity
      */
     public getActivityWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -757,7 +904,7 @@ export class ActivitiesService {
 
     /**
      * Load a single activity occurrence details
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_ADMIN
      * @param activityOccurrenceId The id of the activity occurrence
      */
     public getActivityOccurrenceDetailsWithHttpInfo(activityOccurrenceId: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -812,7 +959,7 @@ export class ActivitiesService {
 
     /**
      * Get a single activity template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or ACTIVITIES_ADMIN
      * @param id The id of the template
      */
     public getActivityTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -867,7 +1014,7 @@ export class ActivitiesService {
 
     /**
      * List and search activity templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or ACTIVITIES_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -931,9 +1078,9 @@ export class ActivitiesService {
 
     /**
      * List activity occurrences
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_ADMIN
      * @param filterActivity Filter for occurrences of the given activity ID
-     * @param filterStatus Filter for occurrences of the given activity ID
+     * @param filterStatus Filter for occurrences in the given status
      * @param filterEvent Filter for occurrences played during the given event
      * @param filterChallenge Filter for occurrences played within the given challenge
      * @param size The number of objects returned per page
@@ -1014,8 +1161,79 @@ export class ActivitiesService {
     }
 
     /**
-     * Sets the status of an activity occurrence to FINISHED and logs metrics
+     * Remove a user from an occurrence
      * 
+     * @param activityOccurrenceId The id of the activity occurrence
+     * @param userId The id of the user, or &#39;me&#39;
+     * @param ban if true, indicates that the user should not be allowed to re-join. Can only be set by host or admin
+     * @param bypassRestrictions if true, indicates that restrictions such as current status should be ignored. Can only be used with ACTIVITIES_ADMIN
+     */
+    public removeUserWithHttpInfo(activityOccurrenceId: number, userId: string, ban?: boolean, bypassRestrictions?: boolean, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/activity-occurrences/${activity_occurrence_id}/users/${user_id}'
+                    .replace('${' + 'activity_occurrence_id' + '}', String(activityOccurrenceId))
+                    .replace('${' + 'user_id' + '}', String(userId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'activityOccurrenceId' is not null or undefined
+        if (activityOccurrenceId === null || activityOccurrenceId === undefined) {
+            throw new Error('Required parameter activityOccurrenceId was null or undefined when calling removeUser.');
+        }
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling removeUser.');
+        }
+        if (ban !== undefined) {
+            queryParameters.set('ban', <any>ban);
+        }
+
+        if (bypassRestrictions !== undefined) {
+            queryParameters.set('bypass_restrictions', <any>bypassRestrictions);
+        }
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Delete,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Sets the status of an activity occurrence to FINISHED and logs metrics
+     * In addition to user permissions requirements there is security based on the core_settings.results_trust setting.
      * @param activityOccurrenceId The id of the activity occurrence
      * @param activityOccurrenceResults The activity occurrence object
      */
@@ -1073,8 +1291,132 @@ export class ActivitiesService {
     }
 
     /**
-     * Update an activity
+     * Sets the settings of an activity occurrence
      * 
+     * @param activityOccurrenceId The id of the activity occurrence
+     * @param settings The new settings
+     */
+    public setActivityOccurrenceSettingsWithHttpInfo(activityOccurrenceId: number, settings?: ActivityOccurrenceSettingsResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/activity-occurrences/${activity_occurrence_id}/settings'
+                    .replace('${' + 'activity_occurrence_id' + '}', String(activityOccurrenceId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'activityOccurrenceId' is not null or undefined
+        if (activityOccurrenceId === null || activityOccurrenceId === undefined) {
+            throw new Error('Required parameter activityOccurrenceId was null or undefined when calling setActivityOccurrenceSettings.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Put,
+            headers: headers,
+            body: settings == null ? '' : JSON.stringify(settings), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Set a user&#39;s status within an occurrence
+     * 
+     * @param activityOccurrenceId The id of the activity occurrence
+     * @param userId The id of the user
+     * @param status The new status
+     */
+    public setUserStatusWithHttpInfo(activityOccurrenceId: number, userId: string, status?: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/activity-occurrences/${activity_occurrence_id}/users/${user_id}/status'
+                    .replace('${' + 'activity_occurrence_id' + '}', String(activityOccurrenceId))
+                    .replace('${' + 'user_id' + '}', String(userId));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'activityOccurrenceId' is not null or undefined
+        if (activityOccurrenceId === null || activityOccurrenceId === undefined) {
+            throw new Error('Required parameter activityOccurrenceId was null or undefined when calling setUserStatus.');
+        }
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling setUserStatus.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Put,
+            headers: headers,
+            body: status == null ? '' : JSON.stringify(status), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Update an activity
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_ADMIN
      * @param id The id of the activity
      * @param activityResource The activity resource object
      */
@@ -1132,12 +1474,12 @@ export class ActivitiesService {
     }
 
     /**
-     * Updated the status of an activity occurrence
-     * If setting to &#39;FINISHED&#39; reward will be run based on current metrics that have been recorded already. Aternatively, see results endpoint to finish and record all metrics at once.
+     * Update the status of an activity occurrence
+     * If setting to &#39;FINISHED&#39; reward will be run based on current metrics that have been recorded already. Alternatively, see results endpoint to finish and record all metrics at once. Can be called by non-host participants if non_host_status_control is true
      * @param activityOccurrenceId The id of the activity occurrence
      * @param activityOccurrenceStatus The activity occurrence status object
      */
-    public updateActivityOccurrenceWithHttpInfo(activityOccurrenceId: number, activityOccurrenceStatus?: string, extraHttpRequestParams?: any): Observable<Response> {
+    public updateActivityOccurrenceStatusWithHttpInfo(activityOccurrenceId: number, activityOccurrenceStatus?: ValueWrapperstring, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/activity-occurrences/${activity_occurrence_id}/status'
                     .replace('${' + 'activity_occurrence_id' + '}', String(activityOccurrenceId));
 
@@ -1146,7 +1488,7 @@ export class ActivitiesService {
 
         // verify required parameter 'activityOccurrenceId' is not null or undefined
         if (activityOccurrenceId === null || activityOccurrenceId === undefined) {
-            throw new Error('Required parameter activityOccurrenceId was null or undefined when calling updateActivityOccurrence.');
+            throw new Error('Required parameter activityOccurrenceId was null or undefined when calling updateActivityOccurrenceStatus.');
         }
 
         // to determine the Accept header
@@ -1192,7 +1534,7 @@ export class ActivitiesService {
 
     /**
      * Update an activity template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param activityTemplateResource The activity template resource object
      */

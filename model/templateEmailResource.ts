@@ -25,6 +25,11 @@ export interface TemplateEmailResource {
     recipients: Array<number>;
 
     /**
+     * The subject for email
+     */
+    subject?: string;
+
+    /**
      * The key for the template
      */
     templateKey: string;

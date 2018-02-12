@@ -32,7 +32,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class DispositionsService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -76,7 +76,7 @@ export class DispositionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> DISPOSITIONS_USER and user, or DISPOSITIONS_ADMIN
      * @summary Add a new disposition
      * @param disposition The new disposition record
      */
@@ -92,7 +92,7 @@ export class DispositionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> DISPOSITIONS_USER and owner, or DISPOSITIONS_ADMIN
      * @summary Delete a disposition
      * @param id The id of the disposition record
      */
@@ -108,7 +108,7 @@ export class DispositionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Returns a disposition
      * @param id The id of the disposition record
      */
@@ -124,7 +124,7 @@ export class DispositionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Returns a list of disposition counts
      * @param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context&#x3D;video:47
      * @param filterOwner Filter for dispositions from a specific user by id or &#39;me&#39;
@@ -141,7 +141,7 @@ export class DispositionsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Returns a page of dispositions
      * @param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context&#x3D;video:47
      * @param filterOwner Filter for dispositions from a specific user by id or &#39;me&#39;
@@ -163,7 +163,7 @@ export class DispositionsService {
 
     /**
      * Add a new disposition
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; DISPOSITIONS_USER and user, or DISPOSITIONS_ADMIN
      * @param disposition The new disposition record
      */
     public addDispositionWithHttpInfo(disposition?: DispositionResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -216,7 +216,7 @@ export class DispositionsService {
 
     /**
      * Delete a disposition
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; DISPOSITIONS_USER and owner, or DISPOSITIONS_ADMIN
      * @param id The id of the disposition record
      */
     public deleteDispositionWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -271,7 +271,7 @@ export class DispositionsService {
 
     /**
      * Returns a disposition
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the disposition record
      */
     public getDispositionWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -326,7 +326,7 @@ export class DispositionsService {
 
     /**
      * Returns a list of disposition counts
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context&#x3D;video:47
      * @param filterOwner Filter for dispositions from a specific user by id or &#39;me&#39;
      */
@@ -385,7 +385,7 @@ export class DispositionsService {
 
     /**
      * Returns a page of dispositions
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterContext Filter for dispositions within a context type (games, articles, polls, etc). Optionally with a specific id like filter_context&#x3D;video:47
      * @param filterOwner Filter for dispositions from a specific user by id or &#39;me&#39;
      * @param size The number of objects returned per page

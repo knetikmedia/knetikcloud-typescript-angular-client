@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class AuthRolesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class AuthRolesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ROLES_ADMIN
      * @summary Create a new role
      * @param roleResource The role resource object
      */
@@ -93,7 +93,7 @@ export class AuthRolesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ROLES_ADMIN
      * @summary Delete a role
      * @param role The role value
      * @param force If true, removes role from users/clients
@@ -110,7 +110,7 @@ export class AuthRolesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ROLES_ADMIN
      * @summary Get roles for a client
      * @param clientKey The client key
      */
@@ -126,7 +126,7 @@ export class AuthRolesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ROLES_ADMIN
      * @summary Get a single role
      * @param role The role value
      */
@@ -142,7 +142,7 @@ export class AuthRolesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ROLES_ADMIN
      * @summary List and search roles
      * @param filterName Filter for roles that have a name starting with specified string
      * @param filterRole Filter for roles that have a role starting with specified string
@@ -162,7 +162,7 @@ export class AuthRolesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ROLES_ADMIN
      * @summary Get roles for a user
      * @param userId The user&#39;s id
      */
@@ -178,7 +178,7 @@ export class AuthRolesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ROLES_ADMIN
      * @summary Set roles for a client
      * @param clientKey The client key
      * @param rolesList The list of unique roles
@@ -195,7 +195,7 @@ export class AuthRolesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ROLES_ADMIN
      * @summary Set permissions for a role
      * @param role The role value
      * @param permissionsList The list of unique permissions
@@ -212,7 +212,7 @@ export class AuthRolesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ROLES_ADMIN
      * @summary Set roles for a user
      * @param userId The user&#39;s id
      * @param rolesList The list of unique roles
@@ -229,7 +229,7 @@ export class AuthRolesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ROLES_ADMIN
      * @summary Update a role
      * @param role The role value
      * @param roleResource The role resource object
@@ -248,7 +248,7 @@ export class AuthRolesService {
 
     /**
      * Create a new role
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ROLES_ADMIN
      * @param roleResource The role resource object
      */
     public createRoleWithHttpInfo(roleResource?: RoleResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -301,7 +301,7 @@ export class AuthRolesService {
 
     /**
      * Delete a role
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ROLES_ADMIN
      * @param role The role value
      * @param force If true, removes role from users/clients
      */
@@ -361,7 +361,7 @@ export class AuthRolesService {
 
     /**
      * Get roles for a client
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ROLES_ADMIN
      * @param clientKey The client key
      */
     public getClientRolesWithHttpInfo(clientKey: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -416,7 +416,7 @@ export class AuthRolesService {
 
     /**
      * Get a single role
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ROLES_ADMIN
      * @param role The role value
      */
     public getRoleWithHttpInfo(role: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -471,7 +471,7 @@ export class AuthRolesService {
 
     /**
      * List and search roles
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ROLES_ADMIN
      * @param filterName Filter for roles that have a name starting with specified string
      * @param filterRole Filter for roles that have a role starting with specified string
      * @param size The number of objects returned per page
@@ -545,7 +545,7 @@ export class AuthRolesService {
 
     /**
      * Get roles for a user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ROLES_ADMIN
      * @param userId The user&#39;s id
      */
     public getUserRolesWithHttpInfo(userId: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -600,7 +600,7 @@ export class AuthRolesService {
 
     /**
      * Set roles for a client
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ROLES_ADMIN
      * @param clientKey The client key
      * @param rolesList The list of unique roles
      */
@@ -659,7 +659,7 @@ export class AuthRolesService {
 
     /**
      * Set permissions for a role
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ROLES_ADMIN
      * @param role The role value
      * @param permissionsList The list of unique permissions
      */
@@ -718,7 +718,7 @@ export class AuthRolesService {
 
     /**
      * Set roles for a user
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ROLES_ADMIN
      * @param userId The user&#39;s id
      * @param rolesList The list of unique roles
      */
@@ -777,7 +777,7 @@ export class AuthRolesService {
 
     /**
      * Update a role
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ROLES_ADMIN
      * @param role The role value
      * @param roleResource The role resource object
      */

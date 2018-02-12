@@ -35,7 +35,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class GamificationLevelingService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -79,7 +79,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> LEVELING_ADMIN
      * @summary Create a level schema
      * @param level The level schema definition
      */
@@ -95,7 +95,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> LEVELING_ADMIN
      * @summary Delete a level
      * @param name The level schema name
      */
@@ -111,7 +111,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> LEVELING_ADMIN
      * @summary Retrieve a level
      * @param name The level schema name
      */
@@ -127,7 +127,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> LEVELING_ADMIN
      * @summary Get the list of triggers that can be used to trigger a leveling progress update
      */
     public getLevelTriggers(extraHttpRequestParams?: any): Observable<Array<BreTriggerResource>> {
@@ -142,7 +142,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * Get a list of levels schemas with optional filtering
+     * Get a list of levels schemas with optional filtering. <br><br><b>Permissions Needed:</b> LEVELING_ADMIN
      * @summary List and search levels
      * @param filterName Filter for level schemas whose name contains a given string
      * @param size The number of objects returned per page
@@ -161,7 +161,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> LEVELING_ADMIN or self
      * @summary Get a user's progress for a given level schema
      * @param userId The id of the user or &#39;me&#39;
      * @param name The level schema name
@@ -178,7 +178,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * Filtering and sorting is based on the LevelingResource object, not the UserLevelingResource that is returned here.
+     * Filtering and sorting is based on the LevelingResource object, not the UserLevelingResource that is returned here. <br><br><b>Permissions Needed:</b> LEVELING_ADMIN or self
      * @summary Get a user's progress for all level schemas
      * @param userId The id of the user or &#39;me&#39;
      * @param filterName Filter for level schemas whose name contains a given string
@@ -198,7 +198,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * If no progress record yet exists for the user, it will be created. Otherwise the provided value will be added to it. May be negative. If progress meets or exceeds the level's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>.
+     * If no progress record yet exists for the user, it will be created. Otherwise the provided value will be added to it. May be negative. If progress meets or exceeds the level's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>. <br><br><b>Permissions Needed:</b> LEVELING_ADMIN
      * @summary Update or create a leveling progress record for a user
      * @param userId The id of the user
      * @param name The level schema name
@@ -216,7 +216,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * If no progress record yet exists for the user, it will be created. Otherwise it will be updated to the provided value. If progress meets or exceeds the level's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>.
+     * If no progress record yet exists for the user, it will be created. Otherwise it will be updated to the provided value. If progress meets or exceeds the level's max_value it will be marked as earned and a BRE event will be triggered for the <code>BreAchievementEarnedTrigger</code>. <br><br><b>Permissions Needed:</b> LEVELING_ADMIN
      * @summary Set leveling progress for a user
      * @param userId The id of the user
      * @param name The level schema name
@@ -234,7 +234,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> LEVELING_ADMIN
      * @summary Update a level
      * @param name The level schema name
      * @param newLevel The level schema definition
@@ -253,7 +253,7 @@ export class GamificationLevelingService {
 
     /**
      * Create a level schema
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN
      * @param level The level schema definition
      */
     public createLevelWithHttpInfo(level?: LevelingResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -306,7 +306,7 @@ export class GamificationLevelingService {
 
     /**
      * Delete a level
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN
      * @param name The level schema name
      */
     public deleteLevelWithHttpInfo(name: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -361,7 +361,7 @@ export class GamificationLevelingService {
 
     /**
      * Retrieve a level
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN
      * @param name The level schema name
      */
     public getLevelWithHttpInfo(name: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -416,7 +416,7 @@ export class GamificationLevelingService {
 
     /**
      * Get the list of triggers that can be used to trigger a leveling progress update
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN
      */
     public getLevelTriggersWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/leveling/triggers';
@@ -465,7 +465,7 @@ export class GamificationLevelingService {
 
     /**
      * List and search levels
-     * Get a list of levels schemas with optional filtering
+     * Get a list of levels schemas with optional filtering. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN
      * @param filterName Filter for level schemas whose name contains a given string
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -534,7 +534,7 @@ export class GamificationLevelingService {
 
     /**
      * Get a user&#39;s progress for a given level schema
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN or self
      * @param userId The id of the user or &#39;me&#39;
      * @param name The level schema name
      */
@@ -595,7 +595,7 @@ export class GamificationLevelingService {
 
     /**
      * Get a user&#39;s progress for all level schemas
-     * Filtering and sorting is based on the LevelingResource object, not the UserLevelingResource that is returned here.
+     * Filtering and sorting is based on the LevelingResource object, not the UserLevelingResource that is returned here. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN or self
      * @param userId The id of the user or &#39;me&#39;
      * @param filterName Filter for level schemas whose name contains a given string
      * @param size The number of objects returned per page
@@ -670,7 +670,7 @@ export class GamificationLevelingService {
 
     /**
      * Update or create a leveling progress record for a user
-     * If no progress record yet exists for the user, it will be created. Otherwise the provided value will be added to it. May be negative. If progress meets or exceeds the level&#39;s max_value it will be marked as earned and a BRE event will be triggered for the &lt;code&gt;BreAchievementEarnedTrigger&lt;/code&gt;.
+     * If no progress record yet exists for the user, it will be created. Otherwise the provided value will be added to it. May be negative. If progress meets or exceeds the level&#39;s max_value it will be marked as earned and a BRE event will be triggered for the &lt;code&gt;BreAchievementEarnedTrigger&lt;/code&gt;. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN
      * @param userId The id of the user
      * @param name The level schema name
      * @param progress The amount of progress to add
@@ -735,7 +735,7 @@ export class GamificationLevelingService {
 
     /**
      * Set leveling progress for a user
-     * If no progress record yet exists for the user, it will be created. Otherwise it will be updated to the provided value. If progress meets or exceeds the level&#39;s max_value it will be marked as earned and a BRE event will be triggered for the &lt;code&gt;BreAchievementEarnedTrigger&lt;/code&gt;.
+     * If no progress record yet exists for the user, it will be created. Otherwise it will be updated to the provided value. If progress meets or exceeds the level&#39;s max_value it will be marked as earned and a BRE event will be triggered for the &lt;code&gt;BreAchievementEarnedTrigger&lt;/code&gt;. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN
      * @param userId The id of the user
      * @param name The level schema name
      * @param progress The new progress amount
@@ -800,7 +800,7 @@ export class GamificationLevelingService {
 
     /**
      * Update a level
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN
      * @param name The level schema name
      * @param newLevel The level schema definition
      */

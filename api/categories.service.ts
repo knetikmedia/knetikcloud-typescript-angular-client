@@ -34,7 +34,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class CategoriesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -78,7 +78,7 @@ export class CategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CATEGORIES_ADMIN
      * @summary Create a new category
      * @param category The category to create
      */
@@ -94,7 +94,7 @@ export class CategoriesService {
     }
 
     /**
-     * Templates define a type of category and the properties they have
+     * Templates define a type of category and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Create a category template
      * @param template The template to create
      */
@@ -110,7 +110,7 @@ export class CategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CATEGORIES_ADMIN
      * @summary Delete an existing category
      * @param id The id of the category to be deleted
      */
@@ -126,7 +126,7 @@ export class CategoriesService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects
+     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Delete a category template
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
@@ -143,7 +143,7 @@ export class CategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search categories with optional filters
      * @param filterSearch Filter for categories whose names begin with provided string
      * @param filterActive Filter for categories that are specifically active or inactive
@@ -163,7 +163,7 @@ export class CategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single category
      * @param id The id of the category to retrieve
      */
@@ -179,7 +179,7 @@ export class CategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CATEGORIES_ADMIN
      * @summary Get a single category template
      * @param id The id of the template
      */
@@ -195,7 +195,7 @@ export class CategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or CATEGORIES_ADMIN
      * @summary List and search category templates
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -213,7 +213,7 @@ export class CategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List all trivia tags in the system
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -230,7 +230,7 @@ export class CategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CATEGORIES_ADMIN
      * @summary Update an existing category
      * @param id The id of the category
      * @param category The category to update
@@ -247,7 +247,7 @@ export class CategoriesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
      * @summary Update a category template
      * @param id The id of the template
      * @param template The updated template information
@@ -266,7 +266,7 @@ export class CategoriesService {
 
     /**
      * Create a new category
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CATEGORIES_ADMIN
      * @param category The category to create
      */
     public createCategoryWithHttpInfo(category?: CategoryResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -319,7 +319,7 @@ export class CategoriesService {
 
     /**
      * Create a category template
-     * Templates define a type of category and the properties they have
+     * Templates define a type of category and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param template The template to create
      */
     public createCategoryTemplateWithHttpInfo(template?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -372,7 +372,7 @@ export class CategoriesService {
 
     /**
      * Delete an existing category
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CATEGORIES_ADMIN
      * @param id The id of the category to be deleted
      */
     public deleteCategoryWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -427,7 +427,7 @@ export class CategoriesService {
 
     /**
      * Delete a category template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects
+     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param cascade The value needed to delete used templates
      */
@@ -487,7 +487,7 @@ export class CategoriesService {
 
     /**
      * List and search categories with optional filters
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterSearch Filter for categories whose names begin with provided string
      * @param filterActive Filter for categories that are specifically active or inactive
      * @param size The number of objects returned per page
@@ -561,7 +561,7 @@ export class CategoriesService {
 
     /**
      * Get a single category
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param id The id of the category to retrieve
      */
     public getCategoryWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -616,7 +616,7 @@ export class CategoriesService {
 
     /**
      * Get a single category template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or CATEGORIES_ADMIN
      * @param id The id of the template
      */
     public getCategoryTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -671,7 +671,7 @@ export class CategoriesService {
 
     /**
      * List and search category templates
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or CATEGORIES_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -735,7 +735,7 @@ export class CategoriesService {
 
     /**
      * List all trivia tags in the system
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      */
@@ -794,7 +794,7 @@ export class CategoriesService {
 
     /**
      * Update an existing category
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CATEGORIES_ADMIN
      * @param id The id of the category
      * @param category The category to update
      */
@@ -853,7 +853,7 @@ export class CategoriesService {
 
     /**
      * Update a category template
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
      * @param id The id of the template
      * @param template The updated template information
      */

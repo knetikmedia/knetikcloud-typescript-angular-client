@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class MediaModerationService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class MediaModerationService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Add a flag
      * @param flagResource The flag resource object
      */
@@ -93,7 +93,7 @@ export class MediaModerationService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> MODERATION_ADMIN or owner
      * @summary Delete a flag
      * @param contextName The name of the context
      * @param contextId The id of the context
@@ -111,7 +111,7 @@ export class MediaModerationService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> MODERATION_ADMIN or owner
      * @summary Returns a page of flags
      * @param filterContext Filter by flag context
      * @param filterContextId Filter by flag context ID
@@ -131,7 +131,7 @@ export class MediaModerationService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> MODERATION_ADMIN
      * @summary Get a flag report
      * @param id The flag report id
      */
@@ -147,7 +147,7 @@ export class MediaModerationService {
     }
 
     /**
-     * Context can be either a free-form string or a pre-defined context name
+     * Context can be either a free-form string or a pre-defined context name. <br><br><b>Permissions Needed:</b> MODERATION_ADMIN
      * @summary Returns a page of flag reports
      * @param excludeResolved Ignore resolved context
      * @param filterContext Filter by moderation context
@@ -167,7 +167,7 @@ export class MediaModerationService {
     }
 
     /**
-     * Lets you set the resolution of a report. Resolution types is {banned,ignore} in case of 'banned' you will need to pass the reason.
+     * Lets you set the resolution of a report. Resolution types is {banned,ignore} in case of 'banned' you will need to pass the reason. <br><br><b>Permissions Needed:</b> MODERATION_ADMIN
      * @summary Update a flag report
      * @param id The flag report id
      * @param flagReportResource The new flag report
@@ -186,7 +186,7 @@ export class MediaModerationService {
 
     /**
      * Add a flag
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param flagResource The flag resource object
      */
     public addFlagWithHttpInfo(flagResource?: FlagResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -239,7 +239,7 @@ export class MediaModerationService {
 
     /**
      * Delete a flag
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MODERATION_ADMIN or owner
      * @param contextName The name of the context
      * @param contextId The id of the context
      * @param userId The id of the user
@@ -303,7 +303,7 @@ export class MediaModerationService {
 
     /**
      * Returns a page of flags
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MODERATION_ADMIN or owner
      * @param filterContext Filter by flag context
      * @param filterContextId Filter by flag context ID
      * @param filterUserId Filter by user ID
@@ -377,7 +377,7 @@ export class MediaModerationService {
 
     /**
      * Get a flag report
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MODERATION_ADMIN
      * @param id The flag report id
      */
     public getModerationReportWithHttpInfo(id: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -432,7 +432,7 @@ export class MediaModerationService {
 
     /**
      * Returns a page of flag reports
-     * Context can be either a free-form string or a pre-defined context name
+     * Context can be either a free-form string or a pre-defined context name. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MODERATION_ADMIN
      * @param excludeResolved Ignore resolved context
      * @param filterContext Filter by moderation context
      * @param filterContextId Filter by moderation context ID
@@ -506,7 +506,7 @@ export class MediaModerationService {
 
     /**
      * Update a flag report
-     * Lets you set the resolution of a report. Resolution types is {banned,ignore} in case of &#39;banned&#39; you will need to pass the reason.
+     * Lets you set the resolution of a report. Resolution types is {banned,ignore} in case of &#39;banned&#39; you will need to pass the reason. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MODERATION_ADMIN
      * @param id The flag report id
      * @param flagReportResource The new flag report
      */

@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class TaxesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class TaxesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TAX_ADMIN
      * @summary Create a country tax
      * @param taxResource The tax object
      */
@@ -93,7 +93,7 @@ export class TaxesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TAX_ADMIN
      * @summary Create a state tax
      * @param countryCodeIso3 The iso3 code of the country
      * @param taxResource The tax object
@@ -110,7 +110,7 @@ export class TaxesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TAX_ADMIN
      * @summary Delete an existing tax
      * @param countryCodeIso3 The iso3 code of the country
      */
@@ -126,7 +126,7 @@ export class TaxesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TAX_ADMIN
      * @summary Delete an existing state tax
      * @param countryCodeIso3 The iso3 code of the country
      * @param stateCode The code of the state
@@ -143,7 +143,7 @@ export class TaxesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single tax
      * @param countryCodeIso3 The iso3 code of the country
      */
@@ -159,7 +159,7 @@ export class TaxesService {
     }
 
     /**
-     * Get a list of taxes
+     * <b>Permissions Needed:</b> TAX_ADMIN
      * @summary List and search taxes
      * @param size The number of objects returned per page
      * @param page The number of the page returned
@@ -177,7 +177,7 @@ export class TaxesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single state tax
      * @param countryCodeIso3 The iso3 code of the country
      * @param stateCode The code of the state
@@ -194,7 +194,7 @@ export class TaxesService {
     }
 
     /**
-     * Get a list of taxes
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search taxes across all countries
      * @param size The number of objects returned per page
      * @param page The number of the page returned
@@ -212,7 +212,7 @@ export class TaxesService {
     }
 
     /**
-     * Get a list of taxes
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search taxes within a country
      * @param countryCodeIso3 The iso3 code of the country
      * @param size The number of objects returned per page
@@ -231,7 +231,7 @@ export class TaxesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TAX_ADMIN
      * @summary Create or update a tax
      * @param countryCodeIso3 The iso3 code of the country
      * @param taxResource The tax object
@@ -248,7 +248,7 @@ export class TaxesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TAX_ADMIN
      * @summary Create or update a state tax
      * @param countryCodeIso3 The iso3 code of the country
      * @param stateCode The code of the state
@@ -268,7 +268,7 @@ export class TaxesService {
 
     /**
      * Create a country tax
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TAX_ADMIN
      * @param taxResource The tax object
      */
     public createCountryTaxWithHttpInfo(taxResource?: CountryTaxResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -321,7 +321,7 @@ export class TaxesService {
 
     /**
      * Create a state tax
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TAX_ADMIN
      * @param countryCodeIso3 The iso3 code of the country
      * @param taxResource The tax object
      */
@@ -380,7 +380,7 @@ export class TaxesService {
 
     /**
      * Delete an existing tax
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TAX_ADMIN
      * @param countryCodeIso3 The iso3 code of the country
      */
     public deleteCountryTaxWithHttpInfo(countryCodeIso3: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -435,7 +435,7 @@ export class TaxesService {
 
     /**
      * Delete an existing state tax
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TAX_ADMIN
      * @param countryCodeIso3 The iso3 code of the country
      * @param stateCode The code of the state
      */
@@ -496,7 +496,7 @@ export class TaxesService {
 
     /**
      * Get a single tax
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param countryCodeIso3 The iso3 code of the country
      */
     public getCountryTaxWithHttpInfo(countryCodeIso3: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -551,7 +551,7 @@ export class TaxesService {
 
     /**
      * List and search taxes
-     * Get a list of taxes
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TAX_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -615,7 +615,7 @@ export class TaxesService {
 
     /**
      * Get a single state tax
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param countryCodeIso3 The iso3 code of the country
      * @param stateCode The code of the state
      */
@@ -676,7 +676,7 @@ export class TaxesService {
 
     /**
      * List and search taxes across all countries
-     * Get a list of taxes
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param size The number of objects returned per page
      * @param page The number of the page returned
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -740,7 +740,7 @@ export class TaxesService {
 
     /**
      * List and search taxes within a country
-     * Get a list of taxes
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param countryCodeIso3 The iso3 code of the country
      * @param size The number of objects returned per page
      * @param page The number of the page returned
@@ -810,7 +810,7 @@ export class TaxesService {
 
     /**
      * Create or update a tax
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TAX_ADMIN
      * @param countryCodeIso3 The iso3 code of the country
      * @param taxResource The tax object
      */
@@ -869,7 +869,7 @@ export class TaxesService {
 
     /**
      * Create or update a state tax
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TAX_ADMIN
      * @param countryCodeIso3 The iso3 code of the country
      * @param stateCode The code of the state
      * @param taxResource The tax object

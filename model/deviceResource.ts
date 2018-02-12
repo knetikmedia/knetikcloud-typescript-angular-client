@@ -31,12 +31,12 @@ export interface DeviceResource {
     description?: string;
 
     /**
-     * The type of device. Use mobile to specifically register mobile devices. This particular type will be used to send and receive notifications
+     * The type of device. Use mobile_device to specifically register mobile devices. This particular type will be used to send and receive notifications
      */
     deviceType?: string;
 
     /**
-     * The unique ID for this device
+     * The unique ID for this device. Cannot be changed after creation. Default: random
      */
     id?: string;
 

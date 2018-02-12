@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class CurrenciesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class CurrenciesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CURRENCIES_ADMIN
      * @summary Create a currency
      * @param currency The currency object
      */
@@ -91,7 +91,7 @@ export class CurrenciesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CURRENCIES_ADMIN
      * @summary Delete a currency
      * @param code The currency code
      */
@@ -107,7 +107,7 @@ export class CurrenciesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List and search currencies
      * @param filterDefault Filter for the one currency that is set as default (true), or all that are not (false)
      * @param filterEnabledCurrencies Filter for alternate currencies setup explicitely in system config
@@ -128,7 +128,7 @@ export class CurrenciesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get a single currency
      * @param code The currency code
      */
@@ -144,7 +144,7 @@ export class CurrenciesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> CURRENCIES_ADMIN
      * @summary Update a currency
      * @param code The currency code
      * @param currency The currency object
@@ -163,7 +163,7 @@ export class CurrenciesService {
 
     /**
      * Create a currency
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CURRENCIES_ADMIN
      * @param currency The currency object
      */
     public createCurrencyWithHttpInfo(currency?: CurrencyResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -216,7 +216,7 @@ export class CurrenciesService {
 
     /**
      * Delete a currency
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CURRENCIES_ADMIN
      * @param code The currency code
      */
     public deleteCurrencyWithHttpInfo(code: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -271,7 +271,7 @@ export class CurrenciesService {
 
     /**
      * List and search currencies
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param filterDefault Filter for the one currency that is set as default (true), or all that are not (false)
      * @param filterEnabledCurrencies Filter for alternate currencies setup explicitely in system config
      * @param filterType Filter currencies by type.  Allowable values: (&#39;virtual&#39;, &#39;real&#39;)
@@ -350,7 +350,7 @@ export class CurrenciesService {
 
     /**
      * Get a single currency
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param code The currency code
      */
     public getCurrencyWithHttpInfo(code: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -405,7 +405,7 @@ export class CurrenciesService {
 
     /**
      * Update a currency
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CURRENCIES_ADMIN
      * @param code The currency code
      * @param currency The currency object
      */

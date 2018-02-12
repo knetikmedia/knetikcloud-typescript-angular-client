@@ -30,7 +30,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class TemplatesPropertiesService {
 
-    protected basePath = 'https://devsandbox.knetikcloud.com';
+    protected basePath = 'https://sandbox.knetikcloud.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,7 +74,7 @@ export class TemplatesPropertiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary Get details for a template property type
      * @param type type
      */
@@ -90,7 +90,7 @@ export class TemplatesPropertiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ANY
      * @summary List template property types
      */
     public getTemplatePropertyTypes(extraHttpRequestParams?: any): Observable<Array<PropertyFieldListResource>> {
@@ -107,7 +107,7 @@ export class TemplatesPropertiesService {
 
     /**
      * Get details for a template property type
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param type type
      */
     public getTemplatePropertyTypeWithHttpInfo(type: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -162,7 +162,7 @@ export class TemplatesPropertiesService {
 
     /**
      * List template property types
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      */
     public getTemplatePropertyTypesWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/templates/properties';
