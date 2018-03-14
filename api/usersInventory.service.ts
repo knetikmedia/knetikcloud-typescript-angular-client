@@ -22,6 +22,7 @@ import '../rxjs-operators';
 
 import { EntitlementGrantRequest } from '../model/entitlementGrantRequest';
 import { EntitlementItem } from '../model/entitlementItem';
+import { InventoryStatusWrapper } from '../model/inventoryStatusWrapper';
 import { InvoiceResource } from '../model/invoiceResource';
 import { ItemTemplateResource } from '../model/itemTemplateResource';
 import { PageResourceEntitlementItem } from '../model/pageResourceEntitlementItem';
@@ -37,9 +38,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class UsersInventoryService {
+export class Users_InventoryService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -430,7 +431,7 @@ export class UsersInventoryService {
      * @param id The id of the user inventory
      * @param inventoryStatus The inventory status object
      */
-    public updateUserInventoryStatus(userId: number, id: number, inventoryStatus?: string, extraHttpRequestParams?: any): Observable<{}> {
+    public updateUserInventoryStatus(userId: number, id: number, inventoryStatus?: InventoryStatusWrapper, extraHttpRequestParams?: any): Observable<{}> {
         return this.updateUserInventoryStatusWithHttpInfo(userId, id, inventoryStatus, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
@@ -1694,7 +1695,7 @@ export class UsersInventoryService {
      * @param id The id of the user inventory
      * @param inventoryStatus The inventory status object
      */
-    public updateUserInventoryStatusWithHttpInfo(userId: number, id: number, inventoryStatus?: string, extraHttpRequestParams?: any): Observable<Response> {
+    public updateUserInventoryStatusWithHttpInfo(userId: number, id: number, inventoryStatus?: InventoryStatusWrapper, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/users/${user_id}/inventory/${id}/status'
                     .replace('${' + 'user_id' + '}', String(userId))
                     .replace('${' + 'id' + '}', String(id));

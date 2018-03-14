@@ -39,7 +39,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class UsersService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -581,7 +581,7 @@ export class UsersService {
      * @param page The number of the page returned, starting with 1
      */
     public getDirectMessages1WithHttpInfo(recipientId: number, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/users/users/${recipient_id}/messages'
+        const path = this.basePath + '/users/${recipient_id}/messages'
                     .replace('${' + 'recipient_id' + '}', String(recipientId));
 
         let queryParameters = new URLSearchParams();

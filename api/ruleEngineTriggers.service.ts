@@ -20,8 +20,8 @@ import { Response, ResponseContentType }                     from '@angular/http
 import { Observable }                                        from 'rxjs/Observable';
 import '../rxjs-operators';
 
-import { BreGlobalResource } from '../model/breGlobalResource';
-import { PageResourceBreGlobalResource } from '../model/pageResourceBreGlobalResource';
+import { BreTriggerResource } from '../model/breTriggerResource';
+import { PageResourceBreTriggerResource } from '../model/pageResourceBreTriggerResource';
 import { Result } from '../model/result';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -29,9 +29,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class BRERuleEngineGlobalsService {
+export class Rule_Engine_TriggersService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,12 +75,12 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * Once created you can then use in a custom rule. Note that global definitions cannot be modified or deleted if in use. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_ADMIN
-     * @summary Create a global definition
-     * @param breGlobalResource The BRE global resource object
+     * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
+     * @summary Create a trigger
+     * @param breTriggerResource The BRE trigger resource object
      */
-    public createBREGlobal(breGlobalResource?: BreGlobalResource, extraHttpRequestParams?: any): Observable<BreGlobalResource> {
-        return this.createBREGlobalWithHttpInfo(breGlobalResource, extraHttpRequestParams)
+    public createBRETrigger(breTriggerResource?: BreTriggerResource, extraHttpRequestParams?: any): Observable<BreTriggerResource> {
+        return this.createBRETriggerWithHttpInfo(breTriggerResource, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -91,12 +91,12 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * May fail if there are existing rules against it. Cannot delete core globals. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_ADMIN
-     * @summary Delete a global
-     * @param id The id of the global definition
+     * May fail if there are existing rules against it. Cannot delete core triggers. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
+     * @summary Delete a trigger
+     * @param eventName The trigger event name
      */
-    public deleteBREGlobal(id: string, extraHttpRequestParams?: any): Observable<{}> {
-        return this.deleteBREGlobalWithHttpInfo(id, extraHttpRequestParams)
+    public deleteBRETrigger(eventName: string, extraHttpRequestParams?: any): Observable<{}> {
+        return this.deleteBRETriggerWithHttpInfo(eventName, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -107,12 +107,12 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_USER
-     * @summary Get a single global definition
-     * @param id The id of the global definition
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_USER
+     * @summary Get a single trigger
+     * @param eventName The trigger event name
      */
-    public getBREGlobal(id: string, extraHttpRequestParams?: any): Observable<BreGlobalResource> {
-        return this.getBREGlobalWithHttpInfo(id, extraHttpRequestParams)
+    public getBRETrigger(eventName: string, extraHttpRequestParams?: any): Observable<BreTriggerResource> {
+        return this.getBRETriggerWithHttpInfo(eventName, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -123,14 +123,18 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_USER
-     * @summary List global definitions
-     * @param filterSystem Filter for globals that are system globals when true, or not when false. Leave off for both mixed
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_USER
+     * @summary List triggers
+     * @param filterSystem Filter for triggers that are system triggers when true, or not when false. Leave off for both mixed
+     * @param filterCategory Filter for triggers that are within a specific category
+     * @param filterTags Filter for triggers that have all of the given tags (comma separated list)
+     * @param filterName Filter for triggers that have names containing the given string
+     * @param filterSearch Filter for triggers containing the given words somewhere within name, description and tags
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      */
-    public getBREGlobals(filterSystem?: boolean, size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceBreGlobalResource> {
-        return this.getBREGlobalsWithHttpInfo(filterSystem, size, page, extraHttpRequestParams)
+    public getBRETriggers(filterSystem?: boolean, filterCategory?: string, filterTags?: string, filterName?: string, filterSearch?: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceBreTriggerResource> {
+        return this.getBRETriggersWithHttpInfo(filterSystem, filterCategory, filterTags, filterName, filterSearch, size, page, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -141,13 +145,13 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * May fail if new parameters mismatch requirements of existing rules. Cannot update core globals. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_ADMIN
-     * @summary Update a global definition
-     * @param id The id of the global definition
-     * @param breGlobalResource The BRE global resource object
+     * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_TRIGGERS_ADMIN
+     * @summary Update a trigger
+     * @param eventName The trigger event name
+     * @param breTriggerResource The BRE trigger resource object
      */
-    public updateBREGlobal(id: string, breGlobalResource?: BreGlobalResource, extraHttpRequestParams?: any): Observable<BreGlobalResource> {
-        return this.updateBREGlobalWithHttpInfo(id, breGlobalResource, extraHttpRequestParams)
+    public updateBRETrigger(eventName: string, breTriggerResource?: BreTriggerResource, extraHttpRequestParams?: any): Observable<BreTriggerResource> {
+        return this.updateBRETriggerWithHttpInfo(eventName, breTriggerResource, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -159,12 +163,12 @@ export class BRERuleEngineGlobalsService {
 
 
     /**
-     * Create a global definition
-     * Once created you can then use in a custom rule. Note that global definitions cannot be modified or deleted if in use. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_ADMIN
-     * @param breGlobalResource The BRE global resource object
+     * Create a trigger
+     * Customer added triggers will not be fired automatically or have rules associated with them by default. Custom rules must be added to get use from the trigger and it must then be fired from the outside. See the Bre Event services. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_TRIGGERS_ADMIN
+     * @param breTriggerResource The BRE trigger resource object
      */
-    public createBREGlobalWithHttpInfo(breGlobalResource?: BreGlobalResource, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/globals/definitions';
+    public createBRETriggerWithHttpInfo(breTriggerResource?: BreTriggerResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/triggers';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
@@ -199,7 +203,7 @@ export class BRERuleEngineGlobalsService {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Post,
             headers: headers,
-            body: breGlobalResource == null ? '' : JSON.stringify(breGlobalResource), // https://github.com/angular/angular/issues/10612
+            body: breTriggerResource == null ? '' : JSON.stringify(breTriggerResource), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });
@@ -212,20 +216,20 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * Delete a global
-     * May fail if there are existing rules against it. Cannot delete core globals. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_ADMIN
-     * @param id The id of the global definition
+     * Delete a trigger
+     * May fail if there are existing rules against it. Cannot delete core triggers. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_TRIGGERS_ADMIN
+     * @param eventName The trigger event name
      */
-    public deleteBREGlobalWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/globals/definitions/${id}'
-                    .replace('${' + 'id' + '}', String(id));
+    public deleteBRETriggerWithHttpInfo(eventName: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/triggers/${event_name}'
+                    .replace('${' + 'event_name' + '}', String(eventName));
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
 
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteBREGlobal.');
+        // verify required parameter 'eventName' is not null or undefined
+        if (eventName === null || eventName === undefined) {
+            throw new Error('Required parameter eventName was null or undefined when calling deleteBRETrigger.');
         }
 
         // to determine the Accept header
@@ -267,20 +271,20 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * Get a single global definition
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_USER
-     * @param id The id of the global definition
+     * Get a single trigger
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_TRIGGERS_USER
+     * @param eventName The trigger event name
      */
-    public getBREGlobalWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/globals/definitions/${id}'
-                    .replace('${' + 'id' + '}', String(id));
+    public getBRETriggerWithHttpInfo(eventName: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/triggers/${event_name}'
+                    .replace('${' + 'event_name' + '}', String(eventName));
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
 
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getBREGlobal.');
+        // verify required parameter 'eventName' is not null or undefined
+        if (eventName === null || eventName === undefined) {
+            throw new Error('Required parameter eventName was null or undefined when calling getBRETrigger.');
         }
 
         // to determine the Accept header
@@ -322,20 +326,40 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * List global definitions
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_USER
-     * @param filterSystem Filter for globals that are system globals when true, or not when false. Leave off for both mixed
+     * List triggers
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_TRIGGERS_USER
+     * @param filterSystem Filter for triggers that are system triggers when true, or not when false. Leave off for both mixed
+     * @param filterCategory Filter for triggers that are within a specific category
+     * @param filterTags Filter for triggers that have all of the given tags (comma separated list)
+     * @param filterName Filter for triggers that have names containing the given string
+     * @param filterSearch Filter for triggers containing the given words somewhere within name, description and tags
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      */
-    public getBREGlobalsWithHttpInfo(filterSystem?: boolean, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/globals/definitions';
+    public getBRETriggersWithHttpInfo(filterSystem?: boolean, filterCategory?: string, filterTags?: string, filterName?: string, filterSearch?: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/triggers';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
 
         if (filterSystem !== undefined) {
             queryParameters.set('filter_system', <any>filterSystem);
+        }
+
+        if (filterCategory !== undefined) {
+            queryParameters.set('filter_category', <any>filterCategory);
+        }
+
+        if (filterTags !== undefined) {
+            queryParameters.set('filter_tags', <any>filterTags);
+        }
+
+        if (filterName !== undefined) {
+            queryParameters.set('filter_name', <any>filterName);
+        }
+
+        if (filterSearch !== undefined) {
+            queryParameters.set('filter_search', <any>filterSearch);
         }
 
         if (size !== undefined) {
@@ -386,21 +410,21 @@ export class BRERuleEngineGlobalsService {
     }
 
     /**
-     * Update a global definition
-     * May fail if new parameters mismatch requirements of existing rules. Cannot update core globals. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_ADMIN
-     * @param id The id of the global definition
-     * @param breGlobalResource The BRE global resource object
+     * Update a trigger
+     * May fail if new parameters mismatch requirements of existing rules. Cannot update core triggers. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_TRIGGERS_ADMIN
+     * @param eventName The trigger event name
+     * @param breTriggerResource The BRE trigger resource object
      */
-    public updateBREGlobalWithHttpInfo(id: string, breGlobalResource?: BreGlobalResource, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/globals/definitions/${id}'
-                    .replace('${' + 'id' + '}', String(id));
+    public updateBRETriggerWithHttpInfo(eventName: string, breTriggerResource?: BreTriggerResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/triggers/${event_name}'
+                    .replace('${' + 'event_name' + '}', String(eventName));
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
 
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateBREGlobal.');
+        // verify required parameter 'eventName' is not null or undefined
+        if (eventName === null || eventName === undefined) {
+            throw new Error('Required parameter eventName was null or undefined when calling updateBRETrigger.');
         }
 
         // to determine the Accept header
@@ -432,7 +456,7 @@ export class BRERuleEngineGlobalsService {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Put,
             headers: headers,
-            body: breGlobalResource == null ? '' : JSON.stringify(breGlobalResource), // https://github.com/angular/angular/issues/10612
+            body: breTriggerResource == null ? '' : JSON.stringify(breTriggerResource), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });

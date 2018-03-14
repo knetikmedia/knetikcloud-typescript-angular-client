@@ -20,7 +20,7 @@ import { Response, ResponseContentType }                     from '@angular/http
 import { Observable }                                        from 'rxjs/Observable';
 import '../rxjs-operators';
 
-import { GooglePaymentRequest } from '../model/googlePaymentRequest';
+import { BreEvent } from '../model/breEvent';
 import { Result } from '../model/result';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -28,9 +28,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class PaymentsGoogleService {
+export class Rule_Engine_EventsService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -74,12 +74,12 @@ export class PaymentsGoogleService {
     }
 
     /**
-     * Mark an invoice paid with Google. Verifies signature from Google and treats the developerPayload field inside the json payload as the id of the invoice to pay. Returns the transaction ID if successful. <br><br><b>Permissions Needed:</b> ANY
-     * @summary Mark an invoice paid with Google
-     * @param request The request for paying an invoice through a Google in-app payment
+     * Parameters within the event must match names and types from the trigger. Actual rule execution is asynchornous.  Returns request id, which will be used as the event id. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_EVENTS_USER
+     * @summary Fire a new event, based on an existing trigger
+     * @param breEvent The BRE event object
      */
-    public handleGooglePayment(request?: GooglePaymentRequest, extraHttpRequestParams?: any): Observable<number> {
-        return this.handleGooglePaymentWithHttpInfo(request, extraHttpRequestParams)
+    public sendBREEvent(breEvent?: BreEvent, extraHttpRequestParams?: any): Observable<string> {
+        return this.sendBREEventWithHttpInfo(breEvent, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -91,12 +91,12 @@ export class PaymentsGoogleService {
 
 
     /**
-     * Mark an invoice paid with Google
-     * Mark an invoice paid with Google. Verifies signature from Google and treats the developerPayload field inside the json payload as the id of the invoice to pay. Returns the transaction ID if successful. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
-     * @param request The request for paying an invoice through a Google in-app payment
+     * Fire a new event, based on an existing trigger
+     * Parameters within the event must match names and types from the trigger. Actual rule execution is asynchornous.  Returns request id, which will be used as the event id. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EVENTS_USER
+     * @param breEvent The BRE event object
      */
-    public handleGooglePaymentWithHttpInfo(request?: GooglePaymentRequest, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/payment/provider/google/payments';
+    public sendBREEventWithHttpInfo(breEvent?: BreEvent, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/events';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
@@ -131,7 +131,7 @@ export class PaymentsGoogleService {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Post,
             headers: headers,
-            body: request == null ? '' : JSON.stringify(request), // https://github.com/angular/angular/issues/10612
+            body: breEvent == null ? '' : JSON.stringify(breEvent), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });

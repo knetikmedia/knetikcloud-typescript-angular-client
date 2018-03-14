@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class FulfillmentService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -143,7 +143,7 @@ export class FulfillmentService {
     /**
      * <b>Permissions Needed:</b> FULFILLMENT_ADMIN
      * @summary Update a fulfillment type
-     * @param id The id
+     * @param id The fulfillment id
      * @param fulfillmentType The fulfillment type
      */
     public updateFulfillmentType(id: number, fulfillmentType?: FulfillmentType, extraHttpRequestParams?: any): Observable<{}> {
@@ -388,7 +388,7 @@ export class FulfillmentService {
     /**
      * Update a fulfillment type
      * &lt;b&gt;Permissions Needed:&lt;/b&gt; FULFILLMENT_ADMIN
-     * @param id The id
+     * @param id The fulfillment id
      * @param fulfillmentType The fulfillment type
      */
     public updateFulfillmentTypeWithHttpInfo(id: number, fulfillmentType?: FulfillmentType, extraHttpRequestParams?: any): Observable<Response> {

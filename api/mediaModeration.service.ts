@@ -31,9 +31,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class MediaModerationService {
+export class Media_ModerationService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -154,9 +154,10 @@ export class MediaModerationService {
      * @param filterContextId Filter by moderation context ID
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
      */
-    public getModerationReports(excludeResolved?: boolean, filterContext?: string, filterContextId?: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceFlagReportResource> {
-        return this.getModerationReportsWithHttpInfo(excludeResolved, filterContext, filterContextId, size, page, extraHttpRequestParams)
+    public getModerationReports(excludeResolved?: boolean, filterContext?: string, filterContextId?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceFlagReportResource> {
+        return this.getModerationReportsWithHttpInfo(excludeResolved, filterContext, filterContextId, size, page, order, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -438,8 +439,9 @@ export class MediaModerationService {
      * @param filterContextId Filter by moderation context ID
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
      */
-    public getModerationReportsWithHttpInfo(excludeResolved?: boolean, filterContext?: string, filterContextId?: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
+    public getModerationReportsWithHttpInfo(excludeResolved?: boolean, filterContext?: string, filterContextId?: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/moderation/reports';
 
         let queryParameters = new URLSearchParams();
@@ -463,6 +465,10 @@ export class MediaModerationService {
 
         if (page !== undefined) {
             queryParameters.set('page', <any>page);
+        }
+
+        if (order !== undefined) {
+            queryParameters.set('order', <any>order);
         }
 
 

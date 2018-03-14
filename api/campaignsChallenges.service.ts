@@ -35,9 +35,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class CampaignsChallengesService {
+export class Campaigns_ChallengesService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -433,7 +433,7 @@ export class CampaignsChallengesService {
      * @param challengeActivityResource The challenge activity resource object
      * @param validateSettings Whether to validate the settings being sent against the available settings on the base activity.
      */
-    public updateChallengeActivity(id: number, challengeId: number, challengeActivityResource?: ChallengeActivityResource, validateSettings?: boolean, extraHttpRequestParams?: any): Observable<ChallengeActivityResource> {
+    public updateChallengeActivity(id: number, challengeId: number, challengeActivityResource?: ChallengeActivityResource, validateSettings?: boolean, extraHttpRequestParams?: any): Observable<{}> {
         return this.updateChallengeActivityWithHttpInfo(id, challengeId, challengeActivityResource, validateSettings, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {

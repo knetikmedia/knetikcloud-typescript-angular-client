@@ -33,9 +33,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class GamificationLevelingService {
+export class Gamification_LevelingService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -111,7 +111,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * <b>Permissions Needed:</b> LEVELING_ADMIN
+     * <b>Permissions Needed:</b> LEVELING_USER
      * @summary Retrieve a level
      * @param name The level schema name
      */
@@ -142,7 +142,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * Get a list of levels schemas with optional filtering. <br><br><b>Permissions Needed:</b> LEVELING_ADMIN
+     * Get a list of levels schemas with optional filtering. <br><br><b>Permissions Needed:</b> LEVELING_USER
      * @summary List and search levels
      * @param filterName Filter for level schemas whose name contains a given string
      * @param size The number of objects returned per page
@@ -161,7 +161,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * <b>Permissions Needed:</b> LEVELING_ADMIN or self
+     * <b>Permissions Needed:</b> LEVELING_USER or self
      * @summary Get a user's progress for a given level schema
      * @param userId The id of the user or &#39;me&#39;
      * @param name The level schema name
@@ -178,7 +178,7 @@ export class GamificationLevelingService {
     }
 
     /**
-     * Filtering and sorting is based on the LevelingResource object, not the UserLevelingResource that is returned here. <br><br><b>Permissions Needed:</b> LEVELING_ADMIN or self
+     * Filtering and sorting is based on the LevelingResource object, not the UserLevelingResource that is returned here. <br><br><b>Permissions Needed:</b> LEVELING_USER or self
      * @summary Get a user's progress for all level schemas
      * @param userId The id of the user or &#39;me&#39;
      * @param filterName Filter for level schemas whose name contains a given string
@@ -361,7 +361,7 @@ export class GamificationLevelingService {
 
     /**
      * Retrieve a level
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_USER
      * @param name The level schema name
      */
     public getLevelWithHttpInfo(name: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -465,7 +465,7 @@ export class GamificationLevelingService {
 
     /**
      * List and search levels
-     * Get a list of levels schemas with optional filtering. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN
+     * Get a list of levels schemas with optional filtering. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_USER
      * @param filterName Filter for level schemas whose name contains a given string
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -534,7 +534,7 @@ export class GamificationLevelingService {
 
     /**
      * Get a user&#39;s progress for a given level schema
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN or self
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_USER or self
      * @param userId The id of the user or &#39;me&#39;
      * @param name The level schema name
      */
@@ -595,7 +595,7 @@ export class GamificationLevelingService {
 
     /**
      * Get a user&#39;s progress for all level schemas
-     * Filtering and sorting is based on the LevelingResource object, not the UserLevelingResource that is returned here. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_ADMIN or self
+     * Filtering and sorting is based on the LevelingResource object, not the UserLevelingResource that is returned here. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; LEVELING_USER or self
      * @param userId The id of the user or &#39;me&#39;
      * @param filterName Filter for level schemas whose name contains a given string
      * @param size The number of objects returned per page

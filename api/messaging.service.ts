@@ -40,7 +40,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class MessagingService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -116,7 +116,7 @@ export class MessagingService {
     }
 
     /**
-     * <b>Permissions Needed:</b> ARTICLES_ADMIN
+     * <b>Permissions Needed:</b> MESSAGING_ADMIN
      * @summary Delete an existing message template
      * @param id The message_template id
      */
@@ -132,7 +132,7 @@ export class MessagingService {
     }
 
     /**
-     * <b>Permissions Needed:</b> ARTICLES_ADMIN
+     * <b>Permissions Needed:</b> MESSAGING_ADMIN
      * @summary Get a single message template
      * @param id The message_template id
      */
@@ -148,7 +148,7 @@ export class MessagingService {
     }
 
     /**
-     * Get a list of message templates with optional filtering. <br><br><b>Permissions Needed:</b> ARTICLES_ADMIN
+     * Get a list of message templates with optional filtering. <br><br><b>Permissions Needed:</b> MESSAGING_ADMIN
      * @summary List and search message templates
      * @param filterTagset Filter for message templates with at least one of a specified set of tags (separated by comma)
      * @param filterTagIntersection Filter for message templates with all of a specified set of tags (separated by comma)
@@ -173,8 +173,8 @@ export class MessagingService {
      * @summary Send a message
      * @param messageResource The message to be sent
      */
-    public sendMessage1(messageResource?: MessageResource, extraHttpRequestParams?: any): Observable<{}> {
-        return this.sendMessage1WithHttpInfo(messageResource, extraHttpRequestParams)
+    public sendMessage(messageResource?: MessageResource, extraHttpRequestParams?: any): Observable<{}> {
+        return this.sendMessageWithHttpInfo(messageResource, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -297,7 +297,7 @@ export class MessagingService {
     }
 
     /**
-     * <b>Permissions Needed:</b> ARTICLES_ADMIN
+     * <b>Permissions Needed:</b> MESSAGING_ADMIN
      * @summary Update an existing message template
      * @param id The message_template id
      * @param messageTemplateResource The message template
@@ -422,7 +422,7 @@ export class MessagingService {
 
     /**
      * Delete an existing message template
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param id The message_template id
      */
     public deleteMessageTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -477,7 +477,7 @@ export class MessagingService {
 
     /**
      * Get a single message template
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param id The message_template id
      */
     public getMessageTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -532,7 +532,7 @@ export class MessagingService {
 
     /**
      * List and search message templates
-     * Get a list of message templates with optional filtering. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
+     * Get a list of message templates with optional filtering. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param filterTagset Filter for message templates with at least one of a specified set of tags (separated by comma)
      * @param filterTagIntersection Filter for message templates with all of a specified set of tags (separated by comma)
      * @param filterTagExclusion Filter for message templates with none of a specified set of tags (separated by comma)
@@ -614,7 +614,7 @@ export class MessagingService {
      * Sends a message with one or more formats to one or more users. Fill in any message formats desired (email, sms, websockets) and each user will recieve all valid formats. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param messageResource The message to be sent
      */
-    public sendMessage1WithHttpInfo(messageResource?: MessageResource, extraHttpRequestParams?: any): Observable<Response> {
+    public sendMessageWithHttpInfo(messageResource?: MessageResource, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/messaging/message';
 
         let queryParameters = new URLSearchParams();
@@ -1035,7 +1035,7 @@ export class MessagingService {
 
     /**
      * Update an existing message template
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; MESSAGING_ADMIN
      * @param id The message_template id
      * @param messageTemplateResource The message template
      */

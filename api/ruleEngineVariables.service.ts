@@ -20,18 +20,18 @@ import { Response, ResponseContentType }                     from '@angular/http
 import { Observable }                                        from 'rxjs/Observable';
 import '../rxjs-operators';
 
-import { ExpressionResource } from '../model/expressionResource';
+import { PageResourceSimpleReferenceResourceobject } from '../model/pageResourceSimpleReferenceResourceobject';
 import { Result } from '../model/result';
-import { StringWrapper } from '../model/stringWrapper';
+import { VariableTypeResource } from '../model/variableTypeResource';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class BRERuleEngineExpressionsService {
+export class Rule_Engine_VariablesService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,12 +75,11 @@ export class BRERuleEngineExpressionsService {
     }
 
     /**
-     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
-     * @summary Lookup a specific expression
-     * @param type Specifiy the type of expression as returned by the listing endpoint
+     * Types include integer, string, user and invoice. These are used to qualify trigger parameters and action variables with strong typing. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_VARIABLES_USER
+     * @summary Get a list of variable types available
      */
-    public getBREExpression(type: string, extraHttpRequestParams?: any): Observable<ExpressionResource> {
-        return this.getBREExpressionWithHttpInfo(type, extraHttpRequestParams)
+    public getBREVariableTypes(extraHttpRequestParams?: any): Observable<Array<VariableTypeResource>> {
+        return this.getBREVariableTypesWithHttpInfo(extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -91,28 +90,15 @@ export class BRERuleEngineExpressionsService {
     }
 
     /**
-     * Each resource contains a type and a definition that are read-only, all the other fields must be provided when using the expression in a rule. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
-     * @summary Get a list of supported expressions to use in conditions or actions
-     * @param filterTypeGroup Filter for expressions by type group
+     * Used to lookup users to fill in a user constant for example. Only types marked as enumerable are suppoorted here. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_VARIABLES_USER
+     * @summary List valid values for a type
+     * @param name The name of the type
+     * @param filterName Filter results by those with names starting with this string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
      */
-    public getBREExpressions(filterTypeGroup?: string, extraHttpRequestParams?: any): Observable<Array<ExpressionResource>> {
-        return this.getBREExpressionsWithHttpInfo(filterTypeGroup, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json() || {};
-                }
-            });
-    }
-
-    /**
-     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_EXPRESSIONS_USER
-     * @summary Returns the textual representation of an expression
-     * @param expression The expression resource to be converted
-     */
-    public getExpressionAsText(expression?: ExpressionResource, extraHttpRequestParams?: any): Observable<StringWrapper> {
-        return this.getExpressionAsTextWithHttpInfo(expression, extraHttpRequestParams)
+    public getBREVariableValues(name: string, filterName?: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceSimpleReferenceResourceobject> {
+        return this.getBREVariableValuesWithHttpInfo(name, filterName, size, page, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -124,74 +110,14 @@ export class BRERuleEngineExpressionsService {
 
 
     /**
-     * Lookup a specific expression
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EXPRESSIONS_USER
-     * @param type Specifiy the type of expression as returned by the listing endpoint
+     * Get a list of variable types available
+     * Types include integer, string, user and invoice. These are used to qualify trigger parameters and action variables with strong typing. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_VARIABLES_USER
      */
-    public getBREExpressionWithHttpInfo(type: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/expressions/${type}'
-                    .replace('${' + 'type' + '}', String(type));
+    public getBREVariableTypesWithHttpInfo(extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/variable-types';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-
-        // verify required parameter 'type' is not null or undefined
-        if (type === null || type === undefined) {
-            throw new Error('Required parameter type was null or undefined when calling getBREExpression.');
-        }
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (oauth2_client_credentials_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-        // authentication (oauth2_password_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-            
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Get,
-            headers: headers,
-            search: queryParameters,
-            withCredentials:this.configuration.withCredentials
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * Get a list of supported expressions to use in conditions or actions
-     * Each resource contains a type and a definition that are read-only, all the other fields must be provided when using the expression in a rule. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EXPRESSIONS_USER
-     * @param filterTypeGroup Filter for expressions by type group
-     */
-    public getBREExpressionsWithHttpInfo(filterTypeGroup?: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/expressions';
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-
-        if (filterTypeGroup !== undefined) {
-            queryParameters.set('filter_type_group', <any>filterTypeGroup);
-        }
 
 
         // to determine the Accept header
@@ -233,15 +159,35 @@ export class BRERuleEngineExpressionsService {
     }
 
     /**
-     * Returns the textual representation of an expression
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_EXPRESSIONS_USER
-     * @param expression The expression resource to be converted
+     * List valid values for a type
+     * Used to lookup users to fill in a user constant for example. Only types marked as enumerable are suppoorted here. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_VARIABLES_USER
+     * @param name The name of the type
+     * @param filterName Filter results by those with names starting with this string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
      */
-    public getExpressionAsTextWithHttpInfo(expression?: ExpressionResource, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/expressions';
+    public getBREVariableValuesWithHttpInfo(name: string, filterName?: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/variable-types/${name}/values'
+                    .replace('${' + 'name' + '}', String(name));
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'name' is not null or undefined
+        if (name === null || name === undefined) {
+            throw new Error('Required parameter name was null or undefined when calling getBREVariableValues.');
+        }
+        if (filterName !== undefined) {
+            queryParameters.set('filter_name', <any>filterName);
+        }
+
+        if (size !== undefined) {
+            queryParameters.set('size', <any>size);
+        }
+
+        if (page !== undefined) {
+            queryParameters.set('page', <any>page);
+        }
 
 
         // to determine the Accept header
@@ -268,12 +214,9 @@ export class BRERuleEngineExpressionsService {
         }
 
             
-        headers.set('Content-Type', 'application/json');
-
         let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Post,
+            method: RequestMethod.Get,
             headers: headers,
-            body: expression == null ? '' : JSON.stringify(expression), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });

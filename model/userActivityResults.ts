@@ -37,7 +37,7 @@ export interface UserActivityResults {
     score?: number;
 
     /**
-     * Any tags for the metric. Each unique tag will translate into a unique leaderboard. Maximum 5 tags and 50 characters each
+     * Any tags for the metric. Each unique tag will translate into a unique leaderboard. Maximum 10 tags and 50 characters each
      */
     tags?: Array<string>;
 

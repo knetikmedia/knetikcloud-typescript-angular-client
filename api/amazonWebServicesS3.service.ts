@@ -28,9 +28,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class AmazonWebServicesS3Service {
+export class Amazon_Web_Services_S3Service {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +77,7 @@ export class AmazonWebServicesS3Service {
      * To give access to files in your own S3 account, you will need to grant KnetikcCloud access to the file by adjusting your bucket policy accordingly. See S3 documentation for details. <br><br><b>Permissions Needed:</b> S3_ADMIN
      * @summary Get a temporary signed S3 URL for download
      * @param bucket S3 bucket name
-     * @param path The path to the file relative the bucket (the s3 object key)
+     * @param path The path to the file relative to the bucket (the s3 object key)
      * @param expiration The number of seconds this URL will be valid. Default to 60
      */
     public getDownloadURL(bucket?: string, path?: string, expiration?: number, extraHttpRequestParams?: any): Observable<string> {
@@ -113,7 +113,7 @@ export class AmazonWebServicesS3Service {
      * Get a temporary signed S3 URL for download
      * To give access to files in your own S3 account, you will need to grant KnetikcCloud access to the file by adjusting your bucket policy accordingly. See S3 documentation for details. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; S3_ADMIN
      * @param bucket S3 bucket name
-     * @param path The path to the file relative the bucket (the s3 object key)
+     * @param path The path to the file relative to the bucket (the s3 object key)
      * @param expiration The number of seconds this URL will be valid. Default to 60
      */
     public getDownloadURLWithHttpInfo(bucket?: string, path?: string, expiration?: number, extraHttpRequestParams?: any): Observable<Response> {

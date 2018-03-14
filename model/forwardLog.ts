@@ -20,6 +20,10 @@ export interface ForwardLog {
 
     errorMsg?: string;
 
+    eventId?: string;
+
+    headers?: string;
+
     /**
      * The http status code the forward log entry
      */
@@ -29,6 +33,8 @@ export interface ForwardLog {
      * The id of the forward log entry
      */
     id?: string;
+
+    method?: string;
 
     /**
      * The payload of the forward log entry
@@ -45,10 +51,16 @@ export interface ForwardLog {
      */
     retryCount?: number;
 
+    retryable?: boolean;
+
+    ruleId?: string;
+
     /**
      * The start date of the forward log entry
      */
     startDate?: number;
+
+    success?: boolean;
 
     /**
      * The endpoint url of the forward log entry

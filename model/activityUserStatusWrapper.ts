@@ -12,14 +12,16 @@
 
 
 
-export interface ValueWrapperstring {
-    value?: ValueWrapperstring.ValueEnum;
+export interface ActivityUserStatusWrapper {
+    value?: ActivityUserStatusWrapper.ValueEnum;
 
 }
-export namespace ValueWrapperstring {
+export namespace ActivityUserStatusWrapper {
     export enum ValueEnum {
-        Pending = <any> 'pending',
-        Read = <any> 'read',
-        Hidden = <any> 'hidden'
+        Present = <any> 'present',
+        Ready = <any> 'ready',
+        Left = <any> 'left',
+        Surrendered = <any> 'surrendered',
+        Disconnected = <any> 'disconnected'
     }
 }

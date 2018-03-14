@@ -20,10 +20,8 @@ import { Response, ResponseContentType }                     from '@angular/http
 import { Observable }                                        from 'rxjs/Observable';
 import '../rxjs-operators';
 
-import { BooleanResource } from '../model/booleanResource';
-import { BreRule } from '../model/breRule';
-import { Expressionobject } from '../model/expressionobject';
-import { PageResourceBreRule } from '../model/pageResourceBreRule';
+import { BreGlobalResource } from '../model/breGlobalResource';
+import { PageResourceBreGlobalResource } from '../model/pageResourceBreGlobalResource';
 import { Result } from '../model/result';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -31,9 +29,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class BRERuleEngineRulesService {
+export class Rule_Engine_GlobalsService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,12 +75,12 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
-     * @summary Create a rule
-     * @param breRule The BRE rule object
+     * Once created you can then use in a custom rule. Note that global definitions cannot be modified or deleted if in use. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_ADMIN
+     * @summary Create a global definition
+     * @param breGlobalResource The BRE global resource object
      */
-    public createBRERule(breRule?: BreRule, extraHttpRequestParams?: any): Observable<BreRule> {
-        return this.createBRERuleWithHttpInfo(breRule, extraHttpRequestParams)
+    public createBREGlobal(breGlobalResource?: BreGlobalResource, extraHttpRequestParams?: any): Observable<BreGlobalResource> {
+        return this.createBREGlobalWithHttpInfo(breGlobalResource, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -93,12 +91,12 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * May fail if there are existing rules against it. Cannot delete core rules. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
-     * @summary Delete a rule
-     * @param id The id of the rule
+     * May fail if there are existing rules against it. Cannot delete core globals. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_ADMIN
+     * @summary Delete a global
+     * @param id The id of the global definition
      */
-    public deleteBRERule(id: string, extraHttpRequestParams?: any): Observable<{}> {
-        return this.deleteBRERuleWithHttpInfo(id, extraHttpRequestParams)
+    public deleteBREGlobal(id: string, extraHttpRequestParams?: any): Observable<{}> {
+        return this.deleteBREGlobalWithHttpInfo(id, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -109,12 +107,12 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
-     * @summary Returns a string representation of the provided expression
-     * @param expression The expression
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_USER
+     * @summary Get a single global definition
+     * @param id The id of the global definition
      */
-    public getBREExpressionAsString(expression?: Expressionobject, extraHttpRequestParams?: any): Observable<string> {
-        return this.getBREExpressionAsStringWithHttpInfo(expression, extraHttpRequestParams)
+    public getBREGlobal(id: string, extraHttpRequestParams?: any): Observable<BreGlobalResource> {
+        return this.getBREGlobalWithHttpInfo(id, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -125,35 +123,14 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
-     * @summary Get a single rule
-     * @param id The id of the rule
-     */
-    public getBRERule(id: string, extraHttpRequestParams?: any): Observable<BreRule> {
-        return this.getBRERuleWithHttpInfo(id, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json() || {};
-                }
-            });
-    }
-
-    /**
-     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
-     * @summary List rules
-     * @param filterName Filter for rules containing the given name
-     * @param filterEnabled Filter for rules by active status, null for both
-     * @param filterSystem Filter for rules that are system rules when true, or not when false. Leave off for both mixed
-     * @param filterTrigger Filter for rules that are for the trigger with the given name
-     * @param filterAction Filter for rules that use the action with the given name
-     * @param filterCondition Filter for rules that have a condition containing the given string
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_USER
+     * @summary List global definitions
+     * @param filterSystem Filter for globals that are system globals when true, or not when false. Leave off for both mixed
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      */
-    public getBRERules(filterName?: string, filterEnabled?: boolean, filterSystem?: boolean, filterTrigger?: string, filterAction?: string, filterCondition?: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceBreRule> {
-        return this.getBRERulesWithHttpInfo(filterName, filterEnabled, filterSystem, filterTrigger, filterAction, filterCondition, size, page, extraHttpRequestParams)
+    public getBREGlobals(filterSystem?: boolean, size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceBreGlobalResource> {
+        return this.getBREGlobalsWithHttpInfo(filterSystem, size, page, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -164,30 +141,13 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * This is helpful for turning off systems rules which cannot be deleted or modified otherwise. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
-     * @summary Enable or disable a rule
-     * @param id The id of the rule
-     * @param enabled The boolean value
+     * May fail if new parameters mismatch requirements of existing rules. Cannot update core globals. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_GLOBALS_ADMIN
+     * @summary Update a global definition
+     * @param id The id of the global definition
+     * @param breGlobalResource The BRE global resource object
      */
-    public setBRERule(id: string, enabled?: BooleanResource, extraHttpRequestParams?: any): Observable<{}> {
-        return this.setBRERuleWithHttpInfo(id, enabled, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json() || {};
-                }
-            });
-    }
-
-    /**
-     * Cannot update system rules. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
-     * @summary Update a rule
-     * @param id The id of the rule
-     * @param breRule The BRE rule object
-     */
-    public updateBRERule(id: string, breRule?: BreRule, extraHttpRequestParams?: any): Observable<BreRule> {
-        return this.updateBRERuleWithHttpInfo(id, breRule, extraHttpRequestParams)
+    public updateBREGlobal(id: string, breGlobalResource?: BreGlobalResource, extraHttpRequestParams?: any): Observable<BreGlobalResource> {
+        return this.updateBREGlobalWithHttpInfo(id, breGlobalResource, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -199,12 +159,12 @@ export class BRERuleEngineRulesService {
 
 
     /**
-     * Create a rule
-     * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
-     * @param breRule The BRE rule object
+     * Create a global definition
+     * Once created you can then use in a custom rule. Note that global definitions cannot be modified or deleted if in use. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_ADMIN
+     * @param breGlobalResource The BRE global resource object
      */
-    public createBRERuleWithHttpInfo(breRule?: BreRule, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/rules';
+    public createBREGlobalWithHttpInfo(breGlobalResource?: BreGlobalResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/globals/definitions';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
@@ -239,7 +199,7 @@ export class BRERuleEngineRulesService {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Post,
             headers: headers,
-            body: breRule == null ? '' : JSON.stringify(breRule), // https://github.com/angular/angular/issues/10612
+            body: breGlobalResource == null ? '' : JSON.stringify(breGlobalResource), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });
@@ -252,12 +212,12 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * Delete a rule
-     * May fail if there are existing rules against it. Cannot delete core rules. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
-     * @param id The id of the rule
+     * Delete a global
+     * May fail if there are existing rules against it. Cannot delete core globals. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_ADMIN
+     * @param id The id of the global definition
      */
-    public deleteBRERuleWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/rules/${id}'
+    public deleteBREGlobalWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/globals/definitions/${id}'
                     .replace('${' + 'id' + '}', String(id));
 
         let queryParameters = new URLSearchParams();
@@ -265,7 +225,7 @@ export class BRERuleEngineRulesService {
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteBRERule.');
+            throw new Error('Required parameter id was null or undefined when calling deleteBREGlobal.');
         }
 
         // to determine the Accept header
@@ -307,65 +267,12 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * Returns a string representation of the provided expression
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
-     * @param expression The expression
+     * Get a single global definition
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_USER
+     * @param id The id of the global definition
      */
-    public getBREExpressionAsStringWithHttpInfo(expression?: Expressionobject, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/rules/expression-as-string';
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (oauth2_client_credentials_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-        // authentication (oauth2_password_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-            
-        headers.set('Content-Type', 'application/json');
-
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Post,
-            headers: headers,
-            body: expression == null ? '' : JSON.stringify(expression), // https://github.com/angular/angular/issues/10612
-            search: queryParameters,
-            withCredentials:this.configuration.withCredentials
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * Get a single rule
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
-     * @param id The id of the rule
-     */
-    public getBRERuleWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/rules/${id}'
+    public getBREGlobalWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/globals/definitions/${id}'
                     .replace('${' + 'id' + '}', String(id));
 
         let queryParameters = new URLSearchParams();
@@ -373,7 +280,7 @@ export class BRERuleEngineRulesService {
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getBRERule.');
+            throw new Error('Required parameter id was null or undefined when calling getBREGlobal.');
         }
 
         // to determine the Accept header
@@ -415,45 +322,20 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * List rules
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
-     * @param filterName Filter for rules containing the given name
-     * @param filterEnabled Filter for rules by active status, null for both
-     * @param filterSystem Filter for rules that are system rules when true, or not when false. Leave off for both mixed
-     * @param filterTrigger Filter for rules that are for the trigger with the given name
-     * @param filterAction Filter for rules that use the action with the given name
-     * @param filterCondition Filter for rules that have a condition containing the given string
+     * List global definitions
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_USER
+     * @param filterSystem Filter for globals that are system globals when true, or not when false. Leave off for both mixed
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      */
-    public getBRERulesWithHttpInfo(filterName?: string, filterEnabled?: boolean, filterSystem?: boolean, filterTrigger?: string, filterAction?: string, filterCondition?: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/rules';
+    public getBREGlobalsWithHttpInfo(filterSystem?: boolean, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/globals/definitions';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
 
-        if (filterName !== undefined) {
-            queryParameters.set('filter_name', <any>filterName);
-        }
-
-        if (filterEnabled !== undefined) {
-            queryParameters.set('filter_enabled', <any>filterEnabled);
-        }
-
         if (filterSystem !== undefined) {
             queryParameters.set('filter_system', <any>filterSystem);
-        }
-
-        if (filterTrigger !== undefined) {
-            queryParameters.set('filter_trigger', <any>filterTrigger);
-        }
-
-        if (filterAction !== undefined) {
-            queryParameters.set('filter_action', <any>filterAction);
-        }
-
-        if (filterCondition !== undefined) {
-            queryParameters.set('filter_condition', <any>filterCondition);
         }
 
         if (size !== undefined) {
@@ -504,13 +386,13 @@ export class BRERuleEngineRulesService {
     }
 
     /**
-     * Enable or disable a rule
-     * This is helpful for turning off systems rules which cannot be deleted or modified otherwise. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
-     * @param id The id of the rule
-     * @param enabled The boolean value
+     * Update a global definition
+     * May fail if new parameters mismatch requirements of existing rules. Cannot update core globals. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_GLOBALS_ADMIN
+     * @param id The id of the global definition
+     * @param breGlobalResource The BRE global resource object
      */
-    public setBRERuleWithHttpInfo(id: string, enabled?: BooleanResource, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/rules/${id}/enabled'
+    public updateBREGlobalWithHttpInfo(id: string, breGlobalResource?: BreGlobalResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/globals/definitions/${id}'
                     .replace('${' + 'id' + '}', String(id));
 
         let queryParameters = new URLSearchParams();
@@ -518,7 +400,7 @@ export class BRERuleEngineRulesService {
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling setBRERule.');
+            throw new Error('Required parameter id was null or undefined when calling updateBREGlobal.');
         }
 
         // to determine the Accept header
@@ -550,66 +432,7 @@ export class BRERuleEngineRulesService {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Put,
             headers: headers,
-            body: enabled == null ? '' : JSON.stringify(enabled), // https://github.com/angular/angular/issues/10612
-            search: queryParameters,
-            withCredentials:this.configuration.withCredentials
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * Update a rule
-     * Cannot update system rules. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
-     * @param id The id of the rule
-     * @param breRule The BRE rule object
-     */
-    public updateBRERuleWithHttpInfo(id: string, breRule?: BreRule, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/rules/${id}'
-                    .replace('${' + 'id' + '}', String(id));
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateBRERule.');
-        }
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (oauth2_client_credentials_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-        // authentication (oauth2_password_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-            
-        headers.set('Content-Type', 'application/json');
-
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Put,
-            headers: headers,
-            body: breRule == null ? '' : JSON.stringify(breRule), // https://github.com/angular/angular/issues/10612
+            body: breGlobalResource == null ? '' : JSON.stringify(breGlobalResource), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });

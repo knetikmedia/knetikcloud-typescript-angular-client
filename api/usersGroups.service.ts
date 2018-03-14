@@ -23,6 +23,7 @@ import '../rxjs-operators';
 import { ChatMessageRequest } from '../model/chatMessageRequest';
 import { ChatMessageResource } from '../model/chatMessageResource';
 import { GroupMemberResource } from '../model/groupMemberResource';
+import { GroupMemberStatusWrapper } from '../model/groupMemberStatusWrapper';
 import { GroupResource } from '../model/groupResource';
 import { PageResourceChatMessageResource } from '../model/pageResourceChatMessageResource';
 import { PageResourceGroupMemberResource } from '../model/pageResourceGroupMemberResource';
@@ -38,9 +39,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class UsersGroupsService {
+export class Users_GroupsService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -216,7 +217,7 @@ export class UsersGroupsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> TOPICS_ADMIN or self
      * @summary Enable or disable notification of group messages
      * @param uniqueName The group unique name
      * @param userId The user id of the member or &#39;me&#39;
@@ -522,7 +523,7 @@ export class UsersGroupsService {
      * @param userId The user id of the member to modify
      * @param status The new status for the user
      */
-    public updateGroupMemberStatus(uniqueName: string, userId: number, status: string, extraHttpRequestParams?: any): Observable<{}> {
+    public updateGroupMemberStatus(uniqueName: string, userId: number, status: GroupMemberStatusWrapper, extraHttpRequestParams?: any): Observable<{}> {
         return this.updateGroupMemberStatusWithHttpInfo(uniqueName, userId, status, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
@@ -1030,7 +1031,7 @@ export class UsersGroupsService {
 
     /**
      * Enable or disable notification of group messages
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TOPICS_ADMIN or self
      * @param uniqueName The group unique name
      * @param userId The user id of the member or &#39;me&#39;
      * @param disabled disabled
@@ -2101,7 +2102,7 @@ export class UsersGroupsService {
      * @param userId The user id of the member to modify
      * @param status The new status for the user
      */
-    public updateGroupMemberStatusWithHttpInfo(uniqueName: string, userId: number, status: string, extraHttpRequestParams?: any): Observable<Response> {
+    public updateGroupMemberStatusWithHttpInfo(uniqueName: string, userId: number, status: GroupMemberStatusWrapper, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/users/groups/${unique_name}/members/${user_id}/status'
                     .replace('${' + 'unique_name' + '}', String(uniqueName))
                     .replace('${' + 'user_id' + '}', String(userId));

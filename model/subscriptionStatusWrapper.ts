@@ -12,15 +12,16 @@
 
 
 
-export interface GooglePaymentRequest {
-    /**
-     * The json payload exactly as sent from Google
-     */
-    jsonPayload: string;
+export interface SubscriptionStatusWrapper {
+    value?: SubscriptionStatusWrapper.ValueEnum;
 
-    /**
-     * The signature from Google to verify the payload
-     */
-    signature: string;
-
+}
+export namespace SubscriptionStatusWrapper {
+    export enum ValueEnum {
+        Current = <any> 'current',
+        Canceled = <any> 'canceled',
+        Stopped = <any> 'stopped',
+        PaymentFailed = <any> 'payment_failed',
+        Suspended = <any> 'suspended'
+    }
 }

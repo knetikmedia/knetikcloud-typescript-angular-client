@@ -27,8 +27,8 @@ import { PageResourceNotificationTypeResource } from '../model/pageResourceNotif
 import { PageResourceNotificationUserTypeResource } from '../model/pageResourceNotificationUserTypeResource';
 import { PageResourceUserNotificationResource } from '../model/pageResourceUserNotificationResource';
 import { Result } from '../model/result';
+import { UserNotificationStatusWrapper } from '../model/userNotificationStatusWrapper';
 import { ValueWrapperboolean } from '../model/valueWrapperboolean';
-import { ValueWrapperstring } from '../model/valueWrapperstring';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -37,7 +37,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class NotificationsService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -81,7 +81,7 @@ export class NotificationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
      * @summary Create a notification type
      * @param notificationType notificationType
      */
@@ -97,7 +97,7 @@ export class NotificationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
      * @summary Delete a notification type
      * @param id id
      */
@@ -113,7 +113,7 @@ export class NotificationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
      * @summary Get a single notification type
      * @param id id
      */
@@ -129,7 +129,7 @@ export class NotificationsService {
     }
 
     /**
-     * Get a list of notification type with optional filtering
+     * Get a list of notification type with optional filtering. <br><br><b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
      * @summary List and search notification types
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -147,7 +147,7 @@ export class NotificationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
      * @summary View a user's notification settings for a type
      * @param typeId The id of the topic
      * @param userId The id of the subscriber or &#39;me&#39;
@@ -164,7 +164,7 @@ export class NotificationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
      * @summary View a user's notification settings
      * @param userId The id of the subscriber or &#39;me&#39;
      * @param size The number of objects returned per page
@@ -183,7 +183,7 @@ export class NotificationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
      * @summary Get notifications
      * @param id The id of the user or &#39;me&#39;
      * @param filterStatus filter for notifications with a given status
@@ -203,7 +203,7 @@ export class NotificationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
      * @summary Send a notification
      * @param notification notification
      */
@@ -219,13 +219,13 @@ export class NotificationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
      * @summary Set notification status
      * @param userId The id of the user or &#39;me&#39;
      * @param notificationId The id of the notification
      * @param notification status
      */
-    public setUserNotificationStatus(userId: string, notificationId: string, notification?: ValueWrapperstring, extraHttpRequestParams?: any): Observable<{}> {
+    public setUserNotificationStatus(userId: string, notificationId: string, notification?: UserNotificationStatusWrapper, extraHttpRequestParams?: any): Observable<{}> {
         return this.setUserNotificationStatusWithHttpInfo(userId, notificationId, notification, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
@@ -237,7 +237,7 @@ export class NotificationsService {
     }
 
     /**
-     * Allows enabling or disabling messages for a given notification type when sent direct to the user. Notifications can still be retrieved by endpoint. For notifications broadcased to a topic, see the topic service to disable messages for the user there.
+     * Allows enabling or disabling messages for a given notification type when sent direct to the user. Notifications can still be retrieved by endpoint. For notifications broadcased to a topic, see the topic service to disable messages for the user there. <br><br><b>Permissions Needed:</b> NOTIFICATIONS_ADMIN or self
      * @summary Enable or disable direct notifications for a user
      * @param typeId The id of the topic
      * @param userId The id of the subscriber or &#39;me&#39;
@@ -255,7 +255,7 @@ export class NotificationsService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> NOTIFICATIONS_ADMIN
      * @summary Update a notificationType
      * @param id id
      * @param notificationType notificationType
@@ -274,7 +274,7 @@ export class NotificationsService {
 
     /**
      * Create a notification type
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN
      * @param notificationType notificationType
      */
     public createNotificationTypeWithHttpInfo(notificationType?: NotificationTypeResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -327,7 +327,7 @@ export class NotificationsService {
 
     /**
      * Delete a notification type
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN
      * @param id id
      */
     public deleteNotificationTypeWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -382,7 +382,7 @@ export class NotificationsService {
 
     /**
      * Get a single notification type
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN
      * @param id id
      */
     public getNotificationTypeWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
@@ -437,7 +437,7 @@ export class NotificationsService {
 
     /**
      * List and search notification types
-     * Get a list of notification type with optional filtering
+     * Get a list of notification type with optional filtering. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
@@ -501,7 +501,7 @@ export class NotificationsService {
 
     /**
      * View a user&#39;s notification settings for a type
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN or self
      * @param typeId The id of the topic
      * @param userId The id of the subscriber or &#39;me&#39;
      */
@@ -562,7 +562,7 @@ export class NotificationsService {
 
     /**
      * View a user&#39;s notification settings
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN or self
      * @param userId The id of the subscriber or &#39;me&#39;
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
@@ -632,7 +632,7 @@ export class NotificationsService {
 
     /**
      * Get notifications
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN or self
      * @param id The id of the user or &#39;me&#39;
      * @param filterStatus filter for notifications with a given status
      * @param size The number of objects returned per page
@@ -707,7 +707,7 @@ export class NotificationsService {
 
     /**
      * Send a notification
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN
      * @param notification notification
      */
     public sendNotificationWithHttpInfo(notification?: NotificationResource, extraHttpRequestParams?: any): Observable<Response> {
@@ -760,12 +760,12 @@ export class NotificationsService {
 
     /**
      * Set notification status
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN or self
      * @param userId The id of the user or &#39;me&#39;
      * @param notificationId The id of the notification
      * @param notification status
      */
-    public setUserNotificationStatusWithHttpInfo(userId: string, notificationId: string, notification?: ValueWrapperstring, extraHttpRequestParams?: any): Observable<Response> {
+    public setUserNotificationStatusWithHttpInfo(userId: string, notificationId: string, notification?: UserNotificationStatusWrapper, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/users/${user_id}/notifications/${notification_id}/status'
                     .replace('${' + 'user_id' + '}', String(userId))
                     .replace('${' + 'notification_id' + '}', String(notificationId));
@@ -825,7 +825,7 @@ export class NotificationsService {
 
     /**
      * Enable or disable direct notifications for a user
-     * Allows enabling or disabling messages for a given notification type when sent direct to the user. Notifications can still be retrieved by endpoint. For notifications broadcased to a topic, see the topic service to disable messages for the user there.
+     * Allows enabling or disabling messages for a given notification type when sent direct to the user. Notifications can still be retrieved by endpoint. For notifications broadcased to a topic, see the topic service to disable messages for the user there. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN or self
      * @param typeId The id of the topic
      * @param userId The id of the subscriber or &#39;me&#39;
      * @param silenced silenced
@@ -894,7 +894,7 @@ export class NotificationsService {
 
     /**
      * Update a notificationType
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; NOTIFICATIONS_ADMIN
      * @param id id
      * @param notificationType notificationType
      */

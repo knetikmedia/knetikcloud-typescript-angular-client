@@ -27,15 +27,16 @@ import { ReactivateSubscriptionRequest } from '../model/reactivateSubscriptionRe
 import { Result } from '../model/result';
 import { StringWrapper } from '../model/stringWrapper';
 import { SubscriptionPriceOverrideRequest } from '../model/subscriptionPriceOverrideRequest';
+import { SubscriptionStatusWrapper } from '../model/subscriptionStatusWrapper';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class UsersSubscriptionsService {
+export class Users_SubscriptionsService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -170,9 +171,9 @@ export class UsersSubscriptionsService {
      * @summary Set the status of a subscription
      * @param userId The id of the user
      * @param inventoryId The id of the user&#39;s inventory
-     * @param status The new status for the subscription. Actual options may differ from the indicated set if the invoice status type data has been altered.  Allowable values: (&#39;current&#39;, &#39;canceled&#39;, &#39;stopped&#39;, &#39;payment_failed&#39;, &#39;suspended&#39;)
+     * @param status The new status for the subscription
      */
-    public setSubscriptionStatus(userId: number, inventoryId: number, status: StringWrapper, extraHttpRequestParams?: any): Observable<{}> {
+    public setSubscriptionStatus(userId: number, inventoryId: number, status: SubscriptionStatusWrapper, extraHttpRequestParams?: any): Observable<{}> {
         return this.setSubscriptionStatusWithHttpInfo(userId, inventoryId, status, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
@@ -540,9 +541,9 @@ export class UsersSubscriptionsService {
      * Note that the new status may be blocked if the system is not configured to allow the current status to be changed to the new, to enforce proper flow. The default options for statuses are shown below but may be altered for special use cases. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; USERS_SUBSCRIPTIONS_ADMIN or owner
      * @param userId The id of the user
      * @param inventoryId The id of the user&#39;s inventory
-     * @param status The new status for the subscription. Actual options may differ from the indicated set if the invoice status type data has been altered.  Allowable values: (&#39;current&#39;, &#39;canceled&#39;, &#39;stopped&#39;, &#39;payment_failed&#39;, &#39;suspended&#39;)
+     * @param status The new status for the subscription
      */
-    public setSubscriptionStatusWithHttpInfo(userId: number, inventoryId: number, status: StringWrapper, extraHttpRequestParams?: any): Observable<Response> {
+    public setSubscriptionStatusWithHttpInfo(userId: number, inventoryId: number, status: SubscriptionStatusWrapper, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/users/${user_id}/subscriptions/${inventory_id}/status'
                     .replace('${' + 'user_id' + '}', String(userId))
                     .replace('${' + 'inventory_id' + '}', String(inventoryId));

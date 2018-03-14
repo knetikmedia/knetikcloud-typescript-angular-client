@@ -21,7 +21,6 @@ import { Observable }                                        from 'rxjs/Observab
 import '../rxjs-operators';
 
 import { PageResourceTopicResource } from '../model/pageResourceTopicResource';
-import { PageResourceTopicSubscriberResource } from '../model/pageResourceTopicSubscriberResource';
 import { Result } from '../model/result';
 import { TopicSubscriberResource } from '../model/topicSubscriberResource';
 import { ValueWrapperboolean } from '../model/valueWrapperboolean';
@@ -31,9 +30,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class MessagingTopicsService {
+export class Messaging_TopicsService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,7 +76,7 @@ export class MessagingTopicsService {
     }
 
     /**
-     * Useful for opt-out options on a single topic. Consider multiple topics for multiple opt-out options.
+     * Useful for opt-out options on a single topic. Consider multiple topics for multiple opt-out options. <br><br><b>Permissions Needed:</b> TOPICS_ADMIN or self
      * @summary Enable or disable messages for a user
      * @param id The id of the topic
      * @param userId The id of the subscriber or &#39;me&#39;
@@ -95,7 +94,7 @@ export class MessagingTopicsService {
     }
 
     /**
-     * <b>Permissions Needed:</b> TOPICS_ADMIN
+     * <b>Permissions Needed:</b> TOPICS_ADMIN or self
      * @summary Get a subscriber to a topic
      * @param id The id of the topic
      * @param userId The id of the subscriber or &#39;me&#39;
@@ -112,23 +111,7 @@ export class MessagingTopicsService {
     }
 
     /**
-     * <b>Permissions Needed:</b> TOPICS_ADMIN
-     * @summary Get all subscribers to a topic
-     * @param id The id of the topic
-     */
-    public getTopicSubscribers(id: string, extraHttpRequestParams?: any): Observable<PageResourceTopicSubscriberResource> {
-        return this.getTopicSubscribersWithHttpInfo(id, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json() || {};
-                }
-            });
-    }
-
-    /**
-     * <b>Permissions Needed:</b> TOPICS_ADMIN
+     * <b>Permissions Needed:</b> TOPICS_ADMIN or self
      * @summary Get all messaging topics for a given user
      * @param id The id of the user or &#39;me&#39;
      */
@@ -146,7 +129,7 @@ export class MessagingTopicsService {
 
     /**
      * Enable or disable messages for a user
-     * Useful for opt-out options on a single topic. Consider multiple topics for multiple opt-out options.
+     * Useful for opt-out options on a single topic. Consider multiple topics for multiple opt-out options. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TOPICS_ADMIN or self
      * @param id The id of the topic
      * @param userId The id of the subscriber or &#39;me&#39;
      * @param disabled disabled
@@ -215,7 +198,7 @@ export class MessagingTopicsService {
 
     /**
      * Get a subscriber to a topic
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TOPICS_ADMIN
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TOPICS_ADMIN or self
      * @param id The id of the topic
      * @param userId The id of the subscriber or &#39;me&#39;
      */
@@ -275,63 +258,8 @@ export class MessagingTopicsService {
     }
 
     /**
-     * Get all subscribers to a topic
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TOPICS_ADMIN
-     * @param id The id of the topic
-     */
-    public getTopicSubscribersWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/messaging/topics/${id}/subscribers'
-                    .replace('${' + 'id' + '}', String(id));
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-
-        // verify required parameter 'id' is not null or undefined
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getTopicSubscribers.');
-        }
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (oauth2_client_credentials_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-        // authentication (oauth2_password_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-            
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Get,
-            headers: headers,
-            search: queryParameters,
-            withCredentials:this.configuration.withCredentials
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
      * Get all messaging topics for a given user
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TOPICS_ADMIN
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TOPICS_ADMIN or self
      * @param id The id of the user or &#39;me&#39;
      */
     public getUserTopicsWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {

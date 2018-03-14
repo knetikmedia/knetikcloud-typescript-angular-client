@@ -10,27 +10,19 @@
  * Do not edit the class manually.
  */
 
-import { BreCategoryResource } from './breCategoryResource';
-import { Order } from './order';
 
 
-export interface PageResourceBreCategoryResource {
-    content?: Array<BreCategoryResource>;
+export interface ActivityOccurrenceStatusWrapper {
+    value?: ActivityOccurrenceStatusWrapper.ValueEnum;
 
-    first?: boolean;
-
-    last?: boolean;
-
-    number?: number;
-
-    numberOfElements?: number;
-
-    size?: number;
-
-    sort?: Array<Order>;
-
-    totalElements?: number;
-
-    totalPages?: number;
-
+}
+export namespace ActivityOccurrenceStatusWrapper {
+    export enum ValueEnum {
+        SETUP = <any> 'SETUP',
+        OPEN = <any> 'OPEN',
+        LAUNCHING = <any> 'LAUNCHING',
+        PLAYING = <any> 'PLAYING',
+        FINISHED = <any> 'FINISHED',
+        ABANDONED = <any> 'ABANDONED'
+    }
 }

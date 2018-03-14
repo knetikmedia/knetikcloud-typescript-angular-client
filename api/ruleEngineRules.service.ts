@@ -20,20 +20,20 @@ import { Response, ResponseContentType }                     from '@angular/http
 import { Observable }                                        from 'rxjs/Observable';
 import '../rxjs-operators';
 
-import { BreCategoryResource } from '../model/breCategoryResource';
-import { PageResourceBreCategoryResource } from '../model/pageResourceBreCategoryResource';
-import { PageResourceTemplateResource } from '../model/pageResourceTemplateResource';
+import { BooleanResource } from '../model/booleanResource';
+import { BreRule } from '../model/breRule';
+import { Expressionobject } from '../model/expressionobject';
+import { PageResourceBreRule } from '../model/pageResourceBreRule';
 import { Result } from '../model/result';
-import { TemplateResource } from '../model/templateResource';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
 
 
 @Injectable()
-export class BRERuleEngineCategoriesService {
+export class Rule_Engine_RulesService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -77,12 +77,12 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * Templates define a type of BRE category and the properties they have. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
-     * @summary Create a BRE category template
-     * @param template The category template to create
+     * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
+     * @summary Create a rule
+     * @param breRule The BRE rule object
      */
-    public createBRECategoryTemplate(template?: TemplateResource, extraHttpRequestParams?: any): Observable<TemplateResource> {
-        return this.createBRECategoryTemplateWithHttpInfo(template, extraHttpRequestParams)
+    public createBRERule(breRule?: BreRule, extraHttpRequestParams?: any): Observable<BreRule> {
+        return this.createBRERuleWithHttpInfo(breRule, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -93,13 +93,12 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * If cascade = 'detach', it will force delete the template even if it's attached to other objects. <br><br><b>Permissions Needed:</b> TEMPLATE_ADMIN
-     * @summary Delete a BRE category template
-     * @param id The id of the template
-     * @param cascade The value needed to delete used templates
+     * May fail if there are existing rules against it. Cannot delete core rules. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
+     * @summary Delete a rule
+     * @param id The id of the rule
      */
-    public deleteBRECategoryTemplate(id: string, cascade?: string, extraHttpRequestParams?: any): Observable<{}> {
-        return this.deleteBRECategoryTemplateWithHttpInfo(id, cascade, extraHttpRequestParams)
+    public deleteBRERule(id: string, extraHttpRequestParams?: any): Observable<{}> {
+        return this.deleteBRERuleWithHttpInfo(id, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -110,13 +109,51 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_USER
-     * @summary List categories
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
+     * @summary Returns a string representation of the provided expression
+     * @param expression The expression
+     */
+    public getBREExpressionAsString(expression?: Expressionobject, extraHttpRequestParams?: any): Observable<string> {
+        return this.getBREExpressionAsStringWithHttpInfo(expression, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
+     * @summary Get a single rule
+     * @param id The id of the rule
+     */
+    public getBRERule(id: string, extraHttpRequestParams?: any): Observable<BreRule> {
+        return this.getBRERuleWithHttpInfo(id, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
+     * @summary List rules
+     * @param filterName Filter for rules containing the given name
+     * @param filterEnabled Filter for rules by active status, null for both
+     * @param filterSystem Filter for rules that are system rules when true, or not when false. Leave off for both mixed
+     * @param filterTrigger Filter for rules that are for the trigger with the given name
+     * @param filterAction Filter for rules that use the action with the given name
+     * @param filterCondition Filter for rules that have a condition containing the given string
      * @param size The number of objects returned per page
      * @param page The number of the page returned, starting with 1
      */
-    public getBRECategories(size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceBreCategoryResource> {
-        return this.getBRECategoriesWithHttpInfo(size, page, extraHttpRequestParams)
+    public getBRERules(filterName?: string, filterEnabled?: boolean, filterSystem?: boolean, filterTrigger?: string, filterAction?: string, filterCondition?: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<PageResourceBreRule> {
+        return this.getBRERulesWithHttpInfo(filterName, filterEnabled, filterSystem, filterTrigger, filterAction, filterCondition, size, page, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -127,12 +164,13 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_USER
-     * @summary Get a single category
-     * @param name The category name
+     * This is helpful for turning off systems rules which cannot be deleted or modified otherwise. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
+     * @summary Enable or disable a rule
+     * @param id The id of the rule
+     * @param enabled The boolean value
      */
-    public getBRECategory(name: string, extraHttpRequestParams?: any): Observable<BreCategoryResource> {
-        return this.getBRECategoryWithHttpInfo(name, extraHttpRequestParams)
+    public setBRERule(id: string, enabled?: BooleanResource, extraHttpRequestParams?: any): Observable<{}> {
+        return this.setBRERuleWithHttpInfo(id, enabled, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -143,64 +181,13 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
-     * @summary Get a single BRE category template
-     * @param id The id of the template
+     * Cannot update system rules. <br><br><b>Permissions Needed:</b> BRE_RULE_ENGINE_RULES_ADMIN
+     * @summary Update a rule
+     * @param id The id of the rule
+     * @param breRule The BRE rule object
      */
-    public getBRECategoryTemplate(id: string, extraHttpRequestParams?: any): Observable<TemplateResource> {
-        return this.getBRECategoryTemplateWithHttpInfo(id, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json() || {};
-                }
-            });
-    }
-
-    /**
-     * <b>Permissions Needed:</b> TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
-     * @summary List and search BRE category templates
-     * @param size The number of objects returned per page
-     * @param page The number of the page returned, starting with 1
-     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-     */
-    public getBRECategoryTemplates(size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceTemplateResource> {
-        return this.getBRECategoryTemplatesWithHttpInfo(size, page, order, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json() || {};
-                }
-            });
-    }
-
-    /**
-     * <b>Permissions Needed:</b> BRE_RULE_ENGINE_CATEGORIES_ADMIN
-     * @summary Update a category
-     * @param name The category name
-     * @param category The updated BRE category information
-     */
-    public updateBRECategory(name: string, category?: BreCategoryResource, extraHttpRequestParams?: any): Observable<BreCategoryResource> {
-        return this.updateBRECategoryWithHttpInfo(name, category, extraHttpRequestParams)
-            .map((response: Response) => {
-                if (response.status === 204) {
-                    return undefined;
-                } else {
-                    return response.json() || {};
-                }
-            });
-    }
-
-    /**
-     * <b>Permissions Needed:</b> TEMPLATE_ADMIN
-     * @summary Update a BRE category template
-     * @param id The id of the template
-     * @param template The updated category template definition
-     */
-    public updateBRECategoryTemplate(id: string, template?: TemplateResource, extraHttpRequestParams?: any): Observable<TemplateResource> {
-        return this.updateBRECategoryTemplateWithHttpInfo(id, template, extraHttpRequestParams)
+    public updateBRERule(id: string, breRule?: BreRule, extraHttpRequestParams?: any): Observable<BreRule> {
+        return this.updateBRERuleWithHttpInfo(id, breRule, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -212,12 +199,12 @@ export class BRERuleEngineCategoriesService {
 
 
     /**
-     * Create a BRE category template
-     * Templates define a type of BRE category and the properties they have. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
-     * @param template The category template to create
+     * Create a rule
+     * Rules define which actions to run when a given event verifies the specified condition. Full list of predicates and other type of expressions can be found at GET /bre/expressions/. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
+     * @param breRule The BRE rule object
      */
-    public createBRECategoryTemplateWithHttpInfo(template?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/categories/templates';
+    public createBRERuleWithHttpInfo(breRule?: BreRule, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/rules';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
@@ -252,7 +239,7 @@ export class BRERuleEngineCategoriesService {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Post,
             headers: headers,
-            body: template == null ? '' : JSON.stringify(template), // https://github.com/angular/angular/issues/10612
+            body: breRule == null ? '' : JSON.stringify(breRule), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });
@@ -265,13 +252,12 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * Delete a BRE category template
-     * If cascade &#x3D; &#39;detach&#39;, it will force delete the template even if it&#39;s attached to other objects. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
-     * @param id The id of the template
-     * @param cascade The value needed to delete used templates
+     * Delete a rule
+     * May fail if there are existing rules against it. Cannot delete core rules. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
+     * @param id The id of the rule
      */
-    public deleteBRECategoryTemplateWithHttpInfo(id: string, cascade?: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/categories/templates/${id}'
+    public deleteBRERuleWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/rules/${id}'
                     .replace('${' + 'id' + '}', String(id));
 
         let queryParameters = new URLSearchParams();
@@ -279,12 +265,8 @@ export class BRERuleEngineCategoriesService {
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling deleteBRECategoryTemplate.');
+            throw new Error('Required parameter id was null or undefined when calling deleteBRERule.');
         }
-        if (cascade !== undefined) {
-            queryParameters.set('cascade', <any>cascade);
-        }
-
 
         // to determine the Accept header
         let produces: string[] = [
@@ -325,16 +307,154 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * List categories
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_CATEGORIES_USER
-     * @param size The number of objects returned per page
-     * @param page The number of the page returned, starting with 1
+     * Returns a string representation of the provided expression
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
+     * @param expression The expression
      */
-    public getBRECategoriesWithHttpInfo(size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/categories';
+    public getBREExpressionAsStringWithHttpInfo(expression?: Expressionobject, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/rules/expression-as-string';
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: expression == null ? '' : JSON.stringify(expression), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Get a single rule
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
+     * @param id The id of the rule
+     */
+    public getBRERuleWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/rules/${id}'
+                    .replace('${' + 'id' + '}', String(id));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling getBRERule.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * List rules
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
+     * @param filterName Filter for rules containing the given name
+     * @param filterEnabled Filter for rules by active status, null for both
+     * @param filterSystem Filter for rules that are system rules when true, or not when false. Leave off for both mixed
+     * @param filterTrigger Filter for rules that are for the trigger with the given name
+     * @param filterAction Filter for rules that use the action with the given name
+     * @param filterCondition Filter for rules that have a condition containing the given string
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     */
+    public getBRERulesWithHttpInfo(filterName?: string, filterEnabled?: boolean, filterSystem?: boolean, filterTrigger?: string, filterAction?: string, filterCondition?: string, size?: number, page?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/rules';
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        if (filterName !== undefined) {
+            queryParameters.set('filter_name', <any>filterName);
+        }
+
+        if (filterEnabled !== undefined) {
+            queryParameters.set('filter_enabled', <any>filterEnabled);
+        }
+
+        if (filterSystem !== undefined) {
+            queryParameters.set('filter_system', <any>filterSystem);
+        }
+
+        if (filterTrigger !== undefined) {
+            queryParameters.set('filter_trigger', <any>filterTrigger);
+        }
+
+        if (filterAction !== undefined) {
+            queryParameters.set('filter_action', <any>filterAction);
+        }
+
+        if (filterCondition !== undefined) {
+            queryParameters.set('filter_condition', <any>filterCondition);
+        }
 
         if (size !== undefined) {
             queryParameters.set('size', <any>size);
@@ -384,67 +504,13 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * Get a single category
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_CATEGORIES_USER
-     * @param name The category name
+     * Enable or disable a rule
+     * This is helpful for turning off systems rules which cannot be deleted or modified otherwise. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
+     * @param id The id of the rule
+     * @param enabled The boolean value
      */
-    public getBRECategoryWithHttpInfo(name: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/categories/${name}'
-                    .replace('${' + 'name' + '}', String(name));
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-
-        // verify required parameter 'name' is not null or undefined
-        if (name === null || name === undefined) {
-            throw new Error('Required parameter name was null or undefined when calling getBRECategory.');
-        }
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (oauth2_client_credentials_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-        // authentication (oauth2_password_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-            
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Get,
-            headers: headers,
-            search: queryParameters,
-            withCredentials:this.configuration.withCredentials
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * Get a single BRE category template
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
-     * @param id The id of the template
-     */
-    public getBRECategoryTemplateWithHttpInfo(id: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/categories/templates/${id}'
+    public setBRERuleWithHttpInfo(id: string, enabled?: BooleanResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/rules/${id}/enabled'
                     .replace('${' + 'id' + '}', String(id));
 
         let queryParameters = new URLSearchParams();
@@ -452,127 +518,7 @@ export class BRERuleEngineCategoriesService {
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling getBRECategoryTemplate.');
-        }
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (oauth2_client_credentials_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-        // authentication (oauth2_password_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-            
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Get,
-            headers: headers,
-            search: queryParameters,
-            withCredentials:this.configuration.withCredentials
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * List and search BRE category templates
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN or BRE_RULE_ENGINE_CATEGORIES_ADMIN
-     * @param size The number of objects returned per page
-     * @param page The number of the page returned, starting with 1
-     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
-     */
-    public getBRECategoryTemplatesWithHttpInfo(size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/categories/templates';
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-
-        if (size !== undefined) {
-            queryParameters.set('size', <any>size);
-        }
-
-        if (page !== undefined) {
-            queryParameters.set('page', <any>page);
-        }
-
-        if (order !== undefined) {
-            queryParameters.set('order', <any>order);
-        }
-
-
-        // to determine the Accept header
-        let produces: string[] = [
-            'application/json'
-        ];
-
-        // authentication (oauth2_client_credentials_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-        // authentication (oauth2_password_grant) required
-        // oauth required
-        if (this.configuration.accessToken) {
-            let accessToken = typeof this.configuration.accessToken === 'function'
-                ? this.configuration.accessToken()
-                : this.configuration.accessToken;
-            headers.set('Authorization', 'Bearer ' + accessToken);
-        }
-
-            
-        let requestOptions: RequestOptionsArgs = new RequestOptions({
-            method: RequestMethod.Get,
-            headers: headers,
-            search: queryParameters,
-            withCredentials:this.configuration.withCredentials
-        });
-        // https://github.com/swagger-api/swagger-codegen/issues/4037
-        if (extraHttpRequestParams) {
-            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
-        }
-
-        return this.http.request(path, requestOptions);
-    }
-
-    /**
-     * Update a category
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_CATEGORIES_ADMIN
-     * @param name The category name
-     * @param category The updated BRE category information
-     */
-    public updateBRECategoryWithHttpInfo(name: string, category?: BreCategoryResource, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/categories/${name}'
-                    .replace('${' + 'name' + '}', String(name));
-
-        let queryParameters = new URLSearchParams();
-        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
-
-        // verify required parameter 'name' is not null or undefined
-        if (name === null || name === undefined) {
-            throw new Error('Required parameter name was null or undefined when calling updateBRECategory.');
+            throw new Error('Required parameter id was null or undefined when calling setBRERule.');
         }
 
         // to determine the Accept header
@@ -604,7 +550,7 @@ export class BRERuleEngineCategoriesService {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Put,
             headers: headers,
-            body: category == null ? '' : JSON.stringify(category), // https://github.com/angular/angular/issues/10612
+            body: enabled == null ? '' : JSON.stringify(enabled), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });
@@ -617,13 +563,13 @@ export class BRERuleEngineCategoriesService {
     }
 
     /**
-     * Update a BRE category template
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATE_ADMIN
-     * @param id The id of the template
-     * @param template The updated category template definition
+     * Update a rule
+     * Cannot update system rules. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; BRE_RULE_ENGINE_RULES_ADMIN
+     * @param id The id of the rule
+     * @param breRule The BRE rule object
      */
-    public updateBRECategoryTemplateWithHttpInfo(id: string, template?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + '/bre/categories/templates/${id}'
+    public updateBRERuleWithHttpInfo(id: string, breRule?: BreRule, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/bre/rules/${id}'
                     .replace('${' + 'id' + '}', String(id));
 
         let queryParameters = new URLSearchParams();
@@ -631,7 +577,7 @@ export class BRERuleEngineCategoriesService {
 
         // verify required parameter 'id' is not null or undefined
         if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling updateBRECategoryTemplate.');
+            throw new Error('Required parameter id was null or undefined when calling updateBRERule.');
         }
 
         // to determine the Accept header
@@ -663,7 +609,7 @@ export class BRERuleEngineCategoriesService {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Put,
             headers: headers,
-            body: template == null ? '' : JSON.stringify(template), // https://github.com/angular/angular/issues/10612
+            body: breRule == null ? '' : JSON.stringify(breRule), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });

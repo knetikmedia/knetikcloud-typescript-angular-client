@@ -33,7 +33,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ChatService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -272,8 +272,8 @@ export class ChatService {
      * @summary Send a message
      * @param chatMessageResource The chat message resource
      */
-    public sendMessage(chatMessageResource?: ChatMessageResource, extraHttpRequestParams?: any): Observable<ChatMessageResource> {
-        return this.sendMessageWithHttpInfo(chatMessageResource, extraHttpRequestParams)
+    public sendChatMessage(chatMessageResource?: ChatMessageResource, extraHttpRequestParams?: any): Observable<ChatMessageResource> {
+        return this.sendChatMessageWithHttpInfo(chatMessageResource, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -968,7 +968,7 @@ export class ChatService {
      * &lt;b&gt;Permissions Needed:&lt;/b&gt; ANY
      * @param chatMessageResource The chat message resource
      */
-    public sendMessageWithHttpInfo(chatMessageResource?: ChatMessageResource, extraHttpRequestParams?: any): Observable<Response> {
+    public sendChatMessageWithHttpInfo(chatMessageResource?: ChatMessageResource, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/chat/messages';
 
         let queryParameters = new URLSearchParams();

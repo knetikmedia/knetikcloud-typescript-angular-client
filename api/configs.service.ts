@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ConfigsService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -75,7 +75,7 @@ export class ConfigsService {
     }
 
     /**
-     * <b>Permissions Needed:</b> TOPICS_ADMIN
+     * <b>Permissions Needed:</b> CONFIGS_ADMIN
      * @summary Create a new config
      * @param config The config object
      */
@@ -161,7 +161,7 @@ export class ConfigsService {
 
     /**
      * Create a new config
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TOPICS_ADMIN
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; CONFIGS_ADMIN
      * @param config The config object
      */
     public createConfigWithHttpInfo(config?: Config, extraHttpRequestParams?: any): Observable<Response> {

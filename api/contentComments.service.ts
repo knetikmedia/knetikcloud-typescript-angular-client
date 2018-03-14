@@ -30,9 +30,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class ContentCommentsService {
+export class Content_CommentsService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 

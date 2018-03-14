@@ -10,27 +10,22 @@
  * Do not edit the class manually.
  */
 
-import { Order } from './order';
-import { TopicSubscriberResource } from './topicSubscriberResource';
 
 
-export interface PageResourceTopicSubscriberResource {
-    content?: Array<TopicSubscriberResource>;
+export interface ResourceTypeDescription {
+    /**
+     * The field on the resource that the id is in
+     */
+    idField: string;
 
-    first?: boolean;
+    /**
+     * The unique name for the resource in swagger. This serves as the unique identifier. Cannot be changed after creation
+     */
+    name: string;
 
-    last?: boolean;
-
-    number?: number;
-
-    numberOfElements?: number;
-
-    size?: number;
-
-    sort?: Array<Order>;
-
-    totalElements?: number;
-
-    totalPages?: number;
+    /**
+     * The base path of the service
+     */
+    servicePath: string;
 
 }

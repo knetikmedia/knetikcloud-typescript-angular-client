@@ -21,6 +21,7 @@ import { Observable }                                        from 'rxjs/Observab
 import '../rxjs-operators';
 
 import { ArticleResource } from '../model/articleResource';
+import { BasicTemplatedResource } from '../model/basicTemplatedResource';
 import { PageResourceArticleResource } from '../model/pageResourceArticleResource';
 import { PageResourceTemplateResource } from '../model/pageResourceTemplateResource';
 import { Result } from '../model/result';
@@ -31,9 +32,9 @@ import { Configuration }                                     from '../configurat
 
 
 @Injectable()
-export class ContentArticlesService {
+export class Content_ArticlesService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -109,6 +110,23 @@ export class ContentArticlesService {
     }
 
     /**
+     * <b>Permissions Needed:</b> TEMPLATES_ADMIN
+     * @summary Create a template
+     * @param typeHint The type for the resource this template applies to
+     * @param template The template
+     */
+    public createTemplate(typeHint: string, template?: TemplateResource, extraHttpRequestParams?: any): Observable<TemplateResource> {
+        return this.createTemplateWithHttpInfo(typeHint, template, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
      * <b>Permissions Needed:</b> ARTICLES_ADMIN
      * @summary Delete an existing article
      * @param id The article id
@@ -132,6 +150,24 @@ export class ContentArticlesService {
      */
     public deleteArticleTemplate(id: string, cascade?: string, extraHttpRequestParams?: any): Observable<{}> {
         return this.deleteArticleTemplateWithHttpInfo(id, cascade, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> TEMPLATES_ADMIN
+     * @summary Delete a template
+     * @param typeHint The type for the resource this template applies to
+     * @param id The id of the template
+     * @param cascade How to cascade the delete
+     */
+    public deleteTemplate(typeHint: string, id: string, cascade?: string, extraHttpRequestParams?: any): Observable<{}> {
+        return this.deleteTemplateWithHttpInfo(typeHint, id, cascade, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -216,6 +252,42 @@ export class ContentArticlesService {
     }
 
     /**
+     * <b>Permissions Needed:</b> TEMPLATES_ADMIN
+     * @summary Get a template
+     * @param typeHint The type for the resource this template applies to
+     * @param id The id of the template
+     */
+    public getTemplate(typeHint: string, id: string, extraHttpRequestParams?: any): Observable<TemplateResource> {
+        return this.getTemplateWithHttpInfo(typeHint, id, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> TEMPLATES_ADMIN
+     * @summary List and search templates
+     * @param typeHint The type for the resource this template applies to
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
+    public getTemplates(typeHint: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<PageResourceTemplateResource> {
+        return this.getTemplatesWithHttpInfo(typeHint, size, page, order, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
      * <b>Permissions Needed:</b> ARTICLES_ADMIN
      * @summary Update an existing article
      * @param id The article id
@@ -240,6 +312,41 @@ export class ContentArticlesService {
      */
     public updateArticleTemplate(id: string, articleTemplateResource?: TemplateResource, extraHttpRequestParams?: any): Observable<TemplateResource> {
         return this.updateArticleTemplateWithHttpInfo(id, articleTemplateResource, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * <b>Permissions Needed:</b> TEMPLATES_ADMIN
+     * @summary Update a template
+     * @param typeHint The type for the resource this template applies to
+     * @param id The id of the template
+     * @param template The template
+     */
+    public updateTemplate(typeHint: string, id: string, template?: TemplateResource, extraHttpRequestParams?: any): Observable<TemplateResource> {
+        return this.updateTemplateWithHttpInfo(typeHint, id, template, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json() || {};
+                }
+            });
+    }
+
+    /**
+     * Error code thrown if invalid.<br><br><b>Permissions Needed:</b> TEMPLATES_ADMIN
+     * @summary Validate a templated resource
+     * @param typeHint The type for the resource this template applies to
+     * @param resource The resource to validate
+     */
+    public validate(typeHint: string, resource?: BasicTemplatedResource, extraHttpRequestParams?: any): Observable<{}> {
+        return this.validateWithHttpInfo(typeHint, resource, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -357,6 +464,65 @@ export class ContentArticlesService {
     }
 
     /**
+     * Create a template
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATES_ADMIN
+     * @param typeHint The type for the resource this template applies to
+     * @param template The template
+     */
+    public createTemplateWithHttpInfo(typeHint: string, template?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/templates/${type_hint}'
+                    .replace('${' + 'type_hint' + '}', String(typeHint));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'typeHint' is not null or undefined
+        if (typeHint === null || typeHint === undefined) {
+            throw new Error('Required parameter typeHint was null or undefined when calling createTemplate.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: template == null ? '' : JSON.stringify(template), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
      * Delete an existing article
      * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
      * @param id The article id
@@ -460,6 +626,71 @@ export class ContentArticlesService {
         let requestOptions: RequestOptionsArgs = new RequestOptions({
             method: RequestMethod.Delete,
             headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Delete a template
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATES_ADMIN
+     * @param typeHint The type for the resource this template applies to
+     * @param id The id of the template
+     * @param cascade How to cascade the delete
+     */
+    public deleteTemplateWithHttpInfo(typeHint: string, id: string, cascade?: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/templates/${type_hint}/${id}'
+                    .replace('${' + 'type_hint' + '}', String(typeHint))
+                    .replace('${' + 'id' + '}', String(id));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'typeHint' is not null or undefined
+        if (typeHint === null || typeHint === undefined) {
+            throw new Error('Required parameter typeHint was null or undefined when calling deleteTemplate.');
+        }
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling deleteTemplate.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Delete,
+            headers: headers,
+            body: cascade == null ? '' : JSON.stringify(cascade), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });
@@ -740,6 +971,137 @@ export class ContentArticlesService {
     }
 
     /**
+     * Get a template
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATES_ADMIN
+     * @param typeHint The type for the resource this template applies to
+     * @param id The id of the template
+     */
+    public getTemplateWithHttpInfo(typeHint: string, id: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/templates/${type_hint}/${id}'
+                    .replace('${' + 'type_hint' + '}', String(typeHint))
+                    .replace('${' + 'id' + '}', String(id));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'typeHint' is not null or undefined
+        if (typeHint === null || typeHint === undefined) {
+            throw new Error('Required parameter typeHint was null or undefined when calling getTemplate.');
+        }
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling getTemplate.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * List and search templates
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATES_ADMIN
+     * @param typeHint The type for the resource this template applies to
+     * @param size The number of objects returned per page
+     * @param page The number of the page returned, starting with 1
+     * @param order A comma separated list of sorting requirements in priority order, each entry matching PROPERTY_NAME:[ASC|DESC]
+     */
+    public getTemplatesWithHttpInfo(typeHint: string, size?: number, page?: number, order?: string, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/templates/${type_hint}'
+                    .replace('${' + 'type_hint' + '}', String(typeHint));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'typeHint' is not null or undefined
+        if (typeHint === null || typeHint === undefined) {
+            throw new Error('Required parameter typeHint was null or undefined when calling getTemplates.');
+        }
+        if (size !== undefined) {
+            queryParameters.set('size', <any>size);
+        }
+
+        if (page !== undefined) {
+            queryParameters.set('page', <any>page);
+        }
+
+        if (order !== undefined) {
+            queryParameters.set('order', <any>order);
+        }
+
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
      * Update an existing article
      * &lt;b&gt;Permissions Needed:&lt;/b&gt; ARTICLES_ADMIN
      * @param id The article id
@@ -846,6 +1208,130 @@ export class ContentArticlesService {
             method: RequestMethod.Put,
             headers: headers,
             body: articleTemplateResource == null ? '' : JSON.stringify(articleTemplateResource), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Update a template
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATES_ADMIN
+     * @param typeHint The type for the resource this template applies to
+     * @param id The id of the template
+     * @param template The template
+     */
+    public updateTemplateWithHttpInfo(typeHint: string, id: string, template?: TemplateResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/templates/${type_hint}/${id}'
+                    .replace('${' + 'type_hint' + '}', String(typeHint))
+                    .replace('${' + 'id' + '}', String(id));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'typeHint' is not null or undefined
+        if (typeHint === null || typeHint === undefined) {
+            throw new Error('Required parameter typeHint was null or undefined when calling updateTemplate.');
+        }
+        // verify required parameter 'id' is not null or undefined
+        if (id === null || id === undefined) {
+            throw new Error('Required parameter id was null or undefined when calling updateTemplate.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Put,
+            headers: headers,
+            body: template == null ? '' : JSON.stringify(template), // https://github.com/angular/angular/issues/10612
+            search: queryParameters,
+            withCredentials:this.configuration.withCredentials
+        });
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = (<any>Object).assign(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * Validate a templated resource
+     * Error code thrown if invalid.&lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; TEMPLATES_ADMIN
+     * @param typeHint The type for the resource this template applies to
+     * @param resource The resource to validate
+     */
+    public validateWithHttpInfo(typeHint: string, resource?: BasicTemplatedResource, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + '/templates/${type_hint}/validate'
+                    .replace('${' + 'type_hint' + '}', String(typeHint));
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+
+        // verify required parameter 'typeHint' is not null or undefined
+        if (typeHint === null || typeHint === undefined) {
+            throw new Error('Required parameter typeHint was null or undefined when calling validate.');
+        }
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+
+        // authentication (oauth2_client_credentials_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+        // authentication (oauth2_password_grant) required
+        // oauth required
+        if (this.configuration.accessToken) {
+            let accessToken = typeof this.configuration.accessToken === 'function'
+                ? this.configuration.accessToken()
+                : this.configuration.accessToken;
+            headers.set('Authorization', 'Bearer ' + accessToken);
+        }
+
+            
+        headers.set('Content-Type', 'application/json');
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Post,
+            headers: headers,
+            body: resource == null ? '' : JSON.stringify(resource), // https://github.com/angular/angular/issues/10612
             search: queryParameters,
             withCredentials:this.configuration.withCredentials
         });

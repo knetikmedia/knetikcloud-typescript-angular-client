@@ -26,8 +26,10 @@ import { ActivityOccurrenceResource } from '../model/activityOccurrenceResource'
 import { ActivityOccurrenceResults } from '../model/activityOccurrenceResults';
 import { ActivityOccurrenceResultsResource } from '../model/activityOccurrenceResultsResource';
 import { ActivityOccurrenceSettingsResource } from '../model/activityOccurrenceSettingsResource';
+import { ActivityOccurrenceStatusWrapper } from '../model/activityOccurrenceStatusWrapper';
 import { ActivityResource } from '../model/activityResource';
 import { ActivityUserResource } from '../model/activityUserResource';
+import { ActivityUserStatusWrapper } from '../model/activityUserStatusWrapper';
 import { CreateActivityOccurrenceRequest } from '../model/createActivityOccurrenceRequest';
 import { IntWrapper } from '../model/intWrapper';
 import { PageResourceActivityOccurrenceResource } from '../model/pageResourceActivityOccurrenceResource';
@@ -35,7 +37,6 @@ import { PageResourceBareActivityResource } from '../model/pageResourceBareActiv
 import { PageResourceTemplateResource } from '../model/pageResourceTemplateResource';
 import { Result } from '../model/result';
 import { TemplateResource } from '../model/templateResource';
-import { ValueWrapperstring } from '../model/valueWrapperstring';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
 import { Configuration }                                     from '../configuration';
@@ -44,7 +45,7 @@ import { Configuration }                                     from '../configurat
 @Injectable()
 export class ActivitiesService {
 
-    protected basePath = 'https://sandbox.knetikcloud.com';
+    protected basePath = 'https://jsapi-integration.us-east-1.elasticbeanstalk.com';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -226,7 +227,7 @@ export class ActivitiesService {
     }
 
     /**
-     * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
+     * <b>Permissions Needed:</b> ACTIVITIES_USER or ACTIVITIES_ADMIN
      * @summary Load a single activity occurrence details
      * @param activityOccurrenceId The id of the activity occurrence
      */
@@ -276,7 +277,7 @@ export class ActivitiesService {
     }
 
     /**
-     * <b>Permissions Needed:</b> ACTIVITIES_ADMIN
+     * <b>Permissions Needed:</b> ACTIVITIES_USER or ACTIVITIES_ADMIN
      * @summary List activity occurrences
      * @param filterActivity Filter for occurrences of the given activity ID
      * @param filterStatus Filter for occurrences in the given status
@@ -317,7 +318,7 @@ export class ActivitiesService {
     }
 
     /**
-     * In addition to user permissions requirements there is security based on the core_settings.results_trust setting.
+     * In addition to user permissions requirements there is security based on the core_settings.results_trust setting. <br><br><b>Permissions Needed:</b> ACTIVITIES_USER or ACTIVITIES_ADMIN
      * @summary Sets the status of an activity occurrence to FINISHED and logs metrics
      * @param activityOccurrenceId The id of the activity occurrence
      * @param activityOccurrenceResults The activity occurrence object
@@ -334,7 +335,7 @@ export class ActivitiesService {
     }
 
     /**
-     * 
+     * <b>Permissions Needed:</b> ACTIVITIES_USER and host or ACTIVITIES_ADMIN
      * @summary Sets the settings of an activity occurrence
      * @param activityOccurrenceId The id of the activity occurrence
      * @param settings The new settings
@@ -357,7 +358,7 @@ export class ActivitiesService {
      * @param userId The id of the user
      * @param status The new status
      */
-    public setUserStatus(activityOccurrenceId: number, userId: string, status?: string, extraHttpRequestParams?: any): Observable<ActivityUserResource> {
+    public setUserStatus(activityOccurrenceId: number, userId: string, status?: ActivityUserStatusWrapper, extraHttpRequestParams?: any): Observable<ActivityUserResource> {
         return this.setUserStatusWithHttpInfo(activityOccurrenceId, userId, status, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
@@ -386,12 +387,12 @@ export class ActivitiesService {
     }
 
     /**
-     * If setting to 'FINISHED' reward will be run based on current metrics that have been recorded already. Alternatively, see results endpoint to finish and record all metrics at once. Can be called by non-host participants if non_host_status_control is true
+     * If setting to 'FINISHED' reward will be run based on current metrics that have been recorded already. Alternatively, see results endpoint to finish and record all metrics at once. Can be called by non-host participants if non_host_status_control is true. <br><br><b>Permissions Needed:</b> ACTIVITIES_USER and host or ACTIVITIES_ADMIN
      * @summary Update the status of an activity occurrence
      * @param activityOccurrenceId The id of the activity occurrence
      * @param activityOccurrenceStatus The activity occurrence status object
      */
-    public updateActivityOccurrenceStatus(activityOccurrenceId: number, activityOccurrenceStatus?: ValueWrapperstring, extraHttpRequestParams?: any): Observable<{}> {
+    public updateActivityOccurrenceStatus(activityOccurrenceId: number, activityOccurrenceStatus?: ActivityOccurrenceStatusWrapper, extraHttpRequestParams?: any): Observable<{}> {
         return this.updateActivityOccurrenceStatusWithHttpInfo(activityOccurrenceId, activityOccurrenceStatus, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
@@ -904,7 +905,7 @@ export class ActivitiesService {
 
     /**
      * Load a single activity occurrence details
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_ADMIN
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_USER or ACTIVITIES_ADMIN
      * @param activityOccurrenceId The id of the activity occurrence
      */
     public getActivityOccurrenceDetailsWithHttpInfo(activityOccurrenceId: number, extraHttpRequestParams?: any): Observable<Response> {
@@ -1078,7 +1079,7 @@ export class ActivitiesService {
 
     /**
      * List activity occurrences
-     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_ADMIN
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_USER or ACTIVITIES_ADMIN
      * @param filterActivity Filter for occurrences of the given activity ID
      * @param filterStatus Filter for occurrences in the given status
      * @param filterEvent Filter for occurrences played during the given event
@@ -1233,7 +1234,7 @@ export class ActivitiesService {
 
     /**
      * Sets the status of an activity occurrence to FINISHED and logs metrics
-     * In addition to user permissions requirements there is security based on the core_settings.results_trust setting.
+     * In addition to user permissions requirements there is security based on the core_settings.results_trust setting. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_USER or ACTIVITIES_ADMIN
      * @param activityOccurrenceId The id of the activity occurrence
      * @param activityOccurrenceResults The activity occurrence object
      */
@@ -1292,7 +1293,7 @@ export class ActivitiesService {
 
     /**
      * Sets the settings of an activity occurrence
-     * 
+     * &lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_USER and host or ACTIVITIES_ADMIN
      * @param activityOccurrenceId The id of the activity occurrence
      * @param settings The new settings
      */
@@ -1356,7 +1357,7 @@ export class ActivitiesService {
      * @param userId The id of the user
      * @param status The new status
      */
-    public setUserStatusWithHttpInfo(activityOccurrenceId: number, userId: string, status?: string, extraHttpRequestParams?: any): Observable<Response> {
+    public setUserStatusWithHttpInfo(activityOccurrenceId: number, userId: string, status?: ActivityUserStatusWrapper, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/activity-occurrences/${activity_occurrence_id}/users/${user_id}/status'
                     .replace('${' + 'activity_occurrence_id' + '}', String(activityOccurrenceId))
                     .replace('${' + 'user_id' + '}', String(userId));
@@ -1475,11 +1476,11 @@ export class ActivitiesService {
 
     /**
      * Update the status of an activity occurrence
-     * If setting to &#39;FINISHED&#39; reward will be run based on current metrics that have been recorded already. Alternatively, see results endpoint to finish and record all metrics at once. Can be called by non-host participants if non_host_status_control is true
+     * If setting to &#39;FINISHED&#39; reward will be run based on current metrics that have been recorded already. Alternatively, see results endpoint to finish and record all metrics at once. Can be called by non-host participants if non_host_status_control is true. &lt;br&gt;&lt;br&gt;&lt;b&gt;Permissions Needed:&lt;/b&gt; ACTIVITIES_USER and host or ACTIVITIES_ADMIN
      * @param activityOccurrenceId The id of the activity occurrence
      * @param activityOccurrenceStatus The activity occurrence status object
      */
-    public updateActivityOccurrenceStatusWithHttpInfo(activityOccurrenceId: number, activityOccurrenceStatus?: ValueWrapperstring, extraHttpRequestParams?: any): Observable<Response> {
+    public updateActivityOccurrenceStatusWithHttpInfo(activityOccurrenceId: number, activityOccurrenceStatus?: ActivityOccurrenceStatusWrapper, extraHttpRequestParams?: any): Observable<Response> {
         const path = this.basePath + '/activity-occurrences/${activity_occurrence_id}/status'
                     .replace('${' + 'activity_occurrence_id' + '}', String(activityOccurrenceId));
 
